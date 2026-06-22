@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AllDorms — the college move-in almanac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     AllDorms
+     • AFFILIATE_TAG (in the script): your Amazon Associates tag.
+       Blank = links go to plain Amazon searches and the page says so.
+     • Real photos: each school has optional photo:"" and dorm:"" URL
+       fields. Leave blank to use the built-in illustration, or paste a
+       LICENSED image URL (your own / the school media kit with
+       permission / Unsplash / Wikimedia). Don't hotlink copyrighted
+       photos you don't have rights to.
+     • Every rule, contact and link was taken from each school's
+       official housing pages — confirm before each season.
+     • Checklist state is in-memory; see the localStorage note to persist.
+     ============================================================ */
+  :root{
+    --ink:#16241d;            /* warm spruce-black: primary text */
+    --spruce:#1d4034;         /* brand surface (sidebar / dark bands) */
+    --spruce-deep:#122a22;
+    --paper:#f4eee1;          /* warm paper content bg */
+    --paper-2:#efe7d6;        /* slightly deeper paper for insets */
+    --marigold:#dc9a2b;       /* signature warm accent */
+    --marigold-deep:#b87d18;
+    --rule:#dcd3bf;           /* hairline on paper */
+    --muted:#6a7167;
+    --card:#fbf7ee;
+    --accent:#1d4034;         /* per-school accent, set by JS */
+    --accent-soft:#e9efe9;    /* set by JS */
+    --sidebar-w:252px;
+    --r:13px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;
+    font-optical-sizing:auto;}
+  a{color:inherit;}
+  /* paper grain — fights the flat AI-clean look */
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .disp{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;line-height:1;letter-spacing:-.02em;}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;}
+  .kick{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+  h1,h2,h3,h4{margin:0;}
+  .hidden{display:none !important;}
+
+  /* ============ LAYOUT ============ */
+  .layout{display:flex;position:relative;z-index:1;}
+  .main{flex:1;min-width:0;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 30px;}
+
+  /* ============ SIDEBAR ============ */
+  .sidebar{width:var(--sidebar-w);flex:none;background:var(--spruce);color:#e9f0ea;
+    position:sticky;top:0;height:100vh;display:flex;flex-direction:column;}
+  .side-top{display:flex;align-items:center;justify-content:space-between;padding:26px 24px 18px;}
+  .logo{display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;color:#fff;padding:0;
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em;}
+  .logo .mk{width:26px;height:26px;flex:none;}
+  .menu-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:8px;
+    padding:6px 10px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;}
+  .sidenav{padding:8px 16px;overflow-y:auto;flex:1;}
+  .navgroup{margin-bottom:8px;}
+  .navlabel{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:#86a698;padding:14px 12px 8px;}
+  .navlink{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    color:#d6e3db;font-family:"Newsreader",serif;font-size:16.5px;padding:9px 12px;border-radius:9px;transition:.15s;text-decoration:none;}
+  .navlink:hover{background:rgba(255,255,255,.07);color:#fff;}
+  .navlink.active{background:var(--marigold);color:#241a06;font-weight:600;}
+  .navlink .nn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:#7fa093;width:18px;}
+  .navlink.active .nn{color:#5a4410;}
+  .navback{color:#9fc0b3;font-size:14.5px;}
+  .navback:hover{color:#fff;}
+  .schoolname{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:20px;color:#fff;padding:6px 12px 2px;letter-spacing:-.01em;}
+  .schoolcity{font-family:"IBM Plex Mono",monospace;font-size:11px;color:#86a698;padding:0 12px 10px;}
+  .side-foot{padding:16px 24px 24px;border-top:1px solid rgba(255,255,255,.12);font-size:12.5px;color:#80a092;line-height:1.5;}
+  .side-prog{display:flex;align-items:center;gap:9px;margin-bottom:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#bcd2c8;}
+  .side-prog .track{flex:1;height:5px;border-radius:5px;background:rgba(255,255,255,.16);overflow:hidden;}
+  .side-prog .fill{height:100%;width:0;background:var(--marigold);transition:width .4s ease;}
+
+  /* ============ LANDING ============ */
+  .lhero{padding:8px 0 14px;}
+  .lhero .kick{margin-bottom:20px;}
+  .lhero h1{font-size:clamp(46px,7vw,92px);max-width:13ch;}
+  .lhero h1 .em{color:var(--marigold-deep);font-style:normal;}
+  .lhero .stand{font-size:clamp(19px,2.3vw,24px);max-width:50ch;margin:26px 0 0;color:#33403a;line-height:1.45;}
+  .lhero .cta-row{display:flex;gap:14px;align-items:center;margin-top:32px;flex-wrap:wrap;}
+  .btn{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+    border:none;border-radius:30px;padding:14px 24px;background:var(--spruce);color:#fff;text-decoration:none;transition:.15s;}
+  .btn:hover{background:var(--spruce-deep);}
+  .btn.ghost{background:none;border:1.5px solid var(--ink);color:var(--ink);padding:12.5px 22px;}
+  .btn.ghost:hover{background:var(--ink);color:var(--paper);}
+
+  .scene-hero{margin:42px 0 0;border-radius:18px;overflow:hidden;border:1px solid var(--rule);box-shadow:0 20px 50px -28px rgba(20,40,30,.5);}
+  .scene-hero svg{display:block;width:100%;height:auto;}
+
+  .index-line{margin:46px 0 8px;padding:18px 0;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);
+    font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.02em;color:#3a463f;line-height:2;}
+  .index-line b{color:var(--marigold-deep);}
+
+  .promises{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:0;margin:64px 0;}
+  .promise{padding:0 26px;border-left:1px solid var(--rule);}
+  .promise:first-child{padding-left:0;border-left:none;}
+  .promise .plabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--marigold-deep);}
+  .promise h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:24px;letter-spacing:-.01em;margin:12px 0 10px;}
+  .promise.lead h3{font-size:30px;}
+  .promise p{margin:0;font-size:16.5px;color:#3a463f;}
+
+  .pick{margin:18px 0 80px;}
+  .pick-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:26px;}
+  .pick-head h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(30px,4vw,44px);letter-spacing:-.02em;}
+  .pick-head .sub{color:var(--muted);font-size:16px;max-width:42ch;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));gap:22px;}
+  .scard{text-align:left;background:var(--card);border:1px solid var(--rule);border-radius:15px;padding:0;cursor:pointer;
+    font:inherit;color:inherit;overflow:hidden;transition:transform .18s ease, box-shadow .18s ease;}
+  .scard:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(20,40,30,.55);}
+  .scard:focus-visible{outline:2px solid var(--spruce);outline-offset:3px;}
+  .scard .thumb{height:148px;overflow:hidden;border-bottom:1px solid var(--rule);background:var(--paper-2);}
+  .scard .thumb svg,.scard .thumb img{display:block;width:100%;height:100%;object-fit:cover;}
+  .scard .body{padding:16px 18px 18px;}
+  .scard .nm{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.01em;line-height:1.04;}
+  .scard .ct{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);margin-top:7px;}
+  .scard .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px;}
+  .scard .tag{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.04em;color:#46524b;
+    background:var(--paper);border:1px solid var(--rule);border-radius:20px;padding:3px 9px;}
+
+  .closing{border-top:1.5px solid var(--ink);padding:48px 0 90px;}
+  .closing h2{font-family:"Newsreader",serif;font-weight:500;font-style:italic;font-size:clamp(24px,3vw,34px);max-width:24ch;line-height:1.25;}
+  .closing p{max-width:54ch;margin:20px 0 0;color:#3a463f;font-size:17px;}
+
+  /* ============ SCHOOL APP ============ */
+  .pcard{margin:0 0 6px;border-radius:0 0 18px 18px;overflow:hidden;position:relative;}
+  .pcard svg,.pcard img{display:block;width:100%;height:auto;}
+  .pcard .overlay{position:absolute;left:0;right:0;bottom:0;padding:30px 34px 26px;
+    background:linear-gradient(to top, rgba(10,22,16,.82), rgba(10,22,16,.32) 55%, transparent);color:#fff;}
+  .pcard .ov-kick{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#e7d6ad;}
+  .pcard .ov-name{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(34px,5.4vw,62px);letter-spacing:-.025em;margin-top:6px;line-height:.98;}
+  .schero{padding:34px 0 6px;}
+  .schero .lede{font-family:"Newsreader",serif;font-size:clamp(19px,2.2vw,23px);line-height:1.45;max-width:56ch;color:#33403a;}
+  .facts{display:flex;flex-wrap:wrap;gap:0;margin-top:28px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+  .fact{padding:16px 26px 16px 0;margin-right:26px;border-right:1px solid var(--rule);}
+  .fact:last-child{border-right:none;margin-right:0;padding-right:0;}
+  .fact .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);}
+  .fact .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:20px;margin-top:5px;color:var(--ink);}
+
+  section.block{padding:50px 0;border-top:1px solid var(--rule);scroll-margin-top:80px;}
+  .sec-head{margin-bottom:28px;}
+  .sec-head .kick{margin-bottom:9px;display:block;}
+  .sec-head h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(27px,3.6vw,40px);letter-spacing:-.02em;}
+  .sec-head p{color:#46524b;max-width:64ch;margin:12px 0 0;font-size:16.5px;}
+
+  .arc{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;background:var(--card);}
+  .month{padding:18px 16px;border-left:1px solid var(--rule);}
+  .month:first-child{border-left:none;}
+  .month .swatch{height:6px;border-radius:6px;margin-bottom:13px;}
+  .month .name{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:16px;}
+  .month .temp{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin-top:3px;}
+  .month .wear{font-size:14.5px;margin:10px 0 0;color:#3a463f;line-height:1.45;}
+  .arc-tip{margin-top:20px;background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:16px 20px;font-size:16px;color:#2a342e;}
+  .arc-tip b{color:var(--accent);}
+
+  .rules{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .rulecard{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:24px;}
+  .rulecard h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:20px;display:flex;align-items:center;gap:10px;}
+  .rulecard .badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:20px;color:#1d2b22;background:#bcd9c4;}
+  .rulecard.no .badge{background:var(--accent);color:#fff;}
+  .rulecard ul{list-style:none;margin:16px 0 0;padding:0;}
+  .rulecard li{padding:10px 0 10px 26px;position:relative;border-top:1px solid var(--rule);font-size:15.5px;color:#33403a;}
+  .rulecard li:first-child{border-top:none;}
+  .rulecard li::before{position:absolute;left:0;top:9px;font-family:"IBM Plex Mono",monospace;font-weight:500;}
+  .rulecard.yes li::before{content:"+";color:#2f7d5b;}
+  .rulecard.no li::before{content:"\00d7";color:var(--accent);}
+  .verify{margin-top:18px;font-size:14.5px;color:var(--muted);}
+  .verify a{color:var(--accent);text-underline-offset:3px;font-weight:600;}
+
+  .roomfig{margin:0 0 24px;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;background:var(--card);}
+  .roomfig svg,.roomfig img{display:block;width:100%;height:auto;}
+  .roomfig figcaption{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);padding:11px 18px;border-top:1px solid var(--rule);}
+
+  .disclose{background:var(--paper-2);border:1px solid var(--rule);border-radius:var(--r);padding:14px 18px;font-size:14.5px;color:#46524b;margin-bottom:24px;}
+  .disclose b{color:var(--ink);}
+  .progress-bar{position:sticky;top:0;z-index:20;background:var(--paper);padding:15px 0 16px;border-bottom:1px solid var(--rule);margin-bottom:24px;}
+  .progress-bar .row{display:flex;align-items:center;gap:16px;}
+  .progress-bar .count{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:18px;white-space:nowrap;}
+  .progress-bar .track{flex:1;height:9px;border-radius:9px;background:var(--rule);overflow:hidden;}
+  .progress-bar .fill{height:100%;width:0;background:var(--spruce);transition:width .35s ease;}
+  .progress-bar button{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+    background:none;border:1px solid var(--rule);border-radius:20px;padding:7px 13px;cursor:pointer;}
+  .progress-bar button:hover{border-color:var(--muted);}
+  .cat{margin-bottom:28px;}
+  .cat > h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:19px;display:flex;align-items:baseline;gap:10px;letter-spacing:-.01em;}
+  .cat > h3 .n{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);}
+  .items{margin-top:13px;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;background:var(--card);}
+  .item{display:flex;align-items:center;gap:14px;padding:12px 16px;border-top:1px solid var(--rule);}
+  .item:first-child{border-top:none;}
+  .item input{appearance:none;width:21px;height:21px;flex:none;border:1.5px solid #b9bdab;border-radius:6px;cursor:pointer;position:relative;transition:.15s;background:#fff;}
+  .item input:checked{background:var(--spruce);border-color:var(--spruce);}
+  .item input:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+  .item input:focus-visible{outline:2px solid var(--marigold);outline-offset:2px;}
+  .item .label{flex:1;font-size:15.5px;color:#28332c;}
+  .item .label .note{display:block;font-size:13px;color:var(--muted);font-style:italic;}
+  .item.done .label{color:var(--muted);text-decoration:line-through;text-decoration-color:#b9bdab;}
+  .shop{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:var(--spruce);
+    border:1px solid var(--rule);border-radius:20px;padding:6px 12px;white-space:nowrap;transition:.15s;}
+  .shop:hover{background:var(--spruce);color:#fff;border-color:var(--spruce);}
+
+  .logi{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+  .notecard{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:22px;}
+  .notecard.addr{background:var(--spruce);color:#e8f0ea;}
+  .notecard h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:17px;margin-bottom:8px;color:var(--ink);letter-spacing:-.01em;}
+  .notecard.addr h4{color:#fff;}
+  .notecard p{margin:0;font-size:15px;color:#3a463f;}
+  .notecard.addr p{color:#bcd2c8;}
+  .addr .block{font-family:"IBM Plex Mono",monospace;font-size:13.5px;line-height:1.85;margin:12px 0;background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:14px 16px;color:#eef3f0;}
+  .addr .block .var{color:#f0c98a;}
+
+  .linkcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .linkcard{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:22px;}
+  .linkcard h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:17px;margin-bottom:14px;color:var(--ink);}
+  .linkcard ul{list-style:none;margin:0;padding:0;}
+  .linkcard li{padding:9px 0;border-top:1px solid var(--rule);font-size:15px;color:#3a463f;}
+  .linkcard li:first-child{border-top:none;}
+  .linkcard a{color:var(--accent);text-decoration:none;text-underline-offset:3px;font-weight:500;}
+  .linkcard a:hover{text-decoration:underline;}
+  .linkcard .note{font-size:12.5px;color:var(--muted);margin-top:13px;line-height:1.5;font-style:italic;}
+
+  footer{background:var(--spruce-deep);color:#cfe0d8;padding:48px 0 44px;margin-top:10px;}
+  footer .grid2{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-end;}
+  footer .logo{color:#fff;}
+  footer .expand{max-width:46ch;font-size:15px;color:#9fc0b3;margin-top:10px;line-height:1.5;}
+  footer .disc{font-size:12px;color:#7fa395;margin-top:26px;border-top:1px solid rgba(255,255,255,.12);padding-top:18px;line-height:1.7;}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:900px){
+    .layout{flex-direction:column;}
+    .sidebar{width:100%;height:auto;position:sticky;top:0;z-index:60;flex-direction:column;}
+    .side-top{padding:14px 20px;}
+    .menu-toggle{display:block;}
+    .sidenav{display:none;border-top:1px solid rgba(255,255,255,.12);max-height:70vh;}
+    body.nav-open .sidenav{display:block;}
+    .side-foot{display:none;}
+    .wrap{padding:0 22px;}
+    .promises{grid-template-columns:1fr;gap:0;}
+    .promise{border-left:none;border-top:1px solid var(--rule);padding:22px 0;}
+    .promise:first-child{border-top:none;padding-top:0;}
+    .rules{grid-template-columns:1fr;}
+    .arc{grid-template-columns:1fr 1fr;}
+    .month:nth-child(odd){border-left:none;}
+    .month:last-child{grid-column:1 / -1;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="side-top">
+      <button class="logo" id="logoBtn" aria-label="AllDorms home">
+        <svg class="mk" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect x="2" y="2" width="36" height="36" rx="9" fill="#dc9a2b"/>
+          <path d="M10 22 L20 11 L30 22 V30 H10 Z" fill="#1d4034"/>
+          <rect x="17.5" y="24" width="5" height="6" fill="#dc9a2b"/>
+        </svg>
+        AllDorms
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false">Menu</button>
+    </div>
+    <nav class="sidenav" id="sidenav" aria-label="Main">
+      <div class="navgroup" id="navHome">
+        <div class="navlabel">The Almanac</div>
+        <button class="navlink active" data-scroll="top">Home</button>
+        <button class="navlink" data-scroll="pickSection">Browse schools</button>
+        <button class="navlink" data-scroll="insideSection">What's inside</button>
+        <button class="navlink" data-scroll="closingSection">The idea</button>
+      </div>
+      <div class="navgroup hidden" id="navSchool">
+        <button class="navlink navback" id="backBtn">&larr; All schools</button>
+        <div class="schoolname" id="sideSchoolName"></div>
+        <div class="schoolcity" id="sideSchoolCity"></div>
+        <button class="navlink" data-sec="weather"><span class="nn">01</span> Weather &amp; clothing</button>
+        <button class="navlink" data-sec="rules"><span class="nn">02</span> What's allowed</button>
+        <button class="navlink" data-sec="checklist"><span class="nn">03</span> Packing checklist</button>
+        <button class="navlink" data-sec="logistics"><span class="nn">04</span> Logistics</button>
+        <button class="navlink" data-sec="links"><span class="nn">05</span> Links &amp; contacts</button>
+      </div>
+    </nav>
+    <div class="side-foot">
+      <div class="side-prog hidden" id="sideProg">
+        <span id="sidePct">0%</span>
+        <div class="track"><div class="fill" id="sideFill"></div></div>
+      </div>
+      Independent guide · not affiliated with any school listed.
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+    <a id="top"></a>
+
+    <!-- ===== LANDING ===== -->
+    <div id="home">
+      <div class="wrap">
+        <header class="lhero">
+          <span class="kick">The college move-in almanac</span>
+          <h1 class="disp">Pack like you<br>already <span class="em">know the place.</span></h1>
+          <p class="stand">Every packing list online was written for nowhere in particular. AllDorms is written for <em>your</em> school — the real rules, the real local weather, and a checklist sized for the room you're actually moving into.</p>
+          <div class="cta-row">
+            <button class="btn" id="heroCta">Find your school</button>
+
+          </div>
+        </header>
+        <div class="scene-hero" id="brandScene"></div>
+        <div class="index-line" id="indexLine"></div>
+      </div>
+
+      <div class="wrap" id="insideSection">
+        <div class="promises">
+          <div class="promise lead">
+            <div class="plabel">Rules</div>
+            <h3>What your room will actually take.</h3>
+            <p>Fridge cubic-feet limits, microwave wattages, whether there's air conditioning, and the appliances each housing office turns away at the door — pulled from the source, school by school.</p>
+          </div>
+          <div class="promise">
+            <div class="plabel">Weather</div>
+            <h3>Dressed for the right zip code.</h3>
+            <p>Month by month, what to wear — from a 110° Tempe move-in to a sub-zero Minnesota January to Seattle's long gray drizzle. No parka for Florida.</p>
+          </div>
+          <div class="promise">
+            <div class="plabel">The list</div>
+            <h3>A checklist you'll actually finish.</h3>
+            <p>Categorized, room-sized, check-as-you-pack, with a progress bar — and the clothing section that changes with the climate, not someone else's.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap pick" id="pickSection">
+        <div class="pick-head">
+          <h2 class="disp">Pick your school</h2>
+          <div class="sub">Twelve editions, each built from that school's official housing pages.</div>
+        </div>
+        <div class="grid" id="schoolGrid"></div>
+      </div>
+
+      <div class="closing" id="closingSection">
+        <div class="wrap">
+          <h2>“Check with your school for what's allowed.” So we did — for all of them.</h2>
+          <p>That single line on every generic packing list is the whole gap. Knowing the dorm is Twin XL, the winter is real, and the air fryer stays home is the difference between a smooth drop-off and a carful of returns. Start with Colgate, the ten largest U.S. campuses, and Delaware — more coming.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SCHOOL APP ===== -->
+    <div id="app" class="hidden">
+      <figure class="pcard" id="pcard"></figure>
+      <div class="wrap">
+        <header class="schero">
+          <p class="lede" id="heroLede"></p>
+          <div class="facts" id="facts"></div>
+        </header>
+      </div>
+
+      <div class="wrap">
+        <section class="block" id="weather">
+          <div class="sec-head"><span class="kick">The one thing generic lists get wrong</span><h2 id="weatherTitle"></h2><p id="weatherSub"></p></div>
+          <div class="arc" id="arc"></div>
+          <div class="arc-tip" id="arcTip"></div>
+        </section>
+
+        <section class="block" id="rules">
+          <div class="sec-head"><span class="kick">Straight from the housing office</span><h2 id="rulesTitle"></h2>
+            <p>Half of dorm shopping is buying things that get turned away at the door. Here's the part the national lists tell you to "check with your school" about.</p></div>
+          <div class="rules">
+            <div class="rulecard yes"><h3>Bring it <span class="badge">Allowed</span></h3><ul id="allowedList"></ul></div>
+            <div class="rulecard no"><h3>Leave it home <span class="badge">Banned</span></h3><ul id="bannedList"></ul></div>
+          </div>
+          <p class="verify" id="verify"></p>
+        </section>
+
+        <section class="block" id="checklist">
+          <div class="sec-head"><span class="kick">Tick as you pack</span><h2 id="checklistTitle"></h2>
+            <p>Organized by category, sized for a real dorm room, and trimmed to what first-years actually use. Coordinate the big shared items with your roommate so you don't double up.</p></div>
+          <figure class="roomfig" id="roomfig"></figure>
+
+          <div class="progress-bar"><div class="wrap" style="padding:0;max-width:none;"><div class="row">
+            <span class="count" id="bigCount">0 / 0 packed</span>
+            <div class="track"><div class="fill" id="bigFill"></div></div>
+            <button id="resetBtn" type="button">Reset</button>
+          </div></div></div>
+          <div id="checklistRoot"></div>
+        </section>
+
+        <section class="block" id="logistics">
+          <div class="sec-head"><span class="kick">The stuff nobody puts in one place</span><h2 id="logiTitle"></h2></div>
+          <div class="logi" id="logiRoot"></div>
+        </section>
+
+        <section class="block" id="links">
+          <div class="sec-head"><span class="kick">Links &amp; more info</span><h2 id="linksTitle"></h2>
+            <p>The official pages worth bookmarking, who to email when you have a question, and where parents and students gather online.</p></div>
+          <div class="linkcols" id="linksRoot"></div>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <div class="grid2">
+          <div>
+            <button class="logo" id="logoBtn2">
+              <svg class="mk" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="9" fill="#dc9a2b"/><path d="M10 22 L20 11 L30 22 V30 H10 Z" fill="#13302a"/><rect x="17.5" y="24" width="5" height="6" fill="#dc9a2b"/></svg>
+              AllDorms
+            </button>
+            <p class="expand">The rules, the weather, and the list are different at every school — so every school gets its own edition. Twelve live, more coming.</p>
+          </div>
+          <div class="expand">Spotted something out of date? Rules and dorms change every year. Always confirm against your school's official housing office before you buy.</div>
+        </div>
+        <p class="disc">AllDorms is an independent guide and is <b>not affiliated with, endorsed by, or sponsored by any university listed here.</b> School names and colors identify each edition; campus scenes are original illustrations. Residential policies are summarized from each university's public housing pages and may change; the university's current guidance is always authoritative. Parent and family groups linked here are largely unofficial and parent-run.</p>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+/* ============ config ============ */
+const AFFILIATE_TAG = ""; // <-- your Amazon Associates tag, e.g. "alldorms-20"
+
+/* ============ shared rules ============ */
+const ALLOWED_BASE = [
+  "Twin XL bedding (confirm your specific hall)",
+  "UL/ETL power strip <em>with</em> a built-in circuit breaker — not a bare extension cord",
+  "Damage-free wall hangings like Command strips — no nails or screws",
+  "Low-draw LED desk and task lamps",
+  "A fan, a reusable water bottle, and UL-listed electronics",
+];
+const BANNED_BASE = [
+  "Open-coil / open-flame cooking: toasters, toaster ovens, air fryers, hot plates, electric grills, sandwich makers",
+  "Candles, incense, wax warmers, and anything with an open flame",
+  "Halogen lamps",
+  "Extension cords without a breaker; outlet splitters and multi-plug adapters",
+  "Space heaters and personal A/C units (unless your school provides/approves them)",
+  "Hoverboards, e-scooters, e-bikes, and other e-mobility devices",
+  "Weapons of any kind — including decorative — and fireworks",
+];
+
+/* ============ checklist ============ */
+const CHECKLIST_COMMON = [
+  ["Bedding", [
+    {n:"Twin XL sheet set", q:"twin xl sheet set", note:"__BEDNOTE__"},
+    {n:"Mattress topper", q:"twin xl mattress topper", note:"Dorm mattresses are thin and firm."},
+    {n:"Comforter or duvet", q:"twin xl comforter"},
+    {n:"Pillows", q:"bed pillows 2 pack"},
+    {n:"Mattress protector", q:"twin xl mattress protector"},
+    {n:"Throw blanket", q:"throw blanket"},
+  ]],
+  ["Bath", [
+    {n:"Towel set", q:"bath towel set"},
+    {n:"Shower caddy", q:"mesh shower caddy"},
+    {n:"Shower shoes / slides", q:"shower slides", note:"Communal bathrooms. Non-negotiable."},
+    {n:"Robe", q:"hooded robe"},
+    {n:"Toiletry bag", q:"hanging toiletry bag"},
+  ]],
+  ["Laundry", [
+    {n:"Pop-up hamper or laundry bag", q:"collapsible laundry hamper"},
+    {n:"Detergent pods (HE)", q:"he laundry detergent pods"},
+    {n:"Folding drying rack", q:"folding drying rack"},
+    {n:"Stain remover pen", q:"tide stain pen"},
+  ]],
+  ["Storage & organization", [
+    {n:"Under-bed storage bins", q:"under bed storage bins"},
+    {n:"Bed risers", q:"bed risers", note:"Multiply your under-bed storage."},
+    {n:"Closet / hanging organizer", q:"hanging closet organizer"},
+    {n:"Drawer & desk organizers", q:"drawer organizer set"},
+    {n:"Command hooks & strips", q:"command hooks strips variety", note:"No nails allowed."},
+    {n:"Over-the-door hooks", q:"over the door hooks"},
+  ]],
+  ["Desk & study", [
+    {n:"LED desk lamp", q:"led desk lamp", note:"No halogen."},
+    {n:"Surge-protected power strip", q:"power strip surge protector circuit breaker", note:"Must be UL-listed with a breaker."},
+    {n:"Notebooks & planner", q:"college notebooks planner"},
+    {n:"Small dry-erase board", q:"small dry erase board"},
+  ]],
+  ["Electronics", [
+    {n:"Laptop charger (spare)", q:"laptop charger"},
+    {n:"Phone chargers / cables", q:"usb c charging cable 2 pack"},
+    {n:"Headphones or earbuds", q:"headphones"},
+    {n:"Power bank", q:"portable power bank"},
+    {n:"Ethernet cable", q:"ethernet cable", note:"Some halls are faster wired — and many ban personal Wi-Fi routers."},
+    {n:"__FAN__", q:"clip on fan"},
+  ]],
+  ["Cleaning", [
+    {n:"Disinfecting wipes", q:"disinfecting wipes"},
+    {n:"Trash can + bags", q:"small trash can"},
+    {n:"Paper towels", q:"paper towels"},
+    {n:"Mini vacuum or hand broom", q:"mini handheld vacuum"},
+    {n:"Microfiber cloths", q:"microfiber cleaning cloths"},
+  ]],
+  ["Kitchen — within the rules", [
+    {n:"__FRIDGE__", q:"microfridge combo"},
+    {n:"Reusable water bottle", q:"reusable water bottle"},
+    {n:"Mug + utensils + plate set", q:"dorm dish set"},
+    {n:"Water filter pitcher", q:"brita pitcher"},
+    {n:"Single-cup coffee maker (enclosed element)", q:"keurig mini", note:"Open-element makers are usually banned; enclosed ones usually fine — confirm."},
+  ]],
+  ["Health & meds", [
+    {n:"Prescriptions + enough refills", q:"weekly pill organizer", note:"Bring a refill plan, not just the bottle."},
+    {n:"Copy of insurance card", q:"card holder wallet"},
+    {n:"Basic OTC / first-aid kit", q:"first aid kit"},
+    {n:"Thermometer", q:"digital thermometer", note:"Know where Student Health is, too."},
+  ]],
+  ["__CLOTHING__", []],
+  ["Move-in day go-bag", [
+    {n:"Keys, ID, phone + charger", q:"lanyard id holder"},
+    {n:"Water + snacks", q:"snack variety pack"},
+    {n:"Box cutter & basic tools", q:"mini tool kit"},
+    {n:"Command strips + cleaning wipes", q:"command strips"},
+    {n:"A change of clothes + the day's meds", q:"packing cubes"},
+  ]],
+];
+const CLOTHING = {
+  cold: ["Clothing — see the seasonal guide", [
+    {n:"Late-summer basics (for now)", q:"basic t shirts"},{n:"Rain shell", q:"packable rain jacket"},
+    {n:"Insulated winter coat", q:"insulated winter coat", note:"Bring it or ship it at fall break."},
+    {n:"Waterproof snow boots", q:"waterproof snow boots"},{n:"Hat, gloves, scarf, thermals", q:"thermal base layer set"},
+    {n:"Warm socks & sweaters", q:"wool socks"},{n:"One dressier outfit", q:"business casual outfit"}]],
+  warm: ["Clothing — see the seasonal guide", [
+    {n:"Lightweight, breathable tops & shorts", q:"breathable t shirts"},{n:"Sandals & lightweight shoes", q:"sandals"},
+    {n:"Swimsuit", q:"swimsuit", note:"Pools and lakes are part of life here."},
+    {n:"Light jacket or hoodie", q:"light hoodie", note:"For aggressive AC and rare cool nights."},
+    {n:"Rain jacket / poncho", q:"packable rain jacket"},{n:"Sun protection: hat, sunglasses, sunscreen", q:"sun hat sunglasses"},
+    {n:"One dressier outfit", q:"business casual outfit"}]],
+  mild: ["Clothing — see the seasonal guide", [
+    {n:"Layers: tees, long-sleeves, light sweaters", q:"long sleeve shirts"},
+    {n:"Excellent waterproof rain shell", q:"waterproof rain jacket", note:"The single most important item here."},
+    {n:"Waterproof shoes or boots", q:"waterproof shoes"},{n:"Light-to-mid jacket (no parka needed)", q:"fleece jacket"},
+    {n:"Compact umbrella", q:"compact umbrella"},
+    {n:"Sunrise / light-therapy lamp", q:"sunrise alarm light therapy lamp", note:"Optional, but the gray winters are dark."},
+    {n:"One dressier outfit", q:"business casual outfit"}]],
+};
+const FAN_NOTE = {ac:"AC is provided — a fan is optional.", varies:"AC varies by hall — bring a fan for the warm early weeks.",
+  none:"No AC — a fan is essential for the warm early weeks.", mild:"AC is rarely needed here."};
+
+/* ============ schools (sourced from each school's official housing pages) ============ */
+/* art.type: desert | coast | plains | northeast | midwest | mountain | pacific | midatlantic
+   photo:""/dorm:"" — paste a LICENSED image URL to override the illustration. */
+const SCHOOLS = [
+ {slug:"colgate",short:"Colgate",name:"Colgate",city:"Hamilton, NY",accent:"#7a1f2b",region:"cold",ac:"none",beds:"Twin XL",movein:"Late August",
+  photo:"",dorm:"",art:{type:"northeast",sky:["#3b4f75","#a9b8d2"],sun:"#f3ead2"},
+  bednote:"Standard Twin XL.",
+  fridge:{name:"Compact fridge + microwave",note:"Bring within limits or rent a combo unit."},
+  lede:"The packing lists online are written for nowhere in particular. This one knows the dorms are Twin XL, the winters are real, and the air fryer stays home.",
+  climate:[["Late Aug","70–82°F","Warm, humid days, cool nights. Shorts, tees, one light layer.","#e0a458"],["September","60s–70s","Mild, drifting cooler. Jeans, sweaters, a light jacket.","#cdaf68"],["October","40s–50s","Crisp, peak foliage, first frosts. A real jacket, sweaters, a rain shell.","#8fae8c"],["November","30s–40s","Gray, cold, first snow. Insulated coat, hat, gloves, waterproof boots.","#7e98a6"],["Dec–Feb","teens–30s","Full winter, lake-effect snow, wind chill below zero. Heavy coat, snow boots, thermals.","#5b7a99"]],
+  tip:"<b>The move:</b> pack late-summer clothes now, then bring or ship the winter arsenal at fall break in mid-October. Two trips, no overloaded August car.",
+  allowedExtra:[],bannedExtra:["Natural holiday trees and garland"],
+  housing:"https://www.colgate.edu/current-students/welcome-new-students/housing",
+  notes:[["addr|How to address a package to campus","<div class='block'><span class='var'>[Student Name], [Class Year]</span><br><span class='var'>CU Box [your box #]</span><br>Colgate University<br>13 Oak Drive<br>Hamilton, NY 13346-1338</div>Find your CU Box under \"My Contact Information\" in the Colgate Portal. Mail Services is swamped early in the term — bring essentials in the car."],["You'll live in a Residential Commons","First-years are sorted into one of four Residential Commons, tied to your FSEM seminar. Some students get a virtual room tour over the summer — use it before you buy storage."],["No AC — bring a fan","Colgate halls aren't air-conditioned, and the first few weeks are warm. A fan earns its space; a personal AC unit isn't allowed."]],
+  links:{official:[["New-student housing","https://www.colgate.edu/current-students/welcome-new-students/housing"],["Residential Life policies","https://www.colgate.edu/current-students/colgate-university-student-handbook/student-policies/residential-life"],["Housing Portal","https://www.colgate.edu/about/campus-services-and-resources/housing-portal"]],contact:[["Residential Life","reslife@colgate.edu"],["Phone","315-228-7367"]],community:[["Colgate parents (Facebook)","https://www.facebook.com/search/groups/?q=Colgate%20University%20parents"]]}},
+
+ {slug:"tamu",short:"Texas A&M",name:"Texas A&M",city:"College Station, TX",accent:"#500000",region:"warm",ac:"ac",beds:"Twin XL",movein:"Mid–late August",
+  photo:"",dorm:"",art:{type:"plains",sky:["#e7a866","#f6e2bc"],sun:"#fff3d6"},
+  bednote:"Twin XL (mattress runs ~36\" × 77\").",
+  fridge:{name:"Compact fridge + microwave",note:"Bring within limits, or rent a combo unit from Residence Life."},
+  lede:"In College Station you're packing for air conditioning and brutal sun, not winter. The dorms are cooled and ceiling fans are provided — the window A/C and the toaster oven both stay home.",
+  climate:[["Move-in (Aug)","95–100°F","Brutal heat and humidity. You'll live in AC (provided; ceiling fans too). Lightweight everything.","#e0a458"],["Sept–Oct","80s–90s","Still summer. Shorts, tees, sandals.","#d6a84e"],["Nov–Dec","50s–70s","Mild \"winter,\" cool nights. A hoodie or light jacket.","#b0a868"],["Jan–Feb","40s–60s","Coolest stretch; an occasional cold snap or rare ice storm. One real jacket.","#8fae8c"],["Mar–May","70s–90s","Warming back to hot, with spring storms. A rain jacket helps.","#cdaf68"]],
+  tip:"<b>The flip:</b> layers for over-cooled buildings beat a parka. Keep one warm layer for the rare Texas cold snap, and prioritize sun protection and a big water bottle.",
+  allowedExtra:["Central AC and ceiling fans are provided — don't bring either"],bannedExtra:["Personal window or room A/C units","Ceiling fans (provided)","Camping stoves and hot-oil popcorn poppers","Personal wireless routers — use the campus network"],
+  housing:"https://reslife.tamu.edu/movein/",
+  notes:[["Finish Housing Orientation first","You must complete the online Annual Housing Orientation before you can book a move-in appointment. Appointments open by area, first-come first-served."],["AC and fans are built in","Rooms are air-conditioned and ceiling fans are provided, so skip both. Microfridge, linen, and safe rentals are offered through Residence Life."],["Pack for heat and sun","Breathable fabrics, sun protection, and hydration matter far more than cold-weather gear here."]],
+  links:{official:[["Move-in","https://reslife.tamu.edu/movein/"],["Housing rules","https://reslife.tamu.edu/rules/"],["Appliance policy","https://reslife.tamu.edu/rules/appliances/"]],contact:[["Residence Life","https://reslife.tamu.edu/"]],community:[["Texas A&M parents (Facebook)","https://www.facebook.com/search/groups/?q=Texas%20A%26M%20parents"]]}},
+
+ {slug:"ucf",short:"UCF",name:"UCF",city:"Orlando, FL",accent:"#8a6d1f",region:"warm",ac:"ac",beds:"Twin XL",movein:"Mid August",
+  photo:"",dorm:"",art:{type:"coast",sky:["#3aa6b0","#cfeee7"],sun:"#fff2cf"},
+  bednote:"Twin XL.",
+  fridge:{name:"Compact fridge + microwave",note:"Fridge ≤5 cu ft, microwave ≤1000W. A coffee pot is fine."},
+  lede:"Orlando means heat, humidity, and hurricane season — not a winter coat. Dorms are air-conditioned; the wardrobe is breathable layers, rain gear, and an evacuation plan.",
+  climate:[["Move-in (Aug)","90–95°F","Hot, very humid, daily afternoon storms; peak hurricane season. AC provided.","#e0a458"],["Sept–Oct","85–90°F","Hot and humid, storms continue. Shorts, tees, a poncho.","#d6a84e"],["Nov–Dec","65–80°F","Warm, pleasant, drier. Light layers.","#b0a868"],["Jan–Feb","50s–70s","Mild winter, occasional cool snap. A light jacket for a few weeks.","#8fae8c"],["Mar–May","80–90°F","Warming, humid again.","#cdaf68"]],
+  tip:"<b>The flip:</b> pack for heat, humidity, and rain. Skip winter gear, bring a reliable rain shell, and know UCF's hurricane and evacuation guidance before the season peaks.",
+  allowedExtra:["AC is provided","Microwave up to 1000W; fridge up to 5 cu ft"],bannedExtra:["Toasters, toaster ovens, George Foreman grills (no ventilation)","Personal A/C units"],
+  housing:"https://www.housing.ucf.edu/faq/what-am-i-allowed-to-have-in-my-room/",
+  notes:[["Hurricane season is real","Aug–Oct is peak hurricane season. Know UCF's emergency alerts and evacuation plan, and keep a small kit of water, batteries, and chargers."],["Power-strip spec","UCF requires a 120V, UL-approved power strip with a built-in circuit breaker, max 6 ft cord and 6 outlets. Skip plain extension cords."],["Bring an Ethernet cable","Some devices can't join the campus Wi-Fi, so a wired connection is handy. Time shipments to land near move-in — the mail center is slammed."]],
+  links:{official:[["What's allowed in my room","https://www.housing.ucf.edu/faq/what-am-i-allowed-to-have-in-my-room/"],["Before you arrive","https://www.housing.ucf.edu/movein/before/"],["Cooking & appliances","https://www.housing.ucf.edu/faq/may-i-cook-in-my-room/"]],contact:[["Housing & Residence Life","Housing@ucf.edu"],["Phone","407-823-4663"]],community:[["UCF parents (Facebook)","https://www.facebook.com/search/groups/?q=UCF%20parents"]]}},
+
+ {slug:"asu",short:"ASU",name:"ASU",city:"Tempe, AZ",accent:"#8C1D40",region:"warm",ac:"ac",beds:"Twin XL",movein:"Mid August",
+  photo:"",dorm:"",art:{type:"desert",sky:["#df6a3f","#f4c07a"],sun:"#ffe6b0"},
+  bednote:"Twin XL.",
+  fridge:{name:"Compact fridge + microwave",note:"Fridge ≤4.0 cu ft, microwave ≤700W (UL). Or rent a MicroFridge via the housing vendor."},
+  lede:"Tempe in August is 110°F desert heat — AC isn't a comfort, it's survival, and it's provided. There's no winter to pack for: think sun, water, and layers for the aggressive AC.",
+  climate:[["Move-in (Aug)","105–110°F","Extreme dry heat plus monsoon dust storms. AC is provided and essential. Sun protection.","#e0a458"],["Sept–Oct","90s–100s","Still very hot, easing late October. Shorts, tees, sunglasses.","#d6a84e"],["Nov–Dec","60s–70s","A gorgeous mild stretch. Light layers, a jacket for nights.","#b0a868"],["Jan–Feb","50s–70s","Mild winter, cool nights, almost never freezes. A light jacket.","#8fae8c"],["Mar–May","80s–100s","Heating back up fast.","#cdaf68"]],
+  tip:"<b>The flip:</b> no winter gear, ever. Prioritize sun protection, a big reusable water bottle, and layers for buildings kept ice-cold against the desert heat.",
+  allowedExtra:["AC is provided and essential","Microwave ≤700W, fridge ≤4.0 cu ft"],bannedExtra:["Any appliance with an exposed/heated coil","Personal A/C units, neon signs, halogen lamps","Security cameras and recording devices","Alcohol and empty alcohol containers (ASU is dry)"],
+  housing:"https://housing.asu.edu/housing-resources/housing-policies-and-procedures",
+  notes:[["Heat is the hazard","Hydration and sun protection are the real priorities — a hat, sunglasses, and SPF beat anything cold-weather. Monsoon season brings sudden dust storms and downpours."],["The Fast Pass","Move-in runs on a printed \"Fast Pass\" emailed ~48 hours before your slot, plus your Sun Card ID. Checking in off-schedule can forfeit assisted move-in."],["AC is built in","Rooms are air-conditioned — skip a personal unit. A small fan can still help circulate air."]],
+  links:{official:[["Housing policies & procedures","https://housing.asu.edu/housing-resources/housing-policies-and-procedures"],["Housing FAQ","https://housing.asu.edu/faqs"],["Resources & what to bring","https://housing.asu.edu/resources"]],contact:[["University Housing","https://housing.asu.edu/contact-us"]],community:[["ASU parents (Facebook)","https://www.facebook.com/search/groups/?q=Arizona%20State%20University%20parents"]]}},
+
+ {slug:"osu",short:"Ohio State",name:"Ohio State",city:"Columbus, OH",accent:"#a30000",region:"cold",ac:"varies",beds:"Twin XL",movein:"Mid–late August",
+  photo:"",dorm:"",art:{type:"midwest",sky:["#6f86a8","#cdd9e6"],sun:"#f0ead8"},
+  bednote:"Twin XL.",
+  fridge:{name:"Fridge/microwave — provided",note:"Your room includes a fridge/microwave combo unit. Don't buy one; personal ones aren't permitted."},
+  lede:"Columbus runs from a warm, humid move-in to a gray, snowy winter. Every room comes with a fridge/microwave, AC varies by hall, and you'll want a fan in August and a serious coat by November.",
+  climate:[["Move-in (Aug)","75–85°F","Warm, humid. Summer clothes; bring a fan (AC varies by hall).","#e0a458"],["Sept–Oct","50s–70s","Cooling, leaves turn. Sweaters, a jacket, a rain shell.","#b0a868"],["November","30s–40s","Cold, gray, first snow. Insulated coat, hat, gloves.","#8fae8c"],["Dec–Feb","20s–30s","Cold, gray, snowy. Heavy coat, waterproof boots, thermals.","#7e98a6"],["March","30s–40s","A slow, slushy thaw. Keep the boots out.","#6f8aa0"]],
+  tip:"<b>The move:</b> summer clothes and a fan now, winter gear at fall break. Columbus winters are gray and damp, so make sure the coat and boots are genuinely waterproof.",
+  allowedExtra:["A fan (rooms list it as recommended)"],bannedExtra:["Personal A/C units","Personal fridges and microwaves (one is provided)","Candles, incense, contact paper, carpet padding","Wireless printers (use Follow Me Printing)"],
+  housing:"https://housing.osu.edu/resources/what-to-bring/",
+  notes:[["A fridge/microwave is provided","Every residence-hall room comes with a combo unit — don't buy or rent one. Bring a fan, since AC varies by building."],["Pack for a real winter","A waterproof insulated coat and boots aren't optional by December. Ship them at fall break if your August car is full."],["Printing","Wireless printers aren't supported. Use a USB-connected printer or Ohio State's Follow Me Printing program."]],
+  links:{official:[["What to bring","https://housing.osu.edu/resources/what-to-bring/"],["What to bring (Columbus PDF)","https://housing.osu.edu/posts/documents/what-to-bring-columbus-campus.pdf"],["Housing & Residence Education","https://housing.osu.edu/"]],contact:[["Housing & Residence Education","https://housing.osu.edu/"]],community:[["Ohio State parents (Facebook)","https://www.facebook.com/search/groups/?q=Ohio%20State%20parents"]]}},
+
+ {slug:"uf",short:"Florida",name:"Florida",city:"Gainesville, FL",accent:"#0021A5",region:"warm",ac:"ac",beds:"Twin XL",movein:"Mid August",
+  photo:"",dorm:"",art:{type:"coast",sky:["#4aa39e","#d6efe2"],sun:"#fff2cf"},
+  bednote:"Twin XL; a waterproof mattress cover is recommended.",
+  fridge:{name:"Compact fridge + microwave",note:"Microwave under 1500W; a small fridge. Coordinate with your roommate."},
+  lede:"Gainesville is hot, humid, and in hurricane country. Dorms are air-conditioned, so the wardrobe is breathable layers and rain gear — plus one warm layer for the rare cold morning.",
+  climate:[["Move-in (Aug)","90–95°F","Hot and humid, afternoon storms, hurricane season. AC provided.","#e0a458"],["Sept–Oct","80s–90s","Hot and humid. Shorts, tees.","#d6a84e"],["Nov–Dec","60s–80s","Warm, drier, cooler nights. Light layers.","#b0a868"],["Jan–Feb","40s–70s","Mildest winter; brief snaps can dip to the 30s. A jacket for cold mornings.","#8fae8c"],["Mar–May","80s–90s","Warming, humid.","#cdaf68"]],
+  tip:"<b>The flip:</b> heat, humidity, and rain are the wardrobe. One warm layer covers Gainesville's few cold mornings — no parka required.",
+  allowedExtra:["AC is provided","Microwave under 1500W; small fridge"],bannedExtra:["Candles, hot plates, grills, open-flame items","Oversized appliances and large furniture"],
+  housing:"https://housing.ufl.edu/resources/conduct/",
+  notes:[["GatorMove appointment","Move-in is by a scheduled GatorMove time booked in the myUFL portal; display your Gator1 card and enter the unloading-zone gate code on arrival."],["Hurricane season","Fall is hurricane season — keep a small kit and know UF's emergency guidance and alerts. Quick-dry fabrics beat cotton in the humidity."],["Approved animals","Beyond service animals, UF allows certain small approved pets in the halls; emotional-support animals go through HRESupportAnimals@ufsa.ufl.edu."]],
+  links:{official:[["Housing & Residence Education","https://housing.ufl.edu/"],["Conduct & community standards","https://housing.ufl.edu/resources/conduct/"],["On-campus packing list (PDF)","https://studentlife.ufl.edu/wp-content/uploads/2020/08/On-Campus-Packing-List-Traditional-Style.pdf"]],contact:[["Support animals","HRESupportAnimals@ufsa.ufl.edu"],["Housing & Residence Life","https://housing.ufl.edu/"]],community:[["Florida parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Florida%20parents"]]}},
+
+ {slug:"utexas",short:"UT Austin",name:"UT Austin",city:"Austin, TX",accent:"#BF5700",region:"warm",ac:"ac",beds:"Twin XL",movein:"Mid–late August",
+  photo:"",dorm:"",art:{type:"plains",sky:["#d98f54","#f3d9a8"],sun:"#fff0cf"},
+  bednote:"Extra-long twin.",
+  fridge:{name:"MicroFridge — provided",note:"Every room includes a combo microwave/refrigerator. Don't bring one — only one fridge per room is allowed."},
+  lede:"Austin move-in is hot, dry, and bright; all dorms have AC and heat, and a MicroFridge comes with the room. Pack for sun and AC — and keep one warm layer for the rare ice storm.",
+  climate:[["Move-in (Aug)","95–100°F","Hot, intense sun. AC provided. Lightweight clothes, sun protection.","#e0a458"],["Sept–Oct","80s–90s","Still hot, slowly easing.","#d6a84e"],["Nov–Dec","50s–70s","Mild, pleasant, cool nights. A hoodie or jacket.","#b0a868"],["Jan–Feb","40s–60s","Coolest; a rare ice storm is possible and the city stops. One warm layer plus a backup plan.","#8fae8c"],["Mar–May","70s–90s","Warming; spring storms.","#cdaf68"]],
+  tip:"<b>The flip:</b> pack for sun and AC. Keep one genuinely warm layer for the rare Texas cold snap — Austin isn't built for ice.",
+  allowedExtra:["All residence halls have AC and heat","A MicroFridge is provided in every room"],bannedExtra:["Open-coil appliances: Instant Pots, air fryers, rice cookers, toasters, hot plates, grills","More than two sheets of paper on a door or wall","Wireless (app-based) printers — use UT Print"],
+  housing:"https://housing.utexas.edu/housing/residence-halls/residence-hall-resources/mooov-guide/what-bring-and-leave-behind",
+  notes:[["A MicroFridge is provided","Every room comes with a combo microwave/refrigerator — don't buy or bring one. Only one fridge per room is allowed."],["AC and heat in every hall","Some rooms are thermostat-controlled, others through facilities — submit a maintenance request to adjust. 3D room tours are posted per hall."],["Decoration & printer rules","No more than two 8.5×11 sheets of paper on a door or wall, and only wired printers work (a $100 port fee applies); otherwise use UT Print."]],
+  links:{official:[["What to bring & leave behind","https://housing.utexas.edu/housing/residence-halls/residence-hall-resources/mooov-guide/what-bring-and-leave-behind"],["Virtual room tours","https://housing.utexas.edu/housing/virtual-tours"],["University Housing & Dining","https://housing.utexas.edu/"]],contact:[["University Housing & Dining","housing@austin.utexas.edu"]],community:[["UT Austin parents (Facebook)","https://www.facebook.com/search/groups/?q=UT%20Austin%20parents"]]}},
+
+ {slug:"umich",short:"Michigan",name:"Michigan",city:"Ann Arbor, MI",accent:"#00274C",region:"cold",ac:"varies",beds:"Twin XL",movein:"Late August",
+  photo:"",dorm:"",art:{type:"midwest",sky:["#4f6488","#b9c6da"],sun:"#f1e9d4"},
+  bednote:"Twin XL; U-M mattresses aren't especially thin.",
+  fridge:{name:"Compact fridge + microwave",note:"Bring one, or rent a MicroFridge and loft through Bedloft."},
+  lede:"Ann Arbor goes from a warm, humid August to a snowy Michigan winter. Most halls have no AC, so bring a fan now — and a real coat for later. A few hall-specific rules trip people up.",
+  climate:[["Move-in (Aug)","75–85°F","Warm, humid. Summer clothes. Most halls have no AC, so a fan is essential.","#e0a458"],["Sept–Oct","50s–70s","Cooling fast, leaves turn. Sweaters, a jacket, a rain shell.","#b0a868"],["November","30s–40s","Cold, gray, first snow. Insulated coat, hat, gloves.","#8fae8c"],["Dec–Feb","teens–30s","Snowy Michigan winter, biting wind. Heavy coat, waterproof snow boots, thermals.","#5b7a99"],["March","30s–40s","Slushy, slow thaw. Keep the boots out.","#6f8aa0"]],
+  tip:"<b>The move:</b> summer clothes and a fan now; ship the winter arsenal at fall break. A solid coat doesn't have to be expensive — students swear by a sub-$100 Costco parka.",
+  allowedExtra:["All electrical items must be UL-listed","Air-conditioned halls (see below) — otherwise bring a fan"],bannedExtra:["Personal A/C units (only seven named halls are air-conditioned)","Personal wireless routers — campus Wi-Fi only","Humidifiers, unless approved by Housing","Anything displayed on room doors or in windows"],
+  housing:"https://housing.umich.edu/policies/",
+  notes:[["Which halls have AC","Air-conditioned halls: Alice Lloyd, Couzens, East Quad, Mosher Jordan, North Quad, Stockwell, and West Quad. Anywhere else, bring a fan."],["You don't need a car","Ann Arbor is walkable with free student transit. Lofts and MicroFridges rent through Bedloft rather than coming from home."],["Mind the door rule","Nothing may be displayed on room doors or in windows, and personal Wi-Fi routers aren't allowed — small things that catch people on day one."]],
+  links:{official:[["Policies (regulated & prohibited items)","https://housing.umich.edu/policies/"],["What to bring / leave at home","https://kb.housing.umich.edu/hc/en-us/articles/360005487292-What-to-bring-and-what-to-leave-at-home"],["Prohibited items detail","https://kb.housing.umich.edu/hc/en-us/articles/32856504719629-Regulated-and-Prohibited-Items-in-Michigan-Housing"]],contact:[["Residence Education","ResidenceEducation@umich.edu"],["Housing accommodations","hsg-accommodations@umich.edu"]],community:[["Michigan parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Michigan%20parents"]]}},
+
+ {slug:"pennstate",short:"Penn State",name:"Penn State",city:"University Park, PA",accent:"#041E42",region:"cold",ac:"varies",beds:"Twin XL",movein:"Late August",
+  photo:"",dorm:"",art:{type:"mountain",sky:["#5b6f92","#c2cee0"],sun:"#eee6d2"},
+  bednote:"Twin XL.",
+  fridge:{name:"Fridge/microwave — provided",note:"Penn State provides a fridge/microwave unit; personal microwaves and fridges aren't allowed."},
+  lede:"Happy Valley is remote and gets real mountain winters. Rooms include a fridge/microwave, AC varies by hall, and the campus is dry regardless of age — so plan for a fan, a serious coat, and no run-home-for-gear option.",
+  climate:[["Move-in (Aug)","70–82°F","Warm, humid days, cool nights. Summer clothes plus a fan (many halls have no AC).","#e0a458"],["Sept–Oct","40s–70s","Crisp mountain air, beautiful foliage. Sweaters, a jacket.","#b0a868"],["November","30s–40s","Cold, first snow. Insulated coat, hat, gloves.","#8fae8c"],["Dec–Feb","teens–30s","Snowy \"Happy Valley\" winter, wind on the ridges. Heavy coat, snow boots, thermals.","#5b7a99"],["March","30s–40s","A long, slushy thaw.","#6f8aa0"]],
+  tip:"<b>The move:</b> State College is remote — you can't dash home for forgotten gear. Bring the winter arsenal or ship it at fall break, and don't skimp on a waterproof coat and boots.",
+  allowedExtra:["A fan (many halls have no AC)","University-provided fridge/microwave unit"],bannedExtra:["Personal or portable A/C units (medical accommodation only)","Personal microwaves and refrigerators (one is provided)","Pianos, fitness equipment, and 3D printers","Alcohol — campus is dry regardless of age"],
+  housing:"https://liveon.psu.edu/",
+  notes:[["Dry campus, fan needed","Alcohol is prohibited on campus regardless of age, and personal A/C units aren't allowed — so bring a fan for the warm early weeks."],["Mail rules","Address packages to the student's legal or chosen name only (no nicknames), and don't put \"Penn State\" in the address; your mailbox number is in eLiving. Packages can't arrive before a set date."],["Self check-in","Verify your move-in slot in eLiving and self-check-in up to two hours before; one vehicle per student unloads. Laundry runs on LionCash."]],
+  links:{official:[["LiveOn (housing)","https://liveon.psu.edu/"],["University Park arrival","https://arrival.psu.edu/university-park"],["Mail & packages","https://liveon.psu.edu/university-park/mail-services"]],contact:[["Housing & Food Services","https://liveon.psu.edu/university-park/contact-us"],["Phone","814-865-7501"]],community:[["Penn State parents (Facebook)","https://www.facebook.com/search/groups/?q=Penn%20State%20parents"]]}},
+
+ {slug:"minnesota",short:"Minnesota",name:"Minnesota",city:"Minneapolis, MN",accent:"#7A0019",region:"cold",ac:"varies",beds:"Twin XL",movein:"Late August",
+  photo:"",dorm:"",art:{type:"midwest",sky:["#6a83a6","#d6e0f0"],sun:"#eef2fb"},
+  bednote:"Twin XL, with up to 27\" of under-bed storage.",
+  fridge:{name:"Compact fridge + microwave",note:"One fridge ≤4.3 cu ft and one microwave ≤700W per room. Bring your own."},
+  lede:"Minnesota is the real winter test — among the coldest campuses in the country. A genuine parka and insulated boots aren't optional. AC varies, so still bring a fan for warm August.",
+  climate:[["Move-in (Aug)","75–85°F","Warm, humid. Summer clothes plus a fan (AC varies by hall).","#e0a458"],["Sept–Oct","40s–70s","A fast cool-down and gorgeous fall. Sweaters, a jacket.","#b0a868"],["November","20s–40s","Cold sets in early, first real snow. A serious coat, hat, gloves.","#8fae8c"],["Dec–Feb","single digits–20s","Among the coldest campuses anywhere; wind chills well below zero. Parka, insulated snow boots, thermal base layers.","#5b7a99"],["March","20s–40s","Still wintry; the thaw comes late.","#6f8aa0"]],
+  tip:"<b>The real test:</b> don't underestimate it — a true winter parka and insulated, waterproof boots are essential. Learn the skyway and tunnel system between buildings.",
+  allowedExtra:["One fridge ≤4.3 cu ft and one microwave ≤700W","UL-marked extension cords / power strips"],bannedExtra:["Personal A/C units (rooms aren't wired for them)","Open-element appliances (air fryer, hotplate, rice cooker, etc.)","E-scooters, e-bikes, hoverboards","Cannabis — banned on campus even though it's legal statewide"],
+  housing:"https://housing.umn.edu/residents/moving-breaks/movein/bring",
+  notes:[["Don't pack the skis","Storage is tight, so leave skis and snowboards home — University Rec & Wellness rents outdoor gear right on campus, and Info Desks loan some too."],["Winter is the priority","This is the coldest list here. Budget for a proper parka, insulated boots, thermal layers, and real gloves. Use the skyways between buildings in January."],["AC varies","Some halls are air-conditioned, some aren't — bring a fan for the warm early weeks if yours isn't."]],
+  links:{official:[["What to bring","https://housing.umn.edu/residents/moving-breaks/movein/bring"],["Community behavioral standards","https://housing.umn.edu/community/policies/standards"],["Housing & Residential Life","https://housing.umn.edu/"]],contact:[["Housing & Residential Life","https://housing.umn.edu/"]],community:[["Minnesota parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Minnesota%20parents"]]}},
+
+ {slug:"uw",short:"UW",name:"Washington (UW)",city:"Seattle, WA",accent:"#4B2E83",region:"mild",ac:"mild",beds:"Twin XL",movein:"Mid–late September",
+  photo:"",dorm:"",art:{type:"pacific",sky:["#6b7d8c","#c5d1d8"],sun:"#e6ebee"},
+  bednote:"Twin XL; wait to decide on a topper until you've tried the mattress.",
+  fridge:{name:"MicroFridge — rent one",note:"Many appliances are banned for space/fire reasons; rent a combo MicroFridge from Collegiate Concepts."},
+  lede:"Seattle flips the script: gorgeous dry summers, then a long gray drizzle — rarely snow or hard freezes. The priority isn't a parka, it's staying dry and beating the dark.",
+  climate:[["Late Aug–Sep","70–80°F","Dry, sunny, the secret best season. Light clothes; you won't need AC.","#e0a458"],["Oct–Nov","45–60°F","The gray, drizzly season begins. A great waterproof shell and shoes matter more than a heavy coat.","#b0a868"],["Dec–Jan","35–48°F","Cool, wet, dark; rarely snows. Layers plus rain gear.","#7e98a6"],["February","38–50°F","Still gray and damp — the long wet stretch.","#6f8aa0"],["Mar–May","50–65°F","A slow warm-up toward another glorious dry summer.","#8fae8c"]],
+  tip:"<b>The flip:</b> forget snow boots and parkas — Seattle is about staying dry and beating the gray. Invest in a real rain shell and waterproof shoes; many find a sunrise lamp helps through the dark winter.",
+  allowedExtra:["A rented MicroFridge (from Collegiate Concepts)"],bannedExtra:["Hot plates, space heaters, halogen lamps","Personal A/C units and personal Wi-Fi routers","Open-coil cooking appliances"],
+  housing:"https://hfs.uw.edu/live/move-in-for-9-month-housing/",
+  notes:[["Rain, not cold","A genuinely waterproof shell and shoes beat a heavy coat. Many find a sunrise or light-therapy lamp helps through the short, overcast winter days."],["Leave the car","Seattle parking is rough — UW's U-PASS makes transit the best deal in town, and HFS suggests leaving the car home. A MicroFridge rents from Collegiate Concepts."],["Move-in & mail","Move-in runs on a StarRez appointment; packages can arrive up to seven days ahead, but the halls get thousands, so bring essentials with you."]],
+  links:{official:[["Move-in (9-month)","https://hfs.uw.edu/live/move-in-for-9-month-housing/"],["HFS contact","https://hfs.uw.edu/about-hfs/contact-us/"],["Housing & Food Services","https://hfs.uw.edu/"]],contact:[["Housing & Food Services","hfsinfo@uw.edu"],["Phone","206-543-2430"]],community:[["UW parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Washington%20parents"]]}},
+
+ {slug:"udel",short:"Delaware",name:"Delaware",city:"Newark, DE",accent:"#00539F",region:"cold",ac:"varies",beds:"Twin XL",movein:"Late August",
+  photo:"",dorm:"",art:{type:"midatlantic",sky:["#c98a6a","#ead7be"],sun:"#fdeccb"},
+  bednote:"Twin XL for traditional and suite-style halls; full-size in University Courtyard Apartments.",
+  fridge:{name:"Compact fridge + microwave",note:"Bring an energy-efficient small fridge, or rent a MicroFridge (one per room) from MyMicroFridge."},
+  lede:"Delaware gives you a humid mid-Atlantic summer and a real-but-milder winter. AC is named hall-by-hall, so check your building — bring a fan if it's not on the list, and a solid coat for later.",
+  climate:[["Move-in (Aug)","80–90°F","Hot, humid mid-Atlantic summer. Summer clothes plus a fan (AC varies by hall).","#e0a458"],["Sept–Oct","50s–70s","Pleasant, cooling, a nice fall. Sweaters, a light jacket.","#b0a868"],["November","40s–50s","Cool, gray, occasional frost. A real jacket, a rain shell.","#8fae8c"],["Dec–Feb","30s–40s","Cold with some snow and ice; milder than the Midwest but real winter. Warm coat, water-resistant boots, gloves.","#7e98a6"],["March","40s–50s","Damp, slow thaw.","#6f8aa0"]],
+  tip:"<b>The move:</b> a solid winter coat and water-resistant boots cover Delaware — no Minnesota-grade gear needed, but the humidity makes the cold bite. Pack a fan for warm August too.",
+  allowedExtra:["UL/NRTL-certified appliances on a breaker power strip","An energy-efficient small fridge, or a rented MicroFridge"],bannedExtra:["Personal A/C units (medical accommodation + an AC hall only)","Nails, screws, and hooks that damage walls","Candles, incense, wax warmers (religious exception by request)","E-skateboards, hoverboards, Segways (use/store/charge)"],
+  housing:"https://www.udel.edu/students/reslife/campus-living/move-in/",
+  notes:[["Which halls have AC","No AC: Brown, Cannon, Harrington, Harter, Lane, New Castle, Russell, Smyth, Thompson. AC: Caesar Rodney, Gilbert, Kent, Redding, Sharp, South Academy St, Squire, Sussex, Sypherd, plus suite-style George Read, Independence, James Smith, Ray Street, Thomas McKean."],["Beds & fridge","Twin XL in traditional and suite-style halls; full-size in University Courtyard Apartments. Rent a MicroFridge (one per room) or bring an energy-efficient small fridge."],["Mail & helpers","Residence-hall ZIP is 19717; find your format on your building's page, and Amazon orders route best to the campus Amazon lockers. \"Blue Hen Helpers\" assist on move-in day."]],
+  links:{official:[["Move-in","https://www.udel.edu/students/reslife/campus-living/move-in/"],["Housing policies","https://www.udel.edu/students/reslife/housing-info/our-policies/"],["Residence halls (AC list)","https://www.udel.edu/students/reslife/our-residence-halls/"]],contact:[["Appliance questions","fire-safe@udel.edu"],["Maintenance / bunking","fixit@udel.edu"],["Move-in helpers","bluehenhelpers@udel.edu"]],community:[["Delaware parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Delaware%20parents"]]}},
+];
+
+/* ============ illustration engine ============ */
+function mix(a,b,t){const pa=parseInt(a.slice(1),16),pb=parseInt(b.slice(1),16);
+  const r=Math.round(((pa>>16&255)*(1-t))+((pb>>16&255)*t)),g=Math.round(((pa>>8&255)*(1-t))+((pb>>8&255)*t)),bl=Math.round(((pa&255)*(1-t))+((pb&255)*t));
+  return '#'+(1<<24|r<<16|g<<8|bl).toString(16).slice(1);}
+const DK="#21372c"; // dark foliage
+function pine(x,base,h,c){const w=h*0.42;return `<path d="M${x} ${base-h} L${x-w} ${base} L${x+w} ${base} Z M${x} ${base-h*1.18} L${x-w*0.7} ${base-h*0.45} L${x+w*0.7} ${base-h*0.45} Z" fill="${c}"/><rect x="${x-2}" y="${base}" width="4" height="6" fill="${c}"/>`;}
+function decid(x,base,h,c){const r=h*0.5;return `<rect x="${x-2.5}" y="${base-h*0.55}" width="5" height="${h*0.55}" fill="${mix(c,'#000',0.25)}"/><circle cx="${x}" cy="${base-h*0.7}" r="${r}" fill="${c}"/><circle cx="${x-r*0.6}" cy="${base-h*0.5}" r="${r*0.7}" fill="${c}"/><circle cx="${x+r*0.6}" cy="${base-h*0.5}" r="${r*0.7}" fill="${c}"/>`;}
+function palm(x,base,h,c){const t=mix(c,'#3a2a18',0.4);let f='';for(let i=0;i<6;i++){const a=(-90+(i-2.5)*32)*Math.PI/180;const fx=x+Math.cos(a)*h*0.6,fy=(base-h)+Math.sin(a)*h*0.5;f+=`<path d="M${x} ${base-h} Q ${(x+fx)/2} ${(base-h)-12} ${fx} ${fy}" stroke="${c}" stroke-width="5" fill="none" stroke-linecap="round"/>`;}return `<path d="M${x} ${base} Q ${x-8} ${base-h*0.6} ${x} ${base-h}" stroke="${t}" stroke-width="6" fill="none" stroke-linecap="round"/>${f}`;}
+function saguaro(x,base,h,c){return `<g fill="${c}"><rect x="${x-7}" y="${base-h}" width="14" height="${h}" rx="7"/><rect x="${x-22}" y="${base-h*0.7}" width="11" height="${h*0.45}" rx="5.5"/><rect x="${x-22}" y="${base-h*0.7}" width="22" height="11" rx="5.5"/><rect x="${x+11}" y="${base-h*0.55}" width="11" height="${h*0.4}" rx="5.5"/><rect x="${x}" y="${base-h*0.55}" width="22" height="11" rx="5.5"/></g>`;}
+
+function buildScene(s,W,H){
+  const a=s.art, acc=s.accent, slug=s.slug;
+  const horizon=H*0.66;
+  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustrated ${s.name} landscape">`;
+  svg+=`<defs><linearGradient id="sky_${slug}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a.sky[0]}"/><stop offset="1" stop-color="${a.sky[1]}"/></linearGradient>`;
+  svg+=`<filter id="gr_${slug}"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs>`;
+  svg+=`<rect width="${W}" height="${H}" fill="url(#sky_${slug})"/>`;
+  // sun
+  const sunX=a.type==='desert'?W*0.72:W*0.78, sunY=a.type==='desert'?horizon-26:H*0.26, sunR=a.type==='desert'?46:30;
+  svg+=`<circle cx="${sunX}" cy="${sunY}" r="${sunR}" fill="${a.sun}" opacity="0.95"/>`;
+  // landform
+  const far=mix(a.sky[1],'#2e3b4a',0.45), mid=mix(a.sky[1],'#33402c',0.5);
+  if(a.type==='desert'){
+    svg+=`<path d="M0 ${horizon} L120 ${horizon-30} L210 ${horizon} Z" fill="${mix('#c2774a','#000',0.1)}"/><path d="M${W} ${horizon} L${W-150} ${horizon-44} L${W-260} ${horizon} Z" fill="${mix('#b56a45','#000',0.15)}"/>`;
+  } else if(a.type==='mountain'||a.type==='pacific'){
+    svg+=`<path d="M0 ${horizon} L${W*0.18} ${horizon-86} L${W*0.36} ${horizon-30} L${W*0.55} ${horizon-100} L${W*0.78} ${horizon-40} L${W} ${horizon-70} L${W} ${horizon} Z" fill="${far}"/>`;
+    if(a.type==='pacific') svg+=`<path d="M${W*0.4} ${horizon-110} L${W*0.55} ${horizon-150} L${W*0.7} ${horizon-110} Z" fill="${mix(far,'#fff',0.5)}"/>`;
+  } else if(a.type==='midwest'||a.type==='northeast'||a.type==='midatlantic'){
+    svg+=`<path d="M0 ${horizon} Q ${W*0.3} ${horizon-42} ${W*0.55} ${horizon-18} T ${W} ${horizon-30} L${W} ${horizon} Z" fill="${far}"/>`;
+  }
+  // ground
+  svg+=`<rect y="${horizon}" width="${W}" height="${H-horizon}" fill="${mid}"/>`;
+  svg+=`<rect y="${horizon}" width="${W}" height="10" fill="${mix(mid,'#000',0.12)}"/>`;
+  // foreground flora
+  const fg=H-2;
+  if(a.type==='desert'){ svg+=saguaro(W*0.16,fg,84,'#4f6b46')+saguaro(W*0.84,fg,60,'#46603e'); }
+  else if(a.type==='coast'){ svg+=palm(W*0.14,fg,96,'#3f6b4e')+palm(W*0.86,fg,78,'#3a5f47')+palm(W*0.30,fg,64,'#37583f'); }
+  else if(a.type==='pacific'){ svg+=pine(W*0.10,fg,120,'#243f30')+pine(W*0.20,fg,92,DK)+pine(W*0.88,fg,110,'#243f30')+pine(W*0.78,fg,80,DK); }
+  else if(a.type==='northeast'){ svg+=pine(W*0.12,fg,104,'#28452f')+pine(W*0.22,fg,76,DK)+decid(W*0.85,fg,88,'#b07b3f'); }
+  else if(a.type==='mountain'){ svg+=pine(W*0.12,fg,100,'#274430')+pine(W*0.86,fg,112,DK)+pine(W*0.77,fg,72,'#2c4a34'); }
+  else if(a.type==='midwest'){ svg+=decid(W*0.13,fg,98,'#9e8a3e')+pine(W*0.86,fg,96,DK)+decid(W*0.76,fg,70,'#b58a3c'); }
+  else if(a.type==='midatlantic'){ svg+=decid(W*0.13,fg,96,'#c08a3a')+decid(W*0.85,fg,84,'#b3702f')+decid(W*0.74,fg,64,'#caa044'); }
+  else if(a.type==='plains'){ svg+=decid(W*0.85,fg,90,'#7e8a44'); }
+  // accent baseline band (the school's color, owning the scene)
+  svg+=`<rect y="${H-6}" width="${W}" height="6" fill="${acc}"/>`;
+  // weather
+  if(s.region==='cold'){ let f='';const n=a.sky[0]===s.art.sky[0]?40:40;for(let i=0;i<46;i++){const x=(i*53+((i*i)%37))%W,y=(i*31+((i*7)%horizon))%horizon;f+=`<circle cx="${x}" cy="${y}" r="${1.6+(i%3)*0.5}" fill="#fff" opacity="0.8"/>`;}svg+=f; }
+  else if(s.region==='mild'){ let f='';for(let i=0;i<60;i++){const x=(i*41+((i*i)%29))%W,y=(i*23)%horizon;f+=`<line x1="${x}" y1="${y}" x2="${x-5}" y2="${y+13}" stroke="#eef3f5" stroke-width="1.3" opacity="0.55"/>`;}svg+=f; }
+  else { svg+=`<ellipse cx="${W*0.30}" cy="${H*0.22}" rx="58" ry="20" fill="#fff" opacity="0.5"/><ellipse cx="${W*0.30+34}" cy="${H*0.22+6}" rx="40" ry="16" fill="#fff" opacity="0.45"/>`; }
+  svg+=`<rect width="${W}" height="${H}" filter="url(#gr_${slug})" opacity="0.07"/>`;
+  svg+=`</svg>`;
+  return svg;
+}
+function buildDorm(s){
+  const acc=s.accent, slug=s.slug, W=760,H=300;
+  const wall='#efe7d6', wall2='#e4dac4', floor='#d8c9ad';
+  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a typical dorm room">`;
+  svg+=`<defs><linearGradient id="win_${slug}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${s.art.sky[0]}"/><stop offset="1" stop-color="${s.art.sky[1]}"/></linearGradient>`;
+  svg+=`<filter id="dg_${slug}"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter></defs>`;
+  svg+=`<rect width="${W}" height="${H}" fill="${wall}"/><rect y="${H*0.74}" width="${W}" height="${H*0.26}" fill="${floor}"/>`;
+  // rug
+  svg+=`<rect x="${W*0.30}" y="${H*0.80}" width="${W*0.40}" height="${H*0.15}" rx="6" fill="${mix(acc,'#fff',0.35)}"/><rect x="${W*0.30}" y="${H*0.80}" width="${W*0.40}" height="${H*0.15}" rx="6" fill="none" stroke="${acc}" stroke-width="2" opacity="0.5"/>`;
+  // window with sky
+  svg+=`<rect x="${W*0.40}" y="34" width="150" height="104" rx="4" fill="#cbbfa4"/><rect x="${W*0.40+6}" y="40" width="138" height="92" fill="url(#win_${slug})"/><line x1="${W*0.40+75}" y1="40" x2="${W*0.40+75}" y2="132" stroke="#cbbfa4" stroke-width="5"/><line x1="${W*0.40+6}" y1="86" x2="${W*0.40+144}" y2="86" stroke="#cbbfa4" stroke-width="5"/>`;
+  // lofted bed (left)
+  const bx=46,by=70,bw=250,bh=58;
+  svg+=`<rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="7" fill="${mix(acc,'#fff',0.55)}"/><rect x="${bx}" y="${by+bh-12}" width="${bw}" height="12" rx="4" fill="${mix(acc,'#fff',0.3)}"/>`;
+  svg+=`<rect x="${bx+14}" y="${by+10}" width="60" height="30" rx="6" fill="#fbf7ee"/>`; // pillow
+  svg+=`<rect x="${bx+4}" y="${by+bh}" width="7" height="${H*0.74-(by+bh)}" fill="#9a8e74"/><rect x="${bx+bw-11}" y="${by+bh}" width="7" height="${H*0.74-(by+bh)}" fill="#9a8e74"/>`; // posts
+  // desk under loft + lamp
+  const dx=bx+18,dy=H*0.74-44;
+  svg+=`<rect x="${dx}" y="${dy}" width="150" height="10" rx="3" fill="#b69b6f"/><rect x="${dx+6}" y="${dy+10}" width="8" height="34" fill="#b69b6f"/><rect x="${dx+136}" y="${dy+10}" width="8" height="34" fill="#b69b6f"/>`;
+  svg+=`<rect x="${dx+18}" y="${dy-26}" width="34" height="26" rx="3" fill="${mix(acc,'#000',0.05)}"/>`; // monitor/book
+  svg+=`<path d="M${dx+120} ${dy} l8 -26 l10 0" stroke="${acc}" stroke-width="3" fill="none"/><circle cx="${dx+132}" cy="${dy-28}" r="6" fill="${s.art.sun}"/>`; // lamp
+  // mini fridge (right)
+  svg+=`<rect x="${W-150}" y="${H*0.74-92}" width="78" height="92" rx="6" fill="#f2ece0" stroke="#cbbfa4" stroke-width="2"/><line x1="${W-150}" y1="${H*0.74-58}" x2="${W-72}" y2="${H*0.74-58}" stroke="#cbbfa4" stroke-width="2"/><rect x="${W-84}" y="${H*0.74-86}" width="5" height="22" rx="2" fill="#cbbfa4"/><rect x="${W-84}" y="${H*0.74-52}" width="5" height="22" rx="2" fill="#cbbfa4"/>`;
+  // poster (accent)
+  svg+=`<rect x="${W*0.40+170}" y="44" width="58" height="78" rx="3" fill="${mix(acc,'#fff',0.2)}"/><circle cx="${W*0.40+199}" cy="74" r="14" fill="${s.art.sun}" opacity="0.85"/>`;
+  // plant
+  svg+=`<rect x="${W-150}" y="${H*0.74-112}" width="20" height="20" rx="3" fill="${acc}"/>`+decid(W-140,H*0.74-92,34,'#4f7050');
+  svg+=`<rect width="${W}" height="${H}" filter="url(#dg_${slug})" opacity="0.06"/>`;
+  svg+=`</svg>`;
+  return svg;
+}
+function brandScene(){
+  const W=920,H=300;
+  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustrated dusk campus landscape">`;
+  svg+=`<defs><linearGradient id="bsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#23436f"/><stop offset="0.55" stop-color="#7f7596"/><stop offset="1" stop-color="#dcae6e"/></linearGradient>`;
+  svg+=`<filter id="bgr"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs>`;
+  const horizon=H*0.7;
+  svg+=`<rect width="${W}" height="${H}" fill="url(#bsky)"/>`;
+  svg+=`<circle cx="${W*0.5}" cy="${horizon-12}" r="58" fill="#f3d9a3" opacity="0.92"/>`;
+  // distant hills
+  svg+=`<path d="M0 ${horizon} Q ${W*0.25} ${horizon-54} ${W*0.5} ${horizon-22} T ${W} ${horizon-40} L${W} ${horizon} Z" fill="${mix('#7f7596','#2e3b4a',0.5)}"/>`;
+  // campus silhouette (generic spires/halls)
+  const cx=W*0.5-110;
+  svg+=`<g fill="#2b3a44">`;
+  svg+=`<rect x="${cx}" y="${horizon-70}" width="46" height="70"/><polygon points="${cx},${horizon-70} ${cx+23},${horizon-96} ${cx+46},${horizon-70}"/>`;
+  svg+=`<rect x="${cx+60}" y="${horizon-100}" width="26" height="100"/><polygon points="${cx+60},${horizon-100} ${cx+73},${horizon-128} ${cx+86},${horizon-100}"/>`;
+  svg+=`<rect x="${cx+100}" y="${horizon-56}" width="62" height="56"/><rect x="${cx+178}" y="${horizon-82}" width="40" height="82"/><polygon points="${cx+178},${horizon-82} ${cx+198},${horizon-104} ${cx+218},${horizon-82}"/>`;
+  svg+=`</g>`;
+  // lit windows (marigold)
+  let win='';for(let i=0;i<10;i++){win+=`<rect x="${cx+8+i*22}" y="${horizon-46+((i*13)%30)}" width="5" height="7" fill="#dc9a2b" opacity="0.9"/>`;}svg+=win;
+  // ground
+  svg+=`<rect y="${horizon}" width="${W}" height="${H-horizon}" fill="#27402f"/><rect y="${horizon}" width="${W}" height="9" fill="#1f3527"/>`;
+  // foreground pines + a packed-car silhouette
+  svg+=pine(70,H-4,128,'#1c3225')+pine(120,H-4,92,'#16271d')+pine(W-70,H-4,120,'#1c3225')+pine(W-118,H-4,84,'#16271d');
+  const carX=W*0.5-44, carY=H-26;
+  svg+=`<g fill="#162a1f"><rect x="${carX}" y="${carY-22}" width="92" height="22" rx="6"/><path d="M${carX+14} ${carY-22} q 14 -20 32 -20 l 18 0 q 16 0 22 20 Z"/><rect x="${carX+30}" y="${carY-40}" width="40" height="14" rx="3"/><circle cx="${carX+22}" cy="${carY}" r="9"/><circle cx="${carX+74}" cy="${carY}" r="9"/></g>`;
+  svg+=`<rect y="${H-6}" width="${W}" height="6" fill="#dc9a2b"/>`;
+  svg+=`<rect width="${W}" height="${H}" filter="url(#bgr)" opacity="0.07"/>`;
+  svg+=`</svg>`;
+  return svg;
+}
+
+/* ============ rendering ============ */
+function shopUrl(q, asin){
+  // If an ASIN is provided, link directly to that product page.
+  // Otherwise fall back to an Amazon keyword search.
+  // To link a specific product, add  asin:"B0XXXXXXXX"  to the item object.
+  let url;
+  if(asin){
+    url = "https://www.amazon.com/dp/" + encodeURIComponent(asin);
+    return AFFILIATE_TAG ? url + "?tag=" + encodeURIComponent(AFFILIATE_TAG) : url;
+  }
+  url = "https://www.amazon.com/s?k=" + encodeURIComponent(q);
+  return AFFILIATE_TAG ? url + "&tag=" + encodeURIComponent(AFFILIATE_TAG) : url;
+}
+function softTint(hex){return mix(hex,'#ffffff',0.88);}
+const $=id=>document.getElementById(id);
+const checked={};   // self-hosting: JSON.parse(localStorage.getItem('alldorms-'+slug)||'{}')
+let total=0,CURRENT=SCHOOLS[0];
+
+function buildChecklist(school){
+  const root=$('checklistRoot');root.innerHTML='';total=0;for(const k in checked)delete checked[k];
+  let idc=0;
+  const cats=CHECKLIST_COMMON.map(c=>c[0]==="__CLOTHING__"?CLOTHING[school.region]:c);
+  cats.forEach(([cat,items])=>{
+    const sec=document.createElement('div');sec.className='cat';
+    const h=document.createElement('h3');h.innerHTML=cat+' <span class="n">'+items.length+'</span>';sec.appendChild(h);
+    const box=document.createElement('div');box.className='items';
+    items.forEach(it=>{
+      total++;const id='it'+(idc++);let name=it.n,note=it.note;
+      if(name==="__FAN__"){name="Small fan";note=FAN_NOTE[school.ac];}
+      if(name==="__FRIDGE__"){name=school.fridge.name;note=school.fridge.note;}
+      if(note==="__BEDNOTE__"){note=school.bednote;}
+      const row=document.createElement('label');row.className='item';row.setAttribute('for',id);
+      row.innerHTML='<input type="checkbox" id="'+id+'"><span class="label">'+name+(note?'<span class="note">'+note+'</span>':'')+'</span>'+
+        '<a class="shop" href="'+shopUrl(it.q, it.asin)+'" target="_blank" rel="noopener nofollow sponsored" onclick="event.stopPropagation()">Shop</a>';
+      const cb=row.querySelector('input');
+      cb.addEventListener('change',()=>{checked[id]=cb.checked;row.classList.toggle('done',cb.checked);updateProgress();
+        // self-hosting: localStorage.setItem('alldorms-'+CURRENT.slug, JSON.stringify(checked));
+      });
+      box.appendChild(row);
+    });
+    sec.appendChild(box);root.appendChild(sec);
+  });
+  updateProgress();
+}
+function updateProgress(){
+  const done=Object.values(checked).filter(Boolean).length,pct=total?Math.round(done/total*100):0;
+  $('bigCount').textContent=done+' / '+total+' packed';$('bigFill').style.width=pct+'%';
+  $('sideFill').style.width=pct+'%';$('sidePct').textContent=pct+'%';
+}
+function contactHref(v){if(v.indexOf('@')>-1)return'mailto:'+v;if(/^https?:/.test(v))return v;if(/[0-9]{3}.*[0-9]{4}/.test(v))return'tel:'+v.replace(/[^0-9]/g,'');return v;}
+
+function render(school){
+  CURRENT=school;
+  document.documentElement.style.setProperty('--accent',school.accent);
+  document.documentElement.style.setProperty('--accent-soft',softTint(school.accent));
+  document.querySelectorAll('.navlink[data-sec]').forEach(c=>c.classList.remove('active'));
+  $('sideSchoolName').textContent=school.name;$('sideSchoolCity').textContent=school.city;
+
+  // postcard header (photo overrides illustration)
+  const art = school.photo ? '<img src="'+school.photo+'" alt="'+school.name+' campus">' : buildScene(school,900,300);
+  $('pcard').innerHTML = art + '<div class="overlay"><div class="ov-kick">Move-in, sorted &middot; '+school.city+'</div><div class="ov-name">'+school.name+'</div></div>';
+
+  $('heroLede').textContent=school.lede;
+  const acLabel={ac:'Provided',varies:'Varies by hall',none:'None — bring a fan',mild:'Rarely needed'}[school.ac];
+  $('facts').innerHTML=[['Move-in',school.movein],['Beds',school.beds],['A/C',acLabel]]
+    .map(([k,v])=>'<div class="fact"><div class="k">'+k+'</div><div class="v">'+v+'</div></div>').join('');
+
+  const city0=school.city.split(',')[0];
+  $('weatherTitle').textContent='What to wear in '+city0+', month by month';
+  $('weatherSub').textContent=(school.region==='warm'?'The national lists assume everyone needs a winter coat. Here, the real questions are heat, sun, and rain — and clothes for buildings kept ice-cold against it.':school.region==='mild'?'Seattle breaks every generic packing list. It is not about surviving cold — it is about staying dry through a long gray winter and a famously short, beautiful summer.':'This region runs from a humid late summer to a hard winter in about ten weeks. The mistake out-of-region families make is packing the whole year in August.');
+  $('arc').innerHTML=school.climate.map(([m,t,w,c])=>'<div class="month"><div class="swatch" style="background:'+c+'"></div><div class="name">'+m+'</div><div class="temp">'+t+'</div><p class="wear">'+w+'</p></div>').join('');
+  $('arcTip').innerHTML=school.tip;
+
+  $('rulesTitle').textContent='What '+school.name+' lets you bring';
+  $('allowedList').innerHTML=school.allowedExtra.concat(ALLOWED_BASE).map(x=>'<li>'+x+'</li>').join('');
+  $('bannedList').innerHTML=BANNED_BASE.concat(school.bannedExtra).map(x=>'<li>'+x+'</li>').join('');
+  $('verify').innerHTML='These come from '+school.name+'\u2019s official housing pages and cover the essentials plus the genuinely local rules. Confirm against the <a href="'+school.housing+'" target="_blank" rel="noopener">current official guidance</a> before you buy — policies and renovations change every year.';
+
+  $('checklistTitle').textContent='The '+school.name+' move-in checklist';
+  const dormArt = school.dorm ? '<img src="'+school.dorm+'" alt="Typical '+school.name+' dorm room">' : buildDorm(school);
+  $('roomfig').innerHTML = dormArt + '<figcaption>A typical first-year room — illustration. See your hall\u2019s page for real photos and exact dimensions.</figcaption>';
+
+  $('logiTitle').textContent=city0+' logistics, sorted';
+  $('logiRoot').innerHTML=school.notes.map(([title,body])=>title.indexOf('addr|')===0?'<div class="notecard addr"><h4>'+title.slice(5)+'</h4><p>'+body+'</p></div>':'<div class="notecard"><h4>'+title+'</h4><p>'+body+'</p></div>').join('');
+
+  $('linksTitle').textContent=school.name+' — links & contacts';
+  const L=school.links;
+  const off='<div class="linkcard"><h4>Official pages</h4><ul>'+L.official.map(([t,u])=>'<li><a href="'+u+'" target="_blank" rel="noopener">'+t+'</a></li>').join('')+'</ul></div>';
+  const con='<div class="linkcard"><h4>Who to contact</h4><ul>'+L.contact.map(([t,v])=>{const h=contactHref(v),disp=(/^https?:/.test(v))?'Visit page':v;return'<li>'+t+': <a href="'+h+'"'+(/^https?:/.test(v)?' target="_blank" rel="noopener"':'')+'>'+disp+'</a></li>';}).join('')+'</ul><p class="note">For room-specific questions, reach your hall\u2019s coordinator or RA through the housing office.</p></div>';
+  const com='<div class="linkcard"><h4>Parent &amp; student community</h4><ul>'+L.community.map(([t,u])=>'<li><a href="'+u+'" target="_blank" rel="noopener">'+t+' &rarr;</a></li>').join('')+'</ul><p class="note">Most parent groups are unofficial and parent-run; search your specific class year. Your school\u2019s official Parent &amp; Family office is the authoritative source.</p></div>';
+  $('linksRoot').innerHTML=off+con+com;
+
+  buildChecklist(school);
+}
+
+/* ============ navigation ============ */
+function closeMenu(){document.body.classList.remove('nav-open');$('menuToggle').setAttribute('aria-expanded','false');}
+function showHome(){
+  $('home').classList.remove('hidden');$('app').classList.add('hidden');
+  $('navHome').classList.remove('hidden');$('navSchool').classList.add('hidden');$('sideProg').classList.add('hidden');
+  closeMenu();window.scrollTo({top:0,behavior:'auto'});
+}
+function enterSchool(school){
+  $('home').classList.add('hidden');$('app').classList.remove('hidden');
+  $('navHome').classList.add('hidden');$('navSchool').classList.remove('hidden');$('sideProg').classList.remove('hidden');
+  render(school);closeMenu();window.scrollTo({top:0,behavior:'auto'});
+}
+
+/* ============ init ============ */
+// brand hero scene + index line
+$('brandScene').innerHTML=brandScene();
+$('indexLine').innerHTML='<b>The index —</b> '+SCHOOLS.map(s=>s.short).join(' · ');
+
+// landing grid
+const grid=$('schoolGrid');
+SCHOOLS.forEach(s=>{
+  const acShort={ac:'A/C',varies:'A/C varies',none:'No A/C',mild:'No A/C needed'}[s.ac];
+  const thumb = s.photo ? '<img src="'+s.photo+'" alt="">' : buildScene(s,300,160);
+  const b=document.createElement('button');b.className='scard';b.type='button';
+  b.innerHTML='<div class="thumb">'+thumb+'</div><div class="body"><div class="nm">'+s.short+'</div><div class="ct">'+s.city+'</div>'+
+    '<div class="tags"><span class="tag">'+s.beds+'</span><span class="tag">'+acShort+'</span></div></div>';
+  b.addEventListener('click',()=>enterSchool(s));
+  grid.appendChild(b);
+});
+
+// school section nav
+document.querySelectorAll('.navlink[data-sec]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.navlink[data-sec]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+    const el=$(btn.dataset.sec);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});closeMenu();
+  });
+});
+// landing in-page nav
+document.querySelectorAll('[data-scroll]').forEach(btn=>{
+  btn.addEventListener('click',e=>{e.preventDefault();const el=$(btn.dataset.scroll);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    document.querySelectorAll('#navHome .navlink').forEach(b=>b.classList.remove('active'));
+    if(btn.classList.contains('navlink'))btn.classList.add('active');closeMenu();});
+});
+
+$('heroCta').addEventListener('click',()=>{$('pickSection').scrollIntoView({behavior:'smooth'});});
+$('logoBtn').addEventListener('click',showHome);
+$('logoBtn2').addEventListener('click',showHome);
+$('backBtn').addEventListener('click',showHome);
+$('menuToggle').addEventListener('click',()=>{const open=document.body.classList.toggle('nav-open');$('menuToggle').setAttribute('aria-expanded',open?'true':'false');});
+$('resetBtn').addEventListener('click',()=>{document.querySelectorAll('.item input').forEach(cb=>cb.checked=false);document.querySelectorAll('.item').forEach(r=>r.classList.remove('done'));for(const k in checked)delete checked[k];updateProgress();});
+
+
+showHome();
+</script>
+</body>
+</html>
