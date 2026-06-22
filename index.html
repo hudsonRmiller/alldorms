@@ -222,6 +222,57 @@
     border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:14px 16px;color:#eef3f0;}
   .addr .block .var{color:#f0c98a;}
 
+  /* ===== expanded sections: process / communities / area / stay ===== */
+  .steps{counter-reset:step;display:grid;gap:14px;}
+  .step{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:20px 22px 20px 60px;}
+  .step::before{counter-increment:step;content:counter(step);position:absolute;left:18px;top:20px;width:28px;height:28px;
+    background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:500;}
+  .step h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:17.5px;margin-bottom:6px;letter-spacing:-.01em;}
+  .step p{margin:0;font-size:15.5px;color:#3a463f;line-height:1.5;}
+  .step p + p{margin-top:8px;}
+  .step .when{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--marigold-deep);margin-bottom:7px;}
+
+  .commons{display:grid;gap:18px;}
+  .commons-card{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;}
+  .commons-card .ch{padding:20px 24px;border-bottom:1px solid var(--rule);background:var(--accent-soft);}
+  .commons-card .ch h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:21px;color:var(--accent);letter-spacing:-.01em;}
+  .commons-card .ch p{margin:7px 0 0;font-size:15px;color:#3a463f;line-height:1.5;}
+  .commons-card .halls{padding:8px 24px 18px;}
+  .hall{padding:14px 0;border-top:1px solid var(--rule);}
+  .hall:first-child{border-top:none;}
+  .hall .hn{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:16px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .hall .htag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#46524b;
+    background:var(--paper);border:1px solid var(--rule);border-radius:20px;padding:2px 8px;font-weight:400;}
+  .hall p{margin:6px 0 0;font-size:14.5px;color:#3a463f;line-height:1.5;}
+
+  .area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+  .spot{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:20px;}
+  .spot .stype{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--marigold-deep);}
+  .spot h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:17px;margin:8px 0 6px;letter-spacing:-.01em;}
+  .spot h4 a{color:var(--ink);text-decoration:none;}
+  .spot h4 a:hover{color:var(--accent);text-decoration:underline;}
+  .spot p{margin:0;font-size:14.5px;color:#3a463f;line-height:1.5;}
+
+  .stay-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;}
+  .stay{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;}
+  .stay .stier{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+  .stay h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:18px;margin:7px 0 4px;letter-spacing:-.01em;}
+  .stay .sdist{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--marigold-deep);margin-bottom:9px;}
+  .stay p{margin:0 0 14px;font-size:14.5px;color:#3a463f;line-height:1.5;flex:1;}
+  .stay a.slink{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
+    color:var(--spruce);border:1px solid var(--rule);border-radius:20px;padding:7px 14px;align-self:flex-start;transition:.15s;}
+  .stay a.slink:hover{background:var(--spruce);color:#fff;border-color:var(--spruce);}
+  .stay-note{margin-top:18px;background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:15px 20px;font-size:15px;color:#2a342e;}
+  .stay-note b{color:var(--accent);}
+
+  .merch-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;}
+  .merch-link{display:flex;flex-direction:column;gap:3px;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);
+    padding:15px 18px;text-decoration:none;transition:.15s;min-width:180px;flex:1;}
+  .merch-link:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 26px -16px rgba(20,40,30,.5);}
+  .merch-link .mtitle{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:16px;color:var(--ink);}
+  .merch-link .mdesc{font-size:13px;color:var(--muted);}
+
   .linkcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
   .linkcard{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:22px;}
   .linkcard h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:17px;margin-bottom:14px;color:var(--ink);}
@@ -289,9 +340,14 @@
         <div class="schoolcity" id="sideSchoolCity"></div>
         <button class="navlink" data-sec="weather"><span class="nn">01</span> Weather &amp; clothing</button>
         <button class="navlink" data-sec="rules"><span class="nn">02</span> What's allowed</button>
-        <button class="navlink" data-sec="checklist"><span class="nn">03</span> Packing checklist</button>
-        <button class="navlink" data-sec="logistics"><span class="nn">04</span> Logistics</button>
-        <button class="navlink" data-sec="links"><span class="nn">05</span> Links &amp; contacts</button>
+        <button class="navlink" data-sec="housing"><span class="nn">03</span> Housing &amp; roommates</button>
+        <button class="navlink" data-sec="communities"><span class="nn">04</span> Where you'll live</button>
+        <button class="navlink" data-sec="checklist"><span class="nn">05</span> Packing checklist</button>
+        <button class="navlink" data-sec="logistics"><span class="nn">06</span> Move-in logistics</button>
+        <button class="navlink" data-sec="area"><span class="nn">07</span> Town &amp; hotspots</button>
+        <button class="navlink" data-sec="stay"><span class="nn">08</span> Where to stay</button>
+        <button class="navlink" data-sec="merch"><span class="nn">09</span> School merch</button>
+        <button class="navlink" data-sec="links"><span class="nn">10</span> Links &amp; contacts</button>
       </div>
     </nav>
     <div class="side-foot">
@@ -386,6 +442,18 @@
           <p class="verify" id="verify"></p>
         </section>
 
+        <section class="block" id="housing">
+          <div class="sec-head"><span class="kick">Before you can move in</span><h2 id="housingTitle"></h2>
+            <p id="housingSub">How roommate matching and room assignment actually work — the forms, the timeline, and what each step decides.</p></div>
+          <div class="steps" id="housingSteps"></div>
+        </section>
+
+        <section class="block" id="communities">
+          <div class="sec-head"><span class="kick">The actual buildings</span><h2 id="commTitle"></h2>
+            <p id="commSub">Not just "you'll live on campus" — here are the real residential communities and halls, what each is like, and who lives there.</p></div>
+          <div class="commons" id="commRoot"></div>
+        </section>
+
         <section class="block" id="checklist">
           <div class="sec-head"><span class="kick">Tick as you pack</span><h2 id="checklistTitle"></h2>
             <p>Organized by category, sized for a real dorm room, and trimmed to what first-years actually use. Coordinate the big shared items with your roommate so you don't double up.</p></div>
@@ -402,6 +470,25 @@
         <section class="block" id="logistics">
           <div class="sec-head"><span class="kick">The stuff nobody puts in one place</span><h2 id="logiTitle"></h2></div>
           <div class="logi" id="logiRoot"></div>
+        </section>
+
+        <section class="block" id="area">
+          <div class="sec-head"><span class="kick">Beyond the campus gates</span><h2 id="areaTitle"></h2>
+            <p id="areaSub">Where to eat, what to do, and what families should know about the town your student is moving to.</p></div>
+          <div class="area-grid" id="areaRoot"></div>
+        </section>
+
+        <section class="block" id="stay">
+          <div class="sec-head"><span class="kick">For move-in, family weekend &amp; graduation</span><h2 id="stayTitle"></h2>
+            <p id="staySub">The places families book when visiting — and the single most important thing to know about getting a room.</p></div>
+          <div class="stay-grid" id="stayRoot"></div>
+          <div class="stay-note" id="stayNote"></div>
+        </section>
+
+        <section class="block" id="merch">
+          <div class="sec-head"><span class="kick">Gear up</span><h2 id="merchTitle"></h2>
+            <p id="merchSub">Where to get official, licensed apparel and gifts — for the student and for the proud family back home.</p></div>
+          <div class="merch-row" id="merchRoot"></div>
         </section>
 
         <section class="block" id="links">
@@ -564,7 +651,39 @@ const SCHOOLS = [
   allowedExtra:[],bannedExtra:["Natural holiday trees and garland"],
   housing:"https://www.colgate.edu/current-students/welcome-new-students/housing",
   notes:[["addr|How to address a package to campus","<div class='block'><span class='var'>[Student Name], [Class Year]</span><br><span class='var'>CU Box [your box #]</span><br>Colgate University<br>13 Oak Drive<br>Hamilton, NY 13346-1338</div>Find your CU Box under \"My Contact Information\" in the Colgate Portal. Mail Services is swamped early in the term — bring essentials in the car."],["You'll live in a Residential Commons","First-years are sorted into one of four Residential Commons, tied to your FSEM seminar. Some students get a virtual room tour over the summer — use it before you buy storage."],["No AC — bring a fan","Colgate halls aren't air-conditioned, and the first few weeks are warm. A fan earns its space; a personal AC unit isn't allowed."]],
-  links:{official:[["New-student housing","https://www.colgate.edu/current-students/welcome-new-students/housing"],["Residential Life policies","https://www.colgate.edu/current-students/colgate-university-student-handbook/student-policies/residential-life"],["Housing Portal","https://www.colgate.edu/about/campus-services-and-resources/housing-portal"]],contact:[["Residential Life","reslife@colgate.edu"],["Phone","315-228-7367"]],community:[["Colgate parents (Facebook)","https://www.facebook.com/search/groups/?q=Colgate%20University%20parents"]]}},
+  links:{official:[["New-student housing","https://www.colgate.edu/current-students/welcome-new-students/housing"],["Residential Life policies","https://www.colgate.edu/current-students/colgate-university-student-handbook/student-policies/residential-life"],["Housing Portal","https://www.colgate.edu/about/campus-services-and-resources/housing-portal"]],contact:[["Residential Life","reslife@colgate.edu"],["Phone","315-228-7367"]],community:[["Colgate parents (Facebook)","https://www.facebook.com/search/groups/?q=Colgate%20University%20parents"]]},
+  housingSteps:[
+    {when:"Early summer",title:"Watch for the email from Residential Life",body:"The Office of Residential Life emails you with a link to the Housing Portal. This is where everything happens — sign in with your Colgate username and password."},
+    {when:"Before the deadline",title:"Complete the Housing Preference Form",body:"You're matched with a roommate <em>within your commons</em> who shares similar living-learning habits. The form asks about your sleep schedule, communication style, and similar day-to-day details. Answer honestly — it's the basis of your match."},
+    {when:"Set by the Registrar",title:"Your FSEM seals your commons",body:"Your housing is informed by your First-Year Seminar (FSEM) placement. You live with the other students in your seminar — the idea is that the discussions continue back in the building, not just the classroom."},
+    {when:"Mid-to-late summer",title:"Assignment posts to the Housing Portal",body:"Your assigned hall and roommate name(s) appear at the top of your portal homepage. Some students get a virtual room tour over the summer — use it to check dimensions before you buy storage."},
+    {when:"Late August",title:"Arrival Day",body:"You pick up your residence hall key and move in. Fall-sport athletes and pre-orientation participants get approved early-arrival dates. Mail Services is swamped early — bring essentials in the car rather than shipping them to arrive the same week."}],
+  communities:[
+    {name:"Brown Commons",blurb:"Named for religion professor and chaplain Coleman Brown and community advocate Irene Brown. A real mix of housing styles, from classic to infamous — and home to the newest building on the hill.",halls:[
+      {name:"Andrews Hall",tag:"Fan favorite",desc:"An older building, updated, with a classic feel, sizeable rooms, and a prime central location. The quintessential Colgate dorm experience. Doubles and some suites."},
+      {name:"Burke Hall",tag:"Newest · A/C",desc:"One of two brand-new RAMSA-designed halls clad in local bluestone. Hotel-esque, pre-set climate-controlled A/C and heat, generous lounges and kitchens. Houses ~105 in doubles and suites. Location slightly less central than Pinchin."},
+      {name:"East Hall",tag:"Traditional",desc:"A more traditional, older dorm. Centrally located — a big plus — but not as updated as others. A solid middle-of-the-road choice. The Centers for Women's Studies and LGBTQ+ Initiatives are on the ground floor."},
+      {name:"Gate House",tag:"Legendary",desc:"Campus legend, and not always for the best reasons — \"built to be temporary and has outlived its planned lifespan thrice over.\" You'll either love the character or count the days."}]},
+    {name:"Hancock Commons",blurb:"Named for Gordon Blaine Hancock '19, who pushed Colgate to readmit African-American students. A bit further from the academic quad — suite-style living, close to the gym.",halls:[
+      {name:"Bryan Complex",tag:"Suite-style",desc:"Four houses — Cobb, Crawshaw, Parke, and Russell — with single and double rooms inside suites that share a bathroom. Crawshaw is home to the Harlem Renaissance Center. Near the gym, a walk from classes and dining. The Edge, a shared event/kitchen space, sits at the center."},
+      {name:"113 Broad Street",tag:"Suite-style",desc:"Four houses — Brigham, Read, Shepardson, and Whitnall — single and double rooms within suites. Formerly the Cutten complex, renamed in 2017. The honest knock: far from classes and dining, which bites in winter. Best if you're a gym fiend or athlete."}]},
+    {name:"Ciccone Commons",blurb:"Built around getting to know professors as real people and peers as friends. Includes Curtis Hall, which has the Haven space on its ground floor.",halls:[
+      {name:"Curtis Hall",tag:"Central",desc:"Standard doubles plus a limited number of suites with double rooms. Three to four communal bathrooms per floor. Haven, a ground-floor gathering space, is accessible from outside."}]},
+    {name:"Mabel Dart Colegrove Commons",blurb:"The fourth of Colgate's first-and-second-year commons. Like the others, tied to your FSEM and supported by live-in faculty and staff who run programming and community events."}],
+  area:[
+    ["Plan your visit","Visit Madison County","https://www.visitmadisoncny.com/plan-your-visit/about-us/communities/hamilton-area/","The regional tourism guide for the Hamilton area — events, seasonal happenings, wineries, and the wider Madison County countryside."],
+    ["Local guide","This Is Hamilton NY","https://www.thisishamiltonny.com/","The village's own guide to downtown — shops, cafés, dining, and what's on around the green."],
+    ["The setting","Downtown Hamilton","","A genuinely walkable village green ringed with locally-owned shops, cafés, breweries, wineries, and theaters, all in the scenic Chenango Valley. Steps from campus via the Colgate Shuttle."],
+    ["Coffee","Utica Coffee / local cafés","","The downtown coffee scene is where students and families land between errands. Easy walking distance from the green and the Inn."]],
+  stay:[
+    ["Historic · ~15-min walk","Colgate Inn","Village green, walkable","A century-old village landmark with 40 newly-refreshed rooms, The Tavern restaurant, complimentary bike rentals, and pet packages. The classic choice — and the closest. Books out first.","https://www.innatcolgate.com/"],
+    ["Largest in village · ~1 mile","Hotel One75","~1 mile from campus","The largest lodging in the Village of Hamilton at 94 rooms, with an outdoor courtyard and firepits. A comfortable, casual option when the Inn is full."],
+    ["Full list","Colgate's lodging page","Official directory","Colgate maintains a current list of hotels and accommodations in Hamilton and the surrounding area — the authoritative place to start.","https://www.colgate.edu/about/our-location/about-hamilton-ny/hotels-accommodations"]],
+  stayNote:"<b>Book the moment you have dates.</b> Hamilton is small and isolated — part of its charm, and the reason rooms for Arrival Day (late August) and Family Weekend (late September) are genuinely hard to get. The Colgate Inn's 40 rooms vanish first; Airbnbs fill fast, and some Hamilton houses go for $800 a night on peak weekends. Reserve as early as you possibly can.",
+  merch:[
+    ["Colgate Bookstore","University-owned · downtown Hamilton. Apparel, gifts, and a DormCo room-supplies partnership (order by ~July 31).","https://www.colgatebookstore.com/"],
+    ["M.LaHart & Co.","Officially licensed premium gifts — watches, diploma frames, home décor, captain's chairs.","https://www.mlahart.com/collections/colgate-university-store"],
+    ["Barnesmith","Raiders tees and sweatshirts; classic collegiate casualwear.","https://barnesmith.com/collections/colgate-university-shop"]]},
 
  {slug:"tamu",short:"Texas A&M",name:"Texas A&M",city:"College Station, TX",accent:"#500000",region:"warm",ac:"ac",beds:"Twin XL",movein:"Mid–late August",
   photo:"",dorm:"",art:{type:"plains",sky:["#e7a866","#f6e2bc"],sun:"#fff3d6"},
@@ -576,7 +695,40 @@ const SCHOOLS = [
   allowedExtra:["Central AC and ceiling fans are provided — don't bring either"],bannedExtra:["Personal window or room A/C units","Ceiling fans (provided)","Camping stoves and hot-oil popcorn poppers","Personal wireless routers — use the campus network"],
   housing:"https://reslife.tamu.edu/movein/",
   notes:[["Finish Housing Orientation first","You must complete the online Annual Housing Orientation before you can book a move-in appointment. Appointments open by area, first-come first-served."],["AC and fans are built in","Rooms are air-conditioned and ceiling fans are provided, so skip both. Microfridge, linen, and safe rentals are offered through Residence Life."],["Pack for heat and sun","Breathable fabrics, sun protection, and hydration matter far more than cold-weather gear here."]],
-  links:{official:[["Move-in","https://reslife.tamu.edu/movein/"],["Housing rules","https://reslife.tamu.edu/rules/"],["Appliance policy","https://reslife.tamu.edu/rules/appliances/"]],contact:[["Residence Life","https://reslife.tamu.edu/"]],community:[["Texas A&M parents (Facebook)","https://www.facebook.com/search/groups/?q=Texas%20A%26M%20parents"]]}},
+  links:{official:[["Move-in","https://reslife.tamu.edu/movein/"],["Housing rules","https://reslife.tamu.edu/rules/"],["Appliance policy","https://reslife.tamu.edu/rules/appliances/"]],contact:[["Residence Life","https://reslife.tamu.edu/"]],community:[["Texas A&M parents (Facebook)","https://www.facebook.com/search/groups/?q=Texas%20A%26M%20parents"]]},
+  housingSteps:[
+    {when:"First, before anything",title:"Complete Annual Housing Orientation",body:"You must finish the online Annual Housing Orientation before you're allowed to book a move-in appointment. No orientation, no appointment slot — do this early."},
+    {when:"By assigned area",title:"Book your move-in appointment",body:"Appointments open by residential area and run first-come, first-served. The most convenient slots go fast, so be ready the moment your window opens."},
+    {when:"Anytime",title:"Tour before you commit",body:"Residence Life runs 3D virtual tours plus in-person model-room tours. Northside tours leave hourly from the Live Oak Lounge (Room 100) in Hullabaloo; Southside tours leave every 30 min from the Commons lobby desk."},
+    {when:"Optional",title:"Consider a Living-Learning Community",body:"LLCs cluster students by major or interest in a section of a hall — instant study groups and specialized programming. Worth opting into if your major has one."},
+    {when:"Move-in day",title:"Arrive in your window and unload",body:"Rooms are air-conditioned with ceiling fans provided, so skip both. MicroFridge, linen, and safe rentals are available through Residence Life and College Products if you'd rather rent than haul."}],
+  communities:[
+    {name:"The Commons (Southside)",blurb:"Four halls physically connected to a central Commons hub — dining, a 24-hour desk, mailroom, game room, and tutoring — so you never walk outside in the Texas heat. Arguably the most social housing on campus because everyone funnels through the middle. Suite-style: two double bedrooms share a Jack-and-Jill bath.",halls:[
+      {name:"Dunn, Krueger, Mosher, Aston",tag:"Suite-style",desc:"The four connected Commons halls. Double rooms sharing a bathroom with two suitemates. Mosher (1975) and Aston (1975) are named for former-student leaders; Krueger dates to 1972. Rooms run a touch smaller than the modulars but the built-in social scene is the draw."}]},
+    {name:"Modular Halls — \"the Mods\" (Northside)",blurb:"The most spacious dorms on campus, and popular because the furniture isn't bolted down — you customize the layout, and beds are loftable for a \"living room\" underneath. Each person gets a personal vanity and sink; suite-style shared bath. Close to Sbisa Dining and the engineering buildings.",halls:[
+      {name:"Appelt · Oveta · Margaret · Clements · Lechner · Underwood · Eppright · McFadden · Clyde Wells · Haas · Neeley",tag:"Most spacious",desc:"Eleven modular halls, mostly Northside. Most have community kitchens. A go-to for STEM majors who want a customizable, slightly quieter space near Sbisa."}]},
+    {name:"Hullabaloo Hall (Northside)",blurb:"The newest hall and the gold standard for on-campus living. Suite-style with high-end finishes, a Starbucks on the first floor, and a hotel-suite feel. The most competitive option — fills almost instantly at registration.",halls:[
+      {name:"Hullabaloo",tag:"Newest · competitive",desc:"Share a bathroom with just a few suitemates. The Live Oak Lounge (Room 100) is the campus tour desk. If privacy and modern amenities top your list, this is the one to register for early."}]},
+    {name:"Corridor Halls (Northside)",blurb:"Traditional college dorms — double and single rooms opening to interior hallways, community bathrooms with two private showers per floor, and a personal sink in every room. Among the best value on campus.",halls:[
+      {name:"Moses · Davis-Gary · Legett",tag:"Traditional · value",desc:"Close to Northgate, Hullabaloo, and Sbisa. Each has a community kitchen, laundry, and TV lounge. Well-kept and central for the price."}]},
+    {name:"Ramp & Balcony Halls (Northside)",blurb:"The most historic and most affordable options. Ramp halls date to 1931 with window-unit A/C and radiators, but renovated hardwood interiors. Balcony halls (the FHK Complex) are entered from outdoor balconies.",halls:[
+      {name:"Hart · Walton",tag:"Ramp · 1931",desc:"The two oldest dorms, steps from the Memorial Student Center and Evans Library. Small, characterful communities; the cheapest on-campus living."},
+      {name:"Fowler · Hughes · Keathley · Schuhmacher",tag:"Balcony",desc:"The FHK Complex plus Schuhmacher, near Hullabaloo and Sbisa. Suite-bath rooms; most have community kitchens. On the lower end for price."}]}],
+  area:[
+    ["Visitor guide","Visit College Station","https://visit.cstx.gov/","The official visitor bureau — dining, events, game-day info, and the Northgate entertainment district right across from campus."],
+    ["Entertainment","Historic Northgate District","","The bars, restaurants, and late-night scene that border the north edge of campus. Aggie tradition central."],
+    ["Must-see","George H.W. Bush Presidential Library","","On the West Campus side — a genuinely worthwhile museum and a common stop for visiting families. Surrounded by walking trails and Central Park."],
+    ["Shopping & dining","Century Square","","A walkable mixed-use district with restaurants, a movie theater, and the boutique hotels (The George, Cavalry Court) clustered around it."]],
+  stay:[
+    ["On campus · 4-Diamond","Texas A&M Hotel & Conference Center","Across from Kyle Field","The Doug Pitcock '49 hotel, right on campus next to the Memorial Student Center and across from Kyle Field. AAA Four-Diamond, maroon-and-white throughout. The closest and most in-demand for graduation and family weekend.","https://www.texasamhotelcc.com/"],
+    ["Boutique","The George / Cavalry Court","Century Square","Two Valencia Hotel Collection boutique properties in Century Square — walkable to shops and dining, a short hop to campus. Popular family-weekend picks.",""],
+    ["Upscale","The Stella Hotel","Lake Walk, ~10 min","An Autograph Collection hotel on Lake Walk in Bryan, a little removed from the game-day crush with a more resort feel.",""]],
+  stayNote:"<b>Graduation and home-football weekends sell out months ahead</b> and many hotels enforce multi-night minimums and peak pricing. The on-campus Texas A&M Hotel, The George, and Cavalry Court go first. If you know your dates for a New Student Conference, Family Weekend, or commencement, book immediately — College Station shifts into full game-day mode and rooms get scarce fast.",
+  merch:[
+    ["Texas A&M Bookstore (MSC)","Official Barnes & Noble bookstore in the Memorial Student Center — apparel, gifts, textbooks, dorm supplies.","https://tamu.bncollege.com/"],
+    ["Maroon U","The largest selection of unique Aggie merchandise in the Brazos Valley.","https://visitaggieland.com/texas-am-merchandise/"],
+    ["C.C. Creations — The Warehouse","30,000+ sq ft of Aggie gear: 300+ t-shirt designs and gifts at 114 Holleman Dr.","https://visitaggieland.com/texas-am-merchandise/"],
+    ["TXAG Store","Serving Aggies since '69 — tees, adidas sideline gear, and graduation merch.","https://txag.com/"]]},
 
  {slug:"ucf",short:"UCF",name:"UCF",city:"Orlando, FL",accent:"#8a6d1f",region:"warm",ac:"ac",beds:"Twin XL",movein:"Mid August",
   photo:"",dorm:"",art:{type:"coast",sky:["#3aa6b0","#cfeee7"],sun:"#fff2cf"},
@@ -588,7 +740,39 @@ const SCHOOLS = [
   allowedExtra:["AC is provided","Microwave up to 1000W; fridge up to 5 cu ft"],bannedExtra:["Toasters, toaster ovens, George Foreman grills (no ventilation)","Personal A/C units"],
   housing:"https://www.housing.ucf.edu/faq/what-am-i-allowed-to-have-in-my-room/",
   notes:[["Hurricane season is real","Aug–Oct is peak hurricane season. Know UCF's emergency alerts and evacuation plan, and keep a small kit of water, batteries, and chargers."],["Power-strip spec","UCF requires a 120V, UL-approved power strip with a built-in circuit breaker, max 6 ft cord and 6 outlets. Skip plain extension cords."],["Bring an Ethernet cable","Some devices can't join the campus Wi-Fi, so a wired connection is handy. Time shipments to land near move-in — the mail center is slammed."]],
-  links:{official:[["What's allowed in my room","https://www.housing.ucf.edu/faq/what-am-i-allowed-to-have-in-my-room/"],["Before you arrive","https://www.housing.ucf.edu/movein/before/"],["Cooking & appliances","https://www.housing.ucf.edu/faq/may-i-cook-in-my-room/"]],contact:[["Housing & Residence Life","Housing@ucf.edu"],["Phone","407-823-4663"]],community:[["UCF parents (Facebook)","https://www.facebook.com/search/groups/?q=UCF%20parents"]]}},
+  links:{official:[["What's allowed in my room","https://www.housing.ucf.edu/faq/what-am-i-allowed-to-have-in-my-room/"],["Before you arrive","https://www.housing.ucf.edu/movein/before/"],["Cooking & appliances","https://www.housing.ucf.edu/faq/may-i-cook-in-my-room/"]],contact:[["Housing & Residence Life","Housing@ucf.edu"],["Phone","407-823-4663"]],community:[["UCF parents (Facebook)","https://www.facebook.com/search/groups/?q=UCF%20parents"]]},
+  housingSteps:[
+    {when:"First decision",title:"Pick your agreement type",body:"<b>Academic (2-semester)</b> housing is aimed at first-years — you leave for winter break and get weekly cleaning service. <b>Annual (3-semester)</b> housing is apartment-style and you keep the room over breaks. Most freshmen choose Academic."},
+    {when:"Apply + prepay",title:"Submit your application and prepayment",body:"First-year students get preference for housing on the main Orlando campus. Apply and pay your prepayment within the window to be considered for your preferred community and room type. Main-campus housing fills well before fall — apply early."},
+    {when:"In the portal",title:"Set your profile & roommate preferences",body:"Log into the Housing Portal and update your profile — this drives roommate matching. You can also opt into Open Housing and answer the matching questions here."},
+    {when:"Optional",title:"Request a Living-Learning Community",body:"LLCs like EXCEL/COMPASS, Nursing @ Nike, or Honors connect you to a smaller community with shared programming. All except Honors live in Academic-agreement communities; Honors lives in Tower III (requires a Towers agreement)."},
+    {when:"Room selection",title:"Choose your room",body:"In Room Selection you can review buildings and floor plans to pick rooms near the features and landmarks you care about. Then watch for your move-in details by community."}],
+  communities:[
+    {name:"Apollo Community",blurb:"The oldest and smallest first-year community (~418 residents), built in 1967. Cement-and-cinderblock character, but unbeatable location — closest to the library, Reflection Pond, and Student Union, near the 63 South dining hall. The cheapest on-campus option.",halls:[
+      {name:"Lake, Volusia, Osceola, Polk Halls",tag:"Suite-style",desc:"Four- and five-person suites; you share a bedroom with one roommate and a bathroom/common area with three or four suitemates. Central and affordable."}]},
+    {name:"Libra Community",blurb:"Large first-year residence halls from 1980 on the southeast side, near the Student Health Center and 63 South dining. The biggest first-year community (~1,000 residents), close to the Recreation and Wellness Center.",halls:[
+      {name:"Citrus, Sumter, Flagler Halls",tag:"Suite-style",desc:"Double-occupancy, suite-style — four students share a bathroom. Furthest of the academic-year communities from the heart of campus, but right by the gym."}]},
+    {name:"Academic Village — Nike & Hercules",blurb:"Separate but identical communities built side-by-side (2001–02), each with apartment buildings and residence halls that mainly house first-years. On the south end of campus.",halls:[
+      {name:"Nike & Hercules Halls",tag:"Suite + apartment",desc:"Residence-hall suites: two shared bedrooms, one bathroom per four-person suite. Apartments: four private bedrooms, two baths, a living room and full kitchen. Home to the Nursing @ Nike LLC."}]},
+    {name:"Neptune Community",blurb:"The third Academic Village community, next to Nike and Hercules. Apartment-style with a little extra storage built in.",halls:[
+      {name:"Neptune",tag:"4/2 apartments",desc:"Four bedrooms, two baths, with a pantry area built next to the bathrooms — more storage than most. Apartment living with a freshman-friendly community around it."}]},
+    {name:"Lake Claire & The Towers",blurb:"Apartment-style options. Lake Claire (1993) sits dead-center on campus near the Lake Claire recreation area. The Towers at Knights Plaza (2007) are the most-wanted apartments — singles, full kitchens, ringed by eateries and the football stadium — though mainly upperclassmen, athletes, and honors students.",halls:[
+      {name:"Lake Claire Apartments",tag:"4/2 · central",desc:"Older 4-bed/2-bath apartments, smack in the middle of campus — roll out of bed to class. Full kitchen, no meal plan required."},
+      {name:"Towers I–IV",tag:"Newest apartments",desc:"Fully-furnished singles in 4/2 or 4/4 layouts with full kitchens. Steps from Subway, Domino's, Starbucks, the arena, and the stadium. The priciest on-campus option — and worth it to many. Tower III houses the Honors LLC."}]}],
+  area:[
+    ["Tradition","The Pegasus Seal","","Never step on the Pegasus seal in the Student Union — legend says you won't graduate. You'll see students carefully walking around it whenever the velvet ropes are down."],
+    ["Shopping & dining","Waterford Lakes Town Center","","The big nearby open-air shopping, dining, and movie complex (~3 miles south) where students and visiting families run errands and grab meals."],
+    ["Knights Plaza","Restaurants at the Towers","","An on-campus retail strip by the stadium — Subway, Domino's, Starbucks, Jimmy John's, Gringos Locos, and Knightro's all-you-can-eat. Easy for a quick bite during a visit."],
+    ["Day trip","Downtown Orlando & theme parks","","UCF's newest housing (UnionWest) is downtown near the Amway Center and theaters, ~14 miles away. And of course the Orlando theme parks are a short drive for a family weekend add-on."]],
+  stay:[
+    ["On campus · boutique","The Celeste Hotel","At the campus entrance","A Marriott Tribute Portfolio boutique hotel right at the UCF entrance, with a celestial/space theme and the Aurora restaurant. Walkable to Family Weekend events and move-in — the most convenient stay.","https://thecelestehotel.com/"],
+    ["Reliable · ~1 mile","DoubleTree by Hilton Orlando East–UCF","On Alafaya Trail","A 4-star option right on Alafaya Trail at the main entrance, with shuttle service to simplify the commute. A favorite for visiting families and prospective students."],
+    ["Family-friendly suites","Residence Inn / Homewood Suites — UCF Area","East Orlando","Extended-stay suites with separate living areas and full kitchenettes — ideal for multi-day move-in or graduation stays. Residence Inn even offers complimentary grocery delivery.",""]],
+  stayNote:"<b>Book early for commencement and home football.</b> Rooms along Alafaya Trail — closest to the Addition Financial Arena (graduation) and the Bounce House stadium — are in high demand during commencement season and game weekends. UCF posts an official hotel-accommodations list for graduation; reserve as soon as your dates are set.",
+  merch:[
+    ["UCF Campus Store","Official Barnes & Noble store at 101 Aquarius Agora Dr — apparel, gifts, textbooks, tech, and a Starbucks café.","https://ucf.bncollege.com/"],
+    ["UCF True Spirit Shop","The university's official online store for Knights apparel and accessories.","https://ucf.bncollege.com/"],
+    ["Alumni Hall","The first off-campus UCF merch store — a big independent spirit-shop selection.","https://www.alumnihall.com/"]]},
 
  {slug:"asu",short:"ASU",name:"ASU",city:"Tempe, AZ",accent:"#8C1D40",region:"warm",ac:"ac",beds:"Twin XL",movein:"Mid August",
   photo:"",dorm:"",art:{type:"desert",sky:["#df6a3f","#f4c07a"],sun:"#ffe6b0"},
@@ -600,7 +784,38 @@ const SCHOOLS = [
   allowedExtra:["AC is provided and essential","Microwave ≤700W, fridge ≤4.0 cu ft"],bannedExtra:["Any appliance with an exposed/heated coil","Personal A/C units, neon signs, halogen lamps","Security cameras and recording devices","Alcohol and empty alcohol containers (ASU is dry)"],
   housing:"https://housing.asu.edu/housing-resources/housing-policies-and-procedures",
   notes:[["Heat is the hazard","Hydration and sun protection are the real priorities — a hat, sunglasses, and SPF beat anything cold-weather. Monsoon season brings sudden dust storms and downpours."],["The Fast Pass","Move-in runs on a printed \"Fast Pass\" emailed ~48 hours before your slot, plus your Sun Card ID. Checking in off-schedule can forfeit assisted move-in."],["AC is built in","Rooms are air-conditioned — skip a personal unit. A small fan can still help circulate air."]],
-  links:{official:[["Housing policies & procedures","https://housing.asu.edu/housing-resources/housing-policies-and-procedures"],["Housing FAQ","https://housing.asu.edu/faqs"],["Resources & what to bring","https://housing.asu.edu/resources"]],contact:[["University Housing","https://housing.asu.edu/contact-us"]],community:[["ASU parents (Facebook)","https://www.facebook.com/search/groups/?q=Arizona%20State%20University%20parents"]]}},
+  links:{official:[["Housing policies & procedures","https://housing.asu.edu/housing-resources/housing-policies-and-procedures"],["Housing FAQ","https://housing.asu.edu/faqs"],["Resources & what to bring","https://housing.asu.edu/resources"]],contact:[["University Housing","https://housing.asu.edu/contact-us"]],community:[["ASU parents (Facebook)","https://www.facebook.com/search/groups/?q=Arizona%20State%20University%20parents"]]},
+  housingSteps:[
+    {when:"After you deposit",title:"Housing options appear by major",body:"Once you're admitted and have paid your enrollment deposit, housing options are presented in the My Housing Portal based on your campus and academic major — ASU groups first-years into <b>Residential Colleges</b> tied to their college. Review them the moment you deposit; it improves your odds of getting your preferred community."},
+    {when:"Apply early — priority deadline ~May 15","title":"Apply and sign the License Agreement",body:"Applications typically open in mid-January with a May 15 priority deadline. With 10,000+ new first-years a year, earlier is better. You'll agree to the full-academic-year License Agreement and pick a meal plan in the portal."},
+    {when:"In the portal",title:"Use Roommate Finder and self-select your room",body:"ASU lets you self-select your actual room and bed via the Room Search Wizard, and find or request roommates through the Roommate Finder tool. If you're a roommate group's \"Group Leader,\" make sure you book enough beds for everyone."},
+    {when:"Until early May",title:"Change your mind freely (then it locks)",body:"You can return to the portal to swap your bed space until early May. After that, self-selection closes and changes go to an email request line; room changes can't be processed after late June as they prep for move-in."},
+    {when:"Move-in day (assigned slot)",title:"Arrive with your Fast Pass and Sun Card",body:"Your move-in date, time, and check-in location post to MyASU in July. Bring your printed Fast Pass (available 48 hrs before) and your ASU/Sun Card Mobile ID. AC is provided, so skip a unit."}],
+  communities:[
+    {name:"Manzanita Hall (Liberal Arts & Sciences)",blurb:"The iconic 15-story tower on the north edge of campus, across from Sun Devil Stadium and two blocks from Mill Avenue. Co-ed, double-occupancy with suite-style baths, and home to Manzy Square, an all-you-care-to-eat dining hall. One of the most sought-after first-year buildings for its location.",halls:[
+      {name:"Manzanita",tag:"Suite-style tower",desc:"Doubles sharing suite bathrooms; two-story lounges with community kitchens, a fitness center, and dining on-site. Houses the Liberal Arts & Sciences residential college."}]},
+    {name:"Tooker House (Fulton Schools of Engineering)",blurb:"The newest and largest first-year hall (1,594 beds, opened 2017), built for engineering students. Suite-style with learning labs, makerspaces, a dining hall, and a P.O.D. market built in. Modern, hotel-like, and competitive.",halls:[
+      {name:"Tooker House",tag:"Newest · engineering",desc:"Single and double suite-style rooms, two-story lounges with community kitchens, fitness center, and on-site dining. The engineering residential college lives here."}]},
+    {name:"Palo Verde East & West (Liberal Arts & Sciences)",blurb:"Paired first-year halls on the north side near Manzanita. The Palo Verde East Hub is the local nerve center — Starbucks, a UPS Store, the Sun Spot tutoring space, and the P.O.D. Market.",halls:[
+      {name:"Palo Verde East / West",tag:"Suite-style",desc:"Double-occupancy, suite-style. Central north-campus location near dining and the retail hub, close to athletics facilities."}]},
+    {name:"Barrett, the Honors College complex",blurb:"A dedicated honors village (Cereus, Agave, Cottonwood, Rosewood, Juniper, Willow, Sustainability House) with its own dining and courtyards — LEED-certified and built specifically for honors students at every stage. You must be admitted to Barrett to live here.",halls:[
+      {name:"Cereus · Agave · Cottonwood · Rosewood · Juniper · Willow",tag:"Honors",desc:"State-of-the-art honors halls with breezeways, open courtyards, and embedded academic and residential support. Among the nicest housing on campus."}]},
+    {name:"San Pablo, Hassayampa & others",blurb:"Additional first-year communities tied to specific colleges — San Pablo (Health Solutions, Teachers College, Future of Innovation) and Hassayampa Academic Village (W. P. Carey business). Each clusters you with students in your field.",halls:[
+      {name:"San Pablo · Hassayampa Academic Village",tag:"By college",desc:"Suite-style, college-themed communities. Hassayampa houses business students; San Pablo serves health, education, and innovation majors."}]}],
+  area:[
+    ["The strip","Mill Avenue District","https://www.downtowntempe.com/","Tempe's college main street, against the northwest edge of campus — restaurants, bars, boutiques, and the Valley Metro Streetcar. Where students and visiting families eat and wander."],
+    ["Local legend","The Chuckbox","","A historic Tempe burger joint cooked over charcoal right in front of you — an ASU rite of passage and a parent-weekend favorite. Cornish Pasty Co. nearby is another walkable classic."],
+    ["Architecture & shows","ASU Gammage","https://www.asugammage.com/","A Frank Lloyd Wright–designed theater, one of the largest university performing-arts venues in the world, hosting touring Broadway productions. Worth a tour even without a show."],
+    ["Outdoors","Tempe Town Lake & 'A' Mountain","","Kayaking and paddleboarding on the lake, or a short hike up Tempe Butte ('A' Mountain) for skyline views. Papago Park and the Desert Botanical Garden are a short drive."]],
+  stay:[
+    ["On campus · newest","Omni Tempe Hotel at ASU","Steps from campus, Mill & University","ASU's own hotel, opened recently at the corner of Mill and University — a 5-minute walk to campus with a rooftop pool, multiple restaurants, and blocks held for Family Weekend, move-in, Homecoming, and graduation. The most convenient stay, books first.","https://www.omnihotels.com/hotels/tempe-asu"],
+    ["Iconic · walkable","Tempe Mission Palms","Downtown Tempe, steps to Mill Ave","A AAA Four-Diamond Tempe landmark with palm-lined exterior, lush courtyard, rooftop pool, and airport shuttle. A longtime parent-weekend favorite for its location.","https://www.hyatt.com/destination-by-hyatt/en-US/phxdt-tempe-mission-palms"],
+    ["Extended stay","Residence Inn Tempe Downtown/University","Just east of Mill Ave","Suites with full kitchens next to Tempe City Hall — ideal for multi-day move-in or graduation stays when you want space and to cook. The Westin Tempe and Canopy by Hilton are other strong downtown options.","https://visit.asu.edu/travel"]],
+  stayNote:"<b>ASU posts an official visitor hotel list with negotiated rates</b> at visit.asu.edu/travel — start there. Graduation, Family Weekend, and home-football weekends fill the walkable downtown hotels fast and push multi-night minimums, so book the on-campus Omni and the Mission Palms as early as your dates are set. Sky Harbor airport is only ~10 minutes away if closer hotels are full.",
+  merch:[
+    ["Sun Devil Campus Stores","The official ASU bookstore — apparel from Adidas and Champion, gifts, diploma frames, drinkware, plus textbooks and tech. Multiple Tempe and downtown locations.","https://www.bkstr.com/arizonastatestore/home"],
+    ["Sun Devil Marketplace","The downtown-Tempe retail flagship for ASU apparel and gifts, general books, supplies, and a Grab 'N' Go market.","https://www.downtowntempe.com/go/sun-devil-marketplace"],
+    ["ASU Sun Devils Team Shop","The athletics fan-gear store — maroon-and-gold game-day jerseys, hats, and tailgate gear for the whole family.","https://www.bkstr.com/arizonastatestore/thesundevils"]]},
 
  {slug:"osu",short:"Ohio State",name:"Ohio State",city:"Columbus, OH",accent:"#a30000",region:"cold",ac:"varies",beds:"Twin XL",movein:"Mid–late August",
   photo:"",dorm:"",art:{type:"midwest",sky:["#6f86a8","#cdd9e6"],sun:"#f0ead8"},
@@ -612,7 +827,37 @@ const SCHOOLS = [
   allowedExtra:["A fan (rooms list it as recommended)"],bannedExtra:["Personal A/C units","Personal fridges and microwaves (one is provided)","Candles, incense, contact paper, carpet padding","Wireless printers (use Follow Me Printing)"],
   housing:"https://housing.osu.edu/resources/what-to-bring/",
   notes:[["A fridge/microwave is provided","Every residence-hall room comes with a combo unit — don't buy or rent one. Bring a fan, since AC varies by building."],["Pack for a real winter","A waterproof insulated coat and boots aren't optional by December. Ship them at fall break if your August car is full."],["Printing","Wireless printers aren't supported. Use a USB-connected printer or Ohio State's Follow Me Printing program."]],
-  links:{official:[["What to bring","https://housing.osu.edu/resources/what-to-bring/"],["What to bring (Columbus PDF)","https://housing.osu.edu/posts/documents/what-to-bring-columbus-campus.pdf"],["Housing & Residence Education","https://housing.osu.edu/"]],contact:[["Housing & Residence Education","https://housing.osu.edu/"]],community:[["Ohio State parents (Facebook)","https://www.facebook.com/search/groups/?q=Ohio%20State%20parents"]]}},
+  links:{official:[["What to bring","https://housing.osu.edu/resources/what-to-bring/"],["What to bring (Columbus PDF)","https://housing.osu.edu/posts/documents/what-to-bring-columbus-campus.pdf"],["Housing & Residence Education","https://housing.osu.edu/"]],contact:[["Housing & Residence Education","https://housing.osu.edu/"]],community:[["Ohio State parents (Facebook)","https://www.facebook.com/search/groups/?q=Ohio%20State%20parents"]]},
+  housingSteps:[
+    {when:"Emailed in rounds from ~mid-March",title:"Complete your housing contract",body:"Contract materials are emailed to your Ohio State account in rounds, based on your admit date. You'll finish the contract online and pay a $300 space-reservation fee plus a $50 filing fee to lock your spot. Most first- and second-years are required to live on campus."},
+    {when:"Preferences deadline ~early March",title:"Set your area and room preferences",body:"In the contract you preference your campus area (North, South, or West) and room type. North halls are newer with AC and suite baths; South is older, social, with community baths; West is quieter and near research facilities. Pick a Rate tier that matches the privacy and occupancy you want."},
+    {when:"After preferences",title:"Apply for a Living-Learning Community (optional)",body:"LLCs — Business Honors, Engineering House, Future Health Professionals, Mount Leadership Society, and dozens more — put you on a floor with peers in your field plus dedicated advisors. Select them as a preference during your contract window; some need a short supplemental application."},
+    {when:"Selection windows in spring",title:"Match roommates and self-select your room",body:"Form a mutual roommate request in the housing portal, then choose your actual room during your assigned Room Select timeslot. Earlier windows get more options, so match roommates before your slot so everyone gets pulled in together."},
+    {when:"Assignments emailed ~mid-July",title:"Get your assignment and coordinate",body:"Final hall and room assignments, plus roommate contact info, go out in mid-July. Reach out to your roommate to split who brings the fridge-sized extras — though at Ohio State the fridge/microwave combo is already provided in every room."}],
+  communities:[
+    {name:"North Campus",blurb:"The newest, most modern district — air-conditioned halls, updated study lounges, and the North Recreation Center. Quieter and academically focused; ideal if your classes are in Engineering, Fisher (business), or Arts & Sciences. Walking distance to the 18th Avenue Library and Traditions at Scott dining.",halls:[
+      {name:"Houston, Scott, Blackburn, Nosker, Bowen Houses",tag:"Newest · AC",desc:"Suite-style and modern corridor rooms with AC and private/semi-private baths. Part of the recent North Residential District transformation — 11 new buildings with ground-floor study and STEP spaces."},
+      {name:"Drackett & Jones Towers",tag:"North towers",desc:"High-rise North Campus living near the Knowlton architecture school and 18th Ave Library. Convenient for STEM and design majors."}]},
+    {name:"South Campus",blurb:"The social heart of first-year life — older buildings, community-style hallway bathrooms, and the most energetic floor communities. Steps from High Street, the Oval, Mirror Lake, and late-night eats. Where many Buckeyes say they made friends fastest.",halls:[
+      {name:"Taylor Tower",tag:"Classic high-rise",desc:"The quintessential OSU dorm — high-rise, lively floors, skyline views from upper floors, and an unbeatable location near High Street. Social but not chaotic, per current residents."},
+      {name:"Smith-Steeb & Park-Stradley",tag:"Social · central",desc:"Centrally located, student-loved halls with spacious rooms and vibrant common spaces near the Oval and dining. Community baths drive the social, tight-knit feel."},
+      {name:"Morrison Tower",tag:"International House",desc:"Home to the International House LLC — a strong pick if you want to live among students from around the world and a more study-friendly South Campus vibe."}]},
+    {name:"West Campus (Lincoln & Morrill Towers)",blurb:"Massive suite-style towers across the Olentangy River near the RPAC gym and Ohio Stadium. Athlete-friendly, with large suites that build an instant \"family\" feel — and the best perch for a football Saturday. All West halls have AC.",halls:[
+      {name:"Lincoln Tower & Morrill Tower",tag:"Big suites · AC",desc:"Suite layouts with separate bedrooms and study rooms and prized air conditioning. A bus stop at the base (The Drake) makes the slightly-farther location a non-issue. Get a double rather than a quad if you can."}]}],
+  area:[
+    ["The strip","High Street & the University District","","The spine of campus life — restaurants, late-night food, coffee, and shops running alongside campus. Where students and visiting families eat and wander."],
+    ["Arts & dining","Short North Arts District","https://www.experiencecolumbus.com/","Columbus's gallery-and-restaurant district just south of campus, walkable from the South Campus halls and packed with the city's best food and First Friday gallery hops."],
+    ["Campus landmark","The Oval & Mirror Lake","","The green heart of campus and the site of beloved traditions (including the pre-Michigan Mirror Lake jump). A must-see on any campus visit."],
+    ["Family outings","German Village & Columbus Zoo","https://www.experiencecolumbus.com/","Historic brick-street German Village (and the Book Loft) is a charming afternoon; the nationally-ranked Columbus Zoo and COSI science center are easy family add-ons."]],
+  stay:[
+    ["On campus · only one","The Blackwell Inn","On campus, across from Ohio Stadium","Ohio State's only on-campus hotel — a full-service AAA Four-Diamond property steps from the 'Shoe and the Schott, with stadium-view suites and the 2110 restaurant. The most convenient stay; books out first for football and graduation.","https://www.theblackwell.com/"],
+    ["Boutique · Short North","Graduate Columbus","Short North, ~8 min to stadium","A Buckeye-themed boutique hotel in the Short North Arts District, scarlet-and-gray rooms paying homage to Ohio legends, with the Homage Bar. Walkable to the district's dining and a short hop to campus.","https://www.hilton.com/en/hotels/cmhclgu-graduate-columbus/"],
+    ["Cluster · north of campus","Olentangy River Road hotels","~2–3 miles, OH-315","A row of full- and limited-service hotels (Marriott/Residence Inn dual property, Hilton Garden Inn, Fairfield Inn, Hyatt Place) just off OH-315 — reliable when campus hotels are full, surrounded by restaurants. Ohio State's parent office lists campus-area hotels by distance.","https://parent.osu.edu/resources/hotels"]],
+  stayNote:"<b>Football Saturdays drive everything in Columbus.</b> On any home-game weekend in fall — and at spring commencement — campus-area hotels sell out months ahead and enforce two-night minimums and game-day pricing. Book the Blackwell and the Olentangy cluster as early as you have dates; Ohio State's parent office keeps an official list of campus hotels sorted by distance from the Ohio Union.",
+  merch:[
+    ["Barnes & Noble @ Ohio State","The official campus bookstore at the Ohio Union on High Street — Buckeye apparel, gifts, and gear, plus textbooks and tech.","https://ohiostate.bncollege.com/"],
+    ["College Traditions","A beloved independent Ohio State spirit shop near campus, family-run, with one of the deepest selections of scarlet-and-gray gear in Columbus.","https://www.collegetraditions.com/"],
+    ["Ohio State Buckeyes Team Shop","Official Buckeyes athletics fan gear — game-day jerseys, hats, and tailgate essentials for the whole family.","https://shop.ohiostatebuckeyes.com/"]]},
 
  {slug:"uf",short:"Florida",name:"Florida",city:"Gainesville, FL",accent:"#0021A5",region:"warm",ac:"ac",beds:"Twin XL",movein:"Mid August",
   photo:"",dorm:"",art:{type:"coast",sky:["#4aa39e","#d6efe2"],sun:"#fff2cf"},
@@ -624,7 +869,40 @@ const SCHOOLS = [
   allowedExtra:["AC is provided","Microwave under 1500W; small fridge"],bannedExtra:["Candles, hot plates, grills, open-flame items","Oversized appliances and large furniture"],
   housing:"https://housing.ufl.edu/resources/conduct/",
   notes:[["GatorMove appointment","Move-in is by a scheduled GatorMove time booked in the myUFL portal; display your Gator1 card and enter the unloading-zone gate code on arrival."],["Hurricane season","Fall is hurricane season — keep a small kit and know UF's emergency guidance and alerts. Quick-dry fabrics beat cotton in the humidity."],["Approved animals","Beyond service animals, UF allows certain small approved pets in the halls; emotional-support animals go through HRESupportAnimals@ufsa.ufl.edu."]],
-  links:{official:[["Housing & Residence Education","https://housing.ufl.edu/"],["Conduct & community standards","https://housing.ufl.edu/resources/conduct/"],["On-campus packing list (PDF)","https://studentlife.ufl.edu/wp-content/uploads/2020/08/On-Campus-Packing-List-Traditional-Style.pdf"]],contact:[["Support animals","HRESupportAnimals@ufsa.ufl.edu"],["Housing & Residence Life","https://housing.ufl.edu/"]],community:[["Florida parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Florida%20parents"]]}},
+  links:{official:[["Housing & Residence Education","https://housing.ufl.edu/"],["Conduct & community standards","https://housing.ufl.edu/resources/conduct/"],["On-campus packing list (PDF)","https://studentlife.ufl.edu/wp-content/uploads/2020/08/On-Campus-Packing-List-Traditional-Style.pdf"]],contact:[["Support animals","HRESupportAnimals@ufsa.ufl.edu"],["Housing & Residence Life","https://housing.ufl.edu/"]],community:[["Florida parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Florida%20parents"]]},
+  housingSteps:[
+    {when:"As early as possible — even before admission",title:"Apply to lock your priority date",body:"You can apply for housing through your application status page the moment you apply to UF, with a $25 non-refundable fee. Your <b>priority date</b> is set by when you apply, and it drives your room-selection appointment. On-campus housing is not guaranteed, so apply early — this is the single biggest lever you control."},
+    {when:"By May 1",title:"Sign your Student Housing Agreement",body:"Once admitted, review and sign the Housing Agreement in the Housing Portal on or before May 1. If you're under 18, a parent or guardian must also sign. This is what converts your application into a real spot."},
+    {when:"After signing",title:"Build your roommate profile and group",body:"Complete a roommate profile (display name, bio, lifestyle questionnaire), then add a specific roommate by GatorLink or browse matches. Roommates are grouped in pairs (two pairs can request to live together). Note: an incoming student can't pair with a current student in the system — have that friend email Housing instead."},
+    {when:"Optional",title:"Add Living-Learning Communities",body:"LLCs are optional and available with a Fall/Spring agreement — Out-of-Stater Gator (Broward/Rawlings), GatorWell (Jennings), Pre-Health (North), Entrepreneurship (Infinity), engineering (East), and many more. Add them as preferences in the portal."},
+    {when:"Appointment time by priority date",title:"Select your actual room",body:"You'll get an emailed room-selection appointment based on your priority date. At your time, choose your building and room; in a roommate pair, the person with the earliest appointment picks for both. Then watch for move-in details about your GatorMove time."}],
+  communities:[
+    {name:"Broward Area",blurb:"The social heart of first-year life, near Turlington Plaza, the Reitz Union, and sorority row. Traditional halls with hallway-style community baths and the most energetic open-door culture — these fill first, so preference them early.",halls:[
+      {name:"Broward Hall",tag:"Most social",desc:"~690 residents, recently renovated with a game room and piano, and the renovated Broward Dining Center next door. The quintessential loud, active, meet-everyone freshman hall. Bring your own fridge; floor kitchens have a microwave and range."},
+      {name:"Jennings Hall",tag:"Social · LLC",desc:"Traditional doubles and triples, home to the GatorWell LLC, with a game room, classroom, and study lounge. Similar social vibe to Broward and popular with students rushing sororities."},
+      {name:"Rawlings & Beaty Towers",tag:"Traditional / suite",desc:"Rawlings offers doubles and a food market (Out-of-Stater Gator LLC); Beaty Towers is iconic suite-style living where you share a bath with just your suitemates — a draw for first-years who want more privacy."}]},
+    {name:"Yulee Area",blurb:"Mallory, Yulee, and Reid Halls are physically connected in a 'Y,' renovated around 2010, more peaceful than rowdy Broward but still central near the College of Education and the arts colleges. Cypress Hall is the area's modern standout.",halls:[
+      {name:"Mallory · Yulee · Reid Halls",tag:"Connected · classic",desc:"The first permanent women's halls at UF (1950), now coed, with single/double/triple rooms and shared facilities. Spacious and central; floor kitchens have a microwave and stove, but bring your own room fridge."},
+      {name:"Cypress Hall",tag:"Newest · accessible",desc:"Opened 2015 — the hidden gem of the area. Single, double, and 'super' suites, full-size beds, modern rooms, and enhanced accessibility features. Frequently ranked among the best dorms on campus."}]},
+    {name:"Murphree Area",blurb:"UF's oldest and most picturesque quarter — historic brick, collegiate-Gothic buildings near the Reitz Union and Ben Hill Griffin Stadium. Strong sense of community and an unbeatable location for football Saturdays.",halls:[
+      {name:"Buckman, Sledd, Thomas, Fletcher Halls",tag:"Historic",desc:"Buckman is on the National Register of Historic Places; Thomas sits steps from the Reitz Union and the Swamp. Aesthetic, tight-knit, and central — just note that parking in this area is notoriously tight."}]},
+    {name:"Honors Village & Hume",blurb:"For Honors students. The brand-new Honors Village (opened Fall 2023) is a five-building, 1,400-resident complex with a Learning Commons; Hume Hall (East/West around Hume Commons) is the well-loved former honors dorm.",halls:[
+      {name:"Honors Village",tag:"Newest · Honors",desc:"Four residence halls plus a Learning Commons on the east side of campus. Themed floors with a meditation space, library, music practice rooms, and a makerspace. Traditional and suite room types; mainly Honors College students."},
+      {name:"Hume Hall",tag:"Honors · suite",desc:"Built 2002, split into Hume East and Hume West around the central Hume Commons. Suite-style with single/double rooms, prized for its central location near the Reitz Union, the Hub, and engineering."}]}],
+  area:[
+    ["Downtown","Downtown Gainesville & Midtown","https://www.visitgainesville.com/","The walkable downtown and Midtown strips near campus — restaurants, coffee, music venues, and the Hippodrome theater. Where students and visiting families eat and gather."],
+    ["The classic","Satchel's Pizza & Bagels","","A legendary, only-in-Gainesville pizza joint with a quirky junkyard-art atmosphere — a parent-weekend favorite. Other local icons include The Top and Maude's downtown."],
+    ["Nature","Paynes Prairie & Devil's Millhopper","https://www.visitgainesville.com/","North-central Florida's natural draws — wild bison and alligators at Paynes Prairie, a giant sinkhole at Devil's Millhopper, and crystalline springs (Ginnie, Ichetucknee) a short drive away."],
+    ["Campus icon","Lake Alice & the Bat Houses","","At dusk, hundreds of thousands of bats stream out of UF's lakeside bat houses — a genuinely unique campus spectacle worth timing a visit around."]],
+  stay:[
+    ["On campus","Reitz Union Hotel","Inside the student union, ~10 min walk to stadium","UF's on-campus hotel atop the Reitz Union — 36 rooms, complimentary breakfast and reserved campus parking, with the bookstore and a food court downstairs. Unbeatable for graduation and game weekends (special rates and minimums apply, and rooms go fast).","https://union.ufl.edu/hotel/"],
+    ["Upscale · near campus","Hotel ELEO","SW 14th St, by UF Health/Shands","A 173-room upscale hotel with modern Italian-furnished rooms, lake views, Covey Kitchen + Cocktails, and a shuttle to the UF Health complex. The go-to for visiting families touring campus or here for graduation.","https://www.hoteleleo.com/"],
+    ["Conference center","Hilton UF Conference Center","SW 34th St, edge of campus","A full-service hotel on the southwest edge of campus with on-site dining and event space — reliable for parents' weekend and a frequent base for graduation. Plenty of I-75 corridor hotels (Marriott, Drury, AC) back it up.","https://www.visitgainesville.com/"]],
+  stayNote:"<b>Graduation and home football weekends are the crunch.</b> The Reitz Union Hotel and the closest properties sell out months ahead with special rates and multi-night minimums on those weekends. Book as soon as you have a date; the I-75 hotel corridor (a few minutes' drive) is your overflow when campus-adjacent rooms are gone.",
+  merch:[
+    ["UF Bookstore & Welcome Center","The official campus store in the Reitz Union — Gator apparel, gifts, gear, textbooks, and tech, right in the heart of campus.","https://www.bsd.ufl.edu/bookstore/"],
+    ["Gator Team Shop (Fanatics)","The official Florida Gators athletics store — game-day jerseys, hats, and tailgate gear for the whole family.","https://www.floridagators.com/"],
+    ["The Swamp Shop / Gator Spirit","Locally-run Gainesville spirit stores with deep selections of orange-and-blue casualwear and game-day gear near campus and Midtown.","https://www.visitgainesville.com/"]]},
 
  {slug:"utexas",short:"UT Austin",name:"UT Austin",city:"Austin, TX",accent:"#BF5700",region:"warm",ac:"ac",beds:"Twin XL",movein:"Mid–late August",
   photo:"",dorm:"",art:{type:"plains",sky:["#d98f54","#f3d9a8"],sun:"#fff0cf"},
@@ -636,7 +914,40 @@ const SCHOOLS = [
   allowedExtra:["All residence halls have AC and heat","A MicroFridge is provided in every room"],bannedExtra:["Open-coil appliances: Instant Pots, air fryers, rice cookers, toasters, hot plates, grills","More than two sheets of paper on a door or wall","Wireless (app-based) printers — use UT Print"],
   housing:"https://housing.utexas.edu/housing/residence-halls/residence-hall-resources/mooov-guide/what-bring-and-leave-behind",
   notes:[["A MicroFridge is provided","Every room comes with a combo microwave/refrigerator — don't buy or bring one. Only one fridge per room is allowed."],["AC and heat in every hall","Some rooms are thermostat-controlled, others through facilities — submit a maintenance request to adjust. 3D room tours are posted per hall."],["Decoration & printer rules","No more than two 8.5×11 sheets of paper on a door or wall, and only wired printers work (a $100 port fee applies); otherwise use UT Print."]],
-  links:{official:[["What to bring & leave behind","https://housing.utexas.edu/housing/residence-halls/residence-hall-resources/mooov-guide/what-bring-and-leave-behind"],["Virtual room tours","https://housing.utexas.edu/housing/virtual-tours"],["University Housing & Dining","https://housing.utexas.edu/"]],contact:[["University Housing & Dining","housing@austin.utexas.edu"]],community:[["UT Austin parents (Facebook)","https://www.facebook.com/search/groups/?q=UT%20Austin%20parents"]]}},
+  links:{official:[["What to bring & leave behind","https://housing.utexas.edu/housing/residence-halls/residence-hall-resources/mooov-guide/what-bring-and-leave-behind"],["Virtual room tours","https://housing.utexas.edu/housing/virtual-tours"],["University Housing & Dining","https://housing.utexas.edu/"]],contact:[["University Housing & Dining","housing@austin.utexas.edu"]],community:[["UT Austin parents (Facebook)","https://www.facebook.com/search/groups/?q=UT%20Austin%20parents"]]},
+  housingSteps:[
+    {when:"Application opens Aug. 1",title:"Apply the day the portal opens",body:"You can start your housing application August 1 — before you're even admitted. Earlier is dramatically better: UT prioritizes first-time freshmen but space is limited, and your application date drives everything downstream. In the application you set room-type and bathroom preferences and answer roommate-profile questions."},
+    {when:"Offers start March 1",title:"Sign your contract and pay the prepayment",body:"Housing contract offers go out beginning March 1. Sign the contract and satisfy the $300 prepayment to secure your spot and unlock the next steps."},
+    {when:"Roommate groups open in February",title:"Find and verify your roommate group",body:"Once your contract is signed, build a roommate group in the portal — search by college, major, or UT EID, or by roommate-profile percentage match. The Family & Friend Expanded Roommate Option lets any two enrolled students room together regardless of gender. No specific roommate? Many students just pick into a room with someone already in it."},
+    {when:"LLC deadline ~May 3",title:"Apply for a Living-Learning Community",body:"After signing, indicate interest in an LLC — communities grouped by major, interest, or commitment. You'll get a follow-up email with the campus partner's application link; each LLC has its own timeline, and most close around May 3."},
+    {when:"Room selection time emailed by June 1",title:"Select your room in June",body:"You'll receive your room-selection timeslot by June 1, and selection happens in June. In a roommate group, the person with the earliest slot picks for everyone. Miss your slot and you'll be auto-assigned by preference — those assignments post to the portal in early July."}],
+  communities:[
+    {name:"Jester Center (East & West)",blurb:"The legendary heart of first-year life — once the largest residence hall in North America, housing 3,000+ between the two towers. Traditional shared rooms, smallest on campus, but unbeatable for meeting people. Attached to J2 and Jester City Limits dining, steps from Gregory Gym and the PCL.",halls:[
+      {name:"Jester West",tag:"Social · central",desc:"A 14-story hall inside the Jester hub. Social and diverse, consistently posts the 'happiest residents' in UT's housing surveys. Communal or suite-style baths; rooms are compact but the energy is the draw."},
+      {name:"Jester East",tag:"Most social",desc:"A 10-story hall neighboring the Jester hub. Bustling and busy — ideal if you want to be immersed in campus life from day one. Recently renovated."}]},
+    {name:"San Jacinto Hall",blurb:"\"San Jac\" — one of the newest and nicest dorms, the classic \"I want to live there\" pick. Modern suite-style with semi-private/private bathrooms, study rooms on each floor, even a small movie theater, and its own underground parking garage. Quieter and more upscale; near the stadium and Moody/engineering buildings.",halls:[
+      {name:"San Jacinto",tag:"Modern · suite",desc:"Bigger-than-Jester rooms, private bathrooms, modern finishes — and one of the priciest options. Popular with athletes and students who prioritize comfort and privacy over maximum social buzz."}]},
+    {name:"Duren Hall",blurb:"The newest hall on the northwest edge of campus, with a boutique-hotel reputation. Individual thermostat control, private or connecting bathrooms, a social lounge opening to a courtyard, game room, gym, and 24-hour study lounges per floor. Close to Kinsolving Dining and the aerospace/communication buildings.",halls:[
+      {name:"Duren",tag:"Newest · boutique",desc:"Suite-style with private or shared-suite baths and a MicroFridge in every room. Comfortable and modern; a bit removed from the central social hubs, which suits students who want a quieter base. Steps from Kerbey Lane, In-N-Out, and Lucky Lab coffee."}]},
+    {name:"Kinsolving Hall",blurb:"\"KinSol\" — UT's all-female hall, a classic that blends history with a strong, family-like community. Especially popular with first-year women and honors students. Its dining hall is widely called the best on campus, and it has its own exercise room.",halls:[
+      {name:"Kinsolving",tag:"All-female · great dining",desc:"On the north side near the communication and psychology buildings. A supportive, empowering environment with one of campus's best buffets right downstairs."}]},
+    {name:"The Honors Quad & courtyard halls",blurb:"For honors students and those wanting tight-knit, historic living. Andrews, Blanton, and Carothers form the Honors Housing Quad (with Littlefield Café, a food favorite); Brackenridge, Roberts, and Prather share an elegant 1930s courtyard near inner campus.",halls:[
+      {name:"Andrews · Blanton · Carothers",tag:"Honors Quad",desc:"Communal, academically-focused honors halls surrounding a shared courtyard. Older buildings, so livelier than you'd expect — there's always something going on. Near Kinsolving Dining."},
+      {name:"Brackenridge · Roberts · Prather",tag:"Historic · courtyard",desc:"1930s charm with wood-accented, light-filled rooms sharing a courtyard. Roberts has a rooftop terrace with one of the best views of the UT Tower on campus. Quiet and cozy."}]}],
+  area:[
+    ["The strip","Guadalupe Street — \"The Drag\"","","The main commercial spine along campus's west edge — fast food, coffee, bookstores, and the University Co-op. Where students and visiting families grab a quick bite between campus stops."],
+    ["Austin icon","South Congress (SoCo) & Zilker Park","https://www.austintexas.org/","A short drive from campus: the SoCo shopping-and-dining strip, Barton Springs' cold spring-fed pool, and Zilker Park. The classic Austin afternoon for a visiting family."],
+    ["Live music","Sixth Street & the music scene","https://www.austintexas.org/","\"The Live Music Capital of the World\" — Sixth Street, the Continental Club, and dozens of venues. Even a casual dinner out comes with a soundtrack."],
+    ["Culture","Blanton Museum & the Bullock","https://www.austintexas.org/","The Blanton Museum of Art (on campus) and the Bullock Texas State History Museum (a five-minute walk) are easy, low-key visit-day stops near the Capitol."]],
+  stay:[
+    ["On campus","AT&T Hotel and Conference Center","On campus, steps from the UT Tower","UT's own upscale hotel — 297 rooms with Tower and Capitol views, mini-fridges, four restaurants, and a pool. It runs in-house festivities for orientation, move-in, parents' weekend, and commencement, and offers 20% off for families attending orientation. The most convenient stay; books first.","https://meetattexas.com/ut-campus"],
+    ["Downtown · walkable","Downtown Austin hotels","~5-min drive south of campus","Downtown sits a five-minute drive away with the city's deepest hotel selection (Hilton Garden Inn, Marriott, boutique options) plus dining and nightlife — a good base when campus rooms are gone, especially over multi-day stays.","https://www.austintexas.org/"],
+    ["West Campus","West Campus & Drag-area hotels","Walk to campus","Hotels just west of campus put you walking-distance to the Drag and the dorms — handy for move-in hauling and parents' weekend. Austin-Bergstrom airport is about 20 minutes out.","https://www.austintexas.org/"]],
+  stayNote:"<b>Home football Saturdays and commencement weekend are the crunch in Austin.</b> The on-campus AT&T Hotel and the closest downtown rooms sell out months ahead with Friday/Saturday game-day pricing and minimums. Book as soon as you have a date; SXSW and ACL festival weekends also swamp the whole city, so check the Austin event calendar before you assume a random fall weekend will be cheap.",
+  merch:[
+    ["The University Co-op","The iconic official Longhorn store on the Drag (Guadalupe St) since 1896 — burnt-orange apparel, gifts, textbooks, and gear, plus the official online shop.","https://www.universitycoop.com/"],
+    ["Texas Longhorns Team Shop","The official UT athletics fan store — game-day jerseys, hats, and tailgate gear for the whole family.","https://texaslonghorns.com/"],
+    ["Bevo's Daily Grind / campus stores","Campus convenience and spirit shops carrying burnt-orange basics and last-minute game-day gear close to the dorms.","https://www.universitycoop.com/"]]},
 
  {slug:"umich",short:"Michigan",name:"Michigan",city:"Ann Arbor, MI",accent:"#00274C",region:"cold",ac:"varies",beds:"Twin XL",movein:"Late August",
   photo:"",dorm:"",art:{type:"midwest",sky:["#4f6488","#b9c6da"],sun:"#f1e9d4"},
@@ -648,7 +959,41 @@ const SCHOOLS = [
   allowedExtra:["All electrical items must be UL-listed","Air-conditioned halls (see below) — otherwise bring a fan"],bannedExtra:["Personal A/C units (only seven named halls are air-conditioned)","Personal wireless routers — campus Wi-Fi only","Humidifiers, unless approved by Housing","Anything displayed on room doors or in windows"],
   housing:"https://housing.umich.edu/policies/",
   notes:[["Which halls have AC","Air-conditioned halls: Alice Lloyd, Couzens, East Quad, Mosher Jordan, North Quad, Stockwell, and West Quad. Anywhere else, bring a fan."],["You don't need a car","Ann Arbor is walkable with free student transit. Lofts and MicroFridges rent through Bedloft rather than coming from home."],["Mind the door rule","Nothing may be displayed on room doors or in windows, and personal Wi-Fi routers aren't allowed — small things that catch people on day one."]],
-  links:{official:[["Policies (regulated & prohibited items)","https://housing.umich.edu/policies/"],["What to bring / leave at home","https://kb.housing.umich.edu/hc/en-us/articles/360005487292-What-to-bring-and-what-to-leave-at-home"],["Prohibited items detail","https://kb.housing.umich.edu/hc/en-us/articles/32856504719629-Regulated-and-Prohibited-Items-in-Michigan-Housing"]],contact:[["Residence Education","ResidenceEducation@umich.edu"],["Housing accommodations","hsg-accommodations@umich.edu"]],community:[["Michigan parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Michigan%20parents"]]}},
+  links:{official:[["Policies (regulated & prohibited items)","https://housing.umich.edu/policies/"],["What to bring / leave at home","https://kb.housing.umich.edu/hc/en-us/articles/360005487292-What-to-bring-and-what-to-leave-at-home"],["Prohibited items detail","https://kb.housing.umich.edu/hc/en-us/articles/32856504719629-Regulated-and-Prohibited-Items-in-Michigan-Housing"]],contact:[["Residence Education","ResidenceEducation@umich.edu"],["Housing accommodations","hsg-accommodations@umich.edu"]],community:[["Michigan parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Michigan%20parents"]]},
+  housingSteps:[
+    {when:"After you confirm enrollment",title:"Complete the housing application",body:"Once you've paid your deposit and have a U-M uniqname, Housing emails you the link to apply. Roughly 97% of first-years live on campus. Important quirk: <b>applying earlier gives you no priority</b> — assignment isn't first-come — so take your time and fill it out thoughtfully."},
+    {when:"In the application",title:"Answer the lifestyle questionnaire & form a roommate group",body:"Complete the roommate-matching questions, then search for matches (the portal and the RoomSync app show a compatibility percentage) or request a specific person. The Group Leader creates the roommate group; everyone must have started an application to be added."},
+    {when:"Choose your method",title:"Decide: self-select, or let Housing assign",body:"U-M lets eligible first-years pick how they get a room. <b>Assign-yourself</b> means you choose your exact building and room during a timeslot. <b>Have Housing assign you</b> means they match your campus, community, and room-type preferences for you. You can't change methods once you choose, and all first-year buildings are available either way."},
+    {when:"Note for MLC/Theme students",title:"Specialized communities get assigned",body:"If you're accepted into a Michigan Learning Community (e.g. Lloyd Scholars, Michigan Research & Discovery Scholars, Global Scholars, WISE) or a Theme Community, or approved for an accommodation, you don't self-select — Housing places you in the right building."},
+    {when:"Room Selection ~June 22–25",title:"Select your space (or get assigned June 29)",body:"Self-selecting students get a random Room Selection date and timeslot (emailed in early-to-mid June); roommate groups share a slot, and the group leader assigns everyone. Selection runs roughly June 22–25. Miss it and Housing assigns you, notifying you around June 29."}],
+  communities:[
+    {name:"Central Campus",blurb:"The classic Michigan picture — social, busy, walking distance to the Diag, classes, and city life. The big draws are the recently-renovated, hotel-like Quads. Some buildings are older and can get loud, but you can't beat the location.",halls:[
+      {name:"West Quad",tag:"Renovated · connected to the Union",desc:"Reopened 2015 after a full renovation — ginormous rooms, beautiful bathrooms, lots of study space, and a direct connection to the Michigan Union (and its Starbucks). Social and central; the 'golden letters' housing assignment everyone hopes for. Has AC."},
+      {name:"South Quad",tag:"Best dining · AC",desc:"Renovated in 2014 with a 10-concept dining center widely called the best on campus. Big rooms, nice bathrooms, a 9th-floor quiet study lounge; home to honors students and athletes. Mixed-gender, ~1,170 mostly first-years. Has AC."},
+      {name:"East Quad",tag:"Residential College · AC",desc:"Closest dorm to many classes, by the Ross School and South University shops. Houses LSA's Residential College living-learning community, with the nicest bathrooms on campus and its own dining hall. Has AC."},
+      {name:"North Quad",tag:"Newest · AC",desc:"One of the newest, most modern halls — combines living with academic spaces (the School of Information) and hosts the Global Scholars and Max Kade German programs. Central Campus. Has AC."}]},
+    {name:"The Hill Neighborhood",blurb:"A cluster of large dorms just east of Central Campus, famous for a tight-knit, intensely social first-year scene — the easiest place to make friends fast. The one catch: a short uphill walk back from class. Near the rec building and the Arb.",halls:[
+      {name:"Mary Markley",tag:"All first-year · most social",desc:"The only all-freshman hall (~1,180 students) and a legendary social hub. Rooms are small and it's the farthest Hill dorm from Central Campus, but the energy and the basement 'Hideaway' study space make it a freshman favorite."},
+      {name:"Mosher-Jordan (\"MoJo\")",tag:"Hill dining · AC",desc:"Two halls (Mosher and Jordan) in one building overlooking Palmer Field, home to the Hill-area dining hall and the Victors convenience store. Big rooms and nice study areas; hosts the Michigan Research & Discovery Scholars and WISE programs. Has AC."},
+      {name:"Couzens & Alice Lloyd",tag:"\"Luxury\" Hill halls · AC",desc:"Couzens (~520) and Alice Lloyd (~520, nicknamed 'Alice Palace' after renovations) are the polished Hill options — large, beautiful rooms and baths, mini-kitchens, lots of lounges. Alice Lloyd hosts the Lloyd Scholars for Writing & the Arts. Both have AC."},
+      {name:"Stockwell",tag:"Hill · classic",desc:"A mixed-gender Hill hall (~400) with Collegiate Gothic charm, close to the rec building and Nichols Arboretum. Quieter than Markley but still firmly in the social Hill cluster."}]},
+    {name:"North Campus",blurb:"A quieter, focused neighborhood built around Engineering, the School of Music/Theatre & Dance, and Taubman Architecture. A bus ride from Central Campus, but with its own dining and amenities — natural if your classes are up here.",halls:[
+      {name:"Bursley",tag:"Primarily first-year",desc:"A large, social North Campus hall near Pierpont Commons and the engineering buildings. The daily bus ride builds its own gritty camaraderie; primarily first-years."},
+      {name:"Baits II",tag:"North · amenities",desc:"A North Campus first-year hall (~570) near Michigan Engineering and the music school — cool perks like an in-dorm movie theater, though it's often overlooked due to its distance from Central."}]}],
+  area:[
+    ["The strip","State Street & South University","https://www.annarbor.org/","The two classic campus shopping-and-dining streets, ringing the Diag — bookstores (and the M Den), coffee, and restaurants. Where students and visiting families wander between campus stops."],
+    ["Ann Arbor institution","Zingerman's Delicatessen","https://www.annarbor.org/","A nationally-famous deli in nearby Kerrytown — a genuine pilgrimage for visiting families, plus the weekend Farmers Market and the shops of Kerrytown around it."],
+    ["The Big House","Michigan Stadium tour","https://mgoblue.com/","The largest stadium in the country (~107,000). Even off game-day, seeing the Big House is a rite of passage; on a home Saturday, Ann Arbor transforms entirely in maize and blue."],
+    ["Outdoors & arts","Nichols Arboretum & the Diag","https://www.annarbor.org/","'The Arb' along the Huron River is a beloved walking/peony-garden escape steps from the Hill; the Diag and UMMA (art museum) anchor the central-campus stroll."]],
+  stay:[
+    ["On campus · classic","Bell Tower Hotel","On campus, steps from the Diag & M Den","A charming European-style hotel right on campus across from Hill Auditorium — within a five-minute walk of the Diag, the M Den, and State Street restaurants, with valet parking and free breakfast. The most convenient base for a campus visit; books out for games and graduation.","https://belltowerhotel.com/"],
+    ["Boutique · downtown","Graduate by Hilton Ann Arbor","Downtown, across from campus","A Wolverine-themed boutique hotel a block from campus in the Old Fourth Ward, with college-nostalgia interiors, a cocktail lounge, and Relish restaurant. A favorite for commencement weekend — book early, as rooms are limited and rates climb with U-M events.","https://www.hilton.com/en/hotels/arbgagu-graduate-ann-arbor/"],
+    ["Family-owned · near campus","The Dahlmann Campus Inn","Downtown, near campus","A long-running, family-owned hotel near the University and downtown with cozy rooms, suites, and on-site dining — a comfortable, slightly quieter alternative to the boutique options. Plenty of Marriott/Hilton properties off South Main back it up.","https://www.annarbor.org/"]],
+  stayNote:"<b>Home football Saturdays are the single biggest squeeze in Ann Arbor</b> — with ~107,000 fans pouring in, campus-area hotels sell out months ahead and enforce two-night minimums and game-day pricing. Commencement (late April/early May) is the other crunch. Book the Bell Tower or Graduate as soon as you have a date; rates swing dramatically with the U-M calendar, so check the football schedule before assuming a fall weekend is cheap.",
+  merch:[
+    ["The M Den","The official Michigan Athletics retailer and a campus institution — Wolverine apparel, jerseys, hats, and gear, with multiple locations on and near campus plus the official online store.","https://www.mden.com/"],
+    ["University of Michigan Official Store","The university's own merch and gift shop for Michigan apparel, diploma frames, and alumni gifts.","https://www.bkstr.com/michiganstore/home"],
+    ["Underground Printing / Moe's","Local Ann Arbor shops with deep selections of maize-and-blue tees, sweatshirts, and game-day gear near State Street.","https://www.annarbor.org/"]]},
 
  {slug:"pennstate",short:"Penn State",name:"Penn State",city:"University Park, PA",accent:"#041E42",region:"cold",ac:"varies",beds:"Twin XL",movein:"Late August",
   photo:"",dorm:"",art:{type:"mountain",sky:["#5b6f92","#c2cee0"],sun:"#eee6d2"},
@@ -660,7 +1005,41 @@ const SCHOOLS = [
   allowedExtra:["A fan (many halls have no AC)","University-provided fridge/microwave unit"],bannedExtra:["Personal or portable A/C units (medical accommodation only)","Personal microwaves and refrigerators (one is provided)","Pianos, fitness equipment, and 3D printers","Alcohol — campus is dry regardless of age"],
   housing:"https://liveon.psu.edu/",
   notes:[["Dry campus, fan needed","Alcohol is prohibited on campus regardless of age, and personal A/C units aren't allowed — so bring a fan for the warm early weeks."],["Mail rules","Address packages to the student's legal or chosen name only (no nicknames), and don't put \"Penn State\" in the address; your mailbox number is in eLiving. Packages can't arrive before a set date."],["Self check-in","Verify your move-in slot in eLiving and self-check-in up to two hours before; one vehicle per student unloads. Laundry runs on LionCash."]],
-  links:{official:[["LiveOn (housing)","https://liveon.psu.edu/"],["University Park arrival","https://arrival.psu.edu/university-park"],["Mail & packages","https://liveon.psu.edu/university-park/mail-services"]],contact:[["Housing & Food Services","https://liveon.psu.edu/university-park/contact-us"],["Phone","814-865-7501"]],community:[["Penn State parents (Facebook)","https://www.facebook.com/search/groups/?q=Penn%20State%20parents"]]}},
+  links:{official:[["LiveOn (housing)","https://liveon.psu.edu/"],["University Park arrival","https://arrival.psu.edu/university-park"],["Mail & packages","https://liveon.psu.edu/university-park/mail-services"]],contact:[["Housing & Food Services","https://liveon.psu.edu/university-park/contact-us"],["Phone","814-865-7501"]],community:[["Penn State parents (Facebook)","https://www.facebook.com/search/groups/?q=Penn%20State%20parents"]]},
+  housingSteps:[
+    {when:"When you accept admission",title:"Pay the $100 deposit & accept the HFS Contract",body:"First-years are required to live on campus, and space is guaranteed. Accepting admission with a non-refundable $100 housing deposit (credited to your first bill) starts your LiveOn Housing and Food Service (HFS) Contract — Penn State's term for the housing agreement, not a year-long lease."},
+    {when:"Important — no matching survey",title:"Know that roommates are assigned randomly",body:"Unlike most schools here, <b>Penn State does not use a roommate-matching questionnaire</b> and won't ask about your habits — first-years are randomly paired with other first-years. If you want a specific person, you <b>both</b> must enter each other's Penn State Access Account ID (e.g. abc123) as a roommate preference on the HFS Contract."},
+    {when:"In the contract",title:"Set your housing-area preferences",body:"Preference your housing area — East (all first-year, the biggest and most social), Pollock (second-largest first-year complex), North (suite-style with private baths, the most comfortable), West (oldest and most traditional, near the campus core), or South (mostly upper-class/honors). Room types vary by area."},
+    {when:"Deadline ~noon May 15",title:"Finalize preferences before the modification deadline",body:"You can update your room-type, location, and roommate preferences in eLiving until the preference-modification deadline (around noon on May 15). Popular options fill on demand, so set realistic backups."},
+    {when:"Assignments posted late July",title:"Get your assignment and roommate info",body:"Room and building assignments — plus your roommate's name, Access Account, and cell number — post in eLiving in late July (around July 28). Reach out to coordinate the shared items; remember a fridge/microwave is already provided in the room."}],
+  communities:[
+    {name:"East Halls",blurb:"The largest residence complex and the iconic first-year experience — most residents are freshmen in double rooms, served by Findlay/Johnston Commons. The buildings are named after former Pennsylvania governors and connected by underground tunnels. Recently renovated halls now have AC and private-use bathrooms.",halls:[
+      {name:"Earle & Robinson (newest)",tag:"Newest · private baths",desc:"Opened 2017 — updated traditional halls with double rooms, individual private-use bathrooms, climate control, and ground-floor 'knowledge stations,' kitchens, and music/meditation rooms. Earle is in East; Robinson is the first-year option in North."},
+      {name:"The Towers — Brumbaugh, Pinchot, Sproul, Tener",tag:"Renovated 2019–20",desc:"Renovated high-rises with double and supplemental rooms, climate control, and private-use baths. Pinchot and Tener (~300 each) reopened 2019; Sproul 2020."},
+      {name:"Hastings, Snyder, Stone & others",tag:"Traditional",desc:"Classic 1960s East quad halls with double rooms and common-floor bathrooms (renovations are ongoing area-wide). The most concentrated all-freshman social scene on campus."}]},
+    {name:"Pollock Halls",blurb:"The second-largest first-year complex, a cluster of nine traditional coed halls around Pollock Commons (24-hour recreation room with a pool table and piano, cultural lounge, study space). Most rooms are doubles; a multi-year renovation runs 2025–2030, taking two buildings offline each year.",halls:[
+      {name:"Beaver Hall",tag:"LLC hub",desc:"A larger hall (~534) housing several Living-Learning Communities — Discover House, the Global Engagement Community, Health & Human Development, and the Sophomore Year Experience. Single, double, and quad rooms."},
+      {name:"Hartranft, Mifflin, Pennypacker & others",tag:"Traditional",desc:"Mostly first-year halls with single, double, and small-double rooms. Pennypacker (renovated 2018) houses 273. Central campus location near classrooms and the HUB."}]},
+    {name:"North Halls",blurb:"The smallest and, by reputation, most comfortable complex — carpeted rooms and private bathrooms, mostly suite-style for two or four students. Hosts several Living-Learning Communities and is open to both first-year and upper-class students.",halls:[
+      {name:"Robinson Hall (first-year)",tag:"Newest suite · first-year",desc:"A 2017 updated-traditional hall for ~310 first-years with double rooms and individual private bathrooms, plus a ground-floor living room, kitchen, and sound-proof music room."},
+      {name:"Beam, Holmes, Leete, Runkle",tag:"Suite-style",desc:"Suite-style rooms for two to four, with internal bathrooms — the carpeted, comfortable North standard. Beam (renovated 2009) houses students of all years in one/two/four-person suites."}]},
+    {name:"West & South Halls",blurb:"West Halls is the oldest complex — true collegiate-Gothic brick buildings opening onto a quad with arches at the core of campus (Irvin Hall dates to 1925). South Halls mixes first-year and upper-class halls and is home to Schreyer Honors College students and sorority housing.",halls:[
+      {name:"Hamilton, Thompson, Watts, Irvin (West)",tag:"Oldest · traditional · core of campus",desc:"Traditional halls with single/double/triple/quad rooms and the most central location. Several host special living options (Earth & Mineral Sciences House, IST House, Ally House). Closest to downtown and classes."},
+      {name:"South Halls",tag:"Honors & Greek",desc:"Three traditional halls plus renovated upper-class halls; home to the Schreyer Honors College community and on-campus sorority suites. A quieter, mixed-class area near downtown."}]}],
+  area:[
+    ["Downtown","Downtown State College & College Ave","https://happyvalley.com/","The walkable downtown strip butting right up against campus — the Corner Room, the Berkey Creamery's famous ice cream nearby, coffee shops, and student hangouts. Where families eat on a visit."],
+    ["The Creamery","Penn State Berkey Creamery","https://www.creamery.psu.edu/","The largest university creamery in the country — a genuine pilgrimage for ice cream (the line moves fast). A must-do on any campus visit; you can even ship pints."],
+    ["The shrine","Nittany Lion Shrine & Old Main","https://happyvalley.com/","The Nittany Lion Shrine is the most-photographed spot on campus (expect a line for photos on big weekends); the Old Main lawn and the Arboretum at Penn State round out a classic visit-day walk."],
+    ["Game day","Beaver Stadium & Mount Nittany","https://happyvalley.com/","Beaver Stadium (~107,000) and the legendary White Out games define fall Saturdays; a hike up Mount Nittany gives families a gorgeous overlook of Happy Valley."]],
+  stay:[
+    ["On campus · historic","The Nittany Lion Inn","On campus, by West Halls & Rec Hall","\"Penn State's Living Room\" since 1931 — a AAA Four-Diamond Georgian colonial inn on campus, reopened in 2024 after a full renovation, with fine dining (Lionne) and a casual tavern (Triplett's). The sentimental favorite; books out first for graduation and games.","https://www.thenittanylioninn.com/"],
+    ["On campus · conference","The Penn Stater Hotel & Conference Center","On campus, near Innovation Park","Penn State's larger conference hotel, run by Hospitality Services — reliable for parents' weekend and graduation when the Nittany Lion Inn is full, with on-site dining and event space. Reserve early through Penn State Hospitality Services.","https://www.thepennstaterhotel.psu.edu/"],
+    ["Downtown · boutique","Hyatt Place / The Scholar / downtown hotels","Walk to campus & Beaver Stadium","Downtown State College has several walkable hotels (Hyatt Place State College, The Scholar Hotel, Courtyard, Hotel State College) a block or two from campus and a short hop to Beaver Stadium and the Bryce Jordan Center.","https://happyvalley.com/"]],
+  stayNote:"<b>Happy Valley is remote, and home football weekends — especially the White Out — book out a year ahead</b> with steep rates and multi-night minimums. Graduation and the Arts Festival (July) are the other crunches. The campus hotels go first; reserve the moment you have a date, and check the football schedule before assuming a fall weekend is open. Many families end up 20–40 minutes out on peak weekends.",
+  merch:[
+    ["Penn State Bookstore","The official campus store (Barnes & Noble) — Nittany Lion apparel, gifts, gear, textbooks, and tech, at the HUB-Robeson Center.","https://psu.bncollege.com/"],
+    ["The Family Clothesline","A downtown State College institution on College Ave — one of the deepest selections of Penn State apparel and gifts anywhere, family-run since 1976.","https://www.familyclothesline.com/"],
+    ["McLanahan's & Lions Pride","Downtown shops packed with navy-and-white game-day gear, plus the official Nittany Lions team shop online for jerseys and tailgate essentials.","https://www.shopnittanylions.com/"]]},
 
  {slug:"minnesota",short:"Minnesota",name:"Minnesota",city:"Minneapolis, MN",accent:"#7A0019",region:"cold",ac:"varies",beds:"Twin XL",movein:"Late August",
   photo:"",dorm:"",art:{type:"midwest",sky:["#6a83a6","#d6e0f0"],sun:"#eef2fb"},
@@ -672,7 +1051,39 @@ const SCHOOLS = [
   allowedExtra:["One fridge ≤4.3 cu ft and one microwave ≤700W","UL-marked extension cords / power strips"],bannedExtra:["Personal A/C units (rooms aren't wired for them)","Open-element appliances (air fryer, hotplate, rice cooker, etc.)","E-scooters, e-bikes, hoverboards","Cannabis — banned on campus even though it's legal statewide"],
   housing:"https://housing.umn.edu/residents/moving-breaks/movein/bring",
   notes:[["Don't pack the skis","Storage is tight, so leave skis and snowboards home — University Rec & Wellness rents outdoor gear right on campus, and Info Desks loan some too."],["Winter is the priority","This is the coldest list here. Budget for a proper parka, insulated boots, thermal layers, and real gloves. Use the skyways between buildings in January."],["AC varies","Some halls are air-conditioned, some aren't — bring a fan for the warm early weeks if yours isn't."]],
-  links:{official:[["What to bring","https://housing.umn.edu/residents/moving-breaks/movein/bring"],["Community behavioral standards","https://housing.umn.edu/community/policies/standards"],["Housing & Residential Life","https://housing.umn.edu/"]],contact:[["Housing & Residential Life","https://housing.umn.edu/"]],community:[["Minnesota parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Minnesota%20parents"]]}},
+  links:{official:[["What to bring","https://housing.umn.edu/residents/moving-breaks/movein/bring"],["Community behavioral standards","https://housing.umn.edu/community/policies/standards"],["Housing & Residential Life","https://housing.umn.edu/"]],contact:[["Housing & Residential Life","https://housing.umn.edu/"]],community:[["Minnesota parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Minnesota%20parents"]]},
+  housingSteps:[
+    {when:"Apply early — even before admission",title:"Submit your housing application + $75 fee",body:"Assignments are made by the date your $75 Housing Application Fee is received — so apply early, even before you're admitted or committed. Earlier applicants are far more likely to land a preferred building or room type. First-years are guaranteed a bed if they meet the deadlines and accept any space offered."},
+    {when:"Priority date ~March 1",title:"Pick a Living-Learning Community (optional)",body:"March 1 is the priority date for the 30+ LLCs, each in a designated area of a specific building, at no extra cost. Many fill before March 1, and your LLC can dictate your building, room, and sometimes roommate — accepted students hear in early June. If you and a friend both want in, check that you both qualify."},
+    {when:"Confirm with the $200 guarantee",title:"Lock your spot with the housing guarantee",body:"Admitted first-years pay their enrollment confirmation fee plus a $200 housing guarantee (credited to fall charges) to secure a bed in University housing. Availability narrows fast, so confirm promptly to stay eligible for your preferred roommate requests."},
+    {when:"Changes accepted until ~May 15",title:"Add roommates and refine preferences",body:"You can log back in until around May 15 to update preferences and form a roommate group without affecting your original application date. Roommate requests are mutual — enter your roommate's Internet ID and they must accept. No request? Use Roommate Search (opens in spring) or let Housing match you from your application answers."},
+    {when:"Assignments by end of July",title:"Get your building, room & roommate",body:"Guaranteed students receive complete assignment details and roommate info by the end of July. (Apply after the guarantee deadline and you may not hear until mid-August, possibly in expanded/temporary space.) Coordinate the shared items once you know your hall."}],
+  communities:[
+    {name:"The Superblock",blurb:"Four large residence halls packed into a four-block space by the medical center — the highest concentration of students on campus and the undisputed social hub, especially on weekends. Almost entirely first-years. If you want to be where everything's happening, this is it.",halls:[
+      {name:"Pioneer Hall",tag:"Renovated · dining",desc:"Fully renovated in 2019 — five floors, 756 residents, its own dining hall, singles/doubles/triples sharing common bathrooms (~5 rooms per bath). Modern and central to the Superblock energy."},
+      {name:"Centennial, Frontier & Territorial Halls",tag:"Classic · most social",desc:"The three other Superblock towers — high-energy, traditional first-year halls with common-floor bathrooms. Frontier and Territorial share an identical interior; the whole cluster is where Superblock weekends happen."}]},
+    {name:"Dinkytown",blurb:"Halls on the edge of the famous Dinkytown neighborhood — college-town coffee shops, late-night eats, and the Varsity Theater steps away. A great mix of social energy and easy access to off-campus food and culture.",halls:[
+      {name:"17th Avenue Hall",tag:"Newest · 2013",desc:"The newest residence hall (opened 2013) — 600 beds, mostly doubles, with a Fresh Food Market dining concept and a prime Dinkytown-adjacent location. Modern and consistently a top first-year pick."},
+      {name:"Sanford & Wilkins",tag:"Historic · Knoll area",desc:"Sanford Hall sits in the historic, century-old Knoll area near the humanities buildings; Wilkins is the adjacent apartment-style option. Quieter and characterful, still walkable to Dinkytown."}]},
+    {name:"West Bank & East River",blurb:"Halls slightly removed from the Superblock crush, for students who want a more laid-back base. Both have their own dining and a quick walk or transit ride to the heart of campus across the Washington Avenue bridge.",halls:[
+      {name:"Middlebrook Hall (West Bank)",tag:"Largest · own dining",desc:"The lone West Bank residence hall — large, with its own dining, near the arts and Carlson business buildings. A self-contained community a bridge away from the East Bank core."},
+      {name:"Comstock Hall (East River)",tag:"Own dining · central",desc:"A criminally underrated hall right next to Coffman Memorial Union with its own dining hall — central location, though note it lacks AC, which bites in warm early weeks. Houses central Housing staff too."}]},
+    {name:"St. Paul Campus",blurb:"A quieter, green campus a free campus-connector bus ride from Minneapolis, centered on agriculture, food, and natural-resource sciences. A calmer, tight-knit alternative for students whose interests or classes lean that way.",halls:[
+      {name:"Bailey Hall",tag:"St. Paul · quiet",desc:"The St. Paul campus residence hall — laid-back and community-focused, surrounded by the St. Paul student union and green space. Best if you want a quieter first year and don't mind the bus connector to Minneapolis."}]}],
+  area:[
+    ["The neighborhood","Dinkytown","https://www.minneapolis.org/neighborhoods/dinkytown/","The iconic college-town district hugging campus — coffee shops, cheap eats, bookstores, and the art-deco Varsity Theater. Where students and visiting families wander and grab a bite."],
+    ["Game day","Stadium Village & Huntington Bank Stadium","https://www.minneapolis.org/","The restaurants and sports bars along Stadium Village turn into giant tailgating parties on Gopher football Saturdays. Williams Arena (basketball) and Mariucci (hockey) are right there too."],
+    ["Arts & river","Weisman Art Museum & Northrop","https://www.minneapolis.org/","The Frank Gehry–designed Weisman overlooks the Mississippi with a free, striking collection; Northrop Auditorium hosts concerts and dance. Both are easy on-campus visit stops."],
+    ["Outdoors","Minnehaha Falls & the river","https://www.minneapolis.org/","A short trip to a 53-foot waterfall in one of Minneapolis's oldest parks, plus the Mississippi River trails and the Chain of Lakes — the city is famously green and walkable."]],
+  stay:[
+    ["On campus","Graduate by Hilton Minneapolis","On campus, by Huntington Bank Stadium","The on-campus hotel (formerly The Commons) with Gopher-and-Prince–themed decor, a Topgolf Swing Suite, a Starbucks attached, and the light rail right out front. A five-minute walk to the stadium — the most convenient base, and Alumni Association members get a discount.","https://www.hilton.com/en/hotels/mspgmgu-graduate-minneapolis/"],
+    ["Stadium Village","Stadium Village & Dinkytown hotels","Walk to campus","Days Hotel, Hampton Inn & Suites, University Inn, and Home2 Suites cluster around Stadium Village — walkable to campus, the medical center, and the stadium, several right on the Green Line light rail.","https://www.minneapolis.org/neighborhoods/dinkytown/"],
+    ["Downtown","Downtown Minneapolis hotels","~10 min by light rail","Downtown's full hotel selection is a quick, scenic Green Line ride away — a good overflow for graduation and big weekends, with the convention center, restaurants, and nightlife at hand.","https://www.minneapolis.org/"]],
+  stayNote:"<b>The Graduate is the prize for any campus weekend</b> and sells out for graduation, home football Saturdays, and move-in with elevated rates. The big advantage in the Twin Cities: the Green Line light rail connects the airport, campus, and downtown, so an overflow downtown hotel is an easy ride away when campus-adjacent rooms are gone. Book early for May commencement either way.",
+  merch:[
+    ["University of Minnesota Bookstores","The official campus store at Coffman Memorial Union — Gopher maroon-and-gold apparel, gifts, gear, textbooks, and tech.","https://bookstores.umn.edu/"],
+    ["Goldy's Locker Room","A beloved local Gopher spirit shop (Dinkytown and around the Twin Cities) with one of the deepest selections of Minnesota gear and game-day apparel.","https://www.goldyslockerroom.com/"],
+    ["Rally House","Maroon-and-gold game-day gear near campus for the whole family — jerseys, hats, and tailgate essentials.","https://www.rallyhouse.com/"]]},
 
  {slug:"uw",short:"UW",name:"Washington (UW)",city:"Seattle, WA",accent:"#4B2E83",region:"mild",ac:"mild",beds:"Twin XL",movein:"Mid–late September",
   photo:"",dorm:"",art:{type:"pacific",sky:["#6b7d8c","#c5d1d8"],sun:"#e6ebee"},
@@ -684,7 +1095,36 @@ const SCHOOLS = [
   allowedExtra:["A rented MicroFridge (from Collegiate Concepts)"],bannedExtra:["Hot plates, space heaters, halogen lamps","Personal A/C units and personal Wi-Fi routers","Open-coil cooking appliances"],
   housing:"https://hfs.uw.edu/live/move-in-for-9-month-housing/",
   notes:[["Rain, not cold","A genuinely waterproof shell and shoes beat a heavy coat. Many find a sunrise or light-therapy lamp helps through the short, overcast winter days."],["Leave the car","Seattle parking is rough — UW's U-PASS makes transit the best deal in town, and HFS suggests leaving the car home. A MicroFridge rents from Collegiate Concepts."],["Move-in & mail","Move-in runs on a StarRez appointment; packages can arrive up to seven days ahead, but the halls get thousands, so bring essentials with you."]],
-  links:{official:[["Move-in (9-month)","https://hfs.uw.edu/live/move-in-for-9-month-housing/"],["HFS contact","https://hfs.uw.edu/about-hfs/contact-us/"],["Housing & Food Services","https://hfs.uw.edu/"]],contact:[["Housing & Food Services","hfsinfo@uw.edu"],["Phone","206-543-2430"]],community:[["UW parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Washington%20parents"]]}},
+  links:{official:[["Move-in (9-month)","https://hfs.uw.edu/live/move-in-for-9-month-housing/"],["HFS contact","https://hfs.uw.edu/about-hfs/contact-us/"],["Housing & Food Services","https://hfs.uw.edu/"]],contact:[["Housing & Food Services","hfsinfo@uw.edu"],["Phone","206-543-2430"]],community:[["UW parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Washington%20parents"]]},
+  housingSteps:[
+    {when:"Apply early — space-available",title:"Build your HFS profile, then apply",body:"Housing isn't guaranteed at UW, so apply as early as you can. First, complete your HFS student profile (it determines your eligible housing and unlocks the application on the right date); then submit your housing application in the StarRez Housing Portal. Most autumn applicants who apply promptly are housed."},
+    {when:"Under 18?",title:"Have a parent complete the Cosigner Agreement",body:"If you're younger than 18 when you submit your application and agreement, your parent or legal guardian must complete the Cosigner Agreement within two weeks. Don't let this step stall your application."},
+    {when:"On the application",title:"Set preferences and request a roommate (by student number)",body:"Choose your area (North vs West Campus), room type, and bathroom type. To request a specific roommate, enter their <b>UW student number</b> (not their name) — both applications must have the same agreement length and identical preferences to be matched. Mixed-gender rooms are available when both roommates mutually request and the room has a private bath."},
+    {when:"No roommate in mind?",title:"Use Roommate Finder, or get matched",body:"You're not required to find your own roommate. Browse the Roommate Finder Message Board (or the Queer-Positive board) with your UW email, or let HFS assign one based on your application. LLCs (Arts, Business, Engineering, Pre-Health, and more) and Black Affinity Housing in Lander Hall are selected here too."},
+    {when:"Room-selection appointment",title:"Self-select your actual room",body:"HFS emails you a room-selection appointment time. Log in right when it opens, search rooms matching your criteria, and assign yourself (and a mutually requested roommate). Have backup buildings ready — popular halls fill fast. Don't select, and HFS assigns you to the closest match to your preferences."}],
+  communities:[
+    {name:"West Campus",blurb:"Newer, apartment-and-hall buildings along Campus Parkway, parallel to Red Square at the south end of 'The Ave' (University Way). Most rooms have private bathrooms, the buildings are the most modern on campus, and you're steps from Ave food, Portage Bay waterfront, and the libraries. Best for a big-city, walk-everywhere experience.",halls:[
+      {name:"Maple & Terry Halls",tag:"Newest · private baths",desc:"The newest West Campus halls (opened 2015) with singles, doubles, and triples — all with private bathrooms. Maple holds the Area 01 maker/creative community center (Dabble, Sound, Image, and Game Labs) and an engineering LLC; Terry has a rooftop space, an honors LLC, and views from every lounge."},
+      {name:"Lander Hall",tag:"West hub · dining",desc:"The West Campus social and dining hub — home to Local Point (seven dining concepts), the main desk, and the new Black Affinity Housing community. Reputedly the best Space Needle views; doubles and singles with private baths."},
+      {name:"Alder, Elm & Poplar Halls",tag:"Modern · by the Ave",desc:"Alder (private baths, the District Market grocery and a Pre-Health LLC below) and Elm (Cultivate dining + Fitness Center West) sit right by the Ave. Poplar is the smallest new West hall — easy to know your whole floor — with great Red Square and Space Needle views."}]},
+    {name:"North Campus",blurb:"A cluster of halls around Denny Field at the northeast corner of campus — a mix of brand-new (2018) buildings and historic ones. The North dining hall (Center Table) is widely considered better, and you're close to the IMA gym, the Ave, and University Village shopping.",halls:[
+      {name:"Spratlen Hall (formerly Madrona)",tag:"Newest · 2018",desc:"A 2018 hall designed as the affordable North option — varied room types from communal-bath doubles to four-person suites, plus Frost Bite (a student-run ice cream shop) and a Learning Resource Center. L-shaped, overlooking Denny Field."},
+      {name:"McCarty & Oak Halls",tag:"New · maker space",desc:"McCarty houses the MILL (McCarty Innovation Learning Lab — a makerspace with 3D printers and sewing machines, run with the College of Engineering); Oak holds the District Market grocery and Husky Grind Café. Both opened in the 2018 North Campus rebuild."},
+      {name:"Oliver Hall (formerly Willow) + historic Hansee & McMahon",tag:"Dining hub / historic",desc:"Oliver is the North dining hub (Center Table, nine concepts, green-roof terrace). Hansee (the first residence hall on campus, with piano lounges and 24-hour quiet) and McMahon are the historic North options for students who want character over new construction."}]}],
+  area:[
+    ["The strip","'The Ave' (University Way NE)","https://visitseattle.org/","The U-District's main drag bordering campus — cheap international eats, coffee, thrift stores, a Target, and the Neptune concert venue. Where students and visiting families grab a quick, affordable bite. The Saturday U-District Farmers Market is a local favorite."],
+    ["Shopping & dining","University Village","https://visitseattle.org/","An upscale open-air shopping-and-dining center just northeast of campus — the go-to for a nicer parent-weekend meal, errands, and move-in supplies."],
+    ["Campus icons","The Quad cherry blossoms & Suzzallo Library","https://visitseattle.org/","In late March the Quad's cherry trees draw crowds for the bloom; Suzzallo's Gothic reading room is nicknamed the 'Harry Potter library.' Both are must-sees, and on clear days Mount Rainier looms over campus."],
+    ["The city","Pike Place, the Space Needle & the water","https://visitseattle.org/","Light rail from the U-District station puts downtown, Pike Place Market, and Seattle Center (Space Needle, MoPOP, Chihuly Garden) ~20 minutes away. The Burke-Gilman Trail and Lake Washington kayaking are right at campus."]],
+  stay:[
+    ["U-District · Husky-themed","Graduate by Hilton Seattle","U-District, ~10-min walk to The Quad","A Husky-and-Seattle-themed hotel in a 1930s art-deco building, across from the U-District light rail station — one stop from Husky Stadium — with a rooftop bar. The most spirited campus-adjacent base for football and graduation weekends.","https://www.hilton.com/en/hotels/seagsgu-graduate-seattle/"],
+    ["U-District · award-winning","Staypineapple — University Inn & Watertown","4 blocks / short walk to campus","Two well-loved Staypineapple hotels in the U-District (University Inn and the Watertown) — bright, friendly, with free bikes, shuttles, and afternoon pineapple cookies. A favorite of visiting families touring campus or here for graduation.","https://www.staypineapple.com/university-inn-seattle-wa"],
+    ["Adjacent · historic","College Inn Hotel","Directly adjacent to campus","Seattle's oldest hotel — a European-style, vintage 1909 inn right next to campus (no elevator, so pack light). Charming and budget-friendly for parents and visitors who want to be steps from The Quad. Silver Cloud and a Residence Inn round out the U-District options.","https://visitseattle.org/"]],
+  stayNote:"<b>June graduation week and autumn home football Saturdays are the U-District crunch</b> — the closest hotels fill and rates climb. Seattle's big advantage: the light rail from the U-District station reaches downtown in ~20 minutes, so a downtown or Lake Union hotel is an easy backup when campus-adjacent rooms sell out. Note move-in is in mid-to-late September (UW runs on quarters), much later than most schools here.",
+  merch:[
+    ["University Book Store","The huge, independent official campus bookstore on the Ave since 1900 — Husky purple-and-gold apparel, gifts, gear, textbooks, and tech. A U-District institution.","https://www.ubookstore.com/"],
+    ["Washington Huskies Team Shop","The official UW athletics fan store — game-day jerseys, hats, and tailgate gear for the whole family.","https://gohuskies.com/"],
+    ["Simply Seattle / U-District shops","Local shops on and around the Ave and at University Village carrying Husky casualwear and Seattle-themed gear for visitors.","https://visitseattle.org/"]]},
 
  {slug:"udel",short:"Delaware",name:"Delaware",city:"Newark, DE",accent:"#00539F",region:"cold",ac:"varies",beds:"Twin XL",movein:"Late August",
   photo:"",dorm:"",art:{type:"midatlantic",sky:["#c98a6a","#ead7be"],sun:"#fdeccb"},
@@ -696,7 +1136,39 @@ const SCHOOLS = [
   allowedExtra:["UL/NRTL-certified appliances on a breaker power strip","An energy-efficient small fridge, or a rented MicroFridge"],bannedExtra:["Personal A/C units (medical accommodation + an AC hall only)","Nails, screws, and hooks that damage walls","Candles, incense, wax warmers (religious exception by request)","E-skateboards, hoverboards, Segways (use/store/charge)"],
   housing:"https://www.udel.edu/students/reslife/campus-living/move-in/",
   notes:[["Which halls have AC","No AC: Brown, Cannon, Harrington, Harter, Lane, New Castle, Russell, Smyth, Thompson. AC: Caesar Rodney, Gilbert, Kent, Redding, Sharp, South Academy St, Squire, Sussex, Sypherd, plus suite-style George Read, Independence, James Smith, Ray Street, Thomas McKean."],["Beds & fridge","Twin XL in traditional and suite-style halls; full-size in University Courtyard Apartments. Rent a MicroFridge (one per room) or bring an energy-efficient small fridge."],["Mail & helpers","Residence-hall ZIP is 19717; find your format on your building's page, and Amazon orders route best to the campus Amazon lockers. \"Blue Hen Helpers\" assist on move-in day."]],
-  links:{official:[["Move-in","https://www.udel.edu/students/reslife/campus-living/move-in/"],["Housing policies","https://www.udel.edu/students/reslife/housing-info/our-policies/"],["Residence halls (AC list)","https://www.udel.edu/students/reslife/our-residence-halls/"]],contact:[["Appliance questions","fire-safe@udel.edu"],["Maintenance / bunking","fixit@udel.edu"],["Move-in helpers","bluehenhelpers@udel.edu"]],community:[["Delaware parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Delaware%20parents"]]}},
+  links:{official:[["Move-in","https://www.udel.edu/students/reslife/campus-living/move-in/"],["Housing policies","https://www.udel.edu/students/reslife/housing-info/our-policies/"],["Residence halls (AC list)","https://www.udel.edu/students/reslife/our-residence-halls/"]],contact:[["Appliance questions","fire-safe@udel.edu"],["Maintenance / bunking","fixit@udel.edu"],["Move-in helpers","bluehenhelpers@udel.edu"]],community:[["Delaware parents (Facebook)","https://www.facebook.com/search/groups/?q=University%20of%20Delaware%20parents"]]},
+  housingSteps:[
+    {when:"Priority deadline ~May 22",title:"Submit your housing application",body:"First-years are required to live on campus and are guaranteed housing. Apply in the My Housing Portal by the priority deadline (around May 22 at 5 p.m.). The application itself isn't first-come — but you must apply by the deadline to indicate room-type interests, request roommates, or apply to an LLC. If you're under 18, a parent/guardian signs the contract."},
+    {when:"In the application",title:"Answer the lifestyle questions",body:"About half of incoming first-years let UD's algorithm assign a roommate based on compatibility from these lifestyle answers — UD says it doesn't see more conflicts among algorithm-matched roommates than self-selected ones, so it's a genuine option for meeting someone new. Answer honestly."},
+    {when:"Optional · by the deadline",title:"Request a roommate group (2–3 students)",body:"To pick your own roommate(s), create or join a roommate group of 2–3 students of the same gender in the Roommate Manager by the priority deadline — both must request each other. New requests or changes can't be made after the deadline, and requests aren't guaranteed."},
+    {when:"Optional / sometimes required",title:"Apply to a Living-Learning Community",body:"Browse Theme Housing and LLCs in the portal. Some are required by major (e.g. the Nursing Nook for first-year nursing students; Honors freshmen are housed together in Redding Hall); most are optional. Roommate requests may be restricted to community members for certain communities."},
+    {when:"Assignments emailed later in summer",title:"Get your hall and roommate",body:"Housing assignments are emailed to your UD address later in the summer (it takes time to place thousands of Blue Hens). You apply to live on campus in general — not a specific building or room — so list interests but keep an open mind, then coordinate with your roommate once you're placed."}],
+  communities:[
+    {name:"East Campus (most first-years)",blurb:"East of Academy Street and the Perkins Student Center, East Campus houses about two-thirds of the first-year class in traditional halls (rooms along a hallway, communal bathrooms by floor). Room layouts vary the most here — you might even land one of the famous Z-shaped rooms. Each complex has its own beloved traditions.",halls:[
+      {name:"Russell / Lane / Thompson Complex",tag:"Traditional · Z-rooms",desc:"A classic first-year complex on East Campus with its own dining hall and the 'Russell Olympics' tradition on the East Campus turf. Russell has the unique Z-shaped singles and doubles. Note: Russell, Lane, and Thompson are non-AC traditional halls — bring a fan."},
+      {name:"Harrington / Smyth Complex",tag:"Traditional · Z-rooms",desc:"Another social East Campus first-year complex; Harrington also features the exclusive Z-shaped room layout. Traditional communal-bath halls without AC, so pack a fan for warm early weeks."},
+      {name:"Dickinson Complex",tag:"Traditional · social",desc:"A spirited first-year complex known for its programming — pancake nights, karaoke, video-game nights, and 'Dickie-Fest.' Traditional doubles and triples with communal baths."}]},
+    {name:"Central Campus & The Green",blurb:"Central Campus lines The Green with UD's most historic, collegiate-Gothic buildings — a nostalgic atmosphere right at the heart of campus near Main Street. A mix of traditional halls (some AC, some not) and the Honors community.",halls:[
+      {name:"Louis L. Redding Hall (Honors)",tag:"Honors · AC",desc:"Home to the first-year Honors College community (enhanced by Munson Fellows), named for Delaware's first African American attorney. Air-conditioned doubles and triples with a spacious kitchen and lounges. If the honors class is large, some students spill into nearby buildings."},
+      {name:"Caesar Rodney & Gilbert Complexes",tag:"Traditional · AC",desc:"Central-campus traditional first-year halls with air conditioning, near The Green and a short walk to Main Street. Communal-bath doubles and triples."},
+      {name:"Kent Hall",tag:"All-women · AC",desc:"An all-women living community building on a rich history from the Women's College of Delaware — a stand-alone hall (no access from other buildings) in a prominent South Green location, for women seeking an all-women environment."}]},
+    {name:"Suite-style options (George Read & Laird)",blurb:"For first-years who want more privacy, a limited number of suite-style spaces exist — two bedrooms sharing a bathroom, all air-conditioned. Most suite-style housing sits on Laird Campus north of the 'Little Bob,' though George Read is a first-year suite option.",halls:[
+      {name:"George Read Hall",tag:"Suite-style · AC",desc:"A first-year hall with a suite-style floor plan — two rooms sharing one bathroom — and air conditioning. A draw for first-years who'd rather not use a communal hallway bathroom."},
+      {name:"Independence & McKean (Laird)",tag:"Suite · AC · elevators",desc:"Laird Campus suite-style halls (mostly upper-division) with AC, elevators, study lounges, and in-building kitchens and laundry. Independence beds are adjustable from 9\" to 24\" of under-bed clearance."}]}],
+  area:[
+    ["The strip","Main Street, Newark","https://www.visitwilmingtonde.com/","UD's walkable downtown right off campus — restaurants, coffee, the Newark Deli & Bagels, and the historic Newark Co-op. Where students and visiting families eat and wander, with the iconic National 5 & 10 anchoring the street."],
+    ["Local landmark","The Green & Memorial Hall","https://www.visitwilmingtonde.com/","The collegiate-Gothic heart of campus — a classic photo spot and the center of UD tradition. A must-see on any visit, steps from Main Street."],
+    ["Game day","Delaware Stadium & the Bob Carpenter Center","https://bluehens.com/","Blue Hen football at Delaware Stadium and basketball at the 'Bob' drive fall and winter weekends. UD recently moved up to the FBS/Conference USA, so game days are growing."],
+    ["Nearby","Wilmington, Longwood Gardens & beaches","https://www.visitwilmingtonde.com/","Newark sits between Philadelphia and Baltimore — Wilmington's riverfront, the spectacular Longwood Gardens (~20 min), and the Delaware beaches (~90 min) make easy family day trips."]],
+  stay:[
+    ["On campus","Courtyard by Marriott Newark - UD","On campus, walk to Main Street","UD's on-campus Marriott on South College Ave — the most convenient base for move-in, parents' weekend, and graduation, with on-site dining and a quick walk to Main Street and The Green. Books out first for big weekends.","https://www.visitwilmingtonde.com/"],
+    ["Near campus · suites","Embassy Suites & Homewood Suites Newark","~1–2 miles from campus","All-suite hotels a short drive from campus — roomy, with free breakfast, ideal for multi-day move-in or graduation stays when families want space and a kitchen. SpringHill Suites and Candlewood Suites are other reliable options.","https://www.visitwilmingtonde.com/"],
+    ["Regional","Wilmington & I-95 corridor hotels","~15–20 min","Wilmington's hotels (and the I-95 corridor toward the airport) are a short drive and a good overflow for graduation weekend. Newark's Amtrak/SEPTA station also makes Philadelphia-area hotels reachable when local rooms are gone.","https://www.visitwilmingtonde.com/"]],
+  stayNote:"<b>Graduation (late May) and parents'/family weekend are the Newark crunch</b> — the on-campus Courtyard and the closest hotels sell out months ahead with elevated rates. Book as soon as you have a date. Newark's location between Philadelphia and Baltimore (and its Amtrak/SEPTA station) means regional hotels and even Philly-area stays are a reasonable backup for peak weekends.",
+  merch:[
+    ["UD Bookstore (Barnes & Noble)","The official campus store at 83 E. Main Street — Blue Hen apparel, gifts, gear, textbooks, tech, and a UD Apple Campus Store on the second floor.","https://udel.bncollege.com/"],
+    ["National 5 & 10","A Main Street Newark institution — the historic variety store stocks a deep, beloved selection of UD spirit gear and Blue Hen apparel right downtown.","https://www.national5and10.com/"],
+    ["Delaware Blue Hens Team Shop","The official UD athletics fan store — game-day jerseys, hats, and tailgate gear for the whole family.","https://bluehens.com/"]]},
 ];
 
 /* ============ illustration engine ============ */
@@ -899,12 +1371,77 @@ function render(school){
   $('logiTitle').textContent=city0+' logistics, sorted';
   $('logiRoot').innerHTML=school.notes.map(([title,body])=>title.indexOf('addr|')===0?'<div class="notecard addr"><h4>'+title.slice(5)+'</h4><p>'+body+'</p></div>':'<div class="notecard"><h4>'+title+'</h4><p>'+body+'</p></div>').join('');
 
+  // ===== housing process =====
+  $('housingTitle').textContent='Getting your room at '+school.name;
+  if(school.housingSteps&&school.housingSteps.length){
+    $('housing').style.display='';
+    $('housingSteps').innerHTML=school.housingSteps.map(s=>{
+      const when=s.when?'<div class="when">'+s.when+'</div>':'';
+      return '<div class="step">'+when+'<h4>'+s.title+'</h4><p>'+s.body+'</p></div>';
+    }).join('');
+  } else { $('housing').style.display='none'; }
+
+  // ===== residential communities =====
+  $('commTitle').textContent='Where you\u2019ll live at '+school.name;
+  if(school.communities&&school.communities.length){
+    $('communities').style.display='';
+    $('commRoot').innerHTML=school.communities.map(c=>{
+      const halls=(c.halls&&c.halls.length)?'<div class="halls">'+c.halls.map(h=>{
+        const tag=h.tag?'<span class="htag">'+h.tag+'</span>':'';
+        return '<div class="hall"><div class="hn">'+h.name+tag+'</div>'+(h.desc?'<p>'+h.desc+'</p>':'')+'</div>';
+      }).join('')+'</div>':'';
+      return '<div class="commons-card"><div class="ch"><h4>'+c.name+'</h4>'+(c.blurb?'<p>'+c.blurb+'</p>':'')+'</div>'+halls+'</div>';
+    }).join('');
+  } else { $('communities').style.display='none'; }
+
+  // ===== town & hotspots =====
+  $('areaTitle').textContent=city0+' &amp; around';
+  if(school.area&&school.area.length){
+    $('area').style.display='';
+    $('areaRoot').innerHTML=school.area.map(([type,name,url,desc])=>{
+      const h=url?'<a href="'+url+'" target="_blank" rel="noopener">'+name+'</a>':name;
+      return '<div class="spot"><div class="stype">'+type+'</div><h4>'+h+'</h4><p>'+desc+'</p></div>';
+    }).join('');
+  } else { $('area').style.display='none'; }
+
+  // ===== where to stay =====
+  $('stayTitle').textContent='Where to stay near '+school.name;
+  if(school.stay&&school.stay.length){
+    $('stay').style.display='';
+    $('stayRoot').innerHTML=school.stay.map(([tier,name,dist,desc,url])=>{
+      const link=url?'<a class="slink" href="'+url+'" target="_blank" rel="noopener">Visit site</a>':'';
+      return '<div class="stay"><div class="stier">'+tier+'</div><h4>'+name+'</h4><div class="sdist">'+dist+'</div><p>'+desc+'</p>'+link+'</div>';
+    }).join('');
+    $('stayNote').innerHTML=school.stayNote||'';
+    $('stayNote').style.display=school.stayNote?'':'none';
+  } else { $('stay').style.display='none'; }
+
+  // ===== merch =====
+  $('merchTitle').textContent=school.name+' gear &amp; gifts';
+  if(school.merch&&school.merch.length){
+    $('merch').style.display='';
+    $('merchRoot').innerHTML=school.merch.map(([title,desc,url])=>
+      '<a class="merch-link" href="'+url+'" target="_blank" rel="noopener"><span class="mtitle">'+title+'</span><span class="mdesc">'+desc+'</span></a>'
+    ).join('');
+  } else { $('merch').style.display='none'; }
+
+
   $('linksTitle').textContent=school.name+' — links & contacts';
   const L=school.links;
   const off='<div class="linkcard"><h4>Official pages</h4><ul>'+L.official.map(([t,u])=>'<li><a href="'+u+'" target="_blank" rel="noopener">'+t+'</a></li>').join('')+'</ul></div>';
   const con='<div class="linkcard"><h4>Who to contact</h4><ul>'+L.contact.map(([t,v])=>{const h=contactHref(v),disp=(/^https?:/.test(v))?'Visit page':v;return'<li>'+t+': <a href="'+h+'"'+(/^https?:/.test(v)?' target="_blank" rel="noopener"':'')+'>'+disp+'</a></li>';}).join('')+'</ul><p class="note">For room-specific questions, reach your hall\u2019s coordinator or RA through the housing office.</p></div>';
   const com='<div class="linkcard"><h4>Parent &amp; student community</h4><ul>'+L.community.map(([t,u])=>'<li><a href="'+u+'" target="_blank" rel="noopener">'+t+' &rarr;</a></li>').join('')+'</ul><p class="note">Most parent groups are unofficial and parent-run; search your specific class year. Your school\u2019s official Parent &amp; Family office is the authoritative source.</p></div>';
   $('linksRoot').innerHTML=off+con+com;
+
+  // sync sidebar: hide nav links whose section has no content for this school, renumber the rest
+  let _n=0;
+  document.querySelectorAll('.navlink[data-sec]').forEach(btn=>{
+    const el=$(btn.dataset.sec);
+    const hide=(el&&el.style.display==='none');
+    btn.style.display=hide?'none':'';
+    const nn=btn.querySelector('.nn');
+    if(!hide&&nn){_n++;nn.textContent=String(_n).padStart(2,'0');}
+  });
 
   buildChecklist(school);
 }
