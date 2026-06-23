@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+const {
+  title = 'AllDorms — the college move-in guide for the people doing the packing',
+  description = 'Move-in, sorted. Real packing lists, housing answers, and where-to-stay guides for 12 universities — built for the parents getting their child to campus.',
+  bodyClass = '',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f2e55'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' font-weight='700' fill='%23e7d4a4' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,640&family=Newsreader:ital,opsz,wght@0,6..72,380;0,6..72,440;0,6..72,560;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body class={bodyClass}>
+  <header class="sitehead">
+    <div class="wrap sitehead-in">
+      <a href="/" class="brand">
+        <span class="mark">A</span>
+        <span class="word">All<b>Dorms</b></span>
+      </a>
+      <nav class="headnav">
+        <a href="/#schools">Schools</a>
+        <a href="/#how">How it works</a>
+        <a href="/#schools" class="headnav-cta">Find your school</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="sitefoot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">All<b>Dorms</b></div>
+          <p class="muted">Made by college students who've done the move, for the parents about to do it. Real lists, local rules, and the answers the generic checklists never had — for 12 schools, with more on the way.</p>
+        </div>
+        <div>
+          <h4>The guides</h4>
+          <ul>
+            <li><a href="/#schools">All 12 schools</a></li>
+            <li><a href="/#how">What's inside</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>One quick note</h4>
+          <p class="muted">We pull from each school's official housing pages, but always double-check the specifics there before you buy — policies and renovations change every year. AllDorms is an independent guide, not affiliated with any university.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script is:inline>
+    // homepage header: transparent over the hero, solid once you scroll
+    (function () {
+      var head = document.querySelector('.sitehead');
+      if (!head || !document.body.classList.contains('home')) return;
+      var onScroll = function () { head.classList.toggle('solid', window.scrollY > 40); };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+</body>
+</html>

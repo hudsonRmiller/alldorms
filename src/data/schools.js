@@ -1,646 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AllDorms — the college move-in almanac</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  /* ============================================================
-     AllDorms
-     • AFFILIATE_TAG (in the script): your Amazon Associates tag.
-       Blank = links go to plain Amazon searches and the page says so.
-     • Real photos: each school has optional photo:"" and dorm:"" URL
-       fields. Leave blank to use the built-in illustration, or paste a
-       LICENSED image URL (your own / the school media kit with
-       permission / Unsplash / Wikimedia). Don't hotlink copyrighted
-       photos you don't have rights to.
-     • Every rule, contact and link was taken from each school's
-       official housing pages — confirm before each season.
-     • Checklist state is in-memory; see the localStorage note to persist.
-     ============================================================ */
-  :root{
-    --ink:#16241d;            /* warm spruce-black: primary text */
-    --spruce:#1d4034;         /* brand surface (sidebar / dark bands) */
-    --spruce-deep:#122a22;
-    --paper:#f4eee1;          /* warm paper content bg */
-    --paper-2:#efe7d6;        /* slightly deeper paper for insets */
-    --marigold:#dc9a2b;       /* signature warm accent */
-    --marigold-deep:#b87d18;
-    --rule:#dcd3bf;           /* hairline on paper */
-    --muted:#6a7167;
-    --card:#fbf7ee;
-    --accent:#1d4034;         /* per-school accent, set by JS */
-    --accent-soft:#e9efe9;    /* set by JS */
-    --sidebar-w:252px;
-    --r:13px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{margin:0;background:var(--paper);color:var(--ink);
-    font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;
-    font-optical-sizing:auto;}
-  a{color:inherit;}
-  /* paper grain — fights the flat AI-clean look */
-  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-  .disp{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;line-height:1;letter-spacing:-.02em;}
-  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;}
-  .kick{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
-  h1,h2,h3,h4{margin:0;}
-  .hidden{display:none !important;}
-
-  /* ============ LAYOUT ============ */
-  .layout{display:flex;position:relative;z-index:1;}
-  .main{flex:1;min-width:0;}
-  .wrap{max-width:980px;margin:0 auto;padding:0 30px;}
-
-  /* ============ SIDEBAR ============ */
-  .sidebar{width:var(--sidebar-w);flex:none;background:var(--spruce);color:#e9f0ea;
-    position:sticky;top:0;height:100vh;display:flex;flex-direction:column;}
-  .side-top{display:flex;align-items:center;justify-content:space-between;padding:26px 24px 18px;}
-  .logo{display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;color:#fff;padding:0;
-    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em;}
-  .logo .mk{width:26px;height:26px;flex:none;}
-  .menu-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:8px;
-    padding:6px 10px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;}
-  .sidenav{padding:8px 16px;overflow-y:auto;flex:1;}
-  .navgroup{margin-bottom:8px;}
-  .navlabel{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-    color:#86a698;padding:14px 12px 8px;}
-  .navlink{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:none;cursor:pointer;
-    color:#d6e3db;font-family:"Newsreader",serif;font-size:16.5px;padding:9px 12px;border-radius:9px;transition:.15s;text-decoration:none;}
-  .navlink:hover{background:rgba(255,255,255,.07);color:#fff;}
-  .navlink.active{background:var(--marigold);color:#241a06;font-weight:600;}
-  .navlink .nn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:#7fa093;width:18px;}
-  .navlink.active .nn{color:#5a4410;}
-  .navback{color:#9fc0b3;font-size:14.5px;}
-  .navback:hover{color:#fff;}
-  .schoolname{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:20px;color:#fff;padding:6px 12px 2px;letter-spacing:-.01em;}
-  .schoolcity{font-family:"IBM Plex Mono",monospace;font-size:11px;color:#86a698;padding:0 12px 10px;}
-  .side-foot{padding:16px 24px 24px;border-top:1px solid rgba(255,255,255,.12);font-size:12.5px;color:#80a092;line-height:1.5;}
-  .side-prog{display:flex;align-items:center;gap:9px;margin-bottom:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#bcd2c8;}
-  .side-prog .track{flex:1;height:5px;border-radius:5px;background:rgba(255,255,255,.16);overflow:hidden;}
-  .side-prog .fill{height:100%;width:0;background:var(--marigold);transition:width .4s ease;}
-
-  /* ============ LANDING ============ */
-  .lhero{padding:8px 0 14px;}
-  .lhero .kick{margin-bottom:20px;}
-  .lhero h1{font-size:clamp(46px,7vw,92px);max-width:13ch;}
-  .lhero h1 .em{color:var(--marigold-deep);font-style:normal;}
-  .lhero .stand{font-size:clamp(19px,2.3vw,24px);max-width:50ch;margin:26px 0 0;color:#33403a;line-height:1.45;}
-  .lhero .cta-row{display:flex;gap:14px;align-items:center;margin-top:32px;flex-wrap:wrap;}
-  .btn{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
-    border:none;border-radius:30px;padding:14px 24px;background:var(--spruce);color:#fff;text-decoration:none;transition:.15s;}
-  .btn:hover{background:var(--spruce-deep);}
-  .btn.ghost{background:none;border:1.5px solid var(--ink);color:var(--ink);padding:12.5px 22px;}
-  .btn.ghost:hover{background:var(--ink);color:var(--paper);}
-
-  .scene-hero{margin:42px 0 0;border-radius:18px;overflow:hidden;border:1px solid var(--rule);box-shadow:0 20px 50px -28px rgba(20,40,30,.5);}
-  .scene-hero svg{display:block;width:100%;height:auto;}
-
-  .index-line{margin:46px 0 8px;padding:18px 0;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);
-    font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.02em;color:#3a463f;line-height:2;}
-  .index-line b{color:var(--marigold-deep);}
-
-  .promises{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:0;margin:64px 0;}
-  .promise{padding:0 26px;border-left:1px solid var(--rule);}
-  .promise:first-child{padding-left:0;border-left:none;}
-  .promise .plabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--marigold-deep);}
-  .promise h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:24px;letter-spacing:-.01em;margin:12px 0 10px;}
-  .promise.lead h3{font-size:30px;}
-  .promise p{margin:0;font-size:16.5px;color:#3a463f;}
-
-  .pick{margin:18px 0 80px;}
-  .pick-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:26px;}
-  .pick-head h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(30px,4vw,44px);letter-spacing:-.02em;}
-  .pick-head .sub{color:var(--muted);font-size:16px;max-width:42ch;}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));gap:22px;}
-  .scard{text-align:left;background:var(--card);border:1px solid var(--rule);border-radius:15px;padding:0;cursor:pointer;
-    font:inherit;color:inherit;overflow:hidden;transition:transform .18s ease, box-shadow .18s ease;}
-  .scard:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(20,40,30,.55);}
-  .scard:focus-visible{outline:2px solid var(--spruce);outline-offset:3px;}
-  .scard .thumb{height:148px;overflow:hidden;border-bottom:1px solid var(--rule);background:var(--paper-2);}
-  .scard .thumb svg,.scard .thumb img{display:block;width:100%;height:100%;object-fit:cover;}
-  .scard .body{padding:16px 18px 18px;}
-  .scard .nm{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.01em;line-height:1.04;}
-  .scard .ct{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);margin-top:7px;}
-  .scard .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px;}
-  .scard .tag{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.04em;color:#46524b;
-    background:var(--paper);border:1px solid var(--rule);border-radius:20px;padding:3px 9px;}
-
-  .closing{border-top:1.5px solid var(--ink);padding:48px 0 90px;}
-  .closing h2{font-family:"Newsreader",serif;font-weight:500;font-style:italic;font-size:clamp(24px,3vw,34px);max-width:24ch;line-height:1.25;}
-  .closing p{max-width:54ch;margin:20px 0 0;color:#3a463f;font-size:17px;}
-
-  /* ============ SCHOOL APP ============ */
-  .pcard{margin:0 0 6px;border-radius:0 0 18px 18px;overflow:hidden;position:relative;}
-  .pcard svg,.pcard img{display:block;width:100%;height:auto;}
-  .pcard .overlay{position:absolute;left:0;right:0;bottom:0;padding:30px 34px 26px;
-    background:linear-gradient(to top, rgba(10,22,16,.82), rgba(10,22,16,.32) 55%, transparent);color:#fff;}
-  .pcard .ov-kick{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#e7d6ad;}
-  .pcard .ov-name{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(34px,5.4vw,62px);letter-spacing:-.025em;margin-top:6px;line-height:.98;}
-  .schero{padding:34px 0 6px;}
-  .schero .lede{font-family:"Newsreader",serif;font-size:clamp(19px,2.2vw,23px);line-height:1.45;max-width:56ch;color:#33403a;}
-  .facts{display:flex;flex-wrap:wrap;gap:0;margin-top:28px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
-  .fact{padding:16px 26px 16px 0;margin-right:26px;border-right:1px solid var(--rule);}
-  .fact:last-child{border-right:none;margin-right:0;padding-right:0;}
-  .fact .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);}
-  .fact .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:20px;margin-top:5px;color:var(--ink);}
-
-  section.block{padding:50px 0;border-top:1px solid var(--rule);scroll-margin-top:80px;}
-  .sec-head{margin-bottom:28px;}
-  .sec-head .kick{margin-bottom:9px;display:block;}
-  .sec-head h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(27px,3.6vw,40px);letter-spacing:-.02em;}
-  .sec-head p{color:#46524b;max-width:64ch;margin:12px 0 0;font-size:16.5px;}
-
-  .arc{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;background:var(--card);}
-  .month{padding:18px 16px;border-left:1px solid var(--rule);}
-  .month:first-child{border-left:none;}
-  .month .swatch{height:6px;border-radius:6px;margin-bottom:13px;}
-  .month .name{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:16px;}
-  .month .temp{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin-top:3px;}
-  .month .wear{font-size:14.5px;margin:10px 0 0;color:#3a463f;line-height:1.45;}
-  .arc-tip{margin-top:20px;background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:16px 20px;font-size:16px;color:#2a342e;}
-  .arc-tip b{color:var(--accent);}
-
-  .rules{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-  .rulecard{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:24px;}
-  .rulecard h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:20px;display:flex;align-items:center;gap:10px;}
-  .rulecard .badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:20px;color:#1d2b22;background:#bcd9c4;}
-  .rulecard.no .badge{background:var(--accent);color:#fff;}
-  .rulecard ul{list-style:none;margin:16px 0 0;padding:0;}
-  .rulecard li{padding:10px 0 10px 26px;position:relative;border-top:1px solid var(--rule);font-size:15.5px;color:#33403a;}
-  .rulecard li:first-child{border-top:none;}
-  .rulecard li::before{position:absolute;left:0;top:9px;font-family:"IBM Plex Mono",monospace;font-weight:500;}
-  .rulecard.yes li::before{content:"+";color:#2f7d5b;}
-  .rulecard.no li::before{content:"\00d7";color:var(--accent);}
-  .verify{margin-top:18px;font-size:14.5px;color:var(--muted);}
-  .verify a{color:var(--accent);text-underline-offset:3px;font-weight:600;}
-
-  .roomfig{margin:0 0 24px;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;background:var(--card);}
-  .roomfig svg,.roomfig img{display:block;width:100%;height:auto;}
-  .roomfig figcaption{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);padding:11px 18px;border-top:1px solid var(--rule);}
-
-  .disclose{background:var(--paper-2);border:1px solid var(--rule);border-radius:var(--r);padding:14px 18px;font-size:14.5px;color:#46524b;margin-bottom:24px;}
-  .disclose b{color:var(--ink);}
-  .progress-bar{position:sticky;top:0;z-index:20;background:var(--paper);padding:15px 0 16px;border-bottom:1px solid var(--rule);margin-bottom:24px;}
-  .progress-bar .row{display:flex;align-items:center;gap:16px;}
-  .progress-bar .count{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:18px;white-space:nowrap;}
-  .progress-bar .track{flex:1;height:9px;border-radius:9px;background:var(--rule);overflow:hidden;}
-  .progress-bar .fill{height:100%;width:0;background:var(--spruce);transition:width .35s ease;}
-  .progress-bar button{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
-    background:none;border:1px solid var(--rule);border-radius:20px;padding:7px 13px;cursor:pointer;}
-  .progress-bar button:hover{border-color:var(--muted);}
-  .cat{margin-bottom:28px;}
-  .cat > h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:19px;display:flex;align-items:baseline;gap:10px;letter-spacing:-.01em;}
-  .cat > h3 .n{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);}
-  .items{margin-top:13px;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;background:var(--card);}
-  .item{display:flex;align-items:center;gap:14px;padding:12px 16px;border-top:1px solid var(--rule);}
-  .item:first-child{border-top:none;}
-  .item input{appearance:none;width:21px;height:21px;flex:none;border:1.5px solid #b9bdab;border-radius:6px;cursor:pointer;position:relative;transition:.15s;background:#fff;}
-  .item input:checked{background:var(--spruce);border-color:var(--spruce);}
-  .item input:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
-  .item input:focus-visible{outline:2px solid var(--marigold);outline-offset:2px;}
-  .item .label{flex:1;font-size:15.5px;color:#28332c;}
-  .item .label .note{display:block;font-size:13px;color:var(--muted);font-style:italic;}
-  .item.done .label{color:var(--muted);text-decoration:line-through;text-decoration-color:#b9bdab;}
-  .shop{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:var(--spruce);
-    border:1px solid var(--rule);border-radius:20px;padding:6px 12px;white-space:nowrap;transition:.15s;}
-  .shop:hover{background:var(--spruce);color:#fff;border-color:var(--spruce);}
-
-  .logi{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-  .notecard{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:22px;}
-  .notecard.addr{background:var(--spruce);color:#e8f0ea;}
-  .notecard h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:17px;margin-bottom:8px;color:var(--ink);letter-spacing:-.01em;}
-  .notecard.addr h4{color:#fff;}
-  .notecard p{margin:0;font-size:15px;color:#3a463f;}
-  .notecard.addr p{color:#bcd2c8;}
-  .addr .block{font-family:"IBM Plex Mono",monospace;font-size:13.5px;line-height:1.85;margin:12px 0;background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:14px 16px;color:#eef3f0;}
-  .addr .block .var{color:#f0c98a;}
-
-  /* ===== expanded sections: process / communities / area / stay ===== */
-  .steps{counter-reset:step;display:grid;gap:14px;}
-  .step{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:20px 22px 20px 60px;}
-  .step::before{counter-increment:step;content:counter(step);position:absolute;left:18px;top:20px;width:28px;height:28px;
-    background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:500;}
-  .step h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:17.5px;margin-bottom:6px;letter-spacing:-.01em;}
-  .step p{margin:0;font-size:15.5px;color:#3a463f;line-height:1.5;}
-  .step p + p{margin-top:8px;}
-  .step .when{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--marigold-deep);margin-bottom:7px;}
-
-  .commons{display:grid;gap:18px;}
-  .commons-card{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;}
-  .commons-card .ch{padding:20px 24px;border-bottom:1px solid var(--rule);background:var(--accent-soft);}
-  .commons-card .ch h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:21px;color:var(--accent);letter-spacing:-.01em;}
-  .commons-card .ch p{margin:7px 0 0;font-size:15px;color:#3a463f;line-height:1.5;}
-  .commons-card .halls{padding:8px 24px 18px;}
-  .hall{padding:14px 0;border-top:1px solid var(--rule);}
-  .hall:first-child{border-top:none;}
-  .hall .hn{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:16px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
-  .hall .htag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#46524b;
-    background:var(--paper);border:1px solid var(--rule);border-radius:20px;padding:2px 8px;font-weight:400;}
-  .hall p{margin:6px 0 0;font-size:14.5px;color:#3a463f;line-height:1.5;}
-
-  .area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
-  .spot{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:20px;}
-  .spot .stype{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--marigold-deep);}
-  .spot h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:17px;margin:8px 0 6px;letter-spacing:-.01em;}
-  .spot h4 a{color:var(--ink);text-decoration:none;}
-  .spot h4 a:hover{color:var(--accent);text-decoration:underline;}
-  .spot p{margin:0;font-size:14.5px;color:#3a463f;line-height:1.5;}
-
-  .stay-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;}
-  .stay{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;}
-  .stay .stier{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-  .stay h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:18px;margin:7px 0 4px;letter-spacing:-.01em;}
-  .stay .sdist{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--marigold-deep);margin-bottom:9px;}
-  .stay p{margin:0 0 14px;font-size:14.5px;color:#3a463f;line-height:1.5;flex:1;}
-  .stay a.slink{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
-    color:var(--spruce);border:1px solid var(--rule);border-radius:20px;padding:7px 14px;align-self:flex-start;transition:.15s;}
-  .stay a.slink:hover{background:var(--spruce);color:#fff;border-color:var(--spruce);}
-  .stay-note{margin-top:18px;background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:15px 20px;font-size:15px;color:#2a342e;}
-  .stay-note b{color:var(--accent);}
-
-  .merch-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;}
-  .merch-link{display:flex;flex-direction:column;gap:3px;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);
-    padding:15px 18px;text-decoration:none;transition:.15s;min-width:180px;flex:1;}
-  .merch-link:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 26px -16px rgba(20,40,30,.5);}
-  .merch-link .mtitle{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:16px;color:var(--ink);}
-  .merch-link .mdesc{font-size:13px;color:var(--muted);}
-
-  .linkcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
-  .linkcard{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:22px;}
-  .linkcard h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:17px;margin-bottom:14px;color:var(--ink);}
-  .linkcard ul{list-style:none;margin:0;padding:0;}
-  .linkcard li{padding:9px 0;border-top:1px solid var(--rule);font-size:15px;color:#3a463f;}
-  .linkcard li:first-child{border-top:none;}
-  .linkcard a{color:var(--accent);text-decoration:none;text-underline-offset:3px;font-weight:500;}
-  .linkcard a:hover{text-decoration:underline;}
-  .linkcard .note{font-size:12.5px;color:var(--muted);margin-top:13px;line-height:1.5;font-style:italic;}
-
-  footer{background:var(--spruce-deep);color:#cfe0d8;padding:48px 0 44px;margin-top:10px;}
-  footer .grid2{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-end;}
-  footer .logo{color:#fff;}
-  footer .expand{max-width:46ch;font-size:15px;color:#9fc0b3;margin-top:10px;line-height:1.5;}
-  footer .disc{font-size:12px;color:#7fa395;margin-top:26px;border-top:1px solid rgba(255,255,255,.12);padding-top:18px;line-height:1.7;}
-
-  /* ============ RESPONSIVE ============ */
-  @media (max-width:900px){
-    .layout{flex-direction:column;}
-    .sidebar{width:100%;height:auto;position:sticky;top:0;z-index:60;flex-direction:column;}
-    .side-top{padding:14px 20px;}
-    .menu-toggle{display:block;}
-    .sidenav{display:none;border-top:1px solid rgba(255,255,255,.12);max-height:70vh;}
-    body.nav-open .sidenav{display:block;}
-    .side-foot{display:none;}
-    .wrap{padding:0 22px;}
-    .promises{grid-template-columns:1fr;gap:0;}
-    .promise{border-left:none;border-top:1px solid var(--rule);padding:22px 0;}
-    .promise:first-child{border-top:none;padding-top:0;}
-    .rules{grid-template-columns:1fr;}
-    .arc{grid-template-columns:1fr 1fr;}
-    .month:nth-child(odd){border-left:none;}
-    .month:last-child{grid-column:1 / -1;}
-  }
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto;}}
-</style>
-</head>
-<body>
-<div class="layout">
-
-  <!-- ============ SIDEBAR ============ -->
-  <aside class="sidebar">
-    <div class="side-top">
-      <button class="logo" id="logoBtn" aria-label="AllDorms home">
-        <svg class="mk" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-          <rect x="2" y="2" width="36" height="36" rx="9" fill="#dc9a2b"/>
-          <path d="M10 22 L20 11 L30 22 V30 H10 Z" fill="#1d4034"/>
-          <rect x="17.5" y="24" width="5" height="6" fill="#dc9a2b"/>
-        </svg>
-        AllDorms
-      </button>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false">Menu</button>
-    </div>
-    <nav class="sidenav" id="sidenav" aria-label="Main">
-      <div class="navgroup" id="navHome">
-        <div class="navlabel">The Almanac</div>
-        <button class="navlink active" data-scroll="top">Home</button>
-        <button class="navlink" data-scroll="pickSection">Browse schools</button>
-        <button class="navlink" data-scroll="insideSection">What's inside</button>
-        <button class="navlink" data-scroll="closingSection">The idea</button>
-      </div>
-      <div class="navgroup hidden" id="navSchool">
-        <button class="navlink navback" id="backBtn">&larr; All schools</button>
-        <div class="schoolname" id="sideSchoolName"></div>
-        <div class="schoolcity" id="sideSchoolCity"></div>
-        <button class="navlink" data-sec="weather"><span class="nn">01</span> Weather &amp; clothing</button>
-        <button class="navlink" data-sec="rules"><span class="nn">02</span> What's allowed</button>
-        <button class="navlink" data-sec="housing"><span class="nn">03</span> Housing &amp; roommates</button>
-        <button class="navlink" data-sec="communities"><span class="nn">04</span> Where you'll live</button>
-        <button class="navlink" data-sec="checklist"><span class="nn">05</span> Packing checklist</button>
-        <button class="navlink" data-sec="logistics"><span class="nn">06</span> Move-in logistics</button>
-        <button class="navlink" data-sec="area"><span class="nn">07</span> Town &amp; hotspots</button>
-        <button class="navlink" data-sec="stay"><span class="nn">08</span> Where to stay</button>
-        <button class="navlink" data-sec="merch"><span class="nn">09</span> School merch</button>
-        <button class="navlink" data-sec="links"><span class="nn">10</span> Links &amp; contacts</button>
-      </div>
-    </nav>
-    <div class="side-foot">
-      <div class="side-prog hidden" id="sideProg">
-        <span id="sidePct">0%</span>
-        <div class="track"><div class="fill" id="sideFill"></div></div>
-      </div>
-      Independent guide · not affiliated with any school listed.
-    </div>
-  </aside>
-
-  <!-- ============ MAIN ============ -->
-  <div class="main">
-    <a id="top"></a>
-
-    <!-- ===== LANDING ===== -->
-    <div id="home">
-      <div class="wrap">
-        <header class="lhero">
-          <span class="kick">The college move-in almanac</span>
-          <h1 class="disp">Pack like you<br>already <span class="em">know the place.</span></h1>
-          <p class="stand">Every packing list online was written for nowhere in particular. AllDorms is written for <em>your</em> school — the real rules, the real local weather, and a checklist sized for the room you're actually moving into.</p>
-          <div class="cta-row">
-            <button class="btn" id="heroCta">Find your school</button>
-
-          </div>
-        </header>
-        <div class="scene-hero" id="brandScene"></div>
-        <div class="index-line" id="indexLine"></div>
-      </div>
-
-      <div class="wrap" id="insideSection">
-        <div class="promises">
-          <div class="promise lead">
-            <div class="plabel">Rules</div>
-            <h3>What your room will actually take.</h3>
-            <p>Fridge cubic-feet limits, microwave wattages, whether there's air conditioning, and the appliances each housing office turns away at the door — pulled from the source, school by school.</p>
-          </div>
-          <div class="promise">
-            <div class="plabel">Weather</div>
-            <h3>Dressed for the right zip code.</h3>
-            <p>Month by month, what to wear — from a 110° Tempe move-in to a sub-zero Minnesota January to Seattle's long gray drizzle. No parka for Florida.</p>
-          </div>
-          <div class="promise">
-            <div class="plabel">The list</div>
-            <h3>A checklist you'll actually finish.</h3>
-            <p>Categorized, room-sized, check-as-you-pack, with a progress bar — and the clothing section that changes with the climate, not someone else's.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="wrap pick" id="pickSection">
-        <div class="pick-head">
-          <h2 class="disp">Pick your school</h2>
-          <div class="sub">Twelve editions, each built from that school's official housing pages.</div>
-        </div>
-        <div class="grid" id="schoolGrid"></div>
-      </div>
-
-      <div class="closing" id="closingSection">
-        <div class="wrap">
-          <h2>“Check with your school for what's allowed.” So we did — for all of them.</h2>
-          <p>That single line on every generic packing list is the whole gap. Knowing the dorm is Twin XL, the winter is real, and the air fryer stays home is the difference between a smooth drop-off and a carful of returns. Start with Colgate, the ten largest U.S. campuses, and Delaware — more coming.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== SCHOOL APP ===== -->
-    <div id="app" class="hidden">
-      <figure class="pcard" id="pcard"></figure>
-      <div class="wrap">
-        <header class="schero">
-          <p class="lede" id="heroLede"></p>
-          <div class="facts" id="facts"></div>
-        </header>
-      </div>
-
-      <div class="wrap">
-        <section class="block" id="weather">
-          <div class="sec-head"><span class="kick">The one thing generic lists get wrong</span><h2 id="weatherTitle"></h2><p id="weatherSub"></p></div>
-          <div class="arc" id="arc"></div>
-          <div class="arc-tip" id="arcTip"></div>
-        </section>
-
-        <section class="block" id="rules">
-          <div class="sec-head"><span class="kick">Straight from the housing office</span><h2 id="rulesTitle"></h2>
-            <p>Half of dorm shopping is buying things that get turned away at the door. Here's the part the national lists tell you to "check with your school" about.</p></div>
-          <div class="rules">
-            <div class="rulecard yes"><h3>Bring it <span class="badge">Allowed</span></h3><ul id="allowedList"></ul></div>
-            <div class="rulecard no"><h3>Leave it home <span class="badge">Banned</span></h3><ul id="bannedList"></ul></div>
-          </div>
-          <p class="verify" id="verify"></p>
-        </section>
-
-        <section class="block" id="housing">
-          <div class="sec-head"><span class="kick">Before you can move in</span><h2 id="housingTitle"></h2>
-            <p id="housingSub">How roommate matching and room assignment actually work — the forms, the timeline, and what each step decides.</p></div>
-          <div class="steps" id="housingSteps"></div>
-        </section>
-
-        <section class="block" id="communities">
-          <div class="sec-head"><span class="kick">The actual buildings</span><h2 id="commTitle"></h2>
-            <p id="commSub">Not just "you'll live on campus" — here are the real residential communities and halls, what each is like, and who lives there.</p></div>
-          <div class="commons" id="commRoot"></div>
-        </section>
-
-        <section class="block" id="checklist">
-          <div class="sec-head"><span class="kick">Tick as you pack</span><h2 id="checklistTitle"></h2>
-            <p>Organized by category, sized for a real dorm room, and trimmed to what first-years actually use. Coordinate the big shared items with your roommate so you don't double up.</p></div>
-          <figure class="roomfig" id="roomfig"></figure>
-
-          <div class="progress-bar"><div class="wrap" style="padding:0;max-width:none;"><div class="row">
-            <span class="count" id="bigCount">0 / 0 packed</span>
-            <div class="track"><div class="fill" id="bigFill"></div></div>
-            <button id="resetBtn" type="button">Reset</button>
-          </div></div></div>
-          <div id="checklistRoot"></div>
-        </section>
-
-        <section class="block" id="logistics">
-          <div class="sec-head"><span class="kick">The stuff nobody puts in one place</span><h2 id="logiTitle"></h2></div>
-          <div class="logi" id="logiRoot"></div>
-        </section>
-
-        <section class="block" id="area">
-          <div class="sec-head"><span class="kick">Beyond the campus gates</span><h2 id="areaTitle"></h2>
-            <p id="areaSub">Where to eat, what to do, and what families should know about the town your student is moving to.</p></div>
-          <div class="area-grid" id="areaRoot"></div>
-        </section>
-
-        <section class="block" id="stay">
-          <div class="sec-head"><span class="kick">For move-in, family weekend &amp; graduation</span><h2 id="stayTitle"></h2>
-            <p id="staySub">The places families book when visiting — and the single most important thing to know about getting a room.</p></div>
-          <div class="stay-grid" id="stayRoot"></div>
-          <div class="stay-note" id="stayNote"></div>
-        </section>
-
-        <section class="block" id="merch">
-          <div class="sec-head"><span class="kick">Gear up</span><h2 id="merchTitle"></h2>
-            <p id="merchSub">Where to get official, licensed apparel and gifts — for the student and for the proud family back home.</p></div>
-          <div class="merch-row" id="merchRoot"></div>
-        </section>
-
-        <section class="block" id="links">
-          <div class="sec-head"><span class="kick">Links &amp; more info</span><h2 id="linksTitle"></h2>
-            <p>The official pages worth bookmarking, who to email when you have a question, and where parents and students gather online.</p></div>
-          <div class="linkcols" id="linksRoot"></div>
-        </section>
-      </div>
-    </div>
-
-    <footer>
-      <div class="wrap">
-        <div class="grid2">
-          <div>
-            <button class="logo" id="logoBtn2">
-              <svg class="mk" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="9" fill="#dc9a2b"/><path d="M10 22 L20 11 L30 22 V30 H10 Z" fill="#13302a"/><rect x="17.5" y="24" width="5" height="6" fill="#dc9a2b"/></svg>
-              AllDorms
-            </button>
-            <p class="expand">The rules, the weather, and the list are different at every school — so every school gets its own edition. Twelve live, more coming.</p>
-          </div>
-          <div class="expand">Spotted something out of date? Rules and dorms change every year. Always confirm against your school's official housing office before you buy.</div>
-        </div>
-        <p class="disc">AllDorms is an independent guide and is <b>not affiliated with, endorsed by, or sponsored by any university listed here.</b> School names and colors identify each edition; campus scenes are original illustrations. Residential policies are summarized from each university's public housing pages and may change; the university's current guidance is always authoritative. Parent and family groups linked here are largely unofficial and parent-run.</p>
-      </div>
-    </footer>
-
-  </div>
-</div>
-
-<script>
-/* ============ config ============ */
-const AFFILIATE_TAG = ""; // <-- your Amazon Associates tag, e.g. "alldorms-20"
-
-/* ============ shared rules ============ */
-const ALLOWED_BASE = [
-  "Twin XL bedding (confirm your specific hall)",
-  "UL/ETL power strip <em>with</em> a built-in circuit breaker — not a bare extension cord",
-  "Damage-free wall hangings like Command strips — no nails or screws",
-  "Low-draw LED desk and task lamps",
-  "A fan, a reusable water bottle, and UL-listed electronics",
-];
-const BANNED_BASE = [
-  "Open-coil / open-flame cooking: toasters, toaster ovens, air fryers, hot plates, electric grills, sandwich makers",
-  "Candles, incense, wax warmers, and anything with an open flame",
-  "Halogen lamps",
-  "Extension cords without a breaker; outlet splitters and multi-plug adapters",
-  "Space heaters and personal A/C units (unless your school provides/approves them)",
-  "Hoverboards, e-scooters, e-bikes, and other e-mobility devices",
-  "Weapons of any kind — including decorative — and fireworks",
-];
-
-/* ============ checklist ============ */
-const CHECKLIST_COMMON = [
-  ["Bedding", [
-    {n:"Twin XL sheet set", q:"twin xl sheet set", note:"__BEDNOTE__"},
-    {n:"Mattress topper", q:"twin xl mattress topper", note:"Dorm mattresses are thin and firm."},
-    {n:"Comforter or duvet", q:"twin xl comforter"},
-    {n:"Pillows", q:"bed pillows 2 pack"},
-    {n:"Mattress protector", q:"twin xl mattress protector"},
-    {n:"Throw blanket", q:"throw blanket"},
-  ]],
-  ["Bath", [
-    {n:"Towel set", q:"bath towel set"},
-    {n:"Shower caddy", q:"mesh shower caddy"},
-    {n:"Shower shoes / slides", q:"shower slides", note:"Communal bathrooms. Non-negotiable."},
-    {n:"Robe", q:"hooded robe"},
-    {n:"Toiletry bag", q:"hanging toiletry bag"},
-  ]],
-  ["Laundry", [
-    {n:"Pop-up hamper or laundry bag", q:"collapsible laundry hamper"},
-    {n:"Detergent pods (HE)", q:"he laundry detergent pods"},
-    {n:"Folding drying rack", q:"folding drying rack"},
-    {n:"Stain remover pen", q:"tide stain pen"},
-  ]],
-  ["Storage & organization", [
-    {n:"Under-bed storage bins", q:"under bed storage bins"},
-    {n:"Bed risers", q:"bed risers", note:"Multiply your under-bed storage."},
-    {n:"Closet / hanging organizer", q:"hanging closet organizer"},
-    {n:"Drawer & desk organizers", q:"drawer organizer set"},
-    {n:"Command hooks & strips", q:"command hooks strips variety", note:"No nails allowed."},
-    {n:"Over-the-door hooks", q:"over the door hooks"},
-  ]],
-  ["Desk & study", [
-    {n:"LED desk lamp", q:"led desk lamp", note:"No halogen."},
-    {n:"Surge-protected power strip", q:"power strip surge protector circuit breaker", note:"Must be UL-listed with a breaker."},
-    {n:"Notebooks & planner", q:"college notebooks planner"},
-    {n:"Small dry-erase board", q:"small dry erase board"},
-  ]],
-  ["Electronics", [
-    {n:"Laptop charger (spare)", q:"laptop charger"},
-    {n:"Phone chargers / cables", q:"usb c charging cable 2 pack"},
-    {n:"Headphones or earbuds", q:"headphones"},
-    {n:"Power bank", q:"portable power bank"},
-    {n:"Ethernet cable", q:"ethernet cable", note:"Some halls are faster wired — and many ban personal Wi-Fi routers."},
-    {n:"__FAN__", q:"clip on fan"},
-  ]],
-  ["Cleaning", [
-    {n:"Disinfecting wipes", q:"disinfecting wipes"},
-    {n:"Trash can + bags", q:"small trash can"},
-    {n:"Paper towels", q:"paper towels"},
-    {n:"Mini vacuum or hand broom", q:"mini handheld vacuum"},
-    {n:"Microfiber cloths", q:"microfiber cleaning cloths"},
-  ]],
-  ["Kitchen — within the rules", [
-    {n:"__FRIDGE__", q:"microfridge combo"},
-    {n:"Reusable water bottle", q:"reusable water bottle"},
-    {n:"Mug + utensils + plate set", q:"dorm dish set"},
-    {n:"Water filter pitcher", q:"brita pitcher"},
-    {n:"Single-cup coffee maker (enclosed element)", q:"keurig mini", note:"Open-element makers are usually banned; enclosed ones usually fine — confirm."},
-  ]],
-  ["Health & meds", [
-    {n:"Prescriptions + enough refills", q:"weekly pill organizer", note:"Bring a refill plan, not just the bottle."},
-    {n:"Copy of insurance card", q:"card holder wallet"},
-    {n:"Basic OTC / first-aid kit", q:"first aid kit"},
-    {n:"Thermometer", q:"digital thermometer", note:"Know where Student Health is, too."},
-  ]],
-  ["__CLOTHING__", []],
-  ["Move-in day go-bag", [
-    {n:"Keys, ID, phone + charger", q:"lanyard id holder"},
-    {n:"Water + snacks", q:"snack variety pack"},
-    {n:"Box cutter & basic tools", q:"mini tool kit"},
-    {n:"Command strips + cleaning wipes", q:"command strips"},
-    {n:"A change of clothes + the day's meds", q:"packing cubes"},
-  ]],
-];
-const CLOTHING = {
-  cold: ["Clothing — see the seasonal guide", [
-    {n:"Late-summer basics (for now)", q:"basic t shirts"},{n:"Rain shell", q:"packable rain jacket"},
-    {n:"Insulated winter coat", q:"insulated winter coat", note:"Bring it or ship it at fall break."},
-    {n:"Waterproof snow boots", q:"waterproof snow boots"},{n:"Hat, gloves, scarf, thermals", q:"thermal base layer set"},
-    {n:"Warm socks & sweaters", q:"wool socks"},{n:"One dressier outfit", q:"business casual outfit"}]],
-  warm: ["Clothing — see the seasonal guide", [
-    {n:"Lightweight, breathable tops & shorts", q:"breathable t shirts"},{n:"Sandals & lightweight shoes", q:"sandals"},
-    {n:"Swimsuit", q:"swimsuit", note:"Pools and lakes are part of life here."},
-    {n:"Light jacket or hoodie", q:"light hoodie", note:"For aggressive AC and rare cool nights."},
-    {n:"Rain jacket / poncho", q:"packable rain jacket"},{n:"Sun protection: hat, sunglasses, sunscreen", q:"sun hat sunglasses"},
-    {n:"One dressier outfit", q:"business casual outfit"}]],
-  mild: ["Clothing — see the seasonal guide", [
-    {n:"Layers: tees, long-sleeves, light sweaters", q:"long sleeve shirts"},
-    {n:"Excellent waterproof rain shell", q:"waterproof rain jacket", note:"The single most important item here."},
-    {n:"Waterproof shoes or boots", q:"waterproof shoes"},{n:"Light-to-mid jacket (no parka needed)", q:"fleece jacket"},
-    {n:"Compact umbrella", q:"compact umbrella"},
-    {n:"Sunrise / light-therapy lamp", q:"sunrise alarm light therapy lamp", note:"Optional, but the gray winters are dark."},
-    {n:"One dressier outfit", q:"business casual outfit"}]],
-};
-const FAN_NOTE = {ac:"AC is provided — a fan is optional.", varies:"AC varies by hall — bring a fan for the warm early weeks.",
-  none:"No AC — a fan is essential for the warm early weeks.", mild:"AC is rarely needed here."};
-
-/* ============ schools (sourced from each school's official housing pages) ============ */
-/* art.type: desert | coast | plains | northeast | midwest | mountain | pacific | midatlantic
-   photo:""/dorm:"" — paste a LICENSED image URL to override the illustration. */
-const SCHOOLS = [
+export const SCHOOLS = [
  {slug:"colgate",short:"Colgate",name:"Colgate",city:"Hamilton, NY",accent:"#7a1f2b",region:"cold",ac:"none",beds:"Twin XL",movein:"Late August",
   photo:"",dorm:"",art:{type:"northeast",sky:["#3b4f75","#a9b8d2"],sun:"#f3ead2"},
   bednote:"Standard Twin XL.",
@@ -1171,333 +529,121 @@ const SCHOOLS = [
     ["Delaware Blue Hens Team Shop","The official UD athletics fan store — game-day jerseys, hats, and tailgate gear for the whole family.","https://bluehens.com/"]]},
 ];
 
-/* ============ illustration engine ============ */
-function mix(a,b,t){const pa=parseInt(a.slice(1),16),pb=parseInt(b.slice(1),16);
-  const r=Math.round(((pa>>16&255)*(1-t))+((pb>>16&255)*t)),g=Math.round(((pa>>8&255)*(1-t))+((pb>>8&255)*t)),bl=Math.round(((pa&255)*(1-t))+((pb&255)*t));
-  return '#'+(1<<24|r<<16|g<<8|bl).toString(16).slice(1);}
-const DK="#21372c"; // dark foliage
-function pine(x,base,h,c){const w=h*0.42;return `<path d="M${x} ${base-h} L${x-w} ${base} L${x+w} ${base} Z M${x} ${base-h*1.18} L${x-w*0.7} ${base-h*0.45} L${x+w*0.7} ${base-h*0.45} Z" fill="${c}"/><rect x="${x-2}" y="${base}" width="4" height="6" fill="${c}"/>`;}
-function decid(x,base,h,c){const r=h*0.5;return `<rect x="${x-2.5}" y="${base-h*0.55}" width="5" height="${h*0.55}" fill="${mix(c,'#000',0.25)}"/><circle cx="${x}" cy="${base-h*0.7}" r="${r}" fill="${c}"/><circle cx="${x-r*0.6}" cy="${base-h*0.5}" r="${r*0.7}" fill="${c}"/><circle cx="${x+r*0.6}" cy="${base-h*0.5}" r="${r*0.7}" fill="${c}"/>`;}
-function palm(x,base,h,c){const t=mix(c,'#3a2a18',0.4);let f='';for(let i=0;i<6;i++){const a=(-90+(i-2.5)*32)*Math.PI/180;const fx=x+Math.cos(a)*h*0.6,fy=(base-h)+Math.sin(a)*h*0.5;f+=`<path d="M${x} ${base-h} Q ${(x+fx)/2} ${(base-h)-12} ${fx} ${fy}" stroke="${c}" stroke-width="5" fill="none" stroke-linecap="round"/>`;}return `<path d="M${x} ${base} Q ${x-8} ${base-h*0.6} ${x} ${base-h}" stroke="${t}" stroke-width="6" fill="none" stroke-linecap="round"/>${f}`;}
-function saguaro(x,base,h,c){return `<g fill="${c}"><rect x="${x-7}" y="${base-h}" width="14" height="${h}" rx="7"/><rect x="${x-22}" y="${base-h*0.7}" width="11" height="${h*0.45}" rx="5.5"/><rect x="${x-22}" y="${base-h*0.7}" width="22" height="11" rx="5.5"/><rect x="${x+11}" y="${base-h*0.55}" width="11" height="${h*0.4}" rx="5.5"/><rect x="${x}" y="${base-h*0.55}" width="22" height="11" rx="5.5"/></g>`;}
 
-function buildScene(s,W,H){
-  const a=s.art, acc=s.accent, slug=s.slug;
-  const horizon=H*0.66;
-  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustrated ${s.name} landscape">`;
-  svg+=`<defs><linearGradient id="sky_${slug}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a.sky[0]}"/><stop offset="1" stop-color="${a.sky[1]}"/></linearGradient>`;
-  svg+=`<filter id="gr_${slug}"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs>`;
-  svg+=`<rect width="${W}" height="${H}" fill="url(#sky_${slug})"/>`;
-  // sun
-  const sunX=a.type==='desert'?W*0.72:W*0.78, sunY=a.type==='desert'?horizon-26:H*0.26, sunR=a.type==='desert'?46:30;
-  svg+=`<circle cx="${sunX}" cy="${sunY}" r="${sunR}" fill="${a.sun}" opacity="0.95"/>`;
-  // landform
-  const far=mix(a.sky[1],'#2e3b4a',0.45), mid=mix(a.sky[1],'#33402c',0.5);
-  if(a.type==='desert'){
-    svg+=`<path d="M0 ${horizon} L120 ${horizon-30} L210 ${horizon} Z" fill="${mix('#c2774a','#000',0.1)}"/><path d="M${W} ${horizon} L${W-150} ${horizon-44} L${W-260} ${horizon} Z" fill="${mix('#b56a45','#000',0.15)}"/>`;
-  } else if(a.type==='mountain'||a.type==='pacific'){
-    svg+=`<path d="M0 ${horizon} L${W*0.18} ${horizon-86} L${W*0.36} ${horizon-30} L${W*0.55} ${horizon-100} L${W*0.78} ${horizon-40} L${W} ${horizon-70} L${W} ${horizon} Z" fill="${far}"/>`;
-    if(a.type==='pacific') svg+=`<path d="M${W*0.4} ${horizon-110} L${W*0.55} ${horizon-150} L${W*0.7} ${horizon-110} Z" fill="${mix(far,'#fff',0.5)}"/>`;
-  } else if(a.type==='midwest'||a.type==='northeast'||a.type==='midatlantic'){
-    svg+=`<path d="M0 ${horizon} Q ${W*0.3} ${horizon-42} ${W*0.55} ${horizon-18} T ${W} ${horizon-30} L${W} ${horizon} Z" fill="${far}"/>`;
-  }
-  // ground
-  svg+=`<rect y="${horizon}" width="${W}" height="${H-horizon}" fill="${mid}"/>`;
-  svg+=`<rect y="${horizon}" width="${W}" height="10" fill="${mix(mid,'#000',0.12)}"/>`;
-  // foreground flora
-  const fg=H-2;
-  if(a.type==='desert'){ svg+=saguaro(W*0.16,fg,84,'#4f6b46')+saguaro(W*0.84,fg,60,'#46603e'); }
-  else if(a.type==='coast'){ svg+=palm(W*0.14,fg,96,'#3f6b4e')+palm(W*0.86,fg,78,'#3a5f47')+palm(W*0.30,fg,64,'#37583f'); }
-  else if(a.type==='pacific'){ svg+=pine(W*0.10,fg,120,'#243f30')+pine(W*0.20,fg,92,DK)+pine(W*0.88,fg,110,'#243f30')+pine(W*0.78,fg,80,DK); }
-  else if(a.type==='northeast'){ svg+=pine(W*0.12,fg,104,'#28452f')+pine(W*0.22,fg,76,DK)+decid(W*0.85,fg,88,'#b07b3f'); }
-  else if(a.type==='mountain'){ svg+=pine(W*0.12,fg,100,'#274430')+pine(W*0.86,fg,112,DK)+pine(W*0.77,fg,72,'#2c4a34'); }
-  else if(a.type==='midwest'){ svg+=decid(W*0.13,fg,98,'#9e8a3e')+pine(W*0.86,fg,96,DK)+decid(W*0.76,fg,70,'#b58a3c'); }
-  else if(a.type==='midatlantic'){ svg+=decid(W*0.13,fg,96,'#c08a3a')+decid(W*0.85,fg,84,'#b3702f')+decid(W*0.74,fg,64,'#caa044'); }
-  else if(a.type==='plains'){ svg+=decid(W*0.85,fg,90,'#7e8a44'); }
-  // accent baseline band (the school's color, owning the scene)
-  svg+=`<rect y="${H-6}" width="${W}" height="6" fill="${acc}"/>`;
-  // weather
-  if(s.region==='cold'){ let f='';const n=a.sky[0]===s.art.sky[0]?40:40;for(let i=0;i<46;i++){const x=(i*53+((i*i)%37))%W,y=(i*31+((i*7)%horizon))%horizon;f+=`<circle cx="${x}" cy="${y}" r="${1.6+(i%3)*0.5}" fill="#fff" opacity="0.8"/>`;}svg+=f; }
-  else if(s.region==='mild'){ let f='';for(let i=0;i<60;i++){const x=(i*41+((i*i)%29))%W,y=(i*23)%horizon;f+=`<line x1="${x}" y1="${y}" x2="${x-5}" y2="${y+13}" stroke="#eef3f5" stroke-width="1.3" opacity="0.55"/>`;}svg+=f; }
-  else { svg+=`<ellipse cx="${W*0.30}" cy="${H*0.22}" rx="58" ry="20" fill="#fff" opacity="0.5"/><ellipse cx="${W*0.30+34}" cy="${H*0.22+6}" rx="40" ry="16" fill="#fff" opacity="0.45"/>`; }
-  svg+=`<rect width="${W}" height="${H}" filter="url(#gr_${slug})" opacity="0.07"/>`;
-  svg+=`</svg>`;
-  return svg;
-}
-function buildDorm(s){
-  const acc=s.accent, slug=s.slug, W=760,H=300;
-  const wall='#efe7d6', wall2='#e4dac4', floor='#d8c9ad';
-  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a typical dorm room">`;
-  svg+=`<defs><linearGradient id="win_${slug}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${s.art.sky[0]}"/><stop offset="1" stop-color="${s.art.sky[1]}"/></linearGradient>`;
-  svg+=`<filter id="dg_${slug}"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter></defs>`;
-  svg+=`<rect width="${W}" height="${H}" fill="${wall}"/><rect y="${H*0.74}" width="${W}" height="${H*0.26}" fill="${floor}"/>`;
-  // rug
-  svg+=`<rect x="${W*0.30}" y="${H*0.80}" width="${W*0.40}" height="${H*0.15}" rx="6" fill="${mix(acc,'#fff',0.35)}"/><rect x="${W*0.30}" y="${H*0.80}" width="${W*0.40}" height="${H*0.15}" rx="6" fill="none" stroke="${acc}" stroke-width="2" opacity="0.5"/>`;
-  // window with sky
-  svg+=`<rect x="${W*0.40}" y="34" width="150" height="104" rx="4" fill="#cbbfa4"/><rect x="${W*0.40+6}" y="40" width="138" height="92" fill="url(#win_${slug})"/><line x1="${W*0.40+75}" y1="40" x2="${W*0.40+75}" y2="132" stroke="#cbbfa4" stroke-width="5"/><line x1="${W*0.40+6}" y1="86" x2="${W*0.40+144}" y2="86" stroke="#cbbfa4" stroke-width="5"/>`;
-  // lofted bed (left)
-  const bx=46,by=70,bw=250,bh=58;
-  svg+=`<rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="7" fill="${mix(acc,'#fff',0.55)}"/><rect x="${bx}" y="${by+bh-12}" width="${bw}" height="12" rx="4" fill="${mix(acc,'#fff',0.3)}"/>`;
-  svg+=`<rect x="${bx+14}" y="${by+10}" width="60" height="30" rx="6" fill="#fbf7ee"/>`; // pillow
-  svg+=`<rect x="${bx+4}" y="${by+bh}" width="7" height="${H*0.74-(by+bh)}" fill="#9a8e74"/><rect x="${bx+bw-11}" y="${by+bh}" width="7" height="${H*0.74-(by+bh)}" fill="#9a8e74"/>`; // posts
-  // desk under loft + lamp
-  const dx=bx+18,dy=H*0.74-44;
-  svg+=`<rect x="${dx}" y="${dy}" width="150" height="10" rx="3" fill="#b69b6f"/><rect x="${dx+6}" y="${dy+10}" width="8" height="34" fill="#b69b6f"/><rect x="${dx+136}" y="${dy+10}" width="8" height="34" fill="#b69b6f"/>`;
-  svg+=`<rect x="${dx+18}" y="${dy-26}" width="34" height="26" rx="3" fill="${mix(acc,'#000',0.05)}"/>`; // monitor/book
-  svg+=`<path d="M${dx+120} ${dy} l8 -26 l10 0" stroke="${acc}" stroke-width="3" fill="none"/><circle cx="${dx+132}" cy="${dy-28}" r="6" fill="${s.art.sun}"/>`; // lamp
-  // mini fridge (right)
-  svg+=`<rect x="${W-150}" y="${H*0.74-92}" width="78" height="92" rx="6" fill="#f2ece0" stroke="#cbbfa4" stroke-width="2"/><line x1="${W-150}" y1="${H*0.74-58}" x2="${W-72}" y2="${H*0.74-58}" stroke="#cbbfa4" stroke-width="2"/><rect x="${W-84}" y="${H*0.74-86}" width="5" height="22" rx="2" fill="#cbbfa4"/><rect x="${W-84}" y="${H*0.74-52}" width="5" height="22" rx="2" fill="#cbbfa4"/>`;
-  // poster (accent)
-  svg+=`<rect x="${W*0.40+170}" y="44" width="58" height="78" rx="3" fill="${mix(acc,'#fff',0.2)}"/><circle cx="${W*0.40+199}" cy="74" r="14" fill="${s.art.sun}" opacity="0.85"/>`;
-  // plant
-  svg+=`<rect x="${W-150}" y="${H*0.74-112}" width="20" height="20" rx="3" fill="${acc}"/>`+decid(W-140,H*0.74-92,34,'#4f7050');
-  svg+=`<rect width="${W}" height="${H}" filter="url(#dg_${slug})" opacity="0.06"/>`;
-  svg+=`</svg>`;
-  return svg;
-}
-function brandScene(){
-  const W=920,H=300;
-  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustrated dusk campus landscape">`;
-  svg+=`<defs><linearGradient id="bsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#23436f"/><stop offset="0.55" stop-color="#7f7596"/><stop offset="1" stop-color="#dcae6e"/></linearGradient>`;
-  svg+=`<filter id="bgr"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs>`;
-  const horizon=H*0.7;
-  svg+=`<rect width="${W}" height="${H}" fill="url(#bsky)"/>`;
-  svg+=`<circle cx="${W*0.5}" cy="${horizon-12}" r="58" fill="#f3d9a3" opacity="0.92"/>`;
-  // distant hills
-  svg+=`<path d="M0 ${horizon} Q ${W*0.25} ${horizon-54} ${W*0.5} ${horizon-22} T ${W} ${horizon-40} L${W} ${horizon} Z" fill="${mix('#7f7596','#2e3b4a',0.5)}"/>`;
-  // campus silhouette (generic spires/halls)
-  const cx=W*0.5-110;
-  svg+=`<g fill="#2b3a44">`;
-  svg+=`<rect x="${cx}" y="${horizon-70}" width="46" height="70"/><polygon points="${cx},${horizon-70} ${cx+23},${horizon-96} ${cx+46},${horizon-70}"/>`;
-  svg+=`<rect x="${cx+60}" y="${horizon-100}" width="26" height="100"/><polygon points="${cx+60},${horizon-100} ${cx+73},${horizon-128} ${cx+86},${horizon-100}"/>`;
-  svg+=`<rect x="${cx+100}" y="${horizon-56}" width="62" height="56"/><rect x="${cx+178}" y="${horizon-82}" width="40" height="82"/><polygon points="${cx+178},${horizon-82} ${cx+198},${horizon-104} ${cx+218},${horizon-82}"/>`;
-  svg+=`</g>`;
-  // lit windows (marigold)
-  let win='';for(let i=0;i<10;i++){win+=`<rect x="${cx+8+i*22}" y="${horizon-46+((i*13)%30)}" width="5" height="7" fill="#dc9a2b" opacity="0.9"/>`;}svg+=win;
-  // ground
-  svg+=`<rect y="${horizon}" width="${W}" height="${H-horizon}" fill="#27402f"/><rect y="${horizon}" width="${W}" height="9" fill="#1f3527"/>`;
-  // foreground pines + a packed-car silhouette
-  svg+=pine(70,H-4,128,'#1c3225')+pine(120,H-4,92,'#16271d')+pine(W-70,H-4,120,'#1c3225')+pine(W-118,H-4,84,'#16271d');
-  const carX=W*0.5-44, carY=H-26;
-  svg+=`<g fill="#162a1f"><rect x="${carX}" y="${carY-22}" width="92" height="22" rx="6"/><path d="M${carX+14} ${carY-22} q 14 -20 32 -20 l 18 0 q 16 0 22 20 Z"/><rect x="${carX+30}" y="${carY-40}" width="40" height="14" rx="3"/><circle cx="${carX+22}" cy="${carY}" r="9"/><circle cx="${carX+74}" cy="${carY}" r="9"/></g>`;
-  svg+=`<rect y="${H-6}" width="${W}" height="6" fill="#dc9a2b"/>`;
-  svg+=`<rect width="${W}" height="${H}" filter="url(#bgr)" opacity="0.07"/>`;
-  svg+=`</svg>`;
-  return svg;
-}
-
-/* ============ rendering ============ */
-function shopUrl(q, asin){
-  // If an ASIN is provided, link directly to that product page.
-  // Otherwise fall back to an Amazon keyword search.
-  // To link a specific product, add  asin:"B0XXXXXXXX"  to the item object.
-  let url;
-  if(asin){
-    url = "https://www.amazon.com/dp/" + encodeURIComponent(asin);
-    return AFFILIATE_TAG ? url + "?tag=" + encodeURIComponent(AFFILIATE_TAG) : url;
-  }
-  url = "https://www.amazon.com/s?k=" + encodeURIComponent(q);
-  return AFFILIATE_TAG ? url + "&tag=" + encodeURIComponent(AFFILIATE_TAG) : url;
-}
-function softTint(hex){return mix(hex,'#ffffff',0.88);}
-const $=id=>document.getElementById(id);
-const checked={};   // self-hosting: JSON.parse(localStorage.getItem('alldorms-'+slug)||'{}')
-let total=0,CURRENT=SCHOOLS[0];
-
-function buildChecklist(school){
-  const root=$('checklistRoot');root.innerHTML='';total=0;for(const k in checked)delete checked[k];
-  let idc=0;
-  const cats=CHECKLIST_COMMON.map(c=>c[0]==="__CLOTHING__"?CLOTHING[school.region]:c);
-  cats.forEach(([cat,items])=>{
-    const sec=document.createElement('div');sec.className='cat';
-    const h=document.createElement('h3');h.innerHTML=cat+' <span class="n">'+items.length+'</span>';sec.appendChild(h);
-    const box=document.createElement('div');box.className='items';
-    items.forEach(it=>{
-      total++;const id='it'+(idc++);let name=it.n,note=it.note;
-      if(name==="__FAN__"){name="Small fan";note=FAN_NOTE[school.ac];}
-      if(name==="__FRIDGE__"){name=school.fridge.name;note=school.fridge.note;}
-      if(note==="__BEDNOTE__"){note=school.bednote;}
-      const row=document.createElement('label');row.className='item';row.setAttribute('for',id);
-      row.innerHTML='<input type="checkbox" id="'+id+'"><span class="label">'+name+(note?'<span class="note">'+note+'</span>':'')+'</span>'+
-        '<a class="shop" href="'+shopUrl(it.q, it.asin)+'" target="_blank" rel="noopener nofollow sponsored" onclick="event.stopPropagation()">Shop</a>';
-      const cb=row.querySelector('input');
-      cb.addEventListener('change',()=>{checked[id]=cb.checked;row.classList.toggle('done',cb.checked);updateProgress();
-        // self-hosting: localStorage.setItem('alldorms-'+CURRENT.slug, JSON.stringify(checked));
-      });
-      box.appendChild(row);
-    });
-    sec.appendChild(box);root.appendChild(sec);
-  });
-  updateProgress();
-}
-function updateProgress(){
-  const done=Object.values(checked).filter(Boolean).length,pct=total?Math.round(done/total*100):0;
-  $('bigCount').textContent=done+' / '+total+' packed';$('bigFill').style.width=pct+'%';
-  $('sideFill').style.width=pct+'%';$('sidePct').textContent=pct+'%';
-}
-function contactHref(v){if(v.indexOf('@')>-1)return'mailto:'+v;if(/^https?:/.test(v))return v;if(/[0-9]{3}.*[0-9]{4}/.test(v))return'tel:'+v.replace(/[^0-9]/g,'');return v;}
-
-function render(school){
-  CURRENT=school;
-  document.documentElement.style.setProperty('--accent',school.accent);
-  document.documentElement.style.setProperty('--accent-soft',softTint(school.accent));
-  document.querySelectorAll('.navlink[data-sec]').forEach(c=>c.classList.remove('active'));
-  $('sideSchoolName').textContent=school.name;$('sideSchoolCity').textContent=school.city;
-
-  // postcard header (photo overrides illustration)
-  const art = school.photo ? '<img src="'+school.photo+'" alt="'+school.name+' campus">' : buildScene(school,900,300);
-  $('pcard').innerHTML = art + '<div class="overlay"><div class="ov-kick">Move-in, sorted &middot; '+school.city+'</div><div class="ov-name">'+school.name+'</div></div>';
-
-  $('heroLede').textContent=school.lede;
-  const acLabel={ac:'Provided',varies:'Varies by hall',none:'None — bring a fan',mild:'Rarely needed'}[school.ac];
-  $('facts').innerHTML=[['Move-in',school.movein],['Beds',school.beds],['A/C',acLabel]]
-    .map(([k,v])=>'<div class="fact"><div class="k">'+k+'</div><div class="v">'+v+'</div></div>').join('');
-
-  const city0=school.city.split(',')[0];
-  $('weatherTitle').textContent='What to wear in '+city0+', month by month';
-  $('weatherSub').textContent=(school.region==='warm'?'The national lists assume everyone needs a winter coat. Here, the real questions are heat, sun, and rain — and clothes for buildings kept ice-cold against it.':school.region==='mild'?'Seattle breaks every generic packing list. It is not about surviving cold — it is about staying dry through a long gray winter and a famously short, beautiful summer.':'This region runs from a humid late summer to a hard winter in about ten weeks. The mistake out-of-region families make is packing the whole year in August.');
-  $('arc').innerHTML=school.climate.map(([m,t,w,c])=>'<div class="month"><div class="swatch" style="background:'+c+'"></div><div class="name">'+m+'</div><div class="temp">'+t+'</div><p class="wear">'+w+'</p></div>').join('');
-  $('arcTip').innerHTML=school.tip;
-
-  $('rulesTitle').textContent='What '+school.name+' lets you bring';
-  $('allowedList').innerHTML=school.allowedExtra.concat(ALLOWED_BASE).map(x=>'<li>'+x+'</li>').join('');
-  $('bannedList').innerHTML=BANNED_BASE.concat(school.bannedExtra).map(x=>'<li>'+x+'</li>').join('');
-  $('verify').innerHTML='These come from '+school.name+'\u2019s official housing pages and cover the essentials plus the genuinely local rules. Confirm against the <a href="'+school.housing+'" target="_blank" rel="noopener">current official guidance</a> before you buy — policies and renovations change every year.';
-
-  $('checklistTitle').textContent='The '+school.name+' move-in checklist';
-  const dormArt = school.dorm ? '<img src="'+school.dorm+'" alt="Typical '+school.name+' dorm room">' : buildDorm(school);
-  $('roomfig').innerHTML = dormArt + '<figcaption>A typical first-year room — illustration. See your hall\u2019s page for real photos and exact dimensions.</figcaption>';
-
-  $('logiTitle').textContent=city0+' logistics, sorted';
-  $('logiRoot').innerHTML=school.notes.map(([title,body])=>title.indexOf('addr|')===0?'<div class="notecard addr"><h4>'+title.slice(5)+'</h4><p>'+body+'</p></div>':'<div class="notecard"><h4>'+title+'</h4><p>'+body+'</p></div>').join('');
-
-  // ===== housing process =====
-  $('housingTitle').textContent='Getting your room at '+school.name;
-  if(school.housingSteps&&school.housingSteps.length){
-    $('housing').style.display='';
-    $('housingSteps').innerHTML=school.housingSteps.map(s=>{
-      const when=s.when?'<div class="when">'+s.when+'</div>':'';
-      return '<div class="step">'+when+'<h4>'+s.title+'</h4><p>'+s.body+'</p></div>';
-    }).join('');
-  } else { $('housing').style.display='none'; }
-
-  // ===== residential communities =====
-  $('commTitle').textContent='Where you\u2019ll live at '+school.name;
-  if(school.communities&&school.communities.length){
-    $('communities').style.display='';
-    $('commRoot').innerHTML=school.communities.map(c=>{
-      const halls=(c.halls&&c.halls.length)?'<div class="halls">'+c.halls.map(h=>{
-        const tag=h.tag?'<span class="htag">'+h.tag+'</span>':'';
-        return '<div class="hall"><div class="hn">'+h.name+tag+'</div>'+(h.desc?'<p>'+h.desc+'</p>':'')+'</div>';
-      }).join('')+'</div>':'';
-      return '<div class="commons-card"><div class="ch"><h4>'+c.name+'</h4>'+(c.blurb?'<p>'+c.blurb+'</p>':'')+'</div>'+halls+'</div>';
-    }).join('');
-  } else { $('communities').style.display='none'; }
-
-  // ===== town & hotspots =====
-  $('areaTitle').textContent=city0+' & around';
-  if(school.area&&school.area.length){
-    $('area').style.display='';
-    $('areaRoot').innerHTML=school.area.map(([type,name,url,desc])=>{
-      const h=url?'<a href="'+url+'" target="_blank" rel="noopener">'+name+'</a>':name;
-      return '<div class="spot"><div class="stype">'+type+'</div><h4>'+h+'</h4><p>'+desc+'</p></div>';
-    }).join('');
-  } else { $('area').style.display='none'; }
-
-  // ===== where to stay =====
-  $('stayTitle').textContent='Where to stay near '+school.name;
-  if(school.stay&&school.stay.length){
-    $('stay').style.display='';
-    $('stayRoot').innerHTML=school.stay.map(([tier,name,dist,desc,url])=>{
-      const link=url?'<a class="slink" href="'+url+'" target="_blank" rel="noopener">Visit site</a>':'';
-      return '<div class="stay"><div class="stier">'+tier+'</div><h4>'+name+'</h4><div class="sdist">'+dist+'</div><p>'+desc+'</p>'+link+'</div>';
-    }).join('');
-    $('stayNote').innerHTML=school.stayNote||'';
-    $('stayNote').style.display=school.stayNote?'':'none';
-  } else { $('stay').style.display='none'; }
-
-  // ===== merch =====
-  $('merchTitle').textContent=school.name+' gear & gifts';
-  if(school.merch&&school.merch.length){
-    $('merch').style.display='';
-    $('merchRoot').innerHTML=school.merch.map(([title,desc,url])=>
-      '<a class="merch-link" href="'+url+'" target="_blank" rel="noopener"><span class="mtitle">'+title+'</span><span class="mdesc">'+desc+'</span></a>'
-    ).join('');
-  } else { $('merch').style.display='none'; }
+/* ===== packing checklist data ===== */
+export const CHECKLIST_COMMON = [
+  ["Bedding", [
+    {n:"Twin XL sheet set", q:"twin xl sheet set", note:"__BEDNOTE__"},
+    {n:"Mattress topper", q:"twin xl mattress topper", note:"Dorm mattresses are thin and firm."},
+    {n:"Comforter or duvet", q:"twin xl comforter"},
+    {n:"Pillows", q:"bed pillows 2 pack"},
+    {n:"Mattress protector", q:"twin xl mattress protector"},
+    {n:"Throw blanket", q:"throw blanket"},
+  ]],
+  ["Bath", [
+    {n:"Towel set", q:"bath towel set"},
+    {n:"Shower caddy", q:"mesh shower caddy"},
+    {n:"Shower shoes / slides", q:"shower slides", note:"Communal bathrooms. Non-negotiable."},
+    {n:"Robe", q:"hooded robe"},
+    {n:"Toiletry bag", q:"hanging toiletry bag"},
+  ]],
+  ["Laundry", [
+    {n:"Pop-up hamper or laundry bag", q:"collapsible laundry hamper"},
+    {n:"Detergent pods (HE)", q:"he laundry detergent pods"},
+    {n:"Folding drying rack", q:"folding drying rack"},
+    {n:"Stain remover pen", q:"tide stain pen"},
+  ]],
+  ["Storage & organization", [
+    {n:"Under-bed storage bins", q:"under bed storage bins"},
+    {n:"Bed risers", q:"bed risers", note:"Multiply your under-bed storage."},
+    {n:"Closet / hanging organizer", q:"hanging closet organizer"},
+    {n:"Drawer & desk organizers", q:"drawer organizer set"},
+    {n:"Command hooks & strips", q:"command hooks strips variety", note:"No nails allowed."},
+    {n:"Over-the-door hooks", q:"over the door hooks"},
+  ]],
+  ["Desk & study", [
+    {n:"LED desk lamp", q:"led desk lamp", note:"No halogen."},
+    {n:"Surge-protected power strip", q:"power strip surge protector circuit breaker", note:"Must be UL-listed with a breaker."},
+    {n:"Notebooks & planner", q:"college notebooks planner"},
+    {n:"Small dry-erase board", q:"small dry erase board"},
+  ]],
+  ["Electronics", [
+    {n:"Laptop charger (spare)", q:"laptop charger"},
+    {n:"Phone chargers / cables", q:"usb c charging cable 2 pack"},
+    {n:"Headphones or earbuds", q:"headphones"},
+    {n:"Power bank", q:"portable power bank"},
+    {n:"Ethernet cable", q:"ethernet cable", note:"Some halls are faster wired — and many ban personal Wi-Fi routers."},
+    {n:"__FAN__", q:"clip on fan"},
+  ]],
+  ["Cleaning", [
+    {n:"Disinfecting wipes", q:"disinfecting wipes"},
+    {n:"Trash can + bags", q:"small trash can"},
+    {n:"Paper towels", q:"paper towels"},
+    {n:"Mini vacuum or hand broom", q:"mini handheld vacuum"},
+    {n:"Microfiber cloths", q:"microfiber cleaning cloths"},
+  ]],
+  ["Kitchen — within the rules", [
+    {n:"__FRIDGE__", q:"microfridge combo"},
+    {n:"Reusable water bottle", q:"reusable water bottle"},
+    {n:"Mug + utensils + plate set", q:"dorm dish set"},
+    {n:"Water filter pitcher", q:"brita pitcher"},
+    {n:"Single-cup coffee maker (enclosed element)", q:"keurig mini", note:"Open-element makers are usually banned; enclosed ones usually fine — confirm."},
+  ]],
+  ["Health & meds", [
+    {n:"Prescriptions + enough refills", q:"weekly pill organizer", note:"Bring a refill plan, not just the bottle."},
+    {n:"Copy of insurance card", q:"card holder wallet"},
+    {n:"Basic OTC / first-aid kit", q:"first aid kit"},
+    {n:"Thermometer", q:"digital thermometer", note:"Know where Student Health is, too."},
+  ]],
+  ["__CLOTHING__", []],
+  ["Move-in day go-bag", [
+    {n:"Keys, ID, phone + charger", q:"lanyard id holder"},
+    {n:"Water + snacks", q:"snack variety pack"},
+    {n:"Box cutter & basic tools", q:"mini tool kit"},
+    {n:"Command strips + cleaning wipes", q:"command strips"},
+    {n:"A change of clothes + the day's meds", q:"packing cubes"},
+  ]],
+];
+export const CLOTHING = {
+  cold: ["Clothing — see the seasonal guide", [
+    {n:"Late-summer basics (for now)", q:"basic t shirts"},{n:"Rain shell", q:"packable rain jacket"},
+    {n:"Insulated winter coat", q:"insulated winter coat", note:"Bring it or ship it at fall break."},
+    {n:"Waterproof snow boots", q:"waterproof snow boots"},{n:"Hat, gloves, scarf, thermals", q:"thermal base layer set"},
+    {n:"Warm socks & sweaters", q:"wool socks"},{n:"One dressier outfit", q:"business casual outfit"}]],
+  warm: ["Clothing — see the seasonal guide", [
+    {n:"Lightweight, breathable tops & shorts", q:"breathable t shirts"},{n:"Sandals & lightweight shoes", q:"sandals"},
+    {n:"Swimsuit", q:"swimsuit", note:"Pools and lakes are part of life here."},
+    {n:"Light jacket or hoodie", q:"light hoodie", note:"For aggressive AC and rare cool nights."},
+    {n:"Rain jacket / poncho", q:"packable rain jacket"},{n:"Sun protection: hat, sunglasses, sunscreen", q:"sun hat sunglasses"},
+    {n:"One dressier outfit", q:"business casual outfit"}]],
+  mild: ["Clothing — see the seasonal guide", [
+    {n:"Layers: tees, long-sleeves, light sweaters", q:"long sleeve shirts"},
+    {n:"Excellent waterproof rain shell", q:"waterproof rain jacket", note:"The single most important item here."},
+    {n:"Waterproof shoes or boots", q:"waterproof shoes"},{n:"Light-to-mid jacket (no parka needed)", q:"fleece jacket"},
+    {n:"Compact umbrella", q:"compact umbrella"},
+    {n:"Sunrise / light-therapy lamp", q:"sunrise alarm light therapy lamp", note:"Optional, but the gray winters are dark."},
+    {n:"One dressier outfit", q:"business casual outfit"}]],
+};
+export const FAN_NOTE = {ac:"AC is provided — a fan is optional.", varies:"AC varies by hall — bring a fan for the warm early weeks.",
+  none:"No AC — a fan is essential for the warm early weeks.", mild:"AC is rarely needed here."};
 
 
-  $('linksTitle').textContent=school.name+' — links & contacts';
-  const L=school.links;
-  const off='<div class="linkcard"><h4>Official pages</h4><ul>'+L.official.map(([t,u])=>'<li><a href="'+u+'" target="_blank" rel="noopener">'+t+'</a></li>').join('')+'</ul></div>';
-  const con='<div class="linkcard"><h4>Who to contact</h4><ul>'+L.contact.map(([t,v])=>{const h=contactHref(v),disp=(/^https?:/.test(v))?'Visit page':v;return'<li>'+t+': <a href="'+h+'"'+(/^https?:/.test(v)?' target="_blank" rel="noopener"':'')+'>'+disp+'</a></li>';}).join('')+'</ul><p class="note">For room-specific questions, reach your hall\u2019s coordinator or RA through the housing office.</p></div>';
-  $('linksRoot').innerHTML=off+con;
+/* ===== base allowed/banned ===== */
+export const ALLOWED_BASE = [
+  "Twin XL bedding (confirm your specific hall)",
+  "UL/ETL power strip <em>with</em> a built-in circuit breaker — not a bare extension cord",
+  "Damage-free wall hangings like Command strips — no nails or screws",
+  "Low-draw LED desk and task lamps",
+  "A fan, a reusable water bottle, and UL-listed electronics",
+];
+export const BANNED_BASE = [
+  "Open-coil / open-flame cooking: toasters, toaster ovens, air fryers, hot plates, electric grills, sandwich makers",
+  "Candles, incense, wax warmers, and anything with an open flame",
+  "Halogen lamps",
+  "Extension cords without a breaker; outlet splitters and multi-plug adapters",
+  "Space heaters and personal A/C units (unless your school provides/approves them)",
+  "Hoverboards, e-scooters, e-bikes, and other e-mobility devices",
+  "Weapons of any kind — including decorative — and fireworks",
+];
 
-  // sync sidebar: hide nav links whose section has no content for this school, renumber the rest
-  let _n=0;
-  document.querySelectorAll('.navlink[data-sec]').forEach(btn=>{
-    const el=$(btn.dataset.sec);
-    const hide=(el&&el.style.display==='none');
-    btn.style.display=hide?'none':'';
-    const nn=btn.querySelector('.nn');
-    if(!hide&&nn){_n++;nn.textContent=String(_n).padStart(2,'0');}
-  });
-
-  buildChecklist(school);
-}
-
-/* ============ navigation ============ */
-function closeMenu(){document.body.classList.remove('nav-open');$('menuToggle').setAttribute('aria-expanded','false');}
-function showHome(){
-  $('home').classList.remove('hidden');$('app').classList.add('hidden');
-  $('navHome').classList.remove('hidden');$('navSchool').classList.add('hidden');$('sideProg').classList.add('hidden');
-  closeMenu();window.scrollTo({top:0,behavior:'auto'});
-}
-function enterSchool(school){
-  $('home').classList.add('hidden');$('app').classList.remove('hidden');
-  $('navHome').classList.add('hidden');$('navSchool').classList.remove('hidden');$('sideProg').classList.remove('hidden');
-  render(school);closeMenu();window.scrollTo({top:0,behavior:'auto'});
-}
-
-/* ============ init ============ */
-// brand hero scene + index line
-$('brandScene').innerHTML=brandScene();
-$('indexLine').innerHTML='<b>The index —</b> '+SCHOOLS.map(s=>s.short).join(' · ');
-
-// landing grid
-const grid=$('schoolGrid');
-SCHOOLS.forEach(s=>{
-  const acShort={ac:'A/C',varies:'A/C varies',none:'No A/C',mild:'No A/C needed'}[s.ac];
-  const thumb = s.photo ? '<img src="'+s.photo+'" alt="">' : buildScene(s,300,160);
-  const b=document.createElement('button');b.className='scard';b.type='button';
-  b.innerHTML='<div class="thumb">'+thumb+'</div><div class="body"><div class="nm">'+s.short+'</div><div class="ct">'+s.city+'</div>'+
-    '<div class="tags"><span class="tag">'+s.beds+'</span><span class="tag">'+acShort+'</span></div></div>';
-  b.addEventListener('click',()=>enterSchool(s));
-  grid.appendChild(b);
-});
-
-// school section nav
-document.querySelectorAll('.navlink[data-sec]').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.navlink[data-sec]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-    const el=$(btn.dataset.sec);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});closeMenu();
-  });
-});
-// landing in-page nav
-document.querySelectorAll('[data-scroll]').forEach(btn=>{
-  btn.addEventListener('click',e=>{e.preventDefault();const el=$(btn.dataset.scroll);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-    document.querySelectorAll('#navHome .navlink').forEach(b=>b.classList.remove('active'));
-    if(btn.classList.contains('navlink'))btn.classList.add('active');closeMenu();});
-});
-
-$('heroCta').addEventListener('click',()=>{$('pickSection').scrollIntoView({behavior:'smooth'});});
-$('logoBtn').addEventListener('click',showHome);
-$('logoBtn2').addEventListener('click',showHome);
-$('backBtn').addEventListener('click',showHome);
-$('menuToggle').addEventListener('click',()=>{const open=document.body.classList.toggle('nav-open');$('menuToggle').setAttribute('aria-expanded',open?'true':'false');});
-$('resetBtn').addEventListener('click',()=>{document.querySelectorAll('.item input').forEach(cb=>cb.checked=false);document.querySelectorAll('.item').forEach(r=>r.classList.remove('done'));for(const k in checked)delete checked[k];updateProgress();});
-
-
-showHome();
-</script>
-</body>
-</html>
+/* ============ checklist ============ */

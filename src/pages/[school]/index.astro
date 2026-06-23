@@ -1,0 +1,136 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../../layouts/Base.astro';
+import Crest from '../../components/Crest.astro';
+import SubNav from '../../components/SubNav.astro';
+import Section from '../../components/Section.astro';
+import { SCHOOLS, schoolSections, AC_LABEL } from '../../lib/site.js';
+
+export function getStaticPaths() {
+  return SCHOOLS.map(school => ({ params: { school: school.slug }, props: { school } }));
+}
+
+const { school } = Astro.props;
+const sections = schoolSections(school);
+const checklist = sections.find(s => s.id === 'checklist');
+const facts = [['Move-in', school.movein], ['Beds', school.beds], ['A/C', AC_LABEL[school.ac]]];
+
+// real campus photo for the hero banner; falls back to the crest when missing
+const photo = fs.existsSync(path.join(process.cwd(), 'public', 'schools', `${school.slug}.jpg`)) ? `/schools/${school.slug}.jpg` : null;
+const FOCUS = { utexas: '50% 22%' };
+const focus = FOCUS[school.slug] || null;
+---
+<Base
+  title={`${school.name} move-in guide — packing, housing & more · AllDorms`}
+  description={`The complete ${school.name} move-in guide: what to pack, what's allowed, how housing works, where you'll live, move-in logistics, and where to stay. Built by students, for the parents doing the packing.`}
+>
+  <!-- hero -->
+  <section class={"shero" + (photo ? " has-photo" : "")} style={`--accent:${school.accent}` + (focus ? `;--focus:${focus}` : '')}>
+    <div class="shero-stripe"></div>
+    {photo && <img class="shero-bg" src={photo} alt={`${school.name} campus`} fetchpriority="high" />}
+    {photo && <div class="shero-scrim"></div>}
+    <div class="wrap shero-in">
+      <div class="shero-text">
+        <a href="/#schools" class="shero-back">← All schools</a>
+        <span class="kick">{school.city} · Move-in guide</span>
+        <h1>{school.name}</h1>
+        <p class="shero-lede">{school.lede}</p>
+        <div class="shero-foot">
+          <div class="shero-facts">
+            {facts.map(([k, v]) => (
+              <div class="shf"><span class="shf-k">{k}</span><span class="shf-v">{v}</span></div>
+            ))}
+          </div>
+          {checklist && <a href={`#${checklist.id}`} class="btn btn-gold">Jump to the checklist ↓</a>}
+        </div>
+      </div>
+      {!photo && (
+        <div class="shero-crest">
+          <Crest school={school} size={208} />
+        </div>
+      )}
+    </div>
+  </section>
+
+  <SubNav school={school} />
+
+  <!-- sections, full breadth -->
+  <div class="wrap doc">
+    {sections.map(sec => (
+      <section id={sec.id} class="docsec">
+        <div class="docsec-head">
+          <span class="docsec-no">{sec.num}</span>
+          <div class="docsec-titles">
+            <span class="kick">{sec.kicker}</span>
+            <h2>{sec.heading(school)}</h2>
+          </div>
+        </div>
+        <div class="docsec-body">
+          <Section school={school} id={sec.id} />
+        </div>
+      </section>
+    ))}
+  </div>
+</Base>
+
+<script>
+  // scroll-spy
+  const links = Array.from(document.querySelectorAll('#subnav .subnav-link'));
+  const map = new Map(links.map(l => [l.dataset.target, l]));
+  const secs = Array.from(document.querySelectorAll('.docsec'));
+  let active = null;
+  const setActive = id => {
+    if (id === active) return; active = id;
+    links.forEach(l => l.classList.remove('active'));
+    const l = map.get(id); if (l) l.classList.add('active');
+  };
+  const obs = new IntersectionObserver(entries => {
+    const vis = entries.filter(e => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (vis[0]) setActive(vis[0].target.id);
+  }, { rootMargin: '-120px 0px -68% 0px', threshold: 0 });
+  secs.forEach(s => obs.observe(s));
+  if (secs[0]) setActive(secs[0].id);
+</script>
+
+<style>
+  .shero { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  .shero-stripe { position: relative; z-index: 3; height: 5px; background: var(--accent); }
+  .shero-bg { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 40%); }
+  .shero-scrim {
+    position: absolute; inset: 0; z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(15,23,44,.58) 0%, rgba(15,23,44,.34) 38%, rgba(13,20,38,.86) 100%),
+      linear-gradient(90deg, rgba(13,20,38,.86) 0%, rgba(13,20,38,.4) 52%, rgba(13,20,38,.12) 100%);
+  }
+  .shero-in { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: center; padding: 54px 28px 58px; }
+  .shero.has-photo .shero-in { grid-template-columns: 1fr; min-height: 38vh; }
+  .shero.has-photo .shero-text { max-width: 62ch; }
+  .shero-crest { display: flex; justify-content: center; }
+
+  .shero-back { font-family: var(--sans); font-size: .9rem; font-weight: 500; color: #cdd4e6; text-decoration: none; display: inline-block; margin-bottom: 1rem; }
+  .shero-back:hover { color: #fff; }
+  .shero-text .kick { color: var(--gold-soft); margin-bottom: .7rem; }
+  .shero-text .kick::before { background: var(--gold-soft); }
+  .shero-text h1 { color: #fff; font-size: clamp(2.4rem, 5vw, 3.9rem); margin-bottom: .45rem; }
+  .shero-lede { font-size: 1.22rem; line-height: 1.55; color: #dde3f1; max-width: 64ch; margin-bottom: 1.6rem; }
+  .shero-foot { display: flex; align-items: center; gap: 2.4rem; flex-wrap: wrap; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,.18); }
+  .shero-facts { display: flex; gap: 34px; flex-wrap: wrap; }
+  .shf { display: flex; flex-direction: column; gap: 2px; }
+  .shf-k { font-family: var(--mono); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: #9aa5c4; }
+  .shf-v { font-family: var(--display); font-weight: 560; font-size: 1.16rem; color: #fff; }
+
+  /* sections fill the full width */
+  .doc { padding-top: 18px; }
+  .docsec { padding: 46px 0; border-top: 1px solid var(--line); }
+  .docsec:first-child { border-top: none; }
+  .docsec-head { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 1.8rem; max-width: 70ch; }
+  .docsec-no { font-family: var(--display); font-weight: 600; font-size: 1.5rem; color: var(--gold); line-height: 1; padding-top: .3rem; }
+  .docsec-titles .kick { margin-bottom: .45rem; }
+  .docsec-titles h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin: 0; }
+
+  @media (max-width: 860px) {
+    .shero-in { grid-template-columns: 1fr; gap: 28px; }
+    .shero-crest { order: -1; }
+  }
+</style>

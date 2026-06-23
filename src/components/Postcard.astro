@@ -1,0 +1,104 @@
+---
+// A per-school "postcard": a regional sky (gradient + sun) with a horizon
+// silhouette keyed to the school's landscape. Driven entirely by the unused
+// `art` data already in schools.js — unique per school, never breaks.
+import { mix } from '../lib/site.js';
+
+const { school } = Astro.props;
+const art = school.art || { type: 'plains', sky: ['#5b6f92', '#c2cee0'], sun: '#f1e9d4' };
+const [skyTop, skyBottom] = art.sky;
+const sun = art.sun;
+const accent = school.accent;
+
+// dusky silhouette colour — a darkened blend of the school's accent so the
+// horizon still reads as "their" colour against any sky
+const dusk = mix(accent, '#141a26', 0.5);
+const dusk2 = mix(accent, '#141a26', 0.32);
+const uid = 'pc-' + school.slug;
+
+// horizon silhouettes by landscape type — drawn on a 320×200 canvas,
+// ground baseline around y=150
+const horizons = {
+  desert: `
+    <path d="M0 150 L46 150 L58 132 L96 132 L108 150 L320 150 V200 H0 Z" fill="${dusk2}"/>
+    <g fill="${dusk}">
+      <rect x="146" y="104" width="9" height="46" rx="4"/>
+      <rect x="135" y="120" width="7" height="20" rx="3"/><rect x="132" y="116" width="7" height="9" rx="3"/>
+      <rect x="159" y="112" width="7" height="24" rx="3"/><rect x="159" y="108" width="13" height="7" rx="3"/>
+      <rect x="232" y="118" width="7" height="32" rx="3"/><rect x="223" y="128" width="6" height="14" rx="3"/>
+    </g>`,
+  coast: `
+    <rect x="0" y="156" width="320" height="44" fill="${dusk2}"/>
+    <g fill="${dusk}">
+      <rect x="62" y="108" width="5" height="48" rx="2"/>
+      <path d="M64 110 q-26 -8 -34 2 q22 -2 34 6 q12 -8 34 -6 q-8 -10 -34 -2"/>
+    </g>
+    <path d="M0 160 q40 -6 80 0 t80 0 t80 0 t80 0 V200 H0 Z" fill="${dusk}" opacity=".55"/>`,
+  pacific: `
+    <rect x="0" y="158" width="320" height="42" fill="${dusk2}"/>
+    <g fill="${dusk}">
+      <path d="M28 158 l16 -44 l16 44 Z"/><path d="M62 158 l13 -34 l13 34 Z"/>
+      <path d="M92 158 l18 -50 l18 50 Z"/><path d="M128 158 l12 -30 l12 30 Z"/>
+      <path d="M210 158 l15 -40 l15 40 Z"/><path d="M244 158 l11 -28 l11 28 Z"/>
+      <path d="M272 158 l17 -46 l17 46 Z"/>
+    </g>`,
+  mountain: `
+    <path d="M0 150 L58 92 L96 128 L150 78 L210 132 L262 96 L320 126 V200 H0 Z" fill="${dusk2}"/>
+    <path d="M0 162 L70 124 L120 152 L190 116 L250 150 L320 122 V200 H0 Z" fill="${dusk}"/>`,
+  northeast: `
+    <path d="M0 150 q90 -26 180 -2 q70 18 140 -4 V200 H0 Z" fill="${dusk2}"/>
+    <g fill="${dusk}">
+      <path d="M52 150 l13 -40 l13 40 Z"/><path d="M70 150 l11 -32 l11 32 Z"/>
+      <path d="M236 150 l12 -34 l12 34 Z"/>
+      <rect x="150" y="120" width="14" height="30"/><path d="M150 120 l7 -14 l7 14 Z"/>
+      <rect x="155" y="100" width="4" height="22"/>
+    </g>`,
+  midatlantic: `
+    <path d="M0 152 q80 -20 160 -2 q80 18 160 -2 V200 H0 Z" fill="${dusk2}"/>
+    <g fill="${dusk}">
+      <rect x="120" y="120" width="34" height="30"/><path d="M118 120 l18 -16 l18 16 Z"/>
+      <rect x="200" y="128" width="22" height="22"/><path d="M198 128 l13 -12 l13 12 Z"/>
+    </g>`,
+  plains: `
+    <rect x="0" y="150" width="320" height="50" fill="${dusk2}"/>
+    <g fill="${dusk}">
+      <rect x="40" y="118" width="16" height="32"/><path d="M38 118 l8 -12 l8 12 Z"/>
+      <rect x="120" y="96" width="13" height="54" rx="2"/><rect x="135" y="96" width="13" height="54" rx="2"/>
+      <rect x="118" y="90" width="32" height="8" rx="2"/>
+      <rect x="210" y="124" width="20" height="26"/><path d="M208 124 l12 -12 l12 12 Z"/>
+      <rect x="250" y="132" width="34" height="18"/>
+    </g>`,
+  midwest: `
+    <rect x="0" y="150" width="320" height="50" fill="${dusk2}"/>
+    <g fill="${dusk}">
+      <rect x="110" y="104" width="20" height="46"/><rect x="134" y="92" width="24" height="58"/>
+      <rect x="162" y="112" width="18" height="38"/><rect x="184" y="100" width="22" height="50"/>
+      <rect x="210" y="118" width="16" height="32"/>
+      <rect x="142" y="80" width="8" height="14"/>
+    </g>`,
+};
+const horizon = horizons[art.type] || horizons.plains;
+---
+<svg class="postcard" viewBox="0 0 320 200" width="100%" height="100%"
+     preserveAspectRatio="xMidYMid slice" role="img"
+     aria-label={`${school.name} — ${school.city}`} xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id={uid} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color={skyTop} />
+      <stop offset="1" stop-color={skyBottom} />
+    </linearGradient>
+    <radialGradient id={uid + '-sun'} cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color={sun} stop-opacity="0.95" />
+      <stop offset="0.6" stop-color={sun} stop-opacity="0.45" />
+      <stop offset="1" stop-color={sun} stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="320" height="200" fill={`url(#${uid})`} />
+  <circle cx="232" cy="74" r="58" fill={`url(#${uid}-sun)`} />
+  <circle cx="232" cy="74" r="22" fill={sun} opacity="0.92" />
+  <Fragment set:html={horizon} />
+</svg>
+
+<style>
+  .postcard { display: block; width: 100%; height: 100%; }
+</style>

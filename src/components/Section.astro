@@ -1,0 +1,327 @@
+---
+import {
+  ALLOWED_BASE, BANNED_BASE, resolveChecklist, contactHref, weatherSub, softTint,
+} from '../lib/site.js';
+const { school, id } = Astro.props;
+const accentSoft = softTint(school.accent);
+
+const allowed = id === 'allowed' ? school.allowedExtra.concat(ALLOWED_BASE) : [];
+const banned  = id === 'allowed' ? BANNED_BASE.concat(school.bannedExtra) : [];
+const checklist = id === 'checklist' ? resolveChecklist(school) : [];
+const totalItems = checklist.reduce((n, c) => n + c.items.length, 0);
+---
+
+{/* 01 WEATHER */}
+{id === 'weather' && (
+  <div class="sec">
+    <p class="lede">{weatherSub(school)}</p>
+    <table class="climate">
+      <tbody>
+        {school.climate.map(([m, t, w, c]) => (
+          <tr>
+            <td class="cl-month"><span class="cl-swatch" style={`background:${c}`}></span>{m}</td>
+            <td class="cl-temp">{t}</td>
+            <td class="cl-wear">{w}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <div class="callout" set:html={school.tip}></div>
+  </div>
+)}
+
+{/* 02 ALLOWED */}
+{id === 'allowed' && (
+  <div class="sec">
+    <div class="two-col">
+      <div class="panel">
+        <div class="panel-head panel-yes"><span class="mk mk-yes">✓</span> Bring it</div>
+        <ul class="rules">{allowed.map(x => <li set:html={x}></li>)}</ul>
+      </div>
+      <div class="panel">
+        <div class="panel-head panel-no"><span class="mk mk-no">✕</span> Leave it home</div>
+        <ul class="rules">{banned.map(x => <li set:html={x}></li>)}</ul>
+      </div>
+    </div>
+    <p class="verify">
+      These come from {school.name}'s official housing pages and cover the essentials plus the genuinely local rules.
+      Double-check the <a href={school.housing} target="_blank" rel="noopener">current official guidance</a> before you buy — policies and renovations change every year.
+    </p>
+  </div>
+)}
+
+{/* 03 HOUSING */}
+{id === 'housing' && (
+  <ol class="steps">
+    {school.housingSteps.map((s, i) => (
+      <li class="step">
+        <div class="step-num">{String(i + 1).padStart(2, '0')}</div>
+        <div class="step-when">{s.when}</div>
+        <h3>{s.title}</h3>
+        <p set:html={s.body}></p>
+      </li>
+    ))}
+  </ol>
+)}
+
+{/* 04 COMMUNITIES */}
+{id === 'communities' && (
+  <div class="commons" style={`--accent:${school.accent};--accent-soft:${accentSoft}`}>
+    {school.communities.map(c => (
+      <div class="commons-card">
+        <div class="ch">
+          <h4>{c.name}</h4>
+          {c.blurb && <p>{c.blurb}</p>}
+        </div>
+        {c.halls && c.halls.length > 0 && (
+          <div class="halls">
+            {c.halls.map(h => (
+              <div class="hall">
+                <div class="hn">{h.name}{h.tag && <span class="htag">{h.tag}</span>}</div>
+                {h.desc && <p>{h.desc}</p>}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+)}
+
+{/* 05 CHECKLIST */}
+{id === 'checklist' && (
+  <div class="sec-checklist" data-total={totalItems}>
+    <div class="prog">
+      <div class="prog-row">
+        <span class="prog-count" id="progCount">0 / {totalItems} packed</span>
+        <span class="prog-hint">Check things off as you go — it's just for you, nothing is saved.</span>
+      </div>
+      <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+    </div>
+    <div class="cat-grid">
+      {checklist.map(cat => (
+        <section class="cat">
+          <h3>{cat.cat} <span class="cat-n">{cat.count}</span></h3>
+          <div class="items">
+            {cat.items.map(it => (
+              <label class="item">
+                <input type="checkbox" class="chk" />
+                <span class="item-lbl">{it.name}{it.note && <span class="item-note" set:html={it.note}></span>}</span>
+                <a class="shop" href={it.href} target="_blank" rel="noopener nofollow sponsored">Shop ↗</a>
+              </label>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+)}
+
+{/* 06 MOVE-IN */}
+{id === 'movein' && (
+  <div class="notes">
+    {school.notes.map(([title, body]) => {
+      const isAddr = title.indexOf('addr|') === 0;
+      const heading = isAddr ? title.slice(5) : title;
+      return (
+        <div class={"note" + (isAddr ? " note-addr" : "")}>
+          <h4>{heading}</h4>
+          <div class="notebody" set:html={body}></div>
+        </div>
+      );
+    })}
+  </div>
+)}
+
+{/* 07 AREA */}
+{id === 'area' && (
+  <div class="grid-cards">
+    {school.area.map(([type, name, url, desc]) => (
+      <div class="gcard">
+        <span class="gc-type">{type}</span>
+        <h3>{url ? <a href={url} target="_blank" rel="noopener">{name}</a> : name}</h3>
+        <p>{desc}</p>
+      </div>
+    ))}
+  </div>
+)}
+
+{/* 08 STAY */}
+{id === 'stay' && (
+  <div class="sec">
+    <div class="grid-cards">
+      {school.stay.map(([tier, name, dist, desc, url]) => (
+        <div class="gcard">
+          <span class="gc-tier">{tier}</span>
+          <h3>{url ? <a href={url} target="_blank" rel="noopener">{name}</a> : name}</h3>
+          <span class="gc-dist">{dist}</span>
+          <p>{desc}</p>
+        </div>
+      ))}
+    </div>
+    {school.stayNote && <div class="callout callout-gold" set:html={school.stayNote}></div>}
+  </div>
+)}
+
+{/* 09 MERCH */}
+{id === 'merch' && (
+  <div class="merch">
+    {school.merch.map(([title, desc, url]) => (
+      <a class="merch-row" href={url} target="_blank" rel="noopener">
+        <span class="merch-text"><span class="merch-title">{title}</span><span class="merch-desc">{desc}</span></span>
+        <span class="merch-arrow">↗</span>
+      </a>
+    ))}
+  </div>
+)}
+
+{/* 10 LINKS */}
+{id === 'links' && (
+  <div class="two-col">
+    {school.links.official && school.links.official.length > 0 && (
+      <div class="panel">
+        <div class="panel-head">Official pages</div>
+        <ul class="linklist">{school.links.official.map(([t, u]) => <li><a href={u} target="_blank" rel="noopener">{t}</a></li>)}</ul>
+      </div>
+    )}
+    {school.links.contact && school.links.contact.length > 0 && (
+      <div class="panel">
+        <div class="panel-head">Who to contact</div>
+        <ul class="linklist">
+          {school.links.contact.map(([t, v]) => {
+            const h = contactHref(v); const ext = /^https?:/.test(v); const disp = ext ? 'Visit page' : v;
+            return <li>{t}: <a href={h} {...(ext ? { target: '_blank', rel: 'noopener' } : {})}>{disp}</a></li>;
+          })}
+        </ul>
+      </div>
+    )}
+  </div>
+)}
+
+{id === 'checklist' && (
+  <script is:inline>
+    {`(function(){var root=document.currentScript.closest('.sec-checklist')||document.querySelector('.sec-checklist');if(!root)return;var total=parseInt(root.getAttribute('data-total'),10)||0;var boxes=root.querySelectorAll('.chk');var c=document.getElementById('progCount');var f=document.getElementById('progFill');function u(){var d=0;boxes.forEach(function(b){var i=b.closest('.item');if(b.checked){d++;i.classList.add('done');}else{i.classList.remove('done');}});var p=total?Math.round(d/total*100):0;if(c)c.textContent=d+' / '+total+' packed';if(f)f.style.width=p+'%';}boxes.forEach(function(b){b.addEventListener('change',u);});u();})();`}
+  </script>
+)}
+
+<style>
+  .sec { font-family: var(--serif); }
+  .lede { font-size: 1.18rem; line-height: 1.55; color: var(--ink-soft); margin-bottom: 1.5rem; max-width: 66ch; }
+
+  /* callouts */
+  .callout { margin-top: 1.6rem; padding: 1rem 1.3rem; background: var(--cream); border-left: 3px solid var(--gold); font-size: 1.02rem; line-height: 1.55; max-width: 90ch; }
+  .callout-gold { background: var(--gold-pale); }
+  .callout :global(b) { color: var(--navy); }
+
+  /* weather table (full width) */
+  .climate { width: 100%; border-collapse: collapse; }
+  .climate tr { border-bottom: 1px solid var(--line); }
+  .climate tr:first-child { border-top: 2px solid var(--navy); }
+  .climate td { padding: .95rem .5rem; vertical-align: baseline; }
+  .cl-month { font-family: var(--display); font-weight: 560; font-size: 1.08rem; color: var(--navy); white-space: nowrap; width: 14%; }
+  .cl-swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: .65rem; vertical-align: baseline; }
+  .cl-temp { font-family: var(--mono); font-size: .85rem; color: var(--gold-deep); white-space: nowrap; width: 14%; }
+  .cl-wear { font-size: 1rem; color: var(--ink-soft); line-height: 1.5; }
+
+  /* two-col panels (allowed/banned, links) */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .panel { background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem 1.6rem; }
+  .panel-head { font-family: var(--sans); font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: .5em; margin-bottom: .9rem; padding-bottom: .7rem; border-bottom: 1px solid var(--line-2); }
+  .mk { display: grid; place-items: center; width: 1.35em; height: 1.35em; border-radius: 50%; font-size: .72em; color: #fff; }
+  .mk-yes { background: var(--navy); }
+  .mk-no { background: var(--gold-deep); }
+  .rules { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 2rem; }
+  .rules li { padding: .45rem 0 .45rem 1.25rem; position: relative; font-size: .96rem; line-height: 1.45; border-top: 1px solid rgba(0,0,0,.05); break-inside: avoid; }
+  .rules li:first-child { border-top: none; }
+  .rules li::before { content: ''; position: absolute; left: .15rem; top: .92em; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+  .rules :global(em) { font-style: normal; font-weight: 620; color: var(--navy); }
+  .verify { margin-top: 1.4rem; font-size: .92rem; color: var(--ink-faint); line-height: 1.55; max-width: 90ch; }
+
+  /* housing steps — 2-up grid */
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 30px 44px; }
+  .step { padding-top: 1rem; border-top: 2px solid var(--navy); }
+  .step-num { font-family: var(--display); font-weight: 600; font-size: 1.3rem; color: var(--gold); line-height: 1; }
+  .step-when { font-family: var(--sans); font-size: .72rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--gold-deep); margin: .5rem 0 .35rem; }
+  .step h3 { font-size: 1.2rem; margin-bottom: .35rem; }
+  .step p { font-size: 1rem; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+
+  /* communities — 2-up commons cards */
+  .commons { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+  .commons-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .commons-card .ch { padding: 18px 22px; border-bottom: 1px solid var(--line); background: var(--accent-soft); }
+  .commons-card .ch h4 { font-family: var(--display); font-weight: 600; font-size: 1.28rem; color: var(--accent); letter-spacing: -.01em; margin: 0; }
+  .commons-card .ch p { margin: .45rem 0 0; font-size: .95rem; color: var(--ink-soft); line-height: 1.5; }
+  .commons-card .halls { padding: 6px 22px 16px; }
+  .hall { padding: .85rem 0; border-top: 1px solid var(--line); }
+  .hall:first-child { border-top: none; }
+  .hall .hn { font-family: var(--display); font-weight: 560; font-size: 1.02rem; color: var(--navy); display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; }
+  .hall .htag { font-family: var(--sans); font-size: .64rem; letter-spacing: .03em; text-transform: uppercase; color: var(--ink-soft); background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: .18em .65em; font-weight: 600; }
+  .hall p { margin: .3rem 0 0; font-size: .92rem; color: var(--ink-soft); line-height: 1.5; }
+
+  /* checklist — multi-column categories */
+  .prog { background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.3rem; margin-bottom: 1.6rem; }
+  .prog-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .6rem; flex-wrap: wrap; }
+  .prog-count { font-family: var(--display); font-weight: 600; font-size: 1.35rem; color: var(--navy); }
+  .prog-hint { font-size: .86rem; color: var(--ink-faint); }
+  .prog-track { height: 8px; background: #ece4d0; border-radius: 999px; overflow: hidden; }
+  .prog-fill { height: 100%; width: 0; background: var(--gold); border-radius: 999px; transition: width .25s ease; }
+  .cat-grid { columns: 3; column-gap: 38px; }
+  .cat { break-inside: avoid; margin-bottom: 1.8rem; }
+  .cat h3 { font-size: 1.12rem; display: flex; align-items: center; gap: .55rem; padding-bottom: .45rem; border-bottom: 2px solid var(--gold-soft); }
+  .cat-n { font-family: var(--mono); font-size: .68rem; color: var(--ink-faint); }
+  .items { margin-top: .3rem; }
+  .item { display: flex; align-items: flex-start; gap: .7rem; padding: .5rem .2rem; border-bottom: 1px solid var(--line); cursor: pointer; }
+  .item:hover { background: rgba(42,70,116,.03); }
+  .chk { margin-top: .28rem; width: 16px; height: 16px; accent-color: var(--navy); flex: none; cursor: pointer; }
+  .item-lbl { flex: 1; font-size: .98rem; line-height: 1.4; }
+  .item-note { display: block; font-size: .82rem; color: var(--ink-faint); line-height: 1.4; margin-top: .1rem; }
+  .item-note :global(b) { color: var(--ink-soft); }
+  .item.done .item-lbl { text-decoration: line-through; color: var(--ink-faint); text-decoration-color: var(--line-2); }
+  .shop { font-family: var(--sans); font-size: .68rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--navy); border: 1px solid var(--line-2); border-radius: 999px; padding: .32em .8em; text-decoration: none; flex: none; align-self: center; }
+  .shop:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+  /* move-in notes — fill width */
+  .notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.6rem 2rem; }
+  .note h4 { font-size: 1.1rem; margin-bottom: .35rem; padding-bottom: .4rem; border-bottom: 1px solid var(--line); }
+  .note .notebody { font-size: .96rem; line-height: 1.5; color: var(--ink-soft); }
+  .note-addr { grid-column: 1 / -1; background: var(--navy); color: #cdd4e6; border-radius: var(--radius); padding: 1.4rem 1.6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; align-items: start; }
+  .note-addr h4 { color: #fff; border-bottom-color: rgba(255,255,255,.2); grid-column: 1 / -1; }
+  .note-addr .notebody { color: #b8c0d6; }
+  .note-addr :global(.block) { font-family: var(--mono); font-size: .85rem; line-height: 1.6; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 6px; padding: .8rem 1rem; margin-bottom: 0; color: #fff; }
+  .note-addr :global(.var) { color: var(--gold-soft); }
+
+  /* generic card grid (area + stay) */
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 18px; }
+  .gcard { padding: 1.2rem 0 0; border-top: 2px solid var(--navy); }
+  .gc-type, .gc-tier { font-family: var(--sans); font-size: .7rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--gold-deep); }
+  .gc-tier { color: #fff; background: var(--navy); padding: .3em .8em; border-radius: 999px; display: inline-block; }
+  .gcard h3 { font-size: 1.18rem; margin: .35rem 0 .3rem; }
+  .gc-dist { display: block; font-family: var(--mono); font-size: .68rem; color: var(--ink-faint); margin-bottom: .4rem; }
+  .gcard p { font-size: .96rem; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+
+  /* merch — 2-up rows */
+  .merch { display: grid; grid-template-columns: 1fr 1fr; gap: 0 38px; }
+  .merch-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem .2rem; text-decoration: none; border-top: 1px solid var(--line); }
+  .merch-row:hover { background: rgba(42,70,116,.03); }
+  .merch-title { display: block; font-family: var(--display); font-weight: 560; font-size: 1.12rem; color: var(--navy); }
+  .merch-desc { display: block; font-size: .93rem; color: var(--ink-soft); line-height: 1.45; margin-top: .15rem; }
+  .merch-arrow { font-size: 1.1rem; color: var(--gold-deep); flex: none; }
+
+  /* links */
+  .linklist { list-style: none; padding: 0; margin: 0; }
+  .linklist li { padding: .42rem 0; border-top: 1px solid rgba(0,0,0,.05); font-size: .96rem; }
+  .linklist li:first-child { border-top: none; }
+
+  @media (max-width: 1000px) {
+    .cat-grid { columns: 2; }
+  }
+  @media (max-width: 760px) {
+    .two-col, .steps, .commons, .merch { grid-template-columns: 1fr; }
+    .rules { columns: 1; }
+    .cat-grid { columns: 1; }
+    .note-addr { grid-template-columns: 1fr; }
+    .climate td { display: block; padding: .15rem .5rem; }
+    .climate tr { padding: .55rem 0; }
+    .cl-temp { padding-bottom: .5rem; }
+  }
+</style>

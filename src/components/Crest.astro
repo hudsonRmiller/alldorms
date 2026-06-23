@@ -1,0 +1,57 @@
+---
+// A varsity-style shield crest. Used as the campus-photo fallback and
+// as a recurring collegiate motif. Uses each school's accent color.
+const { school, size = 220 } = Astro.props;
+const accent = school.accent;
+const initial = (school.short || school.name).trim().charAt(0).toUpperCase();
+const short = (school.short || school.name).trim().toUpperCase();
+const uid = 'crest-' + school.slug;
+---
+<svg class="crest" viewBox="0 0 220 252" width={size} role="img"
+     aria-label={`${school.name} crest`} xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id={uid} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color={accent} />
+      <stop offset="1" stop-color="#000" stop-opacity="0.22" />
+    </linearGradient>
+    <clipPath id={uid + '-clip'}>
+      <path d="M14 16 H206 V120 C206 178 168 214 110 240 C52 214 14 178 14 120 Z" />
+    </clipPath>
+  </defs>
+
+  <!-- shield body -->
+  <path d="M14 16 H206 V120 C206 178 168 214 110 240 C52 214 14 178 14 120 Z"
+        fill={accent} />
+  <path d="M14 16 H206 V120 C206 178 168 214 110 240 C52 214 14 178 14 120 Z"
+        fill={`url(#${uid})`} />
+
+  <!-- inner gold keyline -->
+  <path d="M24 26 H196 V118 C196 170 162 203 110 227 C58 203 24 170 24 118 Z"
+        fill="none" stroke="#c19a3e" stroke-width="2" opacity="0.9" />
+
+  <g clip-path={`url(#${uid}-clip)`}>
+    <!-- chief band -->
+    <rect x="0" y="26" width="220" height="40" fill="#c19a3e" opacity="0.95" />
+    <!-- three varsity pennants on the band -->
+    <g fill={accent}>
+      <path d="M62 30 l22 0 -11 14 Z" />
+      <path d="M99 30 l22 0 -11 14 Z" />
+      <path d="M136 30 l22 0 -11 14 Z" />
+    </g>
+  </g>
+
+  <!-- monogram -->
+  <text x="110" y="150" text-anchor="middle"
+        font-family="'Fraunces', Georgia, serif" font-weight="600"
+        font-size="92" fill="#fbf9f2">{initial}</text>
+
+  <!-- lower banner -->
+  <rect x="30" y="168" width="160" height="26" rx="2" fill="#fbf9f2" />
+  <text x="110" y="186" text-anchor="middle"
+        font-family="'IBM Plex Mono', monospace" font-weight="500"
+        font-size={short.length > 11 ? 10 : 12} letter-spacing="1.2" fill={accent}>{short}</text>
+</svg>
+
+<style>
+  .crest { display: block; filter: drop-shadow(0 18px 30px rgba(31,46,85,.22)); }
+</style>
