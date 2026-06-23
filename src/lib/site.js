@@ -99,6 +99,51 @@ export function mix(a, b, t) {
 export const softTint = hex => mix(hex, '#ffffff', 0.9);
 export const deepTint = hex => mix(hex, '#1a1a1a', 0.15);
 
+/* ---------- per-school page theming ----------
+   Builds a full CSS-variable palette from one school colour: that colour plays
+   the "navy" role (header, headings, buttons), and the page background is the
+   same colour scaled up in HSL until it's nearly white. */
+function hexToRgb(hex) { const n = parseInt(hex.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+function rgbToHex(r, g, b) { const h = x => Math.round(Math.max(0, Math.min(255, x))).toString(16).padStart(2, '0'); return '#' + h(r) + h(g) + h(b); }
+function rgbToHsl(r, g, b) {
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h = 0, s = 0; const l = (max + min) / 2;
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    if (max === r) h = (g - b) / d + (g < b ? 6 : 0);
+    else if (max === g) h = (b - r) / d + 2;
+    else h = (r - g) / d + 4;
+    h /= 6;
+  }
+  return [h, s, l];
+}
+function hslToRgb(h, s, l) {
+  if (s === 0) return [l * 255, l * 255, l * 255];
+  const f = (p, q, t) => { if (t < 0) t += 1; if (t > 1) t -= 1; if (t < 1 / 6) return p + (q - p) * 6 * t; if (t < 1 / 2) return q; if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6; return p; };
+  const q = l < 0.5 ? l * (1 + s) : l + s - l * s, p = 2 * l - q;
+  return [f(p, q, h + 1 / 3) * 255, f(p, q, h) * 255, f(p, q, h - 1 / 3) * 255];
+}
+/** Same hue/saturation as `hex`, re-lit to lightness `l` (0–1); `sMul` scales saturation. */
+function setL(hex, l, sMul = 1) { const [h, s] = rgbToHsl(...hexToRgb(hex)); return rgbToHex(...hslToRgb(h, Math.min(1, s * sMul), l)); }
+
+/** A CSS-variable style string that re-themes a page around one school colour. */
+export function schoolTheme(accent) {
+  const vars = {
+    '--navy':      accent,
+    '--navy-2':    mix(accent, '#000000', 0.10),
+    '--navy-deep': mix(accent, '#0b0b14', 0.45),
+    '--paper':     setL(accent, 0.966, 0.85),
+    '--paper-2':   setL(accent, 0.935, 0.95),
+    '--cream':     setL(accent, 0.915),
+    '--line':      setL(accent, 0.88),
+    '--line-2':    setL(accent, 0.82),
+    '--rule-navy': setL(accent, 0.78),
+  };
+  return Object.entries(vars).map(([k, v]) => `${k}:${v}`).join(';');
+}
+
 /* ---------- contact + shop links ---------- */
 export function contactHref(v) {
   if (v.indexOf('@') > -1) return 'mailto:' + v;

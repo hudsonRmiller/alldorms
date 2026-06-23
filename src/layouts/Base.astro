@@ -4,6 +4,7 @@ const {
   title = 'AllDorms — the college move-in guide for the people doing the packing',
   description = 'Move-in, sorted. Real packing lists, housing answers, and where-to-stay guides for 12 universities — built for the parents getting their child to campus.',
   bodyClass = '',
+  theme = undefined,   // optional CSS-variable overrides (per-school colour theme)
 } = Astro.props;
 ---
 <!doctype html>
@@ -21,7 +22,7 @@ const {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,640&family=Newsreader:ital,opsz,wght@0,6..72,380;0,6..72,440;0,6..72,560;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 </head>
-<body class={bodyClass}>
+<body class={bodyClass} style={theme}>
   <header class="sitehead">
     <div class="wrap sitehead-in">
       <a href="/" class="brand">

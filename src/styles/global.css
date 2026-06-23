@@ -1,32 +1,31 @@
 /* =====================================================================
-   AllDorms — design system  ·  cream / navy / gold
-   Institutional campus-housing feel: hairline rules, flat panels,
-   serif headings, dense readable content. No floating SaaS cards.
+   AllDorms — design system  ·  navy / pale gold / icy near-white
+   Background is the navy hue scaled up in HSL until it's nearly white.
    ===================================================================== */
 
 :root {
-  /* --- palette: warm cream, navy, gold --- */
-  --paper:       #faf6ec;   /* page background — warm cream */
-  --paper-2:     #f3eddf;   /* alt section band */
-  --cream:       #efe8d7;   /* subtle panel / well fill */
+  /* --- background: the navy scaled up in HSL toward white --- */
+  --paper:       #f2f4f8;   /* page background — near-white, faint slate tint */
+  --paper-2:     #e8ecf3;   /* alt section band */
+  --cream:       #dfe4ee;   /* subtle panel / well fill */
   --white:       #ffffff;
 
-  --navy:        #2a4674;   /* primary blue */
-  --navy-2:      #345489;   /* lighter navy for hovers/links */
-  --navy-deep:   #1c3157;   /* footer / deepest */
+  --navy:        #3a4a6b;   /* primary — the scrolled homepage banner slate */
+  --navy-2:      #4a5c80;   /* lighter slate for hovers/links */
+  --navy-deep:   #28324a;   /* footer / deepest */
 
-  --gold:        #b6912f;   /* collegiate gold accent */
-  --gold-deep:   #9a7825;
-  --gold-soft:   #e7d6a6;
-  --gold-pale:   #f0e6c9;
+  --gold:        #fdde6c;   /* Pale Gold — accent / on-navy / button fills */
+  --gold-deep:   #9c7c1c;   /* darker gold for text & accents on light bg */
+  --gold-soft:   #fce9a0;
+  --gold-pale:   #fbf2d0;
 
-  --ink:         #20232e;   /* near-black, navy-leaning body text */
-  --ink-soft:    #4f5566;
-  --ink-faint:   #858a99;
+  --ink:         #161b2b;   /* near-black, navy-leaning body text */
+  --ink-soft:    #444c63;
+  --ink-faint:   #7d869c;
 
-  --line:        #e7e3d8;   /* hairline */
-  --line-2:      #d9d3c4;   /* stronger hairline */
-  --rule-navy:   #c9d0dd;
+  --line:        #dbe3f1;   /* hairline */
+  --line-2:      #cad5ea;   /* stronger hairline */
+  --rule-navy:   #b9c6e2;
 
   /* per-school accent (crest + commons header + thin stripe) */
   --accent:      #7a1f2b;
@@ -95,7 +94,7 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
   color: var(--gold-deep);
   display: inline-flex; align-items: center; gap: .5em;
 }
-.kick::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); display: inline-block; flex: none; }
+.kick::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-deep); display: inline-block; flex: none; }
 .kick.plain::before { display: none; }
 
 /* ---- buttons (navy / gold, flat) ---- */
@@ -140,7 +139,7 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
 body.home .sitehead { position: fixed; left: 0; right: 0; background: transparent; }
 body.home .sitehead:not(.solid)::after { opacity: 0; }
 body.home .sitehead:not(.solid) .headnav a:not(.headnav-cta) { color: #f1eee6; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
-body.home .sitehead.solid { background: rgba(28, 49, 87, .9); backdrop-filter: saturate(140%) blur(10px); box-shadow: 0 6px 24px -16px rgba(0,0,0,.7); }
+body.home .sitehead.solid { background: rgba(58, 74, 107, .92); backdrop-filter: saturate(140%) blur(10px); box-shadow: 0 6px 24px -16px rgba(0,0,0,.7); }
 
 /* ---- footer ---- */
 .sitefoot { margin-top: 0; background: var(--navy-deep); color: #aeb6cb; }
