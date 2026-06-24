@@ -9,6 +9,11 @@ const allowed = id === 'allowed' ? school.allowedExtra.concat(ALLOWED_BASE) : []
 const banned  = id === 'allowed' ? BANNED_BASE.concat(school.bannedExtra) : [];
 const checklist = id === 'checklist' ? resolveChecklist(school) : [];
 const totalItems = checklist.reduce((n, c) => n + c.items.length, 0);
+
+// Checklist persistence (localStorage). Injected verbatim via set:html so it
+// runs as a real inline script — NOT wrapped in {`...`}, which is:inline emits
+// as literal text (the IIFE would never execute).
+const CHECKLIST_JS = `(function(){var root=document.querySelector('.sec-checklist');if(!root)return;var KEY='alldorms:checklist:'+(root.getAttribute('data-school')||'x');var total=parseInt(root.getAttribute('data-total'),10)||0;var boxes=root.querySelectorAll('.chk');var c=document.getElementById('progCount');var f=document.getElementById('progFill');var reset=root.querySelector('.prog-reset');function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){return {};}}function save(o){try{localStorage.setItem(KEY,JSON.stringify(o));}catch(e){}}var saved=load();boxes.forEach(function(b){if(saved[b.dataset.key])b.checked=true;});function persist(){var o={};boxes.forEach(function(b){if(b.checked)o[b.dataset.key]=1;});save(o);}function u(){var d=0;boxes.forEach(function(b){var i=b.closest('.item');if(b.checked){d++;i.classList.add('done');}else{i.classList.remove('done');}});var p=total?Math.round(d/total*100):0;if(c)c.textContent=d+' / '+total+' packed';if(f)f.style.width=p+'%';if(reset)reset.style.visibility=d?'visible':'hidden';}boxes.forEach(function(b){b.addEventListener('change',function(){persist();u();});});if(reset)reset.addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});try{localStorage.removeItem(KEY);}catch(e){}u();});u();})();`;
 ---
 
 {/* 01 WEATHER */}
@@ -90,11 +95,14 @@ const totalItems = checklist.reduce((n, c) => n + c.items.length, 0);
 
 {/* 05 CHECKLIST */}
 {id === 'checklist' && (
-  <div class="sec-checklist" data-total={totalItems}>
+  <div class="sec-checklist" data-total={totalItems} data-school={school.slug}>
     <div class="prog">
       <div class="prog-row">
         <span class="prog-count" id="progCount">0 / {totalItems} packed</span>
-        <span class="prog-hint">Check things off as you go — it's just for you, nothing is saved.</span>
+        <span class="prog-meta">
+          <span class="prog-hint">Saved on this device as you go.</span>
+          <button type="button" class="prog-reset">Reset</button>
+        </span>
       </div>
       <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
     </div>
@@ -103,13 +111,16 @@ const totalItems = checklist.reduce((n, c) => n + c.items.length, 0);
         <section class="cat">
           <h3>{cat.cat} <span class="cat-n">{cat.count}</span></h3>
           <div class="items">
-            {cat.items.map(it => (
-              <label class="item">
-                <input type="checkbox" class="chk" />
-                <span class="item-lbl">{it.name}{it.note && <span class="item-note" set:html={it.note}></span>}</span>
-                <a class="shop" href={it.href} target="_blank" rel="noopener nofollow sponsored">Shop ↗</a>
-              </label>
-            ))}
+            {cat.items.map(it => {
+              const key = (cat.cat + '|' + it.name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+              return (
+                <label class="item">
+                  <input type="checkbox" class="chk" data-key={key} />
+                  <span class="item-lbl">{it.name}{it.note && <span class="item-note" set:html={it.note}></span>}</span>
+                  <a class="shop" href={it.href} target="_blank" rel="noopener nofollow sponsored">Shop ↗</a>
+                </label>
+              );
+            })}
           </div>
         </section>
       ))}
@@ -199,9 +210,7 @@ const totalItems = checklist.reduce((n, c) => n + c.items.length, 0);
 )}
 
 {id === 'checklist' && (
-  <script is:inline>
-    {`(function(){var root=document.currentScript.closest('.sec-checklist')||document.querySelector('.sec-checklist');if(!root)return;var total=parseInt(root.getAttribute('data-total'),10)||0;var boxes=root.querySelectorAll('.chk');var c=document.getElementById('progCount');var f=document.getElementById('progFill');function u(){var d=0;boxes.forEach(function(b){var i=b.closest('.item');if(b.checked){d++;i.classList.add('done');}else{i.classList.remove('done');}});var p=total?Math.round(d/total*100):0;if(c)c.textContent=d+' / '+total+' packed';if(f)f.style.width=p+'%';}boxes.forEach(function(b){b.addEventListener('change',u);});u();})();`}
-  </script>
+  <script is:inline set:html={CHECKLIST_JS}></script>
 )}
 
 <style>
@@ -263,6 +272,9 @@ const totalItems = checklist.reduce((n, c) => n + c.items.length, 0);
   .prog-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .6rem; flex-wrap: wrap; }
   .prog-count { font-family: var(--display); font-weight: 600; font-size: 1.35rem; color: var(--navy); }
   .prog-hint { font-size: .86rem; color: var(--ink-faint); }
+  .prog-meta { display: inline-flex; align-items: baseline; gap: .9rem; }
+  .prog-reset { font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--navy); background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; visibility: hidden; }
+  .prog-reset:hover { color: var(--gold-deep); }
   .prog-track { height: 8px; background: var(--line-2); border-radius: 999px; overflow: hidden; }
   .prog-fill { height: 100%; width: 0; background: var(--navy); border-radius: 999px; transition: width .25s ease; }
   .cat-grid { columns: 3; column-gap: 38px; }
