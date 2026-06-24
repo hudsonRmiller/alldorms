@@ -31,10 +31,10 @@
   --accent:      #7a1f2b;
 
   /* --- type --- */
-  --display: 'Fraunces', 'Newsreader', Georgia, serif;
-  --serif:   'Newsreader', Georgia, 'Times New Roman', serif;
-  --sans:    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --mono:    'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --display: 'Piazzolla', 'Literata', Georgia, serif;
+  --serif:   'Literata', Georgia, 'Times New Roman', serif;
+  --sans:    'Schibsted Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono:    'Spline Sans Mono', ui-monospace, Menlo, monospace;
 
   --maxw: 1280px;
   --radius: 12px;
@@ -122,10 +122,8 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
 .sitehead-in { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .brand { display: inline-flex; align-items: center; gap: .55em; text-decoration: none; }
 .brand .mark {
-  width: 32px; height: 32px; border-radius: 9px; background: var(--gold);
-  color: var(--navy-deep); display: grid; place-items: center;
-  font-family: var(--display); font-weight: 640; font-size: 1.1rem;
-  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.25);
+  width: 34px; height: 34px; border-radius: 9px; display: block;
+  object-fit: cover; box-shadow: 0 1px 4px rgba(0,0,0,.3);
 }
 .brand .word { font-family: var(--display); font-weight: 600; font-size: 1.3rem; color: #fff; letter-spacing: -.01em; }
 .brand .word b { color: var(--gold-soft); font-weight: 600; }
