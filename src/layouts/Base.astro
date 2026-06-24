@@ -6,7 +6,25 @@ const {
   description = 'Move-in, sorted. Real packing lists, housing answers, and where-to-stay guides for 12 universities — built for the parents getting their child to campus.',
   bodyClass = '',
   theme = undefined,   // optional CSS-variable overrides (per-school colour theme)
+  image = '/logo.png', // social-share image (relative path; absolutised below)
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(image, Astro.site).href;
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'AllDorms',
+  url: new URL('/', Astro.site).href,
+  logo: new URL('/logo.png', Astro.site).href,
+  description: 'College move-in guides — real packing lists, housing answers, and where-to-stay guides for U.S. universities.',
+};
+const siteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'AllDorms',
+  url: new URL('/', Astro.site).href,
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -15,9 +33,19 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="AllDorms" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(siteLd)} />
   <link rel="icon" type="image/png" href="/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

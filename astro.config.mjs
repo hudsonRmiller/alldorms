@@ -1,7 +1,10 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://alldorms.vercel.app',
-  build: { format: 'directory' }, // /colgate/weather/ -> clean URLs
+  site: 'https://alldorms.net',
+
+  // /colgate/weather/ -> clean URLs
+  build: { format: 'directory' },
+
   trailingSlash: 'always',
 });
