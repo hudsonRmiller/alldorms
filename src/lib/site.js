@@ -1,4 +1,10 @@
-import { SCHOOLS, CHECKLIST_COMMON, CLOTHING, FAN_NOTE, ALLOWED_BASE, BANNED_BASE } from '../data/schools.js';
+import { SCHOOLS as RAW_SCHOOLS, CHECKLIST_COMMON, CLOTHING, FAN_NOTE, ALLOWED_BASE, BANNED_BASE } from '../data/schools.js';
+
+// Display order: Colgate is shown last.
+const SCHOOLS = [
+  ...RAW_SCHOOLS.filter(s => s.slug !== 'colgate'),
+  ...RAW_SCHOOLS.filter(s => s.slug === 'colgate'),
+];
 
 export { SCHOOLS, ALLOWED_BASE, BANNED_BASE };
 

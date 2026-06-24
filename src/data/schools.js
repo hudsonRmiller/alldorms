@@ -533,11 +533,11 @@ export const SCHOOLS = [
 /* ===== packing checklist data ===== */
 export const CHECKLIST_COMMON = [
   ["Bedding", [
-    {n:"Twin XL sheet set", q:"twin xl sheet set", note:"__BEDNOTE__"},
+    {n:"Twin XL sheet set", q:"twin xl sheet set", asin:"B016P42ARU", note:"__BEDNOTE__"},
     {n:"Mattress topper", q:"twin xl mattress topper", note:"Dorm mattresses are thin and firm."},
     {n:"Comforter or duvet", q:"twin xl comforter"},
     {n:"Pillows", q:"bed pillows 2 pack"},
-    {n:"Mattress protector", q:"twin xl mattress protector"},
+    {n:"Mattress protector", q:"twin xl mattress protector", asin:"B003PWNGK6"},
     {n:"Throw blanket", q:"throw blanket"},
   ]],
   ["Bath", [
@@ -549,7 +549,7 @@ export const CHECKLIST_COMMON = [
   ]],
   ["Laundry", [
     {n:"Pop-up hamper or laundry bag", q:"collapsible laundry hamper"},
-    {n:"Detergent pods (HE)", q:"he laundry detergent pods"},
+    {n:"Detergent pods (HE)", q:"he laundry detergent pods", asin:"B0B9YVG4LR"},
     {n:"Folding drying rack", q:"folding drying rack"},
     {n:"Stain remover pen", q:"tide stain pen"},
   ]],
@@ -558,7 +558,7 @@ export const CHECKLIST_COMMON = [
     {n:"Bed risers", q:"bed risers", note:"Multiply your under-bed storage."},
     {n:"Closet / hanging organizer", q:"hanging closet organizer"},
     {n:"Drawer & desk organizers", q:"drawer organizer set"},
-    {n:"Command hooks & strips", q:"command hooks strips variety", note:"No nails allowed."},
+    {n:"Command hooks & strips", q:"command hooks strips variety", asin:"B07712H557", note:"No nails allowed."},
     {n:"Over-the-door hooks", q:"over the door hooks"},
   ]],
   ["Desk & study", [
@@ -571,12 +571,12 @@ export const CHECKLIST_COMMON = [
     {n:"Laptop charger (spare)", q:"laptop charger"},
     {n:"Phone chargers / cables", q:"usb c charging cable 2 pack"},
     {n:"Headphones or earbuds", q:"headphones"},
-    {n:"Power bank", q:"portable power bank"},
+    {n:"Power bank", q:"portable power bank", asin:"B0CT3BJJQD"},
     {n:"Ethernet cable", q:"ethernet cable", note:"Some halls are faster wired — and many ban personal Wi-Fi routers."},
     {n:"__FAN__", q:"clip on fan"},
   ]],
   ["Cleaning", [
-    {n:"Disinfecting wipes", q:"disinfecting wipes"},
+    {n:"Disinfecting wipes", q:"disinfecting wipes", asin:"B00B71EKSY"},
     {n:"Trash can + bags", q:"small trash can"},
     {n:"Paper towels", q:"paper towels"},
     {n:"Mini vacuum or hand broom", q:"mini handheld vacuum"},
@@ -584,10 +584,10 @@ export const CHECKLIST_COMMON = [
   ]],
   ["Kitchen — within the rules", [
     {n:"__FRIDGE__", q:"microfridge combo"},
-    {n:"Reusable water bottle", q:"reusable water bottle"},
+    {n:"Reusable water bottle", q:"reusable water bottle", asin:"B085DTZQNZ"},
     {n:"Mug + utensils + plate set", q:"dorm dish set"},
-    {n:"Water filter pitcher", q:"brita pitcher"},
-    {n:"Single-cup coffee maker (enclosed element)", q:"keurig mini", note:"Open-element makers are usually banned; enclosed ones usually fine — confirm."},
+    {n:"Water filter pitcher", q:"brita pitcher", asin:"B01FXN3E74"},
+    {n:"Single-cup coffee maker (enclosed element)", q:"keurig mini", asin:"B07GV2S1GS", note:"Open-element makers are usually banned; enclosed ones usually fine — confirm."},
   ]],
   ["Health & meds", [
     {n:"Prescriptions + enough refills", q:"weekly pill organizer", note:"Bring a refill plan, not just the bottle."},
@@ -600,7 +600,7 @@ export const CHECKLIST_COMMON = [
     {n:"Keys, ID, phone + charger", q:"lanyard id holder"},
     {n:"Water + snacks", q:"snack variety pack"},
     {n:"Box cutter & basic tools", q:"mini tool kit"},
-    {n:"Command strips + cleaning wipes", q:"command strips"},
+    {n:"Command strips + cleaning wipes", q:"command strips", asin:"B07712H557"},
     {n:"A change of clothes + the day's meds", q:"packing cubes"},
   ]],
 ];
