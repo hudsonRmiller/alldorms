@@ -2,8 +2,9 @@ import { SCHOOLS, CHECKLIST_COMMON, CLOTHING, FAN_NOTE, ALLOWED_BASE, BANNED_BAS
 
 export { SCHOOLS, ALLOWED_BASE, BANNED_BASE };
 
-// Leave empty until you have your Amazon Associates tag + FTC disclosure live.
-export const AFFILIATE_TAG = '';
+// Amazon Associates tag — appended to every "Shop" link. Requires the Amazon
+// affiliate disclosure to be live on the site (it's in the footer).
+export const AFFILIATE_TAG = 'alldorms-20';
 
 /* ---------- section model ----------
    Each section becomes its own route: /[school]/[section]/
