@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro';
 const {
   title = 'AllDorms — the college move-in guide for the people doing the packing',
   description = 'Move-in, sorted. Real packing lists, housing answers, and where-to-stay guides for 12 universities — built for the parents getting their child to campus.',
@@ -73,5 +74,6 @@ const {
       window.addEventListener('scroll', onScroll, { passive: true });
     })();
   </script>
+  <Analytics />
 </body>
 </html>
