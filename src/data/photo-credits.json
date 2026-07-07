@@ -1,0 +1,346 @@
+{
+  "public/reading.jpg": {
+    "for": "reading",
+    "slot": "custom",
+    "title": "Suzzallo Reading Room University of Washington restoration Seattle Washington 2026.jpg",
+    "artist": "Guywelch2000",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Suzzallo_Reading_Room_University_of_Washington_restoration_Seattle_Washington_2026.jpg"
+  },
+  "public/schools/ucla.jpg": {
+    "for": "ucla",
+    "slot": "hero",
+    "title": "Royce Hall post rain.jpg",
+    "artist": "Alton",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Royce_Hall_post_rain.jpg"
+  },
+  "public/schools/ucla-1.jpg": {
+    "for": "ucla",
+    "slot": "band1",
+    "title": "Powell Library (cropped).JPG",
+    "artist": "Unknown",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Powell_Library_(cropped).JPG"
+  },
+  "public/schools/ucla-2.jpg": {
+    "for": "ucla",
+    "slot": "band2",
+    "title": "UCLA School of Law south entrance.jpg",
+    "artist": "Coolcaesar at English Wikipedia",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UCLA_School_of_Law_south_entrance.jpg"
+  },
+  "public/schools/wisconsin.jpg": {
+    "for": "wisconsin",
+    "slot": "hero",
+    "title": "Madison 06-16-2012 029 (7398597206).jpg",
+    "artist": "Richard Hurd from Green Bay, USA",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Madison_06-16-2012_029_(7398597206).jpg"
+  },
+  "public/schools/wisconsin-1.jpg": {
+    "for": "wisconsin",
+    "slot": "band1",
+    "title": "Bascom Mall, University of Wisconsin, Madison, WI - 54302232407.jpg",
+    "artist": "w_lemay",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bascom_Mall,_University_of_Wisconsin,_Madison,_WI_-_54302232407.jpg"
+  },
+  "public/schools/wisconsin-2.jpg": {
+    "for": "wisconsin",
+    "slot": "band2",
+    "title": "Allen Centennial Garden.jpg",
+    "artist": "Wikimapeditor",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Allen_Centennial_Garden.jpg"
+  },
+  "public/schools/georgia.jpg": {
+    "for": "georgia",
+    "slot": "hero",
+    "title": "Miller Learning Center UGA.jpg",
+    "artist": "Coxonian",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Miller_Learning_Center_UGA.jpg"
+  },
+  "public/schools/georgia-1.jpg": {
+    "for": "georgia",
+    "slot": "band1",
+    "title": "UGA Main Library.jpg",
+    "artist": "Coxonian",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UGA_Main_Library.jpg"
+  },
+  "public/schools/georgia-2.jpg": {
+    "for": "georgia",
+    "slot": "band2",
+    "title": "Hunter-Holmes Bldg.jpg",
+    "artist": "GAgayle",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hunter-Holmes_Bldg.jpg"
+  },
+  "public/schools/alabama.jpg": {
+    "for": "alabama",
+    "slot": "hero",
+    "title": "Bibb Graves Hall, UA, Tuscaloosa, Southeast view 20160714 1.jpg",
+    "artist": "DXR",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bibb_Graves_Hall,_UA,_Tuscaloosa,_Southeast_view_20160714_1.jpg"
+  },
+  "public/schools/alabama-1.jpg": {
+    "for": "alabama",
+    "slot": "band1",
+    "title": "Carmichael Hall, UA, Tuscaloosa, East view 20160714 1.jpg",
+    "artist": "DXR",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Carmichael_Hall,_UA,_Tuscaloosa,_East_view_20160714_1.jpg"
+  },
+  "public/schools/alabama-2.jpg": {
+    "for": "alabama",
+    "slot": "band2",
+    "title": "McLure Library, UA, Tuscaloosa, South view 20160714 1.jpg",
+    "artist": "DXR",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:McLure_Library,_UA,_Tuscaloosa,_South_view_20160714_1.jpg"
+  },
+  "public/schools/indiana.jpg": {
+    "for": "indiana",
+    "slot": "hero",
+    "title": "IUSampleGates.JPG",
+    "artist": "McAnt",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:IUSampleGates.JPG"
+  },
+  "public/schools/indiana-1.jpg": {
+    "for": "indiana",
+    "slot": "band1",
+    "title": "IUB Lilly Library P1000231.jpg",
+    "artist": "User:Vmenkov",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:IUB_Lilly_Library_P1000231.jpg"
+  },
+  "public/schools/indiana-2.jpg": {
+    "for": "indiana",
+    "slot": "band2",
+    "title": "IU Art Museum.jpg",
+    "artist": "Kzollman (Kevin J.S. Zollman).",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:IU_Art_Museum.jpg"
+  },
+  "public/schools/villanova.jpg": {
+    "for": "villanova",
+    "slot": "hero",
+    "title": "Villanova University A panoramic shot.jpg",
+    "artist": "Alertjean",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Villanova_University_A_panoramic_shot.jpg"
+  },
+  "public/schools/villanova-1.jpg": {
+    "for": "villanova",
+    "slot": "band1",
+    "title": "Corr Hall.jpg",
+    "artist": "abbike18",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Corr_Hall.jpg"
+  },
+  "public/schools/villanova-2.jpg": {
+    "for": "villanova",
+    "slot": "band2",
+    "title": "VillanovaMonastery.jpg",
+    "artist": "The original uploader was Nfutvol at English Wikipedia.",
+    "license": "CC BY-SA 2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:VillanovaMonastery.jpg"
+  },
+  "public/schools/southcarolina.jpg": {
+    "for": "southcarolina",
+    "slot": "hero",
+    "title": "Rutledge College, Horseshoe, University of South Carolina, Sumter Street, Columbia, SC - 53398289278.jpg",
+    "artist": "w_lemay",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rutledge_College,_Horseshoe,_University_of_South_Carolina,_Sumter_Street,_Columbia,_SC_-_53398289278.jpg"
+  },
+  "public/schools/southcarolina-1.jpg": {
+    "for": "southcarolina",
+    "slot": "band1",
+    "title": "University of South Carolina Horseshoe.jpg",
+    "artist": "Dfscgt21",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_South_Carolina_Horseshoe.jpg"
+  },
+  "public/schools/southcarolina-2.jpg": {
+    "for": "southcarolina",
+    "slot": "band2",
+    "title": "University of South Carolina, Davis College.jpg",
+    "artist": "Dfscgt21",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_South_Carolina,_Davis_College.jpg"
+  },
+  "public/schools/clemson.jpg": {
+    "for": "clemson",
+    "slot": "hero",
+    "title": "2021-05-09 11.48.36 DSCF1221.jpg",
+    "artist": "CantoV",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2021-05-09_11.48.36_DSCF1221.jpg"
+  },
+  "public/schools/clemson-1.jpg": {
+    "for": "clemson",
+    "slot": "band1",
+    "title": "ClemsonMemlStadium06.jpg",
+    "artist": "Berniestew at English Wikipedia",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:ClemsonMemlStadium06.jpg"
+  },
+  "public/schools/clemson-2.jpg": {
+    "for": "clemson",
+    "slot": "band2",
+    "title": "Clemson baseball panoramic 1.jpg",
+    "artist": "Jober14 at English Wikipedia",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Clemson_baseball_panoramic_1.jpg"
+  },
+  "public/schools/pitt.jpg": {
+    "for": "pitt",
+    "slot": "hero",
+    "title": "Oakland (Pittsburgh) from the air.jpg",
+    "artist": "Sage Ross",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Oakland_(Pittsburgh)_from_the_air.jpg"
+  },
+  "public/schools/pitt-1.jpg": {
+    "for": "pitt",
+    "slot": "band1",
+    "title": "PittVarsityWalk.jpg",
+    "artist": "Christopher Lancaster from Oshawa, Canada",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:PittVarsityWalk.jpg"
+  },
+  "public/schools/pitt-2.jpg": {
+    "for": "pitt",
+    "slot": "band2",
+    "title": "Masonic Temple (Alumni Hall), Oakland, Pittsburgh, 2019-09-10.jpg",
+    "artist": "Cbaile19",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Masonic_Temple_(Alumni_Hall),_Oakland,_Pittsburgh,_2019-09-10.jpg"
+  },
+  "public/schools/jmu.jpg": {
+    "for": "jmu",
+    "slot": "hero",
+    "title": "Wilson Hall.jpg",
+    "artist": "Ben Schumin",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Wilson_Hall.jpg"
+  },
+  "public/schools/jmu-1.jpg": {
+    "for": "jmu",
+    "slot": "band1",
+    "title": "JMU East Campus from near Potomac Hall.jpg",
+    "artist": "Taber Andrew Bain from Richmond, VA, USA",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:JMU_East_Campus_from_near_Potomac_Hall.jpg"
+  },
+  "public/schools/jmu-2.jpg": {
+    "for": "jmu",
+    "slot": "band2",
+    "title": "JMU CISAT West.JPG",
+    "artist": "Rtcpenguin",
+    "license": "CC BY-SA 2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:JMU_CISAT_West.JPG"
+  },
+  "public/schools/harvard.jpg": {
+    "for": "harvard",
+    "slot": "hero",
+    "title": "Sanders theater 2009y.JPG",
+    "artist": "chensiyuan",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sanders_theater_2009y.JPG"
+  },
+  "public/schools/harvard-1.jpg": {
+    "for": "harvard",
+    "slot": "band1",
+    "title": "University Museum, Harvard Campus, Cambridge, Massachusetts.JPG",
+    "artist": "Rizka",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_Museum,_Harvard_Campus,_Cambridge,_Massachusetts.JPG"
+  },
+  "public/schools/harvard-2.jpg": {
+    "for": "harvard",
+    "slot": "band2",
+    "title": "Harvard Medical School HDR.jpg",
+    "artist": "SBAmin",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Harvard_Medical_School_HDR.jpg"
+  },
+  "public/schools/yale.jpg": {
+    "for": "yale",
+    "slot": "hero",
+    "title": "Branford Court spring 2.JPG",
+    "artist": "Nick Allen",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Branford_Court_spring_2.JPG"
+  },
+  "public/schools/yale-1.jpg": {
+    "for": "yale",
+    "slot": "band1",
+    "title": "Yale University Old Campus 04.JPG",
+    "artist": "Ad Meskens",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Yale_University_Old_Campus_04.JPG"
+  },
+  "public/schools/yale-2.jpg": {
+    "for": "yale",
+    "slot": "band2",
+    "title": "Benjamin Franklin College Yale.jpg",
+    "artist": "Helpfullguy99",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Benjamin_Franklin_College_Yale.jpg"
+  },
+  "public/schools/stanford.jpg": {
+    "for": "stanford",
+    "slot": "hero",
+    "title": "Stanford University campus in 2016.jpg",
+    "artist": "Frank Schulenburg",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Stanford_University_campus_in_2016.jpg"
+  },
+  "public/schools/stanford-1.jpg": {
+    "for": "stanford",
+    "slot": "band1",
+    "title": "Stanford University Main Quad May 2011 005.jpg",
+    "artist": "King of Hearts",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Stanford_University_Main_Quad_May_2011_005.jpg"
+  },
+  "public/schools/stanford-2.jpg": {
+    "for": "stanford",
+    "slot": "band2",
+    "title": "Stanford University Arches with Memorial Church in the background.jpg",
+    "artist": "Jawed",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Stanford_University_Arches_with_Memorial_Church_in_the_background.jpg"
+  },
+  "public/schools/mit.jpg": {
+    "for": "mit",
+    "slot": "hero",
+    "title": "Kuppelbau im MIT.jpg",
+    "artist": "Marco Almbauer",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Kuppelbau_im_MIT.jpg"
+  },
+  "public/schools/mit-1.jpg": {
+    "for": "mit",
+    "slot": "band1",
+    "title": "Ray and Maria Stata Center (MIT).JPG",
+    "artist": "Lucy Li",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ray_and_Maria_Stata_Center_(MIT).JPG"
+  },
+  "public/schools/mit-2.jpg": {
+    "for": "mit",
+    "slot": "band2",
+    "title": "Simmons Hall, MIT, Cambridge, Massachusetts.JPG",
+    "artist": "The original uploader was Daderot at English Wikipedia.",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Simmons_Hall,_MIT,_Cambridge,_Massachusetts.JPG"
+  }
+}

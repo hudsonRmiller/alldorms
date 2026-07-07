@@ -22,7 +22,23 @@ const photo = img(`${school.slug}.jpg`);          // hero banner (falls back to 
 const bands = [img(`${school.slug}-1.jpg`), img(`${school.slug}-2.jpg`)].filter(Boolean);
 // spread the bands roughly into the page so they break up the long content
 const bandAt = bands.map((_, i) => Math.round((sections.length * (i + 1)) / (bands.length + 1)) - 1);
-const FOCUS = { utexas: '50% 22%' };
+const FOCUS = {
+  utexas: '50% 22%',
+  ucla: '50% 40%',
+  wisconsin: '50% 42%',
+  georgia: '50% 30%',
+  alabama: '50% 40%',
+  indiana: '50% 62%',
+  villanova: '25% 50%',
+  southcarolina: '50% 40%',
+  clemson: '50% 35%',
+  pitt: '50% 35%',
+  jmu: '50% 38%',
+  harvard: '50% 30%',
+  yale: '50% 35%',
+  stanford: '50% 42%',
+  mit: '50% 40%',
+};
 const focus = FOCUS[school.slug] || null;
 ---
 <Base

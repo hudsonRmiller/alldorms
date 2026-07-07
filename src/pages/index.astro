@@ -7,7 +7,23 @@ import { SCHOOLS, schoolSections, cityShort } from '../lib/site.js';
 
 // per-school crop focal point (object-position) — only needed where the
 // default center crop would cut the subject (e.g. UT's tall tower)
-const FOCUS = { utexas: '50% 26%' };
+const FOCUS = {
+  utexas: '50% 26%',
+  ucla: '50% 40%',
+  wisconsin: '50% 42%',
+  georgia: '50% 30%',
+  alabama: '50% 40%',
+  indiana: '50% 62%',
+  villanova: '25% 50%',
+  southcarolina: '50% 40%',
+  clemson: '50% 35%',
+  pitt: '50% 35%',
+  jmu: '50% 38%',
+  harvard: '50% 30%',
+  yale: '50% 35%',
+  stanford: '50% 42%',
+  mit: '50% 40%',
+};
 const photoDir = path.join(process.cwd(), 'public', 'schools');
 
 const schools = SCHOOLS.map(s => {
@@ -23,7 +39,7 @@ const schools = SCHOOLS.map(s => {
 const guideSections = ['Weather & clothing','What’s allowed','Housing & roommates','Where you’ll live','Packing checklist','Move-in logistics','Town & hotspots','Where to stay','School gear','Links & contacts'];
 
 const HERO = '/hero.jpg';
-const READING = 'https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=1400&q=80&auto=format&fit=crop';
+const READING = '/reading.jpg'; // Suzzallo Reading Room, UW — see src/data/photo-credits.json
 ---
 <Base bodyClass="home" image="/hero.jpg">
   {/* hero */}
@@ -61,7 +77,7 @@ const READING = 'https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=
 
       <div class="how-feature">
         <figure class="how-photo">
-          <img src={READING} alt="A sunlit university reading room" loading="lazy" />
+          <img src={READING} alt="The Suzzallo Library reading room at the University of Washington" loading="lazy" />
           <figcaption>Built from each school's own housing pages — not a generic template.</figcaption>
         </figure>
         <div class="how-pillars">
