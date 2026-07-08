@@ -342,5 +342,261 @@
     "artist": "The original uploader was Daderot at English Wikipedia.",
     "license": "CC BY-SA 3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Simmons_Hall,_MIT,_Cambridge,_Massachusetts.JPG"
+  },
+  "public/schools/purdue.jpg": {
+    "for": "purdue",
+    "slot": "hero",
+    "title": "Engineering Fountain Purdue University 2016 03.jpg",
+    "artist": "Julian Herzog (Website)",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Engineering_Fountain_Purdue_University_2016_03.jpg"
+  },
+  "public/schools/purdue-1.jpg": {
+    "for": "purdue",
+    "slot": "band1",
+    "title": "Cary Quad Purdue University 2016 01 Crop.jpg",
+    "artist": "Julian Herzog (Website)",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cary_Quad_Purdue_University_2016_01_Crop.jpg"
+  },
+  "public/schools/purdue-2.jpg": {
+    "for": "purdue",
+    "slot": "band2",
+    "title": "Mackey Arena Purdue University 2016 02.jpg",
+    "artist": "Julian Herzog (Website)",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mackey_Arena_Purdue_University_2016_02.jpg"
+  },
+  "public/schools/illinois.jpg": {
+    "for": "illinois",
+    "slot": "hero",
+    "title": "\"2010\" University of Illinois.jpg",
+    "artist": "Kevin Dooley",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:%222010%22_University_of_Illinois.jpg"
+  },
+  "public/schools/illinois-1.jpg": {
+    "for": "illinois",
+    "slot": "band1",
+    "title": "MemorialStadiumIllinois.jpg",
+    "artist": "Pwojdacz",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:MemorialStadiumIllinois.jpg"
+  },
+  "public/schools/illinois-2.jpg": {
+    "for": "illinois",
+    "slot": "band2",
+    "title": "BeckmanInstitute.jpg",
+    "artist": "SPDvinny",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:BeckmanInstitute.jpg"
+  },
+  "public/schools/virginiatech.jpg": {
+    "for": "virginiatech",
+    "slot": "hero",
+    "title": "Burruss Hall, Virginia Tech.JPG",
+    "artist": "CBGator87",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Burruss_Hall,_Virginia_Tech.JPG"
+  },
+  "public/schools/virginiatech-1.jpg": {
+    "for": "virginiatech",
+    "slot": "band1",
+    "title": "Patton Hall Virginia Tech.JPG",
+    "artist": "Eric T Gunther",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Patton_Hall_Virginia_Tech.JPG"
+  },
+  "public/schools/virginiatech-2.jpg": {
+    "for": "virginiatech",
+    "slot": "band2",
+    "title": "Donaldson-Brown Virginia Tech.JPG",
+    "artist": "Eric T Gunther",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Donaldson-Brown_Virginia_Tech.JPG"
+  },
+  "public/schools/tennessee.jpg": {
+    "for": "tennessee",
+    "slot": "hero",
+    "title": "Ayres Hall abree.jpg",
+    "artist": "Nightryder84",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ayres_Hall_abree.jpg"
+  },
+  "public/schools/auburn.jpg": {
+    "for": "auburn",
+    "slot": "hero",
+    "title": "Auburn campus with Samford Hall.jpg",
+    "artist": "dregsplod from Tulsa, Oklahoma, USA",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Auburn_campus_with_Samford_Hall.jpg"
+  },
+  "public/schools/auburn-1.jpg": {
+    "for": "auburn",
+    "slot": "band1",
+    "title": "Cater Hall Auburn University.JPG",
+    "artist": "Rivers Langley; SaveRivers",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cater_Hall_Auburn_University.JPG"
+  },
+  "public/schools/tennessee-1.jpg": {
+    "for": "tennessee",
+    "slot": "band1",
+    "title": "160416-N-IQ655-355 160416-N-IQ655-355.jpg",
+    "artist": "James Woods",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:160416-N-IQ655-355_160416-N-IQ655-355.jpg"
+  },
+  "public/schools/tennessee-2.jpg": {
+    "for": "tennessee",
+    "slot": "band2",
+    "title": "160416-N-IQ655-212 160416-N-IQ655-212.jpg",
+    "artist": "James Woods",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:160416-N-IQ655-212_160416-N-IQ655-212.jpg"
+  },
+  "public/schools/auburn-2.jpg": {
+    "for": "auburn",
+    "slot": "band2",
+    "title": "AuburnAthleticBuildings.jpg",
+    "artist": "AuburnPilot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:AuburnAthleticBuildings.jpg"
+  },
+  "public/schools/michiganstate-1.jpg": {
+    "for": "michiganstate",
+    "slot": "band1",
+    "title": "MSU Eustace-Cole Hall.jpg",
+    "artist": "Jeffness at English Wikipedia",
+    "license": "CC BY-SA 2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:MSU_Eustace-Cole_Hall.jpg"
+  },
+  "public/schools/michiganstate-2.jpg": {
+    "for": "michiganstate",
+    "slot": "band2",
+    "title": "Eli and Edythe Broad Art Museum - panoramio.jpg",
+    "artist": "Andrew Martin",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Eli_and_Edythe_Broad_Art_Museum_-_panoramio.jpg"
+  },
+  "public/schools/unc.jpg": {
+    "for": "unc",
+    "slot": "hero",
+    "title": "Louis Round Wilson Library.JPG",
+    "artist": "Yeungb",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Louis_Round_Wilson_Library.JPG"
+  },
+  "public/schools/unc-1.jpg": {
+    "for": "unc",
+    "slot": "band1",
+    "title": "UNC chapel hill kenan football stadium from stands.jpg",
+    "artist": "CramBetter.com",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UNC_chapel_hill_kenan_football_stadium_from_stands.jpg"
+  },
+  "public/schools/unc-2.jpg": {
+    "for": "unc",
+    "slot": "band2",
+    "title": "Old East.jpg",
+    "artist": "(User:Wgreaves)",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Old_East.jpg"
+  },
+  "public/schools/fsu.jpg": {
+    "for": "fsu",
+    "slot": "hero",
+    "title": "Landis Hall FSU 2013-09-05 16-16.jpg",
+    "artist": "User:Chargarther",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Landis_Hall_FSU_2013-09-05_16-16.jpg"
+  },
+  "public/schools/fsu-1.jpg": {
+    "for": "fsu",
+    "slot": "band1",
+    "title": "FSU Landisgreen.JPG",
+    "artist": "UkrNole 485 at English Wikipedia",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:FSU_Landisgreen.JPG"
+  },
+  "public/schools/fsu-2.jpg": {
+    "for": "fsu",
+    "slot": "band2",
+    "title": "New Dorman & Deviney Halls.jpg",
+    "artist": "SeminoleNation",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:New_Dorman_%26_Deviney_Halls.jpg"
+  },
+  "public/schools/michiganstate.jpg": {
+    "for": "michiganstate",
+    "slot": "hero",
+    "title": "Berkey Hall - panoramio.jpg",
+    "artist": "Andrew Martin",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Berkey_Hall_-_panoramio.jpg"
+  },
+  "public/schools/colorado.jpg": {
+    "for": "colorado",
+    "slot": "hero",
+    "title": "Center for Community, University of Colorado Boulder - 20250626111859.jpg",
+    "artist": "Colohisto",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Center_for_Community,_University_of_Colorado_Boulder_-_20250626111859.jpg"
+  },
+  "public/schools/colorado-1.jpg": {
+    "for": "colorado",
+    "slot": "band1",
+    "title": "Recreation Center, University of Colorado Boulder - 20250626123624.jpg",
+    "artist": "Colohisto",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Recreation_Center,_University_of_Colorado_Boulder_-_20250626123624.jpg"
+  },
+  "public/schools/colorado-2.jpg": {
+    "for": "colorado",
+    "slot": "band2",
+    "title": "Clare Small Arts and Sciences, University of Colorado Boulder - 20250626123815.jpg",
+    "artist": "Colohisto",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Clare_Small_Arts_and_Sciences,_University_of_Colorado_Boulder_-_20250626123815.jpg"
+  },
+  "public/schools/rutgers-1.jpg": {
+    "for": "rutgers",
+    "slot": "band1",
+    "title": "Honors College, Rutgers–New Brunswick.jpg",
+    "artist": "jass",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Honors_College,_Rutgers%E2%80%93New_Brunswick.jpg"
+  },
+  "public/schools/rutgers-2.jpg": {
+    "for": "rutgers",
+    "slot": "band2",
+    "title": "Rutgers University 4194 - REXB.jpg",
+    "artist": "Rutgers bus enthusiast",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rutgers_University_4194_-_REXB.jpg"
+  },
+  "public/schools/rutgers.jpg": {
+    "for": "rutgers",
+    "slot": "hero",
+    "title": "Old Queens - Rutgers University (55142886116).jpg",
+    "artist": "ajay_suresh",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Old_Queens_-_Rutgers_University_(55142886116).jpg"
+  },
+  "public/schools/lsu.jpg": {
+    "for": "lsu",
+    "slot": "hero",
+    "title": "LSU Faculty Club, Louisiana State University, Baton Rouge, Louisiana.jpg",
+    "artist": "Nolanwebb",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:LSU_Faculty_Club,_Louisiana_State_University,_Baton_Rouge,_Louisiana.jpg"
+  },
+  "public/schools/lsu-1.jpg": {
+    "for": "lsu",
+    "slot": "band1",
+    "title": "LSU Campus Indian Mounds.jpg",
+    "artist": "Spatms",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:LSU_Campus_Indian_Mounds.jpg"
   }
 }

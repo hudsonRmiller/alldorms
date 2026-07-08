@@ -54,6 +54,17 @@ const SEARCH_NAMES = {
   yale: 'Yale University',
   stanford: 'Stanford University',
   mit: 'Massachusetts Institute of Technology',
+  purdue: 'Purdue University',
+  michiganstate: 'Michigan State University',
+  illinois: 'University of Illinois Urbana-Champaign',
+  virginiatech: 'Virginia Tech',
+  tennessee: 'University of Tennessee',
+  auburn: 'Auburn University',
+  lsu: 'Louisiana State University',
+  fsu: 'Florida State University',
+  unc: 'University of North Carolina at Chapel Hill',
+  colorado: 'University of Colorado Boulder',
+  rutgers: 'Rutgers University',
 };
 
 const SLOTS = { hero: { suffix: '.jpg', width: 2000 }, band1: { suffix: '-1.jpg', width: 1800 }, band2: { suffix: '-2.jpg', width: 1800 } };
