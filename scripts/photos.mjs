@@ -65,6 +65,10 @@ const SEARCH_NAMES = {
   unc: 'University of North Carolina at Chapel Hill',
   colorado: 'University of Colorado Boulder',
   rutgers: 'Rutgers University',
+  olemiss: 'University of Mississippi',
+  maryland: 'University of Maryland, College Park',
+  kentucky: 'University of Kentucky',
+  oregon: 'University of Oregon',
 };
 
 const SLOTS = { hero: { suffix: '.jpg', width: 2000 }, band1: { suffix: '-1.jpg', width: 1800 }, band2: { suffix: '-2.jpg', width: 1800 } };

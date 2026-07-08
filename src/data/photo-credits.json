@@ -598,5 +598,101 @@
     "artist": "Spatms",
     "license": "CC BY-SA 3.0",
     "source": "https://commons.wikimedia.org/wiki/File:LSU_Campus_Indian_Mounds.jpg"
+  },
+  "public/schools/olemiss.jpg": {
+    "for": "olemiss",
+    "slot": "hero",
+    "title": "Farley Hall 2.jpg",
+    "artist": "MinTUSTo",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Farley_Hall_2.jpg"
+  },
+  "public/schools/olemiss-1.jpg": {
+    "for": "olemiss",
+    "slot": "band1",
+    "title": "Kennon Observatory.jpg",
+    "artist": "Brandonrush (talk)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Kennon_Observatory.jpg"
+  },
+  "public/schools/olemiss-2.jpg": {
+    "for": "olemiss",
+    "slot": "band2",
+    "title": "Oxford - Bryant Hall.jpg",
+    "artist": "Dudemanfellabra",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Oxford_-_Bryant_Hall.jpg"
+  },
+  "public/schools/maryland.jpg": {
+    "for": "maryland",
+    "slot": "hero",
+    "title": "UMCP Administration building, seen from end of reflecting pool at morning, August 21, 2006.jpg",
+    "artist": "User:Tomf688",
+    "license": "CC BY-SA 2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:UMCP_Administration_building,_seen_from_end_of_reflecting_pool_at_morning,_August_21,_2006.jpg"
+  },
+  "public/schools/maryland-1.jpg": {
+    "for": "maryland",
+    "slot": "band1",
+    "title": "UMD Talbot.JPG",
+    "artist": "Bgervais",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UMD_Talbot.JPG"
+  },
+  "public/schools/maryland-2.jpg": {
+    "for": "maryland",
+    "slot": "band2",
+    "title": "UMD stairway.JPG",
+    "artist": "Bgervais",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UMD_stairway.JPG"
+  },
+  "public/schools/kentucky.jpg": {
+    "for": "kentucky",
+    "slot": "hero",
+    "title": "William T. Young Library.jpg",
+    "artist": "J654567",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:William_T._Young_Library.jpg"
+  },
+  "public/schools/kentucky-1.jpg": {
+    "for": "kentucky",
+    "slot": "band1",
+    "title": "University of Kentucky Arboretum - DSC09377.JPG",
+    "artist": "Daderot",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Kentucky_Arboretum_-_DSC09377.JPG"
+  },
+  "public/schools/kentucky-2.jpg": {
+    "for": "kentucky",
+    "slot": "band2",
+    "title": "Margaret I King Library, University of Kentucky.jpg",
+    "artist": "Mhuy222",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Margaret_I_King_Library,_University_of_Kentucky.jpg"
+  },
+  "public/schools/oregon.jpg": {
+    "for": "oregon",
+    "slot": "hero",
+    "title": "JohnsonHallUO.JPG",
+    "artist": "Unknown",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:JohnsonHallUO.JPG"
+  },
+  "public/schools/oregon-1.jpg": {
+    "for": "oregon",
+    "slot": "band1",
+    "title": "Global Scholars Hall.jpg",
+    "artist": "Visitor7",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Global_Scholars_Hall.jpg"
+  },
+  "public/schools/oregon-2.jpg": {
+    "for": "oregon",
+    "slot": "band2",
+    "title": "Jaquacenterwet.jpg",
+    "artist": "Orbiter7",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Jaquacenterwet.jpg"
   }
 }

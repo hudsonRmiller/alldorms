@@ -137,6 +137,10 @@ export const SCHOOL_ALIASES = {
   unc: ['University of North Carolina', 'North Carolina', 'UNC Chapel Hill', 'Chapel Hill', 'Tar Heels', 'Carolina'],
   colorado: ['University of Colorado Boulder', 'University of Colorado', 'Colorado', 'Boulder', 'Buffs', 'Buffaloes', 'Ralphie'],
   rutgers: ['Rutgers University', 'Rutgers New Brunswick', 'Scarlet Knights', 'New Brunswick'],
+  olemiss: ['University of Mississippi', 'Ole Miss', 'Mississippi', 'Rebels', 'Oxford', 'Hotty Toddy'],
+  maryland: ['University of Maryland', 'UMD', 'Terrapins', 'Terps', 'College Park'],
+  kentucky: ['University of Kentucky', 'UK', 'Wildcats', 'Big Blue Nation', 'BBN', 'Lexington'],
+  oregon: ['University of Oregon', 'UO', 'U of O', 'Ducks', 'Go Ducks', 'Eugene', 'TrackTown'],
 };
 
 /* ---------- color helpers (for the per-school accent dot / crest) ---------- */
