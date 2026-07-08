@@ -130,8 +130,45 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
 .headnav { display: flex; align-items: center; gap: 1.6em; }
 .headnav a { font-family: var(--sans); font-size: .94rem; font-weight: 500; color: #d4d9e6; text-decoration: none; transition: color .14s; }
 .headnav a:hover { color: #fff; }
-.headnav .headnav-cta { color: var(--navy-deep); background: var(--gold); padding: .5em 1.15em; border-radius: 999px; font-weight: 600; box-shadow: 0 8px 18px -10px rgba(0,0,0,.5); }
-.headnav .headnav-cta:hover { background: #fff; color: var(--navy-deep); }
+/* ---- "Find your school" header search ---- */
+.headsearch { position: relative; }
+.headsearch-ico {
+  position: absolute; left: .85em; top: 50%; width: 15px; height: 15px;
+  transform: translateY(-50%); color: var(--navy-deep); opacity: .75; pointer-events: none;
+  transition: color .18s ease;
+}
+.headsearch-in {
+  width: 200px; padding: .52em 1.1em .52em 2.45em;
+  font-family: var(--sans); font-size: .92rem; font-weight: 600;
+  color: var(--navy-deep); background: var(--gold);
+  border: none; border-radius: 999px; outline: none;
+  box-shadow: 0 8px 18px -10px rgba(0,0,0,.5);
+  transition: width .22s ease, background .18s ease, color .18s ease;
+  -webkit-appearance: none; appearance: none;
+}
+.headsearch-in::placeholder { color: var(--navy-deep); opacity: .85; font-weight: 600; }
+.headsearch-in:focus { width: 250px; background: #fff; color: var(--navy-deep); }
+.headsearch-in:focus::placeholder { opacity: .45; font-weight: 500; }
+.headsearch-list {
+  position: absolute; right: 0; top: calc(100% + 9px); z-index: 60;
+  width: 300px; max-width: 88vw; max-height: min(58vh, 380px); overflow-y: auto;
+  list-style: none; margin: 0; padding: 6px;
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 22px 48px -18px rgba(15, 23, 44, .45), 0 0 0 1px rgba(15, 23, 44, .06);
+  text-align: left;
+}
+.headsearch-list li[role="option"] {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  padding: .58em .85em; border-radius: 10px; cursor: pointer;
+}
+.headsearch-list li[role="option"]:hover, .headsearch-list li.is-active { background: rgba(15, 23, 44, .07); }
+.headsearch-list .hs-name { font-family: var(--display); font-weight: 600; font-size: 1.02rem; color: #1c2844; }
+.headsearch-list .hs-city { font-family: var(--sans); font-size: .76rem; color: #6b7285; white-space: nowrap; }
+.headsearch-none a {
+  display: block; padding: .58em .85em; border-radius: 10px;
+  font-family: var(--sans); font-size: .88rem; color: #6b7285; text-decoration: none;
+}
+.headsearch-none a:hover { background: rgba(15, 23, 44, .07); color: #1c2844; }
 
 /* homepage: header floats transparent over the photo hero, turns solid on scroll */
 body.home .sitehead { position: fixed; left: 0; right: 0; background: transparent; }
@@ -154,6 +191,8 @@ body.home .sitehead.solid { background: rgba(58, 74, 107, .92); backdrop-filter:
 
 @media (max-width: 760px) {
   .foot-grid { grid-template-columns: 1fr; gap: 24px; }
-  .headnav a:not(.headnav-cta) { display: none; }
+  .headnav > a { display: none; }
+  .headsearch-in { width: 170px; }
+  .headsearch-in:focus { width: min(62vw, 240px); }
   body { font-size: 17px; }
 }

@@ -95,6 +95,50 @@ export function cityShort(school) {
   return school.city.split(',')[0];
 }
 
+/* ---------- school search aliases ----------
+   Every name a family might type into "Find your school" — abbreviations,
+   full official names, mascots, and towns. The header search also matches
+   name/short/city automatically, so these only need the *other* names. */
+export const SCHOOL_ALIASES = {
+  colgate: ['Colgate University', 'Raiders'],
+  tamu: ['Texas A&M University', 'Texas A and M', 'TAMU', 'A&M', 'Aggies', 'College Station'],
+  ucf: ['University of Central Florida', 'Central Florida', 'Knights', 'Orlando'],
+  asu: ['Arizona State University', 'Arizona State', 'Sun Devils', 'Tempe'],
+  osu: ['Ohio State University', 'The Ohio State University', 'Ohio State', 'OSU', 'Buckeyes', 'Columbus'],
+  uf: ['University of Florida', 'Florida', 'Gators', 'Gainesville'],
+  utexas: ['University of Texas', 'UT Austin', 'Texas', 'Longhorns', 'Austin', 'Hook em'],
+  umich: ['University of Michigan', 'Michigan', 'UMich', 'U of M', 'Wolverines', 'Ann Arbor'],
+  pennstate: ['Penn State University', 'Pennsylvania State University', 'PSU', 'Nittany Lions', 'State College', 'University Park', 'Happy Valley'],
+  minnesota: ['University of Minnesota', 'UMN', 'U of M', 'Golden Gophers', 'Gophers', 'Twin Cities', 'Minneapolis'],
+  uw: ['University of Washington', 'Washington', 'UDub', 'Huskies', 'Seattle'],
+  udel: ['University of Delaware', 'Delaware', 'Blue Hens', 'Newark'],
+  ucla: ['University of California Los Angeles', 'Bruins', 'Los Angeles', 'Westwood'],
+  wisconsin: ['University of Wisconsin', 'UW Madison', 'Badgers', 'Madison'],
+  georgia: ['University of Georgia', 'UGA', 'Bulldogs', 'Dawgs', 'Athens'],
+  alabama: ['University of Alabama', 'Bama', 'Crimson Tide', 'Roll Tide', 'Tuscaloosa'],
+  indiana: ['Indiana University', 'IU', 'IU Bloomington', 'Hoosiers', 'Bloomington'],
+  villanova: ['Villanova University', 'Nova', 'Wildcats'],
+  southcarolina: ['University of South Carolina', 'USC', 'Gamecocks', 'Columbia'],
+  clemson: ['Clemson University', 'Clemson Tigers', 'Death Valley'],
+  pitt: ['University of Pittsburgh', 'Pittsburgh', 'Panthers', 'Cathedral of Learning'],
+  jmu: ['James Madison University', 'James Madison', 'Dukes', 'Harrisonburg'],
+  harvard: ['Harvard University', 'Harvard College', 'Crimson', 'Cambridge'],
+  yale: ['Yale University', 'Yale College', 'New Haven'],
+  stanford: ['Stanford University', 'Cardinal', 'Palo Alto', 'The Farm'],
+  mit: ['Massachusetts Institute of Technology', 'Cambridge'],
+  purdue: ['Purdue University', 'Boilermakers', 'Boilers', 'West Lafayette'],
+  michiganstate: ['Michigan State University', 'MSU', 'Spartans', 'Sparty', 'East Lansing'],
+  illinois: ['University of Illinois', 'Illinois Urbana-Champaign', 'UIUC', 'U of I', 'Fighting Illini', 'Illini', 'Urbana', 'Champaign'],
+  virginiatech: ['Virginia Tech', 'VT', 'Virginia Polytechnic Institute', 'VPI', 'Hokies', 'Blacksburg'],
+  tennessee: ['University of Tennessee', 'UT Knoxville', 'UTK', 'Volunteers', 'Vols', 'Rocky Top', 'Knoxville'],
+  auburn: ['Auburn University', 'Auburn Tigers', 'War Eagle', 'The Plains'],
+  lsu: ['Louisiana State University', 'LSU Tigers', 'Geaux Tigers', 'Baton Rouge'],
+  fsu: ['Florida State University', 'FSU', 'Seminoles', 'Noles', 'Tallahassee'],
+  unc: ['University of North Carolina', 'North Carolina', 'UNC Chapel Hill', 'Chapel Hill', 'Tar Heels', 'Carolina'],
+  colorado: ['University of Colorado Boulder', 'University of Colorado', 'Colorado', 'Boulder', 'Buffs', 'Buffaloes', 'Ralphie'],
+  rutgers: ['Rutgers University', 'Rutgers New Brunswick', 'Scarlet Knights', 'New Brunswick'],
+};
+
 /* ---------- color helpers (for the per-school accent dot / crest) ---------- */
 export function mix(a, b, t) {
   const pa = parseInt(a.slice(1), 16), pb = parseInt(b.slice(1), 16);

@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
+import { SCHOOLS, SCHOOL_ALIASES, cityShort } from '../lib/site.js';
 const {
   title = 'AllDorms — the college move-in guide for the people doing the packing',
   description = 'Move-in, sorted. Real packing lists, housing answers, and where-to-stay guides for universities nationwide — built for the parents getting their child to campus.',
@@ -25,6 +26,15 @@ const siteLd = {
   name: 'AllDorms',
   url: new URL('/', Astro.site).href,
 };
+
+// "Find your school" header search — one entry per school, with every name
+// a family might type (official names, abbreviations, mascots, towns).
+const SEARCH_INDEX = SCHOOLS.map(s => ({
+  slug: s.slug,
+  name: s.name,
+  city: cityShort(s),
+  q: [s.name, s.short, s.city, ...(SCHOOL_ALIASES[s.slug] || [])],
+}));
 ---
 <!doctype html>
 <html lang="en">
@@ -61,7 +71,16 @@ const siteLd = {
       <nav class="headnav">
         <a href="/#schools">Schools</a>
         <a href="/#how">How it works</a>
-        <a href="/#schools" class="headnav-cta">Find your school</a>
+        <div class="headsearch" id="headsearch">
+          <svg class="headsearch-ico" aria-hidden="true" viewBox="0 0 20 20" fill="none"><circle cx="8.6" cy="8.6" r="5.4" stroke="currentColor" stroke-width="2"/><path d="M13 13l4.4 4.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input
+            id="headsearch-in" class="headsearch-in" type="text"
+            placeholder="Find your school" aria-label="Find your school"
+            role="combobox" aria-expanded="false" aria-controls="headsearch-list" aria-autocomplete="list"
+            autocomplete="off" autocapitalize="off" spellcheck="false"
+          />
+          <ul class="headsearch-list" id="headsearch-list" role="listbox" aria-label="Schools" hidden></ul>
+        </div>
       </nav>
     </div>
   </header>
@@ -102,6 +121,149 @@ const siteLd = {
       var onScroll = function () { head.classList.toggle('solid', window.scrollY > 40); };
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+  <script type="application/json" id="school-search-data" set:html={JSON.stringify(SEARCH_INDEX)} />
+  <script is:inline>
+    // "Find your school" header search: autocomplete over every name a family
+    // might type, then scroll to that school's card in the homepage grid.
+    (function () {
+      var box = document.getElementById('headsearch');
+      var input = document.getElementById('headsearch-in');
+      var list = document.getElementById('headsearch-list');
+      var data = document.getElementById('school-search-data');
+      if (!box || !input || !list || !data) return;
+      var SCHOOLS = JSON.parse(data.textContent);
+
+      // "Texas A&M" / "a&m" / "UIUC" all reduce to comparable compact strings
+      function compact(s) { return s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, ''); }
+      function tokens(s) { return s.toLowerCase().replace(/&/g, ' and ').split(/[^a-z0-9]+/).filter(Boolean); }
+
+      function scoreTerm(term, nq) {
+        var nt = compact(term);
+        if (!nt) return Infinity;
+        if (nt === nq) return 0;
+        if (nt.indexOf(nq) === 0) return 1;
+        var tk = tokens(term);
+        for (var i = 1; i < tk.length; i++) {
+          if (compact(tk.slice(i).join('')).indexOf(nq) === 0) return 2;
+        }
+        if (nt.indexOf(nq) !== -1) return 3;
+        return Infinity;
+      }
+
+      function matches(q) {
+        var nq = compact(q);
+        if (!nq) return [];
+        return SCHOOLS
+          .map(function (s) {
+            var best = Infinity;
+            for (var i = 0; i < s.q.length; i++) best = Math.min(best, scoreTerm(s.q[i], nq));
+            return { s: s, score: best };
+          })
+          .filter(function (r) { return r.score < Infinity; })
+          .sort(function (a, b) { return a.score - b.score || a.s.name.localeCompare(b.s.name); })
+          .slice(0, 7)
+          .map(function (r) { return r.s; });
+      }
+
+      var results = [];
+      var active = -1;
+
+      function close() {
+        list.hidden = true;
+        input.setAttribute('aria-expanded', 'false');
+        input.removeAttribute('aria-activedescendant');
+        active = -1;
+      }
+
+      function flashCard(card) {
+        card.classList.remove('flash');
+        void card.offsetWidth;
+        card.classList.add('flash');
+        setTimeout(function () { card.classList.remove('flash'); }, 3400);
+      }
+
+      function choose(s) {
+        input.value = s.name;
+        close();
+        var card = document.getElementById('s-' + s.slug);
+        if (card) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          flashCard(card);
+          if (history.replaceState) history.replaceState(null, '', '#s-' + s.slug);
+          input.blur();
+        } else {
+          window.location.href = '/#s-' + s.slug;
+        }
+      }
+
+      function render() {
+        list.innerHTML = '';
+        if (!input.value.trim()) { close(); return; }
+        if (!results.length) {
+          var li = document.createElement('li');
+          li.className = 'headsearch-none';
+          var a = document.createElement('a');
+          a.href = '/#schools';
+          a.textContent = 'No match — browse all schools';
+          li.appendChild(a);
+          list.appendChild(li);
+        } else {
+          results.forEach(function (s, i) {
+            var li = document.createElement('li');
+            li.setAttribute('role', 'option');
+            li.id = 'hs-opt-' + i;
+            li.setAttribute('aria-selected', i === active ? 'true' : 'false');
+            if (i === active) li.className = 'is-active';
+            var name = document.createElement('span');
+            name.className = 'hs-name';
+            name.textContent = s.name;
+            var city = document.createElement('span');
+            city.className = 'hs-city';
+            city.textContent = s.city;
+            li.appendChild(name);
+            li.appendChild(city);
+            li.addEventListener('pointerdown', function (e) { e.preventDefault(); });
+            li.addEventListener('click', function () { choose(s); });
+            list.appendChild(li);
+          });
+        }
+        list.hidden = false;
+        input.setAttribute('aria-expanded', 'true');
+        if (active >= 0) input.setAttribute('aria-activedescendant', 'hs-opt-' + active);
+        else input.removeAttribute('aria-activedescendant');
+      }
+
+      input.addEventListener('input', function () {
+        results = matches(input.value);
+        active = -1;
+        render();
+      });
+      input.addEventListener('focus', function () {
+        if (input.value.trim()) { results = matches(input.value); render(); }
+      });
+      input.addEventListener('blur', function () { setTimeout(close, 120); });
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { close(); input.blur(); return; }
+        if (list.hidden && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+          results = matches(input.value); render();
+        }
+        if (!results.length) return;
+        if (e.key === 'ArrowDown') { e.preventDefault(); active = (active + 1) % results.length; render(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); active = (active - 1 + results.length) % results.length; render(); }
+        else if (e.key === 'Enter') { e.preventDefault(); choose(results[active >= 0 ? active : 0]); }
+      });
+
+      // Arriving from another page (/#s-<slug>): center that school's card and flash it
+      var m = window.location.hash.match(/^#s-([a-z0-9]+)$/);
+      if (m) {
+        var card = document.getElementById('s-' + m[1]);
+        if (card) setTimeout(function () {
+          card.scrollIntoView({ block: 'center' });
+          flashCard(card);
+        }, 80);
+      }
     })();
   </script>
   <Analytics />
