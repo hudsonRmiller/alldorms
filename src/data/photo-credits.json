@@ -694,5 +694,213 @@
     "artist": "Orbiter7",
     "license": "CC BY-SA 2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Jaquacenterwet.jpg"
+  },
+  "public/schools/missouri.jpg": {
+    "for": "missouri",
+    "slot": "hero",
+    "title": "Jesse Hall Aerial.jpg",
+    "artist": "Lectrician2",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Jesse_Hall_Aerial.jpg"
+  },
+  "public/schools/missouri-1.jpg": {
+    "for": "missouri",
+    "slot": "band1",
+    "title": "Ellis Library.jpg",
+    "artist": "Chris Yunker",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ellis_Library.jpg"
+  },
+  "public/schools/missouri-2.jpg": {
+    "for": "missouri",
+    "slot": "band2",
+    "title": "University of Missouri - Columbia, Student Center.jpg",
+    "artist": "Holzman Moss Bottino Architecture",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Missouri_-_Columbia,_Student_Center.jpg"
+  },
+  "public/schools/oklahoma.jpg": {
+    "for": "oklahoma",
+    "slot": "hero",
+    "title": "University of Oklahoma July 2019 23 (Dunham College).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Oklahoma_July_2019_23_(Dunham_College).jpg"
+  },
+  "public/schools/oklahoma-1.jpg": {
+    "for": "oklahoma",
+    "slot": "band1",
+    "title": "University of Oklahoma July 2019 68 (South Oval).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Oklahoma_July_2019_68_(South_Oval).jpg"
+  },
+  "public/schools/oklahoma-2.jpg": {
+    "for": "oklahoma",
+    "slot": "band2",
+    "title": "University of Oklahoma July 2019 79 (University Theatre).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Oklahoma_July_2019_79_(University_Theatre).jpg"
+  },
+  "public/schools/arkansas.jpg": {
+    "for": "arkansas",
+    "slot": "hero",
+    "title": "Old Main, north tower.jpg",
+    "artist": "Brandonrush",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Old_Main,_north_tower.jpg"
+  },
+  "public/schools/arkansas-1.jpg": {
+    "for": "arkansas",
+    "slot": "band1",
+    "title": "Old Main Arkansas view.jpg",
+    "artist": "Brandonrush",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Old_Main_Arkansas_view.jpg"
+  },
+  "public/schools/arkansas-2.jpg": {
+    "for": "arkansas",
+    "slot": "band2",
+    "title": "University of Arkansas Agriculture Building.jpg",
+    "artist": "Brandonrush",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Arkansas_Agriculture_Building.jpg"
+  },
+  "public/schools/iowa.jpg": {
+    "for": "iowa",
+    "slot": "hero",
+    "title": "Old Iowa State House, University of Iowa, Clinton Street, Iowa City, IA.jpg",
+    "artist": "w_lemay",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Old_Iowa_State_House,_University_of_Iowa,_Clinton_Street,_Iowa_City,_IA.jpg"
+  },
+  "public/schools/iowa-1.jpg": {
+    "for": "iowa",
+    "slot": "band1",
+    "title": "Schaeffer Hall, University of Iowa, Clinton Street, Iowa City, IA - 54369340048.jpg",
+    "artist": "w_lemay",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Schaeffer_Hall,_University_of_Iowa,_Clinton_Street,_Iowa_City,_IA_-_54369340048.jpg"
+  },
+  "public/schools/iowa-2.jpg": {
+    "for": "iowa",
+    "slot": "band2",
+    "title": "Macbride Hall, University of Iowa, Clinton Street, Iowa City, IA - 54369338028.jpg",
+    "artist": "w_lemay",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Macbride_Hall,_University_of_Iowa,_Clinton_Street,_Iowa_City,_IA_-_54369338028.jpg"
+  },
+  "public/schools/kansas.jpg": {
+    "for": "kansas",
+    "slot": "hero",
+    "title": "Fraser Hall at Kansas by Ian Ballinger.jpg",
+    "artist": "Ian Ballinger",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Fraser_Hall_at_Kansas_by_Ian_Ballinger.jpg"
+  },
+  "public/schools/kansas-1.jpg": {
+    "for": "kansas",
+    "slot": "band1",
+    "title": "Kansas Campanile in 2025 by Ian Ballinger.jpg",
+    "artist": "Ian Ballinger",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kansas_Campanile_in_2025_by_Ian_Ballinger.jpg"
+  },
+  "public/schools/kansas-2.jpg": {
+    "for": "kansas",
+    "slot": "band2",
+    "title": "Wescoe Hall in Autumn 2021.jpg",
+    "artist": "Catboy69",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Wescoe_Hall_in_Autumn_2021.jpg"
+  },
+  "public/schools/nebraska.jpg": {
+    "for": "nebraska",
+    "slot": "hero",
+    "title": "Lloyd G. Tanner Plaza & Morrill Hall, University of Nebraska-Lincoln, Lincoln, Nebraska, USA.jpg",
+    "artist": "Hanyou23",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lloyd_G._Tanner_Plaza_%26_Morrill_Hall,_University_of_Nebraska-Lincoln,_Lincoln,_Nebraska,_USA.jpg"
+  },
+  "public/schools/nebraska-1.jpg": {
+    "for": "nebraska",
+    "slot": "band1",
+    "title": "EstherKauffmanSouth.jpg",
+    "artist": "Mikerueben at English Wikipedia",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:EstherKauffmanSouth.jpg"
+  },
+  "public/schools/nebraska-2.jpg": {
+    "for": "nebraska",
+    "slot": "band2",
+    "title": "The University of Nebraska Coliseum, University of Nebraska-Lincoln, Lincoln, Nebraska, USA.jpg",
+    "artist": "Hanyou23",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_University_of_Nebraska_Coliseum,_University_of_Nebraska-Lincoln,_Lincoln,_Nebraska,_USA.jpg"
+  },
+  "public/schools/westvirginia.jpg": {
+    "for": "westvirginia",
+    "slot": "hero",
+    "title": "Woodburn Hall WVU (9300119056).jpg",
+    "artist": "Tom Long from Oak Island, USA",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Woodburn_Hall_WVU_(9300119056).jpg"
+  },
+  "public/schools/westvirginia-1.jpg": {
+    "for": "westvirginia",
+    "slot": "band1",
+    "title": "Stewart Hall.JPG",
+    "artist": "Stryker33",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Stewart_Hall.JPG"
+  },
+  "public/schools/westvirginia-2.jpg": {
+    "for": "westvirginia",
+    "slot": "band2",
+    "title": "WVU Band State.jpg",
+    "artist": "en:User:Cmcginni",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:WVU_Band_State.jpg"
+  },
+  "public/schools/uconn.jpg": {
+    "for": "uconn",
+    "slot": "hero",
+    "title": "Campus view - University of Connecticut - DSC09948.JPG",
+    "artist": "Daderot",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Campus_view_-_University_of_Connecticut_-_DSC09948.JPG"
+  },
+  "public/schools/uconn-1.jpg": {
+    "for": "uconn",
+    "slot": "band1",
+    "title": "Laurel Hall - University of Connecticut - DSC09917.JPG",
+    "artist": "Daderot",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Laurel_Hall_-_University_of_Connecticut_-_DSC09917.JPG"
+  },
+  "public/schools/arizona.jpg": {
+    "for": "arizona",
+    "slot": "hero",
+    "title": "University of Arizona May 2019 64 (Douglass).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Arizona_May_2019_64_(Douglass).jpg"
+  },
+  "public/schools/arizona-1.jpg": {
+    "for": "arizona",
+    "slot": "band1",
+    "title": "University of Arizona May 2019 49 (Henry Koffler Building).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Arizona_May_2019_49_(Henry_Koffler_Building).jpg"
+  },
+  "public/schools/arizona-2.jpg": {
+    "for": "arizona",
+    "slot": "band2",
+    "title": "University of Arizona May 2019 37 (Gerard P. Kuiper Space Sciences).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Arizona_May_2019_37_(Gerard_P._Kuiper_Space_Sciences).jpg"
   }
 }

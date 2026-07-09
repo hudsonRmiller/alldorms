@@ -141,6 +141,15 @@ export const SCHOOL_ALIASES = {
   maryland: ['University of Maryland', 'UMD', 'Terrapins', 'Terps', 'College Park'],
   kentucky: ['University of Kentucky', 'UK', 'Wildcats', 'Big Blue Nation', 'BBN', 'Lexington'],
   oregon: ['University of Oregon', 'UO', 'U of O', 'Ducks', 'Go Ducks', 'Eugene', 'TrackTown'],
+  missouri: ['University of Missouri', 'Mizzou', 'MU', 'Missouri Tigers', 'Tigers', 'Columbia'],
+  oklahoma: ['University of Oklahoma', 'OU', 'Sooners', 'Boomer Sooner', 'Norman'],
+  arkansas: ['University of Arkansas', 'UARK', 'U of A', 'Razorbacks', 'Hogs', 'Woo Pig', 'Fayetteville'],
+  iowa: ['University of Iowa', 'UI', 'U of I', 'Hawkeyes', 'Iowa City'],
+  kansas: ['University of Kansas', 'KU', 'Jayhawks', 'Rock Chalk', 'Lawrence'],
+  nebraska: ['University of Nebraska', 'University of Nebraska-Lincoln', 'UNL', 'Huskers', 'Cornhuskers', 'Go Big Red', 'Lincoln'],
+  westvirginia: ['West Virginia University', 'West Virginia', 'WVU', 'Mountaineers', 'Morgantown'],
+  uconn: ['University of Connecticut', 'UConn', 'Huskies', 'Storrs', 'Connecticut'],
+  arizona: ['University of Arizona', 'UA', 'U of A', 'Wildcats', 'Zona', 'Bear Down', 'Tucson'],
 };
 
 /* ---------- color helpers (for the per-school accent dot / crest) ---------- */

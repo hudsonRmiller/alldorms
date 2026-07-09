@@ -69,6 +69,15 @@ const SEARCH_NAMES = {
   maryland: 'University of Maryland, College Park',
   kentucky: 'University of Kentucky',
   oregon: 'University of Oregon',
+  missouri: 'University of Missouri',
+  oklahoma: 'University of Oklahoma',
+  arkansas: 'University of Arkansas',
+  iowa: 'University of Iowa',
+  kansas: 'University of Kansas',
+  nebraska: 'University of Nebraska–Lincoln',
+  westvirginia: 'West Virginia University',
+  uconn: 'University of Connecticut',
+  arizona: 'University of Arizona',
 };
 
 const SLOTS = { hero: { suffix: '.jpg', width: 2000 }, band1: { suffix: '-1.jpg', width: 1800 }, band2: { suffix: '-2.jpg', width: 1800 } };
