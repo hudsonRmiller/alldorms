@@ -902,5 +902,197 @@
     "artist": "Michael Barera",
     "license": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:University_of_Arizona_May_2019_37_(Gerard_P._Kuiper_Space_Sciences).jpg"
+  },
+  "public/schools/dickinson.jpg": {
+    "for": "dickinson",
+    "slot": "hero",
+    "title": "The Weiss Center for the Arts.jpg",
+    "artist": "JoeyO38",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Weiss_Center_for_the_Arts.jpg"
+  },
+  "public/schools/lafayette.jpg": {
+    "for": "lafayette",
+    "slot": "hero",
+    "title": "Kirby Hall of Civil Rights, Lafayette College.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kirby_Hall_of_Civil_Rights,_Lafayette_College.jpg"
+  },
+  "public/schools/lafayette-1.jpg": {
+    "for": "lafayette",
+    "slot": "band1",
+    "title": "Lafayette College in Easton PA 5.jpg",
+    "artist": "Tomwsulcer",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lafayette_College_in_Easton_PA_5.jpg"
+  },
+  "public/schools/lafayette-2.jpg": {
+    "for": "lafayette",
+    "slot": "band2",
+    "title": "Lafayette College Easton PA 35 campus view.jpg",
+    "artist": "Tomwsulcer",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lafayette_College_Easton_PA_35_campus_view.jpg"
+  },
+  "public/schools/lehigh.jpg": {
+    "for": "lehigh",
+    "slot": "hero",
+    "title": "Alumni Memorial Building Lehigh University.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Alumni_Memorial_Building_Lehigh_University.jpg"
+  },
+  "public/schools/lehigh-1.jpg": {
+    "for": "lehigh",
+    "slot": "band1",
+    "title": "Lehigh University Williams Hall.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lehigh_University_Williams_Hall.jpg"
+  },
+  "public/schools/lehigh-2.jpg": {
+    "for": "lehigh",
+    "slot": "band2",
+    "title": "Lehigh University Mountain Top Campus.jpg",
+    "artist": "IR393DEME",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lehigh_University_Mountain_Top_Campus.jpg"
+  },
+  "public/schools/dickinson-1.jpg": {
+    "for": "dickinson",
+    "slot": "band1",
+    "title": "Carlisle, Pennsylvania (5655615725).jpg",
+    "artist": "Doug Kerr from Albany, NY, United States",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Carlisle,_Pennsylvania_(5655615725).jpg"
+  },
+  "public/schools/dickinson-2.jpg": {
+    "for": "dickinson",
+    "slot": "band2",
+    "title": "OLD WEST, DICKINSON COLLEGE.jpg",
+    "artist": "JERRYE &amp; ROY KLOTZ MD",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:OLD_WEST,_DICKINSON_COLLEGE.jpg"
+  },
+  "public/schools/trinity.jpg": {
+    "for": "trinity",
+    "slot": "hero",
+    "title": "Trinity College Hartford Admissions building.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Trinity_College_Hartford_Admissions_building.jpg"
+  },
+  "public/schools/trinity-1.jpg": {
+    "for": "trinity",
+    "slot": "band1",
+    "title": "MorningDew2.jpg",
+    "artist": "GHenning3",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:MorningDew2.jpg"
+  },
+  "public/schools/trinity-2.jpg": {
+    "for": "trinity",
+    "slot": "band2",
+    "title": "Trinity Innovation Center at One Constitution Plaza.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Trinity_Innovation_Center_at_One_Constitution_Plaza.jpg"
+  },
+  "public/schools/tufts.jpg": {
+    "for": "tufts",
+    "slot": "hero",
+    "title": "Eaton Hall, Tufts.jpg",
+    "artist": "Jellymuffin40",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Eaton_Hall,_Tufts.jpg"
+  },
+  "public/schools/tufts-1.jpg": {
+    "for": "tufts",
+    "slot": "band1",
+    "title": "Packard Hall - Tufts University - IMG 0971.JPG",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Packard_Hall_-_Tufts_University_-_IMG_0971.JPG"
+  },
+  "public/schools/tufts-2.jpg": {
+    "for": "tufts",
+    "slot": "band2",
+    "title": "Tufts Gifford House.JPG",
+    "artist": "HereToHelp",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tufts_Gifford_House.JPG"
+  },
+  "public/schools/williams.jpg": {
+    "for": "williams",
+    "slot": "hero",
+    "title": "Williams College - Chapin Hall.JPG",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Williams_College_-_Chapin_Hall.JPG"
+  },
+  "public/schools/williams-1.jpg": {
+    "for": "williams",
+    "slot": "band1",
+    "title": "West College, 931 Main Street, Williams College.jpg",
+    "artist": "Beyond My Ken",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:West_College,_931_Main_Street,_Williams_College.jpg"
+  },
+  "public/schools/williams-2.jpg": {
+    "for": "williams",
+    "slot": "band2",
+    "title": "Morgan Hall of Williams College in the fall (27 October 2010).jpg",
+    "artist": "Tim4403224246",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Morgan_Hall_of_Williams_College_in_the_fall_(27_October_2010).jpg"
+  },
+  "public/schools/middlebury.jpg": {
+    "for": "middlebury",
+    "slot": "hero",
+    "title": "Middlebury College - Le Chateau.jpg",
+    "artist": "Funuk (talk)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Middlebury_College_-_Le_Chateau.jpg"
+  },
+  "public/schools/middlebury-1.jpg": {
+    "for": "middlebury",
+    "slot": "band1",
+    "title": "The Bread Loaf School of English at the Bread Loaf Inn at Middlebury College’s Bread Loaf Mountain campus in Ripton, Vermont 01.jpg",
+    "artist": "Harrison Keely",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Bread_Loaf_School_of_English_at_the_Bread_Loaf_Inn_at_Middlebury_College%E2%80%99s_Bread_Loaf_Mountain_campus_in_Ripton,_Vermont_01.jpg"
+  },
+  "public/schools/middlebury-2.jpg": {
+    "for": "middlebury",
+    "slot": "band2",
+    "title": "MIddlebury VT - College Library.jpg",
+    "artist": "Alan Levine",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:MIddlebury_VT_-_College_Library.jpg"
+  },
+  "public/schools/bowdoin.jpg": {
+    "for": "bowdoin",
+    "slot": "hero",
+    "title": "Hubbard Hall (2026).jpg",
+    "artist": "Seasider53",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hubbard_Hall_(2026).jpg"
+  },
+  "public/schools/bowdoin-1.jpg": {
+    "for": "bowdoin",
+    "slot": "band1",
+    "title": "Searles Science Building - Bowdoin College - IMG 7833.JPG",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Searles_Science_Building_-_Bowdoin_College_-_IMG_7833.JPG"
+  },
+  "public/schools/bowdoin-2.jpg": {
+    "for": "bowdoin",
+    "slot": "band2",
+    "title": "Massachusetts Hall - Bowdoin College - IMG 7822.JPG",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Massachusetts_Hall_-_Bowdoin_College_-_IMG_7822.JPG"
   }
 }

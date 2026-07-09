@@ -150,6 +150,14 @@ export const SCHOOL_ALIASES = {
   westvirginia: ['West Virginia University', 'West Virginia', 'WVU', 'Mountaineers', 'Morgantown'],
   uconn: ['University of Connecticut', 'UConn', 'Huskies', 'Storrs', 'Connecticut'],
   arizona: ['University of Arizona', 'UA', 'U of A', 'Wildcats', 'Zona', 'Bear Down', 'Tucson'],
+  lafayette: ['Lafayette College', 'Leopards', 'Pards', 'Easton', 'College Hill'],
+  lehigh: ['Lehigh University', 'Mountain Hawks', 'Engineers', 'Bethlehem', 'South Mountain'],
+  dickinson: ['Dickinson College', 'Red Devils', 'Carlisle'],
+  trinity: ['Trinity College', 'Trinity College Connecticut', 'Bantams', 'Hartford', 'Trin'],
+  tufts: ['Tufts University', 'Jumbos', 'Medford', 'Somerville'],
+  williams: ['Williams College', 'Ephs', 'Purple Cows', 'Williamstown', 'Billsville'],
+  middlebury: ['Middlebury College', 'Midd', 'Panthers', 'Midd Kids', 'Vermont'],
+  bowdoin: ['Bowdoin College', 'Polar Bears', 'Brunswick', 'Maine'],
 };
 
 /* ---------- color helpers (for the per-school accent dot / crest) ---------- */

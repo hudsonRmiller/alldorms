@@ -78,6 +78,14 @@ const SEARCH_NAMES = {
   westvirginia: 'West Virginia University',
   uconn: 'University of Connecticut',
   arizona: 'University of Arizona',
+  lafayette: 'Lafayette College',
+  lehigh: 'Lehigh University',
+  dickinson: 'Dickinson College',
+  trinity: 'Trinity College (Connecticut)',
+  tufts: 'Tufts University',
+  williams: 'Williams College',
+  middlebury: 'Middlebury College',
+  bowdoin: 'Bowdoin College',
 };
 
 const SLOTS = { hero: { suffix: '.jpg', width: 2000 }, band1: { suffix: '-1.jpg', width: 1800 }, band2: { suffix: '-2.jpg', width: 1800 } };
