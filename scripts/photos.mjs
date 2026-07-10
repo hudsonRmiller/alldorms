@@ -9,6 +9,8 @@
 //                                                           normalize picks into public/schools/ + record credits
 //   node scripts/photos.mjs custom <name> "search query"    candidates for a non-school slot (e.g. reading band)
 //   node scripts/photos.mjs assign-custom <name> <n>        → public/<name>.jpg
+//   node scripts/photos.mjs clean [<slug>] [--previews]     delete photo-candidates/ (all, or one school's dir);
+//                                                           --previews keeps the full-res originals `assign` reads
 //
 // Photos come from Wikimedia Commons (CC0 / public domain / CC BY / CC BY-SA only).
 // School searches use the school's FULL name so candidates are that specific campus —
@@ -281,6 +283,21 @@ function makePreview(srcFile) {
   return destFile;
 }
 
+// Previews are disposable once a school's slots are assigned; the full-res siblings
+// are not — `assign` normalizes from those. Both live under photo-candidates/.
+function walk(dir, keep) {
+  const out = [];
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) out.push(...walk(p, keep));
+    else if (!keep || keep(e.name)) out.push(p);
+  }
+  return out;
+}
+
+const bytes = files => files.reduce((n, f) => n + fs.statSync(f).size, 0);
+const mb = n => `${(n / 1e6).toFixed(1)} MB`;
+
 function normalizeInto(srcFile, destFile, maxWidth) {
   fs.mkdirSync(path.dirname(destFile), { recursive: true });
   fs.copyFileSync(srcFile, destFile);
@@ -358,6 +375,27 @@ if (cmd === 'status') {
   normalizeInto(path.join(ROOT, cand.file), dest, parseInt(arg('--width', '1600'), 10));
   recordCredit(path.relative(ROOT, dest), 'custom', cand, name);
   console.log(`  ${name} ← #${n} → public/${name}.jpg (credits updated)`);
+} else if (cmd === 'clean') {
+  const name = process.argv[3]?.startsWith('--') ? null : process.argv[3];
+  let dir = CANDIDATES;
+  if (name) {
+    // `custom` writes to _<name>/, so accept the bare name there too.
+    dir = [path.join(CANDIDATES, name), path.join(CANDIDATES, '_' + name)].find(fs.existsSync)
+      || die(`No candidate dir for "${name}" — nothing at photo-candidates/${name}/`);
+    if (path.relative(CANDIDATES, dir).startsWith('.')) die(`Refusing to clean outside photo-candidates/: ${dir}`);
+  }
+  if (!fs.existsSync(dir)) {
+    console.log('Nothing to clean — photo-candidates/ does not exist.');
+  } else if (process.argv.includes('--previews')) {
+    const previews = walk(dir, f => f.endsWith('.preview.jpg'));
+    const freed = bytes(previews);
+    for (const f of previews) fs.unlinkSync(f);
+    console.log(`  ${previews.length} preview${previews.length === 1 ? '' : 's'} removed from ${path.relative(ROOT, dir)}/ — ${mb(freed)} freed, full-res originals kept`);
+  } else {
+    const freed = bytes(walk(dir));
+    fs.rmSync(dir, { recursive: true, force: true });
+    console.log(`  removed ${path.relative(ROOT, dir)}/ — ${mb(freed)} freed`);
+  }
 } else {
-  die('Commands: status · fetch <slug> · fetch-missing · assign <slug> hero=N band1=N band2=N · custom <name> "query" · assign-custom <name> <n>');
+  die('Commands: status · fetch <slug> · fetch-missing · assign <slug> hero=N band1=N band2=N · custom <name> "query" · assign-custom <name> <n> · clean [<slug>] [--previews]');
 }
