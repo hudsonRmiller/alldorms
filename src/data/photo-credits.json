@@ -1094,5 +1094,85 @@
     "artist": "Daderot",
     "license": "Public domain",
     "source": "https://commons.wikimedia.org/wiki/File:Massachusetts_Hall_-_Bowdoin_College_-_IMG_7822.JPG"
+  },
+  "public/schools/uvm.jpg": {
+    "for": "uvm",
+    "slot": "hero",
+    "title": "University of Vermont Old Mill.jpg",
+    "artist": "HeyTomek",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Vermont_Old_Mill.jpg"
+  },
+  "public/schools/uvm-1.jpg": {
+    "for": "uvm",
+    "slot": "band1",
+    "title": "University of Vermont Davis Center.jpg",
+    "artist": "HeyTomek",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Vermont_Davis_Center.jpg"
+  },
+  "public/schools/uvm-2.jpg": {
+    "for": "uvm",
+    "slot": "band2",
+    "title": "University of Vermont Aiken Center.jpg",
+    "artist": "HeyTomek",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Vermont_Aiken_Center.jpg"
+  },
+  "public/schools/skidmore.jpg": {
+    "for": "skidmore",
+    "slot": "hero",
+    "title": "Tang Museum entrance.jpg",
+    "artist": "DutchTreat",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tang_Museum_entrance.jpg"
+  },
+  "public/schools/skidmore-1.jpg": {
+    "for": "skidmore",
+    "slot": "band1",
+    "title": "Skidmore College Jonsson Tower.jpg",
+    "artist": "Peter Flass",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Skidmore_College_Jonsson_Tower.jpg"
+  },
+  "public/schools/skidmore-2.jpg": {
+    "for": "skidmore",
+    "slot": "band2",
+    "title": "Zankel Music center.jpg",
+    "artist": "Peter Flass",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Zankel_Music_center.jpg"
+  },
+  "public/schools/drexel.jpg": {
+    "for": "drexel",
+    "slot": "hero",
+    "title": "SR2015 Drexel Campus 162.jpg",
+    "artist": "Jmh485",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:SR2015_Drexel_Campus_162.jpg"
+  },
+  "public/schools/drexel-1.jpg": {
+    "for": "drexel",
+    "slot": "band1",
+    "title": "North Hall.JPG",
+    "artist": "ImmortalGoddezz",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:North_Hall.JPG"
+  },
+  "public/schools/washingtoncollege.jpg": {
+    "for": "washingtoncollege",
+    "slot": "hero",
+    "title": "WASHINGTON COLLEGE, MIDDLE HALL, CHESTERTOWN, KENT COUNTY, MD.jpg",
+    "artist": "JERRYE &amp; ROY KLOTZ, M.D.",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:WASHINGTON_COLLEGE,_MIDDLE_HALL,_CHESTERTOWN,_KENT_COUNTY,_MD.jpg"
+  },
+  "public/schools/washingtoncollege-1.jpg": {
+    "for": "washingtoncollege",
+    "slot": "band1",
+    "title": "Washington College dinghy team Chester River MD1.jpg",
+    "artist": "Acroterion",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Washington_College_dinghy_team_Chester_River_MD1.jpg"
   }
 }

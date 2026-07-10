@@ -23,6 +23,10 @@ const bands = [img(`${school.slug}-1.jpg`), img(`${school.slug}-2.jpg`)].filter(
 // spread the bands roughly into the page so they break up the long content
 const bandAt = bands.map((_, i) => Math.round((sections.length * (i + 1)) / (bands.length + 1)) - 1);
 const FOCUS = {
+  uvm: '50% 35%',
+  drexel: '50% 35%',
+  skidmore: '50% 60%',
+  washingtoncollege: '50% 32%',
   utexas: '50% 22%',
   ucla: '50% 40%',
   wisconsin: '50% 42%',

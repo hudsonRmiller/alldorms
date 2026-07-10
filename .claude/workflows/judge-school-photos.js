@@ -28,11 +28,15 @@ const judgePrompt = (s, refined) => `You are the photo editor for AllDorms (alld
 
 School: ${s.name} — ${s.city} (slug: ${s.slug})
 
-The directory ${REPO}/photo-candidates/${s.slug}/ contains numbered candidate photos (01.jpg, 02.jpg, …) from Wikimedia Commons, plus manifest.json describing each candidate (Commons title, description, artist, license).
+The directory ${REPO}/photo-candidates/${s.slug}/ contains numbered candidate photos from Wikimedia Commons, plus manifest.json describing each candidate (Commons title, description, artist, license).
+
+Each candidate has two files: a full-res original (01.jpg) and a small judging preview (01.preview.jpg, the manifest's \`preview\` field).
 
 Do this:
 1. Read manifest.json.
-2. Read EVERY numbered image file listed in the manifest — judge with your eyes, not just the metadata.
+2. Read EVERY candidate's \`preview\` file — judge with your eyes, not just the metadata.
+   Read ONLY the previews, never the full-res originals: the preview shows everything
+   you need (composition, light, tilt, watermarks) at a fraction of the cost.
 3. Pick three DIFFERENT candidates:
    - hero — used twice: the school page's wide hero banner (dark scrim with white text over it) and the homepage card cropped to 5:4. Wants: the school's most iconic, recognizable exterior — beautiful light, straight horizon, reads unmistakably as ${s.name}.
    - band1 and band2 — full-width scenic bands (~2.5–3:1 crop through the frame's vertical center) inside the guide. Wants: wide campus vistas whose subject sits near the VERTICAL CENTER (anything near top/bottom edges gets cropped away). Different subjects from the hero and from each other.
@@ -61,7 +65,7 @@ const results = await pipeline(
     if (filled || !pick.refetchQuery) return { slug: s.slug, ...pick }
     log(`${s.slug}: weak pool — refetching with “${pick.refetchQuery}”`)
     await agent(
-      `Run exactly this command and report its full output:\ncd ${REPO} && node scripts/photos.mjs fetch ${s.slug} --limit 16 --query "${pick.refetchQuery.replace(/"/g, '')}"`,
+      `Run exactly this command and report its full output:\ncd ${REPO} && node scripts/photos.mjs fetch ${s.slug} --limit 10 --query "${pick.refetchQuery.replace(/"/g, '')}"`,
       { label: `refetch:${s.slug}`, phase: 'Refine', effort: 'low' },
     )
     const second = await agent(judgePrompt(s, true), { label: `rejudge:${s.slug}`, phase: 'Refine', schema: PICK_SCHEMA })

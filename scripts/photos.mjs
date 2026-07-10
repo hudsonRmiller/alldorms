@@ -3,6 +3,7 @@
 //
 //   node scripts/photos.mjs status                          which schools have which photo slots
 //   node scripts/photos.mjs fetch <slug> [--query "..."]    download candidates + contact sheet
+//                                        [--limit N]        pool size (default 6)
 //   node scripts/photos.mjs fetch-missing                   fetch candidates for every school missing a slot
 //   node scripts/photos.mjs assign <slug> hero=3 band1=1 band2=7
 //                                                           normalize picks into public/schools/ + record credits
@@ -24,6 +25,11 @@ const CANDIDATES = path.join(ROOT, 'photo-candidates');
 const SCHOOL_DIR = path.join(ROOT, 'public', 'schools');
 const CREDITS = path.join(ROOT, 'src', 'data', 'photo-credits.json');
 const UA = 'AllDorms-photo-fetcher/1.0 (https://alldorms.net; hudsonrexmiller@gmail.com)';
+
+// Judging reads NN.preview.jpg, not the full-res NN.jpg: a 1024px frame is plenty to
+// see composition, light, tilt, and watermarks, and costs ~2.3x fewer image tokens.
+// `assign` always normalizes from the full-res original, so output quality is unchanged.
+const PREVIEW_WIDTH = 1024;
 
 // Commons search needs the full institution name; schools.js uses display names.
 // New schools: either add them here or set `photoQuery` on the school object.
@@ -86,6 +92,30 @@ const SEARCH_NAMES = {
   williams: 'Williams College',
   middlebury: 'Middlebury College',
   bowdoin: 'Bowdoin College',
+  uva: 'University of Virginia',
+  gatech: 'Georgia Institute of Technology',
+  ncstate: 'North Carolina State University',
+  notredame: 'University of Notre Dame',
+  duke: 'Duke University',
+  vanderbilt: 'Vanderbilt University',
+  northwestern: 'Northwestern University',
+  usc: 'University of Southern California',
+  bc: 'Boston College',
+  bu: 'Boston University',
+  nyu: 'New York University',
+  georgetown: 'Georgetown University',
+  syracuse: 'Syracuse University',
+  northeastern: 'Northeastern University',
+  berkeley: 'University of California, Berkeley',
+  ucsb: 'University of California, Santa Barbara',
+  cornell: 'Cornell University',
+  upenn: 'University of Pennsylvania',
+  wakeforest: 'Wake Forest University',
+  iowastate: 'Iowa State University',
+  uvm: 'University of Vermont',
+  drexel: 'Drexel University',
+  skidmore: 'Skidmore College',
+  washingtoncollege: 'Washington College',
 };
 
 const SLOTS = { hero: { suffix: '.jpg', width: 2000 }, band1: { suffix: '-1.jpg', width: 1800 }, band2: { suffix: '-2.jpg', width: 1800 } };
@@ -217,7 +247,8 @@ async function download(cands, dir, label, query) {
       if (!res.ok) continue;
       const file = path.join(dir, `${String(n).padStart(2, '0')}.jpg`);
       fs.writeFileSync(file, Buffer.from(await res.arrayBuffer()));
-      kept.push({ n, file: path.relative(ROOT, file), ...c, url: undefined });
+      const preview = makePreview(file);
+      kept.push({ n, file: path.relative(ROOT, file), preview: path.relative(ROOT, preview), ...c, url: undefined });
       process.stdout.write(`  ${String(n).padStart(2, '0')}  ${c.license.padEnd(12)} ${c.width}×${c.height}${c.assessed ? '  ★' : ''}  ${c.title.slice(0, 70)}\n`);
     } catch { /* skip dead file */ }
   }
@@ -228,7 +259,7 @@ async function download(cands, dir, label, query) {
 
 function writeSheet(dir, label, query, kept) {
   const cards = kept.map(c => `
-    <figure><img src="${path.basename(c.file)}" loading="lazy">
+    <figure><img src="${path.basename(c.preview || c.file)}" loading="lazy">
       <figcaption><b>#${c.n}${c.assessed ? ' ★' : ''}</b> · ${c.width}×${c.height} · ${c.license}<br>
       ${c.title}<br><i>${c.artist}</i> — <a href="${c.source}">source</a></figcaption>
     </figure>`).join('');
@@ -238,6 +269,16 @@ function writeSheet(dir, label, query, kept) {
 figure{margin:0 0 2rem;max-width:960px}img{width:100%;border-radius:8px}a{color:#9cf}
 figcaption{padding:.5rem 0}</style>
 <h1>${label} — “${query}”</h1><p>Assign with e.g. <code>node scripts/photos.mjs assign ${label} hero=1 band1=2 band2=3</code></p>${cards}`);
+}
+
+// Small sibling of the full-res candidate, for the visual judge to read cheaply.
+function makePreview(srcFile) {
+  const destFile = srcFile.replace(/\.jpg$/, '.preview.jpg');
+  fs.copyFileSync(srcFile, destFile);
+  const w = parseInt(execFileSync('sips', ['-g', 'pixelWidth', destFile]).toString().match(/pixelWidth: (\d+)/)?.[1] || '0', 10);
+  const resize = w > PREVIEW_WIDTH ? ['--resampleWidth', String(PREVIEW_WIDTH)] : [];
+  execFileSync('sips', ['-s', 'format', 'jpeg', '-s', 'formatOptions', '70', ...resize, destFile], { stdio: 'ignore' });
+  return destFile;
 }
 
 function normalizeInto(srcFile, destFile, maxWidth) {
@@ -272,7 +313,7 @@ async function fetchSchool(school, limit) {
 }
 
 const cmd = process.argv[2];
-const limit = parseInt(arg('--limit', '12'), 10);
+const limit = parseInt(arg('--limit', '6'), 10);
 
 if (cmd === 'status') {
   for (const s of SCHOOLS) {

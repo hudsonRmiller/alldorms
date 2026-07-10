@@ -100,6 +100,10 @@ export function cityShort(school) {
    full official names, mascots, and towns. The header search also matches
    name/short/city automatically, so these only need the *other* names. */
 export const SCHOOL_ALIASES = {
+  uvm: ['University of Vermont', 'UVM', 'Vermont', 'Catamounts', 'Burlington'],
+  drexel: ['Drexel University', 'Dragons', 'University City', 'Philadelphia'],
+  skidmore: ['Skidmore College', 'Thoroughbreds', 'Saratoga Springs', 'Saratoga'],
+  washingtoncollege: ['Washington College', 'WC', 'Shoremen', 'Shorewomen', 'Chestertown', 'Eastern Shore'],
   colgate: ['Colgate University', 'Raiders'],
   tamu: ['Texas A&M University', 'Texas A and M', 'TAMU', 'A&M', 'Aggies', 'College Station'],
   ucf: ['University of Central Florida', 'Central Florida', 'Knights', 'Orlando'],
@@ -158,6 +162,26 @@ export const SCHOOL_ALIASES = {
   williams: ['Williams College', 'Ephs', 'Purple Cows', 'Williamstown', 'Billsville'],
   middlebury: ['Middlebury College', 'Midd', 'Panthers', 'Midd Kids', 'Vermont'],
   bowdoin: ['Bowdoin College', 'Polar Bears', 'Brunswick', 'Maine'],
+  uva: ['University of Virginia', 'UVA', 'Virginia', 'Cavaliers', 'Wahoos', 'Hoos', 'Charlottesville'],
+  gatech: ['Georgia Tech', 'Georgia Institute of Technology', 'GT', 'Yellow Jackets', 'Ramblin Wreck', 'Atlanta'],
+  ncstate: ['NC State', 'North Carolina State', 'NCSU', 'Wolfpack', 'Raleigh'],
+  notredame: ['Notre Dame', 'University of Notre Dame', 'Fighting Irish', 'ND', 'South Bend'],
+  duke: ['Duke University', 'Duke', 'Blue Devils', 'Durham'],
+  vanderbilt: ['Vanderbilt University', 'Vanderbilt', 'Vandy', 'Commodores', 'Nashville'],
+  northwestern: ['Northwestern University', 'Northwestern', 'Wildcats', 'Evanston'],
+  usc: ['University of Southern California', 'Southern Cal', 'USC Trojans', 'Trojans', 'Los Angeles'],
+  bc: ['Boston College', 'BC', 'Eagles', 'Chestnut Hill'],
+  bu: ['Boston University', 'BU', 'Terriers', 'Comm Ave', 'Boston'],
+  nyu: ['New York University', 'NYU', 'Violets', 'Greenwich Village', 'Manhattan', 'New York City'],
+  georgetown: ['Georgetown University', 'Georgetown', 'Hoyas', 'Washington DC', 'The Hilltop'],
+  syracuse: ['Syracuse University', 'Syracuse', 'Cuse', 'Orange', 'SU'],
+  northeastern: ['Northeastern University', 'Northeastern', 'Huskies', 'Boston'],
+  berkeley: ['UC Berkeley', 'University of California Berkeley', 'Cal', 'Golden Bears', 'Berkeley'],
+  ucsb: ['UC Santa Barbara', 'University of California Santa Barbara', 'UCSB', 'Gauchos', 'Santa Barbara', 'Isla Vista'],
+  cornell: ['Cornell University', 'Cornell', 'Big Red', 'Ithaca'],
+  upenn: ['University of Pennsylvania', 'Penn', 'UPenn', 'Quakers', 'Philadelphia'],
+  wakeforest: ['Wake Forest University', 'Wake Forest', 'Wake', 'Demon Deacons', 'Winston-Salem'],
+  iowastate: ['Iowa State University', 'Iowa State', 'ISU', 'Cyclones', 'Ames'],
 };
 
 /* ---------- color helpers (for the per-school accent dot / crest) ---------- */
