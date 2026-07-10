@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run dev` — dev server at http://localhost:4321
 - `npm run build` — static build to `dist/` (~1s; this is also the only correctness check — there are no tests or linter)
 - `npm run preview` — serve the built site
-- Photo pipeline: `node scripts/photos.mjs status | fetch <slug> | fetch-missing | assign <slug> hero=N band1=N band2=N | custom <name> "query" | assign-custom <name> <n>` (see Campus photography)
+- Photo pipeline: `node scripts/photos.mjs status | fetch <slug> | fetch-missing | assign <slug> hero=N band1=N band2=N | custom <name> "query" | assign-custom <name> <n> | clean [<slug>] [--previews]` (see Campus photography)
 
 ## Deploying
 
