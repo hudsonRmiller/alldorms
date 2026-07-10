@@ -1174,5 +1174,29 @@
     "artist": "Acroterion",
     "license": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Washington_College_dinghy_team_Chester_River_MD1.jpg"
+  },
+  "public/schools/notredame.jpg": {
+    "for": "notredame",
+    "slot": "hero",
+    "title": "NotreDameMarch2026.jpg",
+    "artist": "BigCheddah",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:NotreDameMarch2026.jpg"
+  },
+  "public/schools/notredame-1.jpg": {
+    "for": "notredame",
+    "slot": "band1",
+    "title": "Notre Dame campus view.jpg",
+    "artist": "Eccekevin",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Notre_Dame_campus_view.jpg"
+  },
+  "public/schools/notredame-2.jpg": {
+    "for": "notredame",
+    "slot": "band2",
+    "title": "South Quad, University of Notre Dame.JPG",
+    "artist": "Michael Fernandes",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:South_Quad,_University_of_Notre_Dame.JPG"
   }
 }
