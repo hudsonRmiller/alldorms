@@ -1162,18 +1162,42 @@
   "public/schools/washingtoncollege.jpg": {
     "for": "washingtoncollege",
     "slot": "hero",
-    "title": "WASHINGTON COLLEGE, MIDDLE HALL, CHESTERTOWN, KENT COUNTY, MD.jpg",
-    "artist": "JERRYE &amp; ROY KLOTZ, M.D.",
-    "license": "CC BY-SA 4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:WASHINGTON_COLLEGE,_MIDDLE_HALL,_CHESTERTOWN,_KENT_COUNTY,_MD.jpg"
+    "title": "University of Maryland, College Park. (5062733121).jpg",
+    "artist": "carmichaellibrary",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Maryland,_College_Park._(5062733121).jpg"
   },
   "public/schools/washingtoncollege-1.jpg": {
     "for": "washingtoncollege",
     "slot": "band1",
-    "title": "Washington College dinghy team Chester River MD1.jpg",
-    "artist": "Acroterion",
+    "title": "ChestertownMD Rivershot.jpg",
+    "artist": "Washingtoncollege of English Wikipedia",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:ChestertownMD_Rivershot.jpg"
+  },
+  "public/schools/uva.jpg": {
+    "for": "uva",
+    "slot": "hero",
+    "title": "University of Virginia Rotunda in 2006.jpg",
+    "artist": "Aaron Josephson",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Virginia_Rotunda_in_2006.jpg"
+  },
+  "public/schools/gatech-1.jpg": {
+    "for": "gatech",
+    "slot": "band1",
+    "title": "Tech Tower snow.jpg",
+    "artist": "Jonathan14605",
     "license": "CC BY-SA 4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Washington_College_dinghy_team_Chester_River_MD1.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Tech_Tower_snow.jpg"
+  },
+  "public/schools/ncstate.jpg": {
+    "for": "ncstate",
+    "slot": "hero",
+    "title": "Brickyard.JPG",
+    "artist": "Surrahwall",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Brickyard.JPG"
   },
   "public/schools/notredame.jpg": {
     "for": "notredame",
@@ -1198,5 +1222,469 @@
     "artist": "Michael Fernandes",
     "license": "CC BY-SA 3.0",
     "source": "https://commons.wikimedia.org/wiki/File:South_Quad,_University_of_Notre_Dame.JPG"
+  },
+  "public/schools/bc.jpg": {
+    "for": "bc",
+    "slot": "hero",
+    "title": "Boson College sign.jpg",
+    "artist": "Boston_Starbucks_Rebel (talk) (Uploads)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Boson_College_sign.jpg"
+  },
+  "public/schools/bc-1.jpg": {
+    "for": "bc",
+    "slot": "band1",
+    "title": "Boston College Newton Campus, Newton MA.jpg",
+    "artist": "John Phelan",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Boston_College_Newton_Campus,_Newton_MA.jpg"
+  },
+  "public/schools/bc-2.jpg": {
+    "for": "bc",
+    "slot": "band2",
+    "title": "Boston College Main Campus Flower Beds - Spring 2020 19.jpg",
+    "artist": "Robert Gray - Newton, MA",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Boston_College_Main_Campus_Flower_Beds_-_Spring_2020_19.jpg"
+  },
+  "public/schools/berkeley.jpg": {
+    "for": "berkeley",
+    "slot": "hero",
+    "title": "UCBerkeleyCampus.jpg",
+    "artist": "brainchildvn on Flickr",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UCBerkeleyCampus.jpg"
+  },
+  "public/schools/berkeley-1.jpg": {
+    "for": "berkeley",
+    "slot": "band1",
+    "title": "South Hall--UC Berkeley--Panoramic.jpg",
+    "artist": "User:Falcorian",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:South_Hall--UC_Berkeley--Panoramic.jpg"
+  },
+  "public/schools/berkeley-2.jpg": {
+    "for": "berkeley",
+    "slot": "band2",
+    "title": "View of the Berkeley and San Francisco Bay from Sather Tower (The Campanile) in UC Berkeley.jpg",
+    "artist": "Aos.1905",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:View_of_the_Berkeley_and_San_Francisco_Bay_from_Sather_Tower_(The_Campanile)_in_UC_Berkeley.jpg"
+  },
+  "public/schools/bu.jpg": {
+    "for": "bu",
+    "slot": "hero",
+    "title": "Boston University East Campus May 2014.jpg",
+    "artist": "4300streetcar",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Boston_University_East_Campus_May_2014.jpg"
+  },
+  "public/schools/bu-1.jpg": {
+    "for": "bu",
+    "slot": "band1",
+    "title": "Boston University Talbot Building 01.JPG",
+    "artist": "Cmcnicoll at English Wikipedia",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Boston_University_Talbot_Building_01.JPG"
+  },
+  "public/schools/bu-2.jpg": {
+    "for": "bu",
+    "slot": "band2",
+    "title": "Brookline from Photonics HDR.jpg",
+    "artist": "Pi.1415926535",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Brookline_from_Photonics_HDR.jpg"
+  },
+  "public/schools/cornell.jpg": {
+    "for": "cornell",
+    "slot": "hero",
+    "title": "Cornell University McFaddin Hall and Lyon Hall 2019-10-04 22-39.jpg",
+    "artist": "Axel Tschentscher",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cornell_University_McFaddin_Hall_and_Lyon_Hall_2019-10-04_22-39.jpg"
+  },
+  "public/schools/cornell-1.jpg": {
+    "for": "cornell",
+    "slot": "band1",
+    "title": "Cornell University - The Campus from Sage Tower.jpg",
+    "artist": "Published for Cornell Co-Operative Society by Detroit Publishing Co.",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Cornell_University_-_The_Campus_from_Sage_Tower.jpg"
+  },
+  "public/schools/cornell-2.jpg": {
+    "for": "cornell",
+    "slot": "band2",
+    "title": "Cornell University - Campus north from Library Tower.jpg",
+    "artist": "Cornell Co-Operative Society",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Cornell_University_-_Campus_north_from_Library_Tower.jpg"
+  },
+  "public/schools/drexel-2.jpg": {
+    "for": "drexel",
+    "slot": "band2",
+    "title": "Buckley Volleyball Courts at Drexel University.JPG",
+    "artist": "Ameykhanolkar (talk)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Buckley_Volleyball_Courts_at_Drexel_University.JPG"
+  },
+  "public/schools/duke.jpg": {
+    "for": "duke",
+    "slot": "hero",
+    "title": "Duke university cathedral tower.jpg",
+    "artist": "CramBetter.com",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Duke_university_cathedral_tower.jpg"
+  },
+  "public/schools/duke-1.jpg": {
+    "for": "duke",
+    "slot": "band1",
+    "title": "Clocktower Quad, West Campus, Duke University, Durham, NC (48960676501).jpg",
+    "artist": "Warren LeMay from Cullowhee, NC, United States",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Clocktower_Quad,_West_Campus,_Duke_University,_Durham,_NC_(48960676501).jpg"
+  },
+  "public/schools/duke-2.jpg": {
+    "for": "duke",
+    "slot": "band2",
+    "title": "MedicalCenter.jpg",
+    "artist": "self",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:MedicalCenter.jpg"
+  },
+  "public/schools/gatech.jpg": {
+    "for": "gatech",
+    "slot": "hero",
+    "title": "Tech Tower-6.jpg",
+    "artist": "Mistercontributer",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tech_Tower-6.jpg"
+  },
+  "public/schools/gatech-2.jpg": {
+    "for": "gatech",
+    "slot": "band2",
+    "title": "Binary Bridge.jpg",
+    "artist": "Disavian at English Wikipedia",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Binary_Bridge.jpg"
+  },
+  "public/schools/georgetown.jpg": {
+    "for": "georgetown",
+    "slot": "hero",
+    "title": "Stairs at Georgetown University (97630).jpg",
+    "artist": "Sdkb",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Stairs_at_Georgetown_University_(97630).jpg"
+  },
+  "public/schools/georgetown-1.jpg": {
+    "for": "georgetown",
+    "slot": "band1",
+    "title": "Georgetown University main entrance (March 24, '04) - panoramio.jpg",
+    "artist": "Jaakko H.",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Georgetown_University_main_entrance_(March_24,_%2704)_-_panoramio.jpg"
+  },
+  "public/schools/georgetown-2.jpg": {
+    "for": "georgetown",
+    "slot": "band2",
+    "title": "Georgetown Riverview.jpg",
+    "artist": "Patrickneil",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Georgetown_Riverview.jpg"
+  },
+  "public/schools/iowastate.jpg": {
+    "for": "iowastate",
+    "slot": "hero",
+    "title": "Campus of Iowa State University 54.jpg",
+    "artist": "Dirk DBQ",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Campus_of_Iowa_State_University_54.jpg"
+  },
+  "public/schools/iowastate-1.jpg": {
+    "for": "iowastate",
+    "slot": "band1",
+    "title": "Campus of Iowa State University 23.jpg",
+    "artist": "Dirk DBQ",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Campus_of_Iowa_State_University_23.jpg"
+  },
+  "public/schools/iowastate-2.jpg": {
+    "for": "iowastate",
+    "slot": "band2",
+    "title": "Campus of Iowa State University 83.jpg",
+    "artist": "Dirk DBQ",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Campus_of_Iowa_State_University_83.jpg"
+  },
+  "public/schools/lsu-2.jpg": {
+    "for": "lsu",
+    "slot": "band2",
+    "title": "LSU Faculty Club, Louisiana State University, Baton Rouge, Louisiana.jpg",
+    "artist": "Nolanwebb",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:LSU_Faculty_Club,_Louisiana_State_University,_Baton_Rouge,_Louisiana.jpg"
+  },
+  "public/schools/ncstate-1.jpg": {
+    "for": "ncstate",
+    "slot": "band1",
+    "title": "Ncsutower2.jpg",
+    "artist": "Kamran rab",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ncsutower2.jpg"
+  },
+  "public/schools/ncstate-2.jpg": {
+    "for": "ncstate",
+    "slot": "band2",
+    "title": "NCSU campus 043.JPG",
+    "artist": "Haruhide000",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:NCSU_campus_043.JPG"
+  },
+  "public/schools/northeastern.jpg": {
+    "for": "northeastern",
+    "slot": "hero",
+    "title": "Northeastern University.jpg",
+    "artist": "Edward Orde",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Northeastern_University.jpg"
+  },
+  "public/schools/northeastern-1.jpg": {
+    "for": "northeastern",
+    "slot": "band1",
+    "title": "Shillman Hall 03, Northeastern University.jpg",
+    "artist": "myself (User:Piotrus)",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Shillman_Hall_03,_Northeastern_University.jpg"
+  },
+  "public/schools/northeastern-2.jpg": {
+    "for": "northeastern",
+    "slot": "band2",
+    "title": "Centennial Common, Northeastern University.jpg",
+    "artist": "myself (User:Piotrus)",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Centennial_Common,_Northeastern_University.jpg"
+  },
+  "public/schools/northwestern.jpg": {
+    "for": "northwestern",
+    "slot": "hero",
+    "title": "University Hall Northwestern.jpg",
+    "artist": "Madcoverboy (talk)",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_Hall_Northwestern.jpg"
+  },
+  "public/schools/northwestern-1.jpg": {
+    "for": "northwestern",
+    "slot": "band1",
+    "title": "Norris University Center 2.jpg",
+    "artist": "Madcoverboy (talk)",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Norris_University_Center_2.jpg"
+  },
+  "public/schools/northwestern-2.jpg": {
+    "for": "northwestern",
+    "slot": "band2",
+    "title": "Deering front.jpg",
+    "artist": "Madcoverboy (talk)",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Deering_front.jpg"
+  },
+  "public/schools/nyu.jpg": {
+    "for": "nyu",
+    "slot": "hero",
+    "title": "NYU Langone Medical Center (41246168170).jpg",
+    "artist": "Ajay Suresh from New York, NY, USA",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:NYU_Langone_Medical_Center_(41246168170).jpg"
+  },
+  "public/schools/nyu-1.jpg": {
+    "for": "nyu",
+    "slot": "band1",
+    "title": "14th St 3rd Av td (2018-03-22) 21 - NYU Palladium Hall.jpg",
+    "artist": "Tdorante10",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:14th_St_3rd_Av_td_(2018-03-22)_21_-_NYU_Palladium_Hall.jpg"
+  },
+  "public/schools/nyu-2.jpg": {
+    "for": "nyu",
+    "slot": "band2",
+    "title": "14th St Irving Place td (2018-03-22) 08 - NYU University Hall.jpg",
+    "artist": "Tdorante10",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:14th_St_Irving_Place_td_(2018-03-22)_08_-_NYU_University_Hall.jpg"
+  },
+  "public/schools/syracuse.jpg": {
+    "for": "syracuse",
+    "slot": "hero",
+    "title": "Slocum Hall, Syracuse University.JPG",
+    "artist": "ZeWrestler",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Slocum_Hall,_Syracuse_University.JPG"
+  },
+  "public/schools/syracuse-1.jpg": {
+    "for": "syracuse",
+    "slot": "band1",
+    "title": "Holden Observatory, Syracuse University.jpg",
+    "artist": "ZeWrestler",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Holden_Observatory,_Syracuse_University.jpg"
+  },
+  "public/schools/syracuse-2.jpg": {
+    "for": "syracuse",
+    "slot": "band2",
+    "title": "Newhouse-School-Syracuse-Univ-2014.jpg",
+    "artist": "DASonnenfeld",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Newhouse-School-Syracuse-Univ-2014.jpg"
+  },
+  "public/schools/uconn-2.jpg": {
+    "for": "uconn",
+    "slot": "band2",
+    "title": "Campus view - University of Connecticut - DSC09948.JPG",
+    "artist": "Daderot",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Campus_view_-_University_of_Connecticut_-_DSC09948.JPG"
+  },
+  "public/schools/ucsb.jpg": {
+    "for": "ucsb",
+    "slot": "hero",
+    "title": "UCSB University Center and Storke Tower.jpg",
+    "artist": "Coolcaesar",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UCSB_University_Center_and_Storke_Tower.jpg"
+  },
+  "public/schools/ucsb-1.jpg": {
+    "for": "ucsb",
+    "slot": "band1",
+    "title": "Humanities and Social Sciences, UCSB.jpg",
+    "artist": "Carl Jantzen from Santa Barbara, California, United States of America",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Humanities_and_Social_Sciences,_UCSB.jpg"
+  },
+  "public/schools/ucsb-2.jpg": {
+    "for": "ucsb",
+    "slot": "band2",
+    "title": "UCSB Henley Gate.jpg",
+    "artist": "Ryosuke Yagi",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UCSB_Henley_Gate.jpg"
+  },
+  "public/schools/upenn-1.jpg": {
+    "for": "upenn",
+    "slot": "band1",
+    "title": "Woodland Walk.jpg",
+    "artist": "Abhiram Juvvadi",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Woodland_Walk.jpg"
+  },
+  "public/schools/upenn-2.jpg": {
+    "for": "upenn",
+    "slot": "band2",
+    "title": "Looking out over S 38th Street in Philadelphia 01.jpg",
+    "artist": "Magpieturtle",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Looking_out_over_S_38th_Street_in_Philadelphia_01.jpg"
+  },
+  "public/schools/usc.jpg": {
+    "for": "usc",
+    "slot": "hero",
+    "title": "USC VKC building.jpg",
+    "artist": "Sitao Xiang",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:USC_VKC_building.jpg"
+  },
+  "public/schools/usc-1.jpg": {
+    "for": "usc",
+    "slot": "band1",
+    "title": "Doheny Memorial Library of USC.jpg",
+    "artist": "EEJCC",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Doheny_Memorial_Library_of_USC.jpg"
+  },
+  "public/schools/usc-2.jpg": {
+    "for": "usc",
+    "slot": "band2",
+    "title": "Bovard Auditorium at dusk, University of Southern California.jpg",
+    "artist": "EEJCC",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bovard_Auditorium_at_dusk,_University_of_Southern_California.jpg"
+  },
+  "public/schools/uva-1.jpg": {
+    "for": "uva",
+    "slot": "band1",
+    "title": "University of Virginia Rotunda in 2006.jpg",
+    "artist": "Aaron Josephson",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Virginia_Rotunda_in_2006.jpg"
+  },
+  "public/schools/uva-2.jpg": {
+    "for": "uva",
+    "slot": "band2",
+    "title": "UVA Chemistry Building.JPG",
+    "artist": "Vtn5n",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:UVA_Chemistry_Building.JPG"
+  },
+  "public/schools/vanderbilt.jpg": {
+    "for": "vanderbilt",
+    "slot": "hero",
+    "title": "Occupy Vanderbilt's Floating Tent.jpg",
+    "artist": "Clodfevj",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Occupy_Vanderbilt%27s_Floating_Tent.jpg"
+  },
+  "public/schools/vanderbilt-1.jpg": {
+    "for": "vanderbilt",
+    "slot": "band1",
+    "title": "PeabodyLibraryVandy.JPG",
+    "artist": "Dansan4444",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:PeabodyLibraryVandy.JPG"
+  },
+  "public/schools/vanderbilt-2.jpg": {
+    "for": "vanderbilt",
+    "slot": "band2",
+    "title": "Jesup.JPG",
+    "artist": "Thepsmith6",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Jesup.JPG"
+  },
+  "public/schools/wakeforest.jpg": {
+    "for": "wakeforest",
+    "slot": "hero",
+    "title": "WakeForestRolledQuad.jpg",
+    "artist": "JHMM13 at English Wikipedia",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:WakeForestRolledQuad.jpg"
+  },
+  "public/schools/wakeforest-1.jpg": {
+    "for": "wakeforest",
+    "slot": "band1",
+    "title": "Worrell, Wake Forest University (cropped).jpg",
+    "artist": "Boltlm17",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Worrell,_Wake_Forest_University_(cropped).jpg"
+  },
+  "public/schools/wakeforest-2.jpg": {
+    "for": "wakeforest",
+    "slot": "band2",
+    "title": "Wake Forest University School of Medicine Bowman Gray campus.jpg",
+    "artist": "Harrison Keely",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Wake_Forest_University_School_of_Medicine_Bowman_Gray_campus.jpg"
+  },
+  "public/schools/washingtoncollege-2.jpg": {
+    "for": "washingtoncollege",
+    "slot": "band2",
+    "title": "WASHINGTON COLLEGE, MIDDLE HALL, CHESTERTOWN, KENT COUNTY, MD.jpg",
+    "artist": "JERRYE &amp; ROY KLOTZ, M.D.",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:WASHINGTON_COLLEGE,_MIDDLE_HALL,_CHESTERTOWN,_KENT_COUNTY,_MD.jpg"
+  },
+  "public/schools/upenn.jpg": {
+    "for": "upenn",
+    "slot": "hero",
+    "title": "Smith Walk, view of Towne Hall.JPG",
+    "artist": "Matthew Marcucci",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Smith_Walk,_view_of_Towne_Hall.JPG"
   }
 }
