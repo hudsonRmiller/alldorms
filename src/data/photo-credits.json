@@ -1686,5 +1686,269 @@
     "artist": "Matthew Marcucci",
     "license": "Public domain",
     "source": "https://commons.wikimedia.org/wiki/File:Smith_Walk,_view_of_Towne_Hall.JPG"
+  },
+  "public/schools/bloomsburg.jpg": {
+    "for": "bloomsburg",
+    "slot": "hero",
+    "title": "SutliffHall.jpg",
+    "artist": "Shadow82x",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:SutliffHall.jpg"
+  },
+  "public/schools/bloomsburg-1.jpg": {
+    "for": "bloomsburg",
+    "slot": "band1",
+    "title": "BloomsburgQuad.jpg",
+    "artist": "Shadow82x",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:BloomsburgQuad.jpg"
+  },
+  "public/schools/bloomsburg-2.jpg": {
+    "for": "bloomsburg",
+    "slot": "band2",
+    "title": "State Teachers College, Bloomsburg, PA (79612).jpg",
+    "artist": "The Mebane Greeting Card Co., Wilkes-Barre, PA.",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:State_Teachers_College,_Bloomsburg,_PA_(79612).jpg"
+  },
+  "public/schools/cheyney.jpg": {
+    "for": "cheyney",
+    "slot": "hero",
+    "title": "1909 Cheyney Library.JPG",
+    "artist": "Smallbones at English Wikipedia",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:1909_Cheyney_Library.JPG"
+  },
+  "public/schools/cheyney-1.jpg": {
+    "for": "cheyney",
+    "slot": "band1",
+    "title": "Melrose PA.JPG",
+    "artist": "Smallbones at English Wikipedia",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Melrose_PA.JPG"
+  },
+  "public/schools/cheyney-2.jpg": {
+    "for": "cheyney",
+    "slot": "band2",
+    "title": "Cheyney BiddleHall 20140406 190737.jpg",
+    "artist": "Raymgeez",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cheyney_BiddleHall_20140406_190737.jpg"
+  },
+  "public/schools/cofc.jpg": {
+    "for": "cofc",
+    "slot": "hero",
+    "title": "Randolph hall college of charleston.JPG",
+    "artist": "Lkeadle",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Randolph_hall_college_of_charleston.JPG"
+  },
+  "public/schools/cofc-1.jpg": {
+    "for": "cofc",
+    "slot": "band1",
+    "title": "College of Charleston campus, February 2014 - 7.jpg",
+    "artist": "mogollon_1",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:College_of_Charleston_campus,_February_2014_-_7.jpg"
+  },
+  "public/schools/cofc-2.jpg": {
+    "for": "cofc",
+    "slot": "band2",
+    "title": "College of Charleston campus, February 2014 - 12.jpg",
+    "artist": "mogollon_1",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:College_of_Charleston_campus,_February_2014_-_12.jpg"
+  },
+  "public/schools/delawarestate.jpg": {
+    "for": "delawarestate",
+    "slot": "hero",
+    "title": "Delaware State University Riverfront building in Wilmington, DE 01.jpg",
+    "artist": "Harrison Keely",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Delaware_State_University_Riverfront_building_in_Wilmington,_DE_01.jpg"
+  },
+  "public/schools/delawarestate-1.jpg": {
+    "for": "delawarestate",
+    "slot": "band1",
+    "title": "Delaware State University Wellness Center.jpg",
+    "artist": "Holzman Moss Bottino Architecture",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Delaware_State_University_Wellness_Center.jpg"
+  },
+  "public/schools/delawarestate-2.jpg": {
+    "for": "delawarestate",
+    "slot": "band2",
+    "title": "Delaware State University Student Center.jpg",
+    "artist": "Holzman Moss Bottino Architecture",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Delaware_State_University_Student_Center.jpg"
+  },
+  "public/schools/lasalle.jpg": {
+    "for": "lasalle",
+    "slot": "hero",
+    "title": "WTP B22 Audrey 1.jpg",
+    "artist": "See below",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:WTP_B22_Audrey_1.jpg"
+  },
+  "public/schools/lasalle-1.jpg": {
+    "for": "lasalle",
+    "slot": "band1",
+    "title": "WTP B23 Audrey 2.jpg",
+    "artist": "See below",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:WTP_B23_Audrey_2.jpg"
+  },
+  "public/schools/lasalle-2.jpg": {
+    "for": "lasalle",
+    "slot": "band2",
+    "title": "PhiladelphiaBig5SG.jpg",
+    "artist": "Lasalleexplorer",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:PhiladelphiaBig5SG.jpg"
+  },
+  "public/schools/lincoln.jpg": {
+    "for": "lincoln",
+    "slot": "hero",
+    "title": "Chapel - panoramio (3).jpg",
+    "artist": "Idawriter",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Chapel_-_panoramio_(3).jpg"
+  },
+  "public/schools/lincoln-1.jpg": {
+    "for": "lincoln",
+    "slot": "band1",
+    "title": "Student Union Lincoln U PA.JPG",
+    "artist": "Smallbones",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Student_Union_Lincoln_U_PA.JPG"
+  },
+  "public/schools/lincoln-2.jpg": {
+    "for": "lincoln",
+    "slot": "band2",
+    "title": "View from DeNaples (3288291686).jpg",
+    "artist": "University of Scranton Weinberg Memorial Library from Scranton, Pennsylvania",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:View_from_DeNaples_(3288291686).jpg"
+  },
+  "public/schools/millersville.jpg": {
+    "for": "millersville",
+    "slot": "hero",
+    "title": "South Village Suites.jpg",
+    "artist": "BigCheddah",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:South_Village_Suites.jpg"
+  },
+  "public/schools/millersville-1.jpg": {
+    "for": "millersville",
+    "slot": "band1",
+    "title": "LombardoWelcomeCenter.jpg",
+    "artist": "BigCheddah",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:LombardoWelcomeCenter.jpg"
+  },
+  "public/schools/millersville-2.jpg": {
+    "for": "millersville",
+    "slot": "band2",
+    "title": "MillersvillePA2023.jpg",
+    "artist": "BigCheddah",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:MillersvillePA2023.jpg"
+  },
+  "public/schools/sju.jpg": {
+    "for": "sju",
+    "slot": "hero",
+    "title": "McNeil Science And Technology Center.jpg",
+    "artist": "SidewalkMD",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:McNeil_Science_And_Technology_Center.jpg"
+  },
+  "public/schools/sju-1.jpg": {
+    "for": "sju",
+    "slot": "band1",
+    "title": "Barbelin tower.JPG",
+    "artist": "Brian O'Neill",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Barbelin_tower.JPG"
+  },
+  "public/schools/sju-2.jpg": {
+    "for": "sju",
+    "slot": "band2",
+    "title": "Mandeville Hall, Saint Joseph's University (03-05-2007).jpg",
+    "artist": "ChicagoMayne at English Wikipedia",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mandeville_Hall,_Saint_Joseph%27s_University_(03-05-2007).jpg"
+  },
+  "public/schools/temple.jpg": {
+    "for": "temple",
+    "slot": "hero",
+    "title": "WTP B15 Audrey 1.jpg",
+    "artist": "See below",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:WTP_B15_Audrey_1.jpg"
+  },
+  "public/schools/temple-1.jpg": {
+    "for": "temple",
+    "slot": "band1",
+    "title": "Liacouras Center, Temple University - 2009.jpg",
+    "artist": "See below",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Liacouras_Center,_Temple_University_-_2009.jpg"
+  },
+  "public/schools/temple-2.jpg": {
+    "for": "temple",
+    "slot": "band2",
+    "title": "Paley Library.jpg",
+    "artist": "Megan Miller",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Paley_Library.jpg"
+  },
+  "public/schools/ursinus.jpg": {
+    "for": "ursinus",
+    "slot": "hero",
+    "title": "Ursinus Berman Gallery.jpg",
+    "artist": "Montgomery County Planning Commission",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ursinus_Berman_Gallery.jpg"
+  },
+  "public/schools/ursinus-1.jpg": {
+    "for": "ursinus",
+    "slot": "band1",
+    "title": "MCPC photos Foggy Ursinus (33315103190).jpg",
+    "artist": "Montgomery County Planning Commission",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:MCPC_photos_Foggy_Ursinus_(33315103190).jpg"
+  },
+  "public/schools/ursinus-2.jpg": {
+    "for": "ursinus",
+    "slot": "band2",
+    "title": "Ursinus College.jpg",
+    "artist": "Montgomery County Planning Commission",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ursinus_College.jpg"
+  },
+  "public/schools/westchester.jpg": {
+    "for": "westchester",
+    "slot": "hero",
+    "title": "Old Library, West Chester University, PA - front view.jpg",
+    "artist": "Zeete",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Old_Library,_West_Chester_University,_PA_-_front_view.jpg"
+  },
+  "public/schools/westchester-1.jpg": {
+    "for": "westchester",
+    "slot": "band1",
+    "title": "Recitation Hall, West Chester University, PA - front view.jpg",
+    "artist": "Zeete",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Recitation_Hall,_West_Chester_University,_PA_-_front_view.jpg"
+  },
+  "public/schools/westchester-2.jpg": {
+    "for": "westchester",
+    "slot": "band2",
+    "title": "Anderson Hall, West Chester University, PA - front view.jpg",
+    "artist": "Zeete",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Anderson_Hall,_West_Chester_University,_PA_-_front_view.jpg"
   }
 }

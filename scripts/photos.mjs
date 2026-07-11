@@ -123,6 +123,17 @@ const SEARCH_NAMES = {
   drexel: 'Drexel University',
   skidmore: 'Skidmore College',
   washingtoncollege: 'Washington College',
+  sju: "Saint Joseph's University",
+  cofc: 'College of Charleston',
+  cheyney: 'Cheyney University of Pennsylvania',
+  lincoln: 'Lincoln University (Pennsylvania)',
+  bloomsburg: 'Bloomsburg University of Pennsylvania',
+  westchester: 'West Chester University of Pennsylvania',
+  millersville: 'Millersville University of Pennsylvania',
+  lasalle: 'La Salle University',
+  temple: 'Temple University',
+  delawarestate: 'Delaware State University',
+  ursinus: 'Ursinus College',
 };
 
 const SLOTS = { hero: { suffix: '.jpg', width: 2000 }, band1: { suffix: '-1.jpg', width: 1800 }, band2: { suffix: '-2.jpg', width: 1800 } };

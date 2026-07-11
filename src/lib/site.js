@@ -182,6 +182,17 @@ export const SCHOOL_ALIASES = {
   upenn: ['University of Pennsylvania', 'Penn', 'UPenn', 'Quakers', 'Philadelphia'],
   wakeforest: ['Wake Forest University', 'Wake Forest', 'Wake', 'Demon Deacons', 'Winston-Salem'],
   iowastate: ['Iowa State University', 'Iowa State', 'ISU', 'Cyclones', 'Ames'],
+  sju: ["Saint Joseph's University", "St. Joseph's", "St Joes", 'SJU', 'Hawks', 'Hawk Hill', 'Philadelphia'],
+  cofc: ['College of Charleston', 'CofC', 'Cougars', 'Charleston'],
+  cheyney: ['Cheyney University', 'Cheyney University of Pennsylvania', 'Wolves', 'HBCU'],
+  lincoln: ['Lincoln University', 'Lincoln University of Pennsylvania', 'Lincoln PA', 'Lions', 'HBCU'],
+  bloomsburg: ['Bloomsburg University', 'Commonwealth University Bloomsburg', 'Bloom', 'Huskies'],
+  westchester: ['West Chester University', 'WCU', 'Golden Rams', 'West Chester'],
+  millersville: ['Millersville University', 'Marauders', 'Millersville'],
+  lasalle: ['La Salle University', 'LaSalle', 'Explorers', 'Philadelphia'],
+  temple: ['Temple University', 'Owls', 'Philadelphia', 'North Philly', 'Cherry and White'],
+  delawarestate: ['Delaware State University', 'DSU', 'Del State', 'Hornets', 'Dover', 'HBCU'],
+  ursinus: ['Ursinus College', 'Bears', 'Grizzlies', 'Collegeville'],
 };
 
 /* ---------- color helpers (for the per-school accent dot / crest) ---------- */
