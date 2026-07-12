@@ -134,6 +134,8 @@ const SEARCH_NAMES = {
   temple: 'Temple University',
   delawarestate: 'Delaware State University',
   ursinus: 'Ursinus College',
+  stetson: 'Stetson University',
+  ucsd: 'University of California, San Diego',
 };
 
 const SLOTS = { hero: { suffix: '.jpg', width: 2000 }, band1: { suffix: '-1.jpg', width: 1800 }, band2: { suffix: '-2.jpg', width: 1800 } };

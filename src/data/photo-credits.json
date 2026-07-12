@@ -1950,5 +1950,53 @@
     "artist": "Zeete",
     "license": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Anderson_Hall,_West_Chester_University,_PA_-_front_view.jpg"
+  },
+  "public/schools/stetson.jpg": {
+    "for": "stetson",
+    "slot": "hero",
+    "title": "Stetson Univ - Sampson Hall1.jpg",
+    "artist": "Ebyabe",
+    "license": "CC BY 2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:Stetson_Univ_-_Sampson_Hall1.jpg"
+  },
+  "public/schools/stetson-1.jpg": {
+    "for": "stetson",
+    "slot": "band1",
+    "title": "Stetson Univ - Chaudoin Hall.jpg",
+    "artist": "Ebyabe",
+    "license": "CC BY 2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:Stetson_Univ_-_Chaudoin_Hall.jpg"
+  },
+  "public/schools/ucsd.jpg": {
+    "for": "ucsd",
+    "slot": "hero",
+    "title": "Geisel Library 01.jpg",
+    "artist": "Codera23",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Geisel_Library_01.jpg"
+  },
+  "public/schools/ucsd-1.jpg": {
+    "for": "ucsd",
+    "slot": "band1",
+    "title": "Altman Clinical and Translational Research Institute building.jpg",
+    "artist": "TritonsRising",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Altman_Clinical_and_Translational_Research_Institute_building.jpg"
+  },
+  "public/schools/ucsd-2.jpg": {
+    "for": "ucsd",
+    "slot": "band2",
+    "title": "Applied Physics and Mathematics.jpg",
+    "artist": "AndyrooP",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Applied_Physics_and_Mathematics.jpg"
+  },
+  "public/schools/stetson-2.jpg": {
+    "for": "stetson",
+    "slot": "band2",
+    "title": "DeLand Hall on Stetson U campus1.jpg",
+    "artist": "Ebyabe",
+    "license": "CC BY 2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:DeLand_Hall_on_Stetson_U_campus1.jpg"
   }
 }
