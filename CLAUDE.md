@@ -47,7 +47,7 @@ Use the user-level `/school-photos` skill for the full runbook. It drives `scrip
 ## Gotchas
 
 - `<script is:inline>{`…`}</script>` in a `.astro` file emits the template-literal wrapper as literal text and the JS silently never runs. Write raw JS with no `{}` wrapper, or define the JS as a frontmatter string and inject via `<script is:inline set:html={JS}>`. (The checklist progress bar once died this way.)
-- The packing checklist persists per school in localStorage under `alldorms:checklist:<slug>`.
+- The packing checklist persists per school in localStorage: checked state under `alldorms:checklist:<slug>`, user-added items under `alldorms:checklist-custom:<slug>` (Reset clears the former, never the latter). Custom rows are cloned from the `#customTpl` `<template>` in Section.astro so they carry Astro's scoped-style attribute — don't build them with bare `createElement`, and inject names via `textContent` only.
 - `schools.js` is hand-edited and huge; a stray `,,` once left a hole in `SCHOOLS` that `.filter()` masked downstream. `node scripts/photos.mjs status` doubles as a quick data sanity check.
 
 ## Design rules (Hudson is design-minded — these are firm)

@@ -1,6 +1,6 @@
 ---
 import {
-  ALLOWED_BASE, BANNED_BASE, resolveChecklist, contactHref, weatherSub, softTint,
+  ALLOWED_BASE, BANNED_BASE, resolveChecklist, contactHref, weatherSub, softTint, AFFILIATE_TAG,
 } from '../lib/site.js';
 const { school, id } = Astro.props;
 const accentSoft = softTint(school.accent);
@@ -10,10 +10,89 @@ const banned  = id === 'allowed' ? BANNED_BASE.concat(school.bannedExtra) : [];
 const checklist = id === 'checklist' ? resolveChecklist(school) : [];
 const totalItems = checklist.reduce((n, c) => n + c.items.length, 0);
 
-// Checklist persistence (localStorage). Injected verbatim via set:html so it
-// runs as a real inline script — NOT wrapped in {`...`}, which is:inline emits
-// as literal text (the IIFE would never execute).
-const CHECKLIST_JS = `(function(){var root=document.querySelector('.sec-checklist');if(!root)return;var KEY='alldorms:checklist:'+(root.getAttribute('data-school')||'x');var total=parseInt(root.getAttribute('data-total'),10)||0;var boxes=root.querySelectorAll('.chk');var c=document.getElementById('progCount');var f=document.getElementById('progFill');var reset=root.querySelector('.prog-reset');function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){return {};}}function save(o){try{localStorage.setItem(KEY,JSON.stringify(o));}catch(e){}}var saved=load();boxes.forEach(function(b){if(saved[b.dataset.key])b.checked=true;});function persist(){var o={};boxes.forEach(function(b){if(b.checked)o[b.dataset.key]=1;});save(o);}function u(){var d=0;boxes.forEach(function(b){var i=b.closest('.item');if(b.checked){d++;i.classList.add('done');}else{i.classList.remove('done');}});var p=total?Math.round(d/total*100):0;if(c)c.textContent=d+' / '+total+' packed';if(f)f.style.width=p+'%';if(reset)reset.style.visibility=d?'visible':'hidden';}boxes.forEach(function(b){b.addEventListener('change',function(){persist();u();});});if(reset)reset.addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});try{localStorage.removeItem(KEY);}catch(e){}u();});u();})();`;
+// Checklist persistence + user-added items (localStorage). Injected verbatim
+// via set:html so it runs as a real inline script — NOT wrapped in {`...`},
+// which is:inline emits as literal text (the IIFE would never execute).
+// Checked state lives under alldorms:checklist:<slug>; the user's own items
+// under alldorms:checklist-custom:<slug> (Reset clears progress, not the list).
+// Custom rows are cloned from the #customTpl <template> so they carry Astro's
+// scoped-style class; names go in via textContent, never innerHTML.
+const CHECKLIST_JS = `(function(){
+var root=document.querySelector('.sec-checklist');if(!root)return;
+var slug=root.getAttribute('data-school')||'x';
+var KEY='alldorms:checklist:'+slug;
+var CKEY='alldorms:checklist-custom:'+slug;
+var TAG='${AFFILIATE_TAG}';
+var staticTotal=parseInt(root.getAttribute('data-total'),10)||0;
+var c=document.getElementById('progCount');
+var f=document.getElementById('progFill');
+var reset=root.querySelector('.prog-reset');
+var list=document.getElementById('customItems');
+var countEl=document.getElementById('customCount');
+var form=document.getElementById('customForm');
+var input=document.getElementById('customInput');
+var tpl=document.getElementById('customTpl');
+function read(k,fb){try{return JSON.parse(localStorage.getItem(k)||'null')||fb;}catch(e){return fb;}}
+function write(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+var custom=read(CKEY,[]);
+if(!Array.isArray(custom))custom=[];
+custom=custom.filter(function(n){return typeof n==='string'&&n.trim();});
+function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');}
+function keyFor(name){return 'custom-'+slugify(name);}
+function shopHref(name){var u='https://www.amazon.com/s?k='+encodeURIComponent(name);return TAG?u+'&tag='+encodeURIComponent(TAG):u;}
+function renderCustom(){
+if(!list||!tpl)return;
+var saved=read(KEY,{});
+list.textContent='';
+custom.forEach(function(name){
+var node=tpl.content.firstElementChild.cloneNode(true);
+var box=node.querySelector('.chk');
+box.setAttribute('data-key',keyFor(name));
+if(saved[keyFor(name)])box.checked=true;
+node.querySelector('.item-lbl').textContent=name;
+node.querySelector('.shop').href=shopHref(name);
+var rm=node.querySelector('.item-rm');
+rm.setAttribute('data-rm',name);
+rm.setAttribute('aria-label','Remove '+name);
+list.appendChild(node);
+});
+if(countEl)countEl.textContent=custom.length?String(custom.length):'';
+}
+function persist(){var o={};root.querySelectorAll('.chk').forEach(function(b){if(b.checked)o[b.dataset.key]=1;});write(KEY,o);}
+function u(){
+var d=0;
+root.querySelectorAll('.chk').forEach(function(b){var i=b.closest('.item');if(b.checked){d++;i.classList.add('done');}else{i.classList.remove('done');}});
+var total=staticTotal+custom.length;
+var p=total?Math.round(d/total*100):0;
+if(c)c.textContent=d+' / '+total+' packed';
+if(f)f.style.width=p+'%';
+if(reset)reset.style.visibility=d?'visible':'hidden';
+}
+var saved0=read(KEY,{});
+root.querySelectorAll('.chk').forEach(function(b){if(saved0[b.dataset.key])b.checked=true;});
+renderCustom();
+root.addEventListener('change',function(e){if(e.target&&e.target.classList&&e.target.classList.contains('chk')){persist();u();}});
+root.addEventListener('click',function(e){
+var rm=e.target&&e.target.closest?e.target.closest('.item-rm'):null;
+if(!rm)return;
+e.preventDefault();
+var name=rm.getAttribute('data-rm')||'';
+custom=custom.filter(function(n){return n!==name;});
+write(CKEY,custom);
+var o=read(KEY,{});delete o[keyFor(name)];write(KEY,o);
+renderCustom();u();
+});
+if(form)form.addEventListener('submit',function(e){
+e.preventDefault();
+var name=(input&&input.value||'').replace(/\\s+/g,' ').trim().slice(0,80);
+if(!slugify(name))return;
+var k=keyFor(name);
+if(!custom.some(function(n){return keyFor(n)===k;})){custom.push(name);write(CKEY,custom);renderCustom();u();}
+if(input){input.value='';input.focus();}
+});
+if(reset)reset.addEventListener('click',function(){root.querySelectorAll('.chk').forEach(function(b){b.checked=false;});try{localStorage.removeItem(KEY);}catch(e){}u();});
+u();
+})();`;
 ---
 
 {/* 01 WEATHER */}
@@ -125,7 +204,24 @@ const CHECKLIST_JS = `(function(){var root=document.querySelector('.sec-checklis
           </div>
         </section>
       ))}
+      <section class="cat cat-custom">
+        <h3>Your items <span class="cat-n" id="customCount"></span></h3>
+        <div class="items" id="customItems"></div>
+        <form class="item-add" id="customForm">
+          <input id="customInput" type="text" maxlength="80" autocomplete="off" placeholder="Add your own item…" aria-label="Add an item to the checklist" />
+          <button type="submit">Add</button>
+        </form>
+        <p class="add-hint">Anything you add gets its own Shop link, and saves on this device.</p>
+      </section>
     </div>
+    <template id="customTpl">
+      <label class="item">
+        <input type="checkbox" class="chk" />
+        <span class="item-lbl"></span>
+        <a class="shop" target="_blank" rel="noopener nofollow sponsored">Shop ↗</a>
+        <button type="button" class="item-rm" aria-label="Remove item">✕</button>
+      </label>
+    </template>
   </div>
 )}
 
@@ -293,6 +389,18 @@ const CHECKLIST_JS = `(function(){var root=document.querySelector('.sec-checklis
   .item.done .item-lbl { text-decoration: line-through; color: var(--ink-faint); text-decoration-color: var(--line-2); }
   .shop { font-family: var(--sans); font-size: .68rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--navy); border: 1px solid var(--line-2); border-radius: 999px; padding: .32em .8em; text-decoration: none; flex: none; align-self: center; }
   .shop:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+  /* user-added items */
+  .item-rm { flex: none; align-self: center; background: none; border: none; padding: .25em .35em; font-size: .72rem; line-height: 1; color: var(--ink-faint); cursor: pointer; }
+  .item-rm:hover { color: var(--navy); }
+  .cat-custom .items:empty { display: none; }
+  .item-add { display: flex; gap: .5rem; margin-top: .75rem; }
+  .item-add input { flex: 1; min-width: 0; font-family: var(--serif); font-size: .95rem; color: var(--ink); background: var(--white); border: 1px solid var(--line-2); border-radius: 999px; padding: .45em .95em; }
+  .item-add input::placeholder { color: var(--ink-faint); }
+  .item-add input:focus { outline: none; border-color: var(--navy); }
+  .item-add button { font-family: var(--sans); font-size: .68rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: #fff; background: var(--navy); border: 1px solid var(--navy); border-radius: 999px; padding: .32em 1em; cursor: pointer; flex: none; }
+  .item-add button:hover { background: var(--gold-deep); border-color: var(--gold-deep); }
+  .add-hint { font-size: .78rem; color: var(--ink-faint); line-height: 1.45; margin: .55rem 0 0; }
 
   /* move-in notes — fill width */
   .notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.6rem 2rem; }
