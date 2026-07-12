@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Base from '../layouts/Base.astro';
 import Postcard from '../components/Postcard.astro';
-import { SCHOOLS, schoolSections, cityShort } from '../lib/site.js';
+import { SCHOOLS, schoolSections, cityShort, geoRegion, GEO_REGION_ORDER } from '../lib/site.js';
 
 // per-school crop focal point (object-position) — only needed where the
 // default center crop would cut the subject (e.g. UT's tall tower)
@@ -76,6 +76,11 @@ const schools = SCHOOLS.map(s => {
     focus: FOCUS[s.slug] || null,
   };
 });
+// homepage directory, grouped east → west, alphabetical within each region
+const regions = GEO_REGION_ORDER
+  .map(name => [name, schools.filter(s => geoRegion(s) === name).sort((a, b) => a.name.localeCompare(b.name))])
+  .filter(([, group]) => group.length);
+
 const guideSections = ['Weather & clothing','What’s allowed','Housing & roommates','Where you’ll live','Packing checklist','Move-in logistics','Town & hotspots','Where to stay','School gear','Links & contacts'];
 
 const HERO = '/hero.jpg';
@@ -104,6 +109,17 @@ const READING = '/reading.jpg'; // Suzzallo Reading Room, UW — see src/data/ph
     <a href="#how" class="lhero-scroll" aria-label="Scroll down">
       <span class="lhero-scroll-line"></span>
     </a>
+  </section>
+
+  {/* your schools — filled client-side from localStorage, hidden until it has cards */}
+  <section id="mine" class="mine" hidden>
+    <div class="wrap">
+      <div class="mine-head">
+        <span class="kick">Welcome back</span>
+        <h2>Your schools</h2>
+      </div>
+      <div class="school-grid" id="mine-grid"></div>
+    </div>
   </section>
 
   {/* what's inside */}
@@ -158,25 +174,91 @@ const READING = '/reading.jpg'; // Suzzallo Reading Room, UW — see src/data/ph
         <h2>Pick your school</h2>
         <p>Each one built from that school's official housing pages. Select your child's university to open theirs.</p>
       </div>
-      <div class="school-grid">
-        {schools.map(s => (
-          <a href={`/${s.slug}/`} id={`s-${s.slug}`} class="scard" style={`--accent:${s.accent}` + (s.focus ? `;--focus:${s.focus}` : '')}>
-            {s.photo
-              ? <img class="scard-photo" src={s.photo} alt={`${s.name} campus`} loading="lazy" />
-              : <div class="scard-art"><Postcard school={s} /></div>}
-            <span class="scard-bar"></span>
-            <div class="scard-scrim"></div>
-            <div class="scard-meta">
-              <span class="scard-name">{s.name}</span>
-              <span class="scard-city">{s.cityShort}</span>
-            </div>
-            <span class="scard-go" aria-hidden="true">→</span>
-          </a>
-        ))}
-      </div>
+      {regions.map(([name, group]) => (
+        <div class="region">
+          <div class="region-head">
+            <h3>{name}</h3>
+            <span class="region-count">{group.length} schools</span>
+          </div>
+          <div class="school-grid">
+            {group.map(s => (
+              <a href={`/${s.slug}/`} id={`s-${s.slug}`} class="scard" data-slug={s.slug} style={`--accent:${s.accent}` + (s.focus ? `;--focus:${s.focus}` : '')}>
+                {s.photo
+                  ? <img class="scard-photo" src={s.photo} alt={`${s.name} campus`} loading="lazy" />
+                  : <div class="scard-art"><Postcard school={s} /></div>}
+                <span class="scard-bar"></span>
+                <div class="scard-scrim"></div>
+                <div class="scard-meta">
+                  <span class="scard-name">{s.name}</span>
+                  <span class="scard-city">{s.cityShort}</span>
+                </div>
+                <span class="scard-go" aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 </Base>
+
+<script is:inline>
+// "Your schools" — clones the cards of previously visited schools (recorded by
+// each school page in localStorage) into the #mine row, newest first, with a
+// remove button per card. Section stays hidden until it has at least one card.
+(function () {
+  var KEY = 'alldorms:mySchools';
+  function read() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; }
+  }
+  var sec = document.getElementById('mine');
+  var grid = document.getElementById('mine-grid');
+  if (!sec || !grid) return;
+  read().forEach(function (slug) {
+    var card = document.getElementById('s-' + slug);
+    if (!card) return;
+    var copy = card.cloneNode(true);
+    copy.removeAttribute('id');
+    var wrap = document.createElement('div');
+    wrap.className = 'scard-wrap';
+    var nameEl = card.querySelector('.scard-name');
+    var x = document.createElement('button');
+    x.type = 'button';
+    x.className = 'scard-x';
+    x.setAttribute('aria-label', 'Remove ' + (nameEl ? nameEl.textContent : slug) + ' from your schools');
+    x.textContent = '×';
+    x.addEventListener('click', function () {
+      var next = read().filter(function (s) { return s !== slug; });
+      try { localStorage.setItem(KEY, JSON.stringify(next)); } catch (e) {}
+      wrap.remove();
+      if (!grid.children.length) sec.hidden = true;
+    });
+    wrap.appendChild(copy);
+    wrap.appendChild(x);
+    grid.appendChild(wrap);
+  });
+  if (grid.children.length) sec.hidden = false;
+})();
+</script>
+
+<style is:global>
+  /* built by the "Your schools" script — global because Astro's scoping
+     can't reach elements created client-side */
+  .scard-wrap { position: relative; }
+  .scard-wrap .scard-go { display: none; }
+  .scard-x {
+    position: absolute; top: .85rem; right: .9rem; z-index: 4;
+    width: 36px; height: 36px; border-radius: 50%; padding: 0;
+    border: 1.5px solid rgba(255,255,255,.4);
+    background: rgba(15,23,44,.45); color: #fff;
+    font-family: var(--sans); font-size: 1.2rem; line-height: 1;
+    display: grid; place-items: center; cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background .16s, color .16s, border-color .16s;
+  }
+  .scard-x:hover { background: rgba(255,255,255,.92); color: var(--navy); border-color: transparent; }
+  .scard-x:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+</style>
 
 <style>
   /* ---------- hero ---------- */
@@ -241,8 +323,19 @@ const READING = '/reading.jpg'; // Suzzallo Reading Room, UW — see src/data/ph
   .guide-index li:nth-child(1), .guide-index li:nth-child(2) { border-top: none; }
   .gi-n { font-family: var(--mono); font-size: .68rem; color: var(--gold-deep); flex: none; }
 
+  /* ---------- your schools ---------- */
+  .mine { padding: 72px 0 8px; }
+  .mine-head { margin-bottom: 1.5rem; }
+  .mine-head .kick { margin-bottom: .6rem; }
+  .mine-head h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-bottom: 0; }
+
   /* ---------- schools grid ---------- */
   .schools { padding: 88px 0 100px; }
+  .region { margin-top: 0; }
+  .region + .region { margin-top: 3rem; }
+  .region-head { display: flex; align-items: baseline; gap: .9rem; margin-bottom: 1.15rem; }
+  .region-head h3 { font-size: clamp(1.35rem, 2.2vw, 1.7rem); margin: 0; }
+  .region-count { font-family: var(--sans); font-size: .82rem; font-weight: 500; color: var(--ink-soft); }
   .schools-head { margin-bottom: 2.4rem; max-width: 60ch; }
   .schools-head .kick { margin-bottom: .7rem; }
   .schools-head h2 { font-size: clamp(2rem, 3.8vw, 3rem); margin-bottom: .4rem; }

@@ -143,6 +143,19 @@ const focus = FOCUS[school.slug] || null;
   </div>
 </Base>
 
+<script is:inline>
+// remember this school for the homepage "Your schools" row
+(function () {
+  var slug = location.pathname.split('/').filter(Boolean)[0];
+  if (!slug) return;
+  var KEY = 'alldorms:mySchools';
+  var list;
+  try { list = JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { list = []; }
+  list = [slug].concat(list.filter(function (s) { return s !== slug; })).slice(0, 12);
+  try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
+})();
+</script>
+
 <script>
   // scroll-spy
   const links = Array.from(document.querySelectorAll('#subnav .subnav-link'));

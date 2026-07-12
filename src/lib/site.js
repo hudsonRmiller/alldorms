@@ -8,6 +8,27 @@ const SCHOOLS = [
 
 export { SCHOOLS, ALLOWED_BASE, BANNED_BASE };
 
+/* ---------- geographic regions (homepage directory grouping) ----------
+   East → west. State is parsed from `city` ("Hamilton, NY"). Distinct from
+   the climate `region` field (cold/warm/mild) on each school. */
+const GEO_REGIONS = [
+  ['New England',  ['ME', 'NH', 'VT', 'MA', 'RI', 'CT']],
+  ['Mid-Atlantic', ['NY', 'NJ', 'PA', 'DE', 'MD', 'DC']],
+  ['The South',    ['VA', 'WV', 'NC', 'SC', 'GA', 'FL', 'KY', 'TN', 'AL', 'MS', 'AR', 'LA', 'TX', 'OK']],
+  ['The Midwest',  ['OH', 'MI', 'IN', 'IL', 'WI', 'MN', 'IA', 'MO', 'ND', 'SD', 'NE', 'KS']],
+  ['The West',     ['MT', 'WY', 'CO', 'NM', 'ID', 'UT', 'AZ', 'NV', 'WA', 'OR', 'CA', 'AK', 'HI']],
+];
+export function schoolState(s) {
+  const m = s.city && s.city.match(/,\s*([A-Z]{2})\b/);
+  return m ? m[1] : null;
+}
+export function geoRegion(s) {
+  const st = schoolState(s);
+  const hit = GEO_REGIONS.find(([, states]) => states.includes(st));
+  return hit ? hit[0] : 'More schools';
+}
+export const GEO_REGION_ORDER = [...GEO_REGIONS.map(([name]) => name), 'More schools'];
+
 // Amazon Associates tag — appended to every "Shop" link. Requires the Amazon
 // affiliate disclosure to be live on the site (it's in the footer).
 export const AFFILIATE_TAG = 'alldorms-20';
