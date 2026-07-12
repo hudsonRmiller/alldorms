@@ -42,13 +42,13 @@ const uid = 'crest-' + school.slug;
 
   <!-- monogram -->
   <text x="110" y="150" text-anchor="middle"
-        font-family="'Fraunces', Georgia, serif" font-weight="600"
+        style="font-family: var(--display)" font-weight="600"
         font-size="92" fill="#fbf9f2">{initial}</text>
 
   <!-- lower banner -->
   <rect x="30" y="168" width="160" height="26" rx="2" fill="#fbf9f2" />
   <text x="110" y="186" text-anchor="middle"
-        font-family="'IBM Plex Mono', monospace" font-weight="500"
+        style="font-family: var(--sans)" font-weight="600"
         font-size={short.length > 11 ? 10 : 12} letter-spacing="1.2" fill={accent}>{short}</text>
 </svg>
 

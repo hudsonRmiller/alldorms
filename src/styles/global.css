@@ -31,10 +31,10 @@
   --accent:      #7a1f2b;
 
   /* --- type --- */
-  --display: 'Piazzolla', 'Literata', Georgia, serif;
-  --serif:   'Literata', Georgia, 'Times New Roman', serif;
-  --sans:    'Schibsted Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --mono:    'Spline Sans Mono', ui-monospace, Menlo, monospace;
+  --display: 'Frank Ruhl Libre', Georgia, serif;
+  --serif:   'Charis SIL', 'Charter', Georgia, 'Times New Roman', serif;
+  --sans:    'Libre Franklin', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono:    ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
   --maxw: 1280px;
   --radius: 12px;

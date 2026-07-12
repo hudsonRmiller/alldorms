@@ -53,5 +53,5 @@ Use the user-level `/school-photos` skill for the full runbook. It drives `scrip
 ## Design rules (Hudson is design-minded — these are firm)
 
 - Organic, not "AI-looking": no mono-caps letter-spaced eyebrows with dash prefixes, no two-tone headlines, no hairline-rule-on-everything grids, no flat pure-white canvas, no Inter-everywhere. Warm textured canvas, real photography, single-color serif headlines, sentence-case pill buttons.
-- Fonts are deliberate: Piazzolla (display), Literata (serif), Schibsted Grotesk (sans), Spline Sans Mono (mono — genuine tabular data only). Hudson considers Fraunces/Newsreader/IBM Plex "classic AI fonts"; don't swap them in.
+- Fonts are deliberate (July 2026 pick, grounded in real publications): Frank Ruhl Libre (display — Haaretz), Charis SIL (serif body — the Charter/Medium reading face), Libre Franklin (sans/UI — NYT lineage), system mono stack (no webfont — genuine tabular data only). Hudson considers Fraunces/Newsreader/IBM Plex/Inter "classic AI fonts", and rejected the previous Piazzolla/Literata/Schibsted Grotesk/Spline Sans Mono set as still AI-looking — don't swap any of those back in. When proposing type, cite where real sites use it.
 - Mobile-first: the audience is largely parents on phones. Never gate primary content or key affordances behind hover.
