@@ -2190,5 +2190,197 @@
     "artist": "Daniel Mayer",
     "license": "CC BY-SA 3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Emory_University_-_Charles_and_Peggy_Evans_Anatomy_Building.JPG"
+  },
+  "public/schools/cmu.jpg": {
+    "for": "cmu",
+    "slot": "hero",
+    "title": "Carnegie Mellon University as seen from the Cathedral of Learning.jpg",
+    "artist": "Dllu",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Carnegie_Mellon_University_as_seen_from_the_Cathedral_of_Learning.jpg"
+  },
+  "public/schools/cmu-1.jpg": {
+    "for": "cmu",
+    "slot": "band1",
+    "title": "Jared Cohon University Center at Carnegie Mellon University.JPG",
+    "artist": "Dllu",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Jared_Cohon_University_Center_at_Carnegie_Mellon_University.JPG"
+  },
+  "public/schools/cmu-2.jpg": {
+    "for": "cmu",
+    "slot": "band2",
+    "title": "Carnegie Mellon Cohon University Center 2016.jpg",
+    "artist": "Dllu",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Carnegie_Mellon_Cohon_University_Center_2016.jpg"
+  },
+  "public/schools/caltech.jpg": {
+    "for": "caltech",
+    "slot": "hero",
+    "title": "Detroit Photographic Company (0048) - Throop Polytechnic Institute, Pasadena, California.jpg",
+    "artist": "Unknown authorUnknown author",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Detroit_Photographic_Company_(0048)_-_Throop_Polytechnic_Institute,_Pasadena,_California.jpg"
+  },
+  "public/schools/caltech-1.jpg": {
+    "for": "caltech",
+    "slot": "band1",
+    "title": "Kerckhoff Laboratory of the Biological Sciences.jpg",
+    "artist": "Canon.vs.nikon",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kerckhoff_Laboratory_of_the_Biological_Sciences.jpg"
+  },
+  "public/schools/caltech-2.jpg": {
+    "for": "caltech",
+    "slot": "band2",
+    "title": "Arms Laboratory.JPG",
+    "artist": "Canon.vs.nikon",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Arms_Laboratory.JPG"
+  },
+  "public/schools/tulane.jpg": {
+    "for": "tulane",
+    "slot": "hero",
+    "title": "Willow Street, Tulane University Campus, New Orleans, 3 Nov 2020 02.jpg",
+    "artist": "Infrogmation of New Orleans",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Willow_Street,_Tulane_University_Campus,_New_Orleans,_3_Nov_2020_02.jpg"
+  },
+  "public/schools/miami.jpg": {
+    "for": "miami",
+    "slot": "hero",
+    "title": "University of Miami Otto G. Richter Library.jpg",
+    "artist": "Unknown",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Miami_Otto_G._Richter_Library.jpg"
+  },
+  "public/schools/miami-1.jpg": {
+    "for": "miami",
+    "slot": "band1",
+    "title": "BankUnited Center.JPG",
+    "artist": "Ryulong",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:BankUnited_Center.JPG"
+  },
+  "public/schools/miami-2.jpg": {
+    "for": "miami",
+    "slot": "band2",
+    "title": "200127-H-PX819-0092.jpg",
+    "artist": "CBP Photography",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:200127-H-PX819-0092.jpg"
+  },
+  "public/schools/ucdavis.jpg": {
+    "for": "ucdavis",
+    "slot": "hero",
+    "title": "UC Davis Memorial Union.jpg",
+    "artist": "Borawik",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UC_Davis_Memorial_Union.jpg"
+  },
+  "public/schools/ucdavis-1.jpg": {
+    "for": "ucdavis",
+    "slot": "band1",
+    "title": "Maurice J. Gallagher Jr. Hall - University of California, Davis - DSC03441.JPG",
+    "artist": "Daderot",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Maurice_J._Gallagher_Jr._Hall_-_University_of_California,_Davis_-_DSC03441.JPG"
+  },
+  "public/schools/ucdavis-2.jpg": {
+    "for": "ucdavis",
+    "slot": "band2",
+    "title": "Lawn - University of California, Davis - DSC03312.JPG",
+    "artist": "Daderot",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lawn_-_University_of_California,_Davis_-_DSC03312.JPG"
+  },
+  "public/schools/umass.jpg": {
+    "for": "umass",
+    "slot": "hero",
+    "title": "UMass Amherst campus aerial view.jpg",
+    "artist": "Quintin Soloviev",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UMass_Amherst_campus_aerial_view.jpg"
+  },
+  "public/schools/umass-1.jpg": {
+    "for": "umass",
+    "slot": "band1",
+    "title": "Old Chapel 6.JPG",
+    "artist": "Jon Platek",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Old_Chapel_6.JPG"
+  },
+  "public/schools/umass-2.jpg": {
+    "for": "umass",
+    "slot": "band2",
+    "title": "Sarah L. Arnold House.jpg",
+    "artist": "Ktr101",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sarah_L._Arnold_House.jpg"
+  },
+  "public/schools/williammary.jpg": {
+    "for": "williammary",
+    "slot": "hero",
+    "title": "Earl Gregg Swem Library at night 2021.jpg",
+    "artist": "Pbritti",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Earl_Gregg_Swem_Library_at_night_2021.jpg"
+  },
+  "public/schools/williammary-1.jpg": {
+    "for": "williammary",
+    "slot": "band1",
+    "title": "Heart Memorial to the Enslaved in daylight, 2022.jpg",
+    "artist": "Pbritti",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Heart_Memorial_to_the_Enslaved_in_daylight,_2022.jpg"
+  },
+  "public/schools/williammary-2.jpg": {
+    "for": "williammary",
+    "slot": "band2",
+    "title": "President's House at William & Mary, 2021.jpg",
+    "artist": "Pbritti",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:President%27s_House_at_William_%26_Mary,_2021.jpg"
+  },
+  "public/schools/wesleyan.jpg": {
+    "for": "wesleyan",
+    "slot": "hero",
+    "title": "Wesleyan University - Memorial Chapel 01.jpg",
+    "artist": "Joe Mabel",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Wesleyan_University_-_Memorial_Chapel_01.jpg"
+  },
+  "public/schools/wesleyan-1.jpg": {
+    "for": "wesleyan",
+    "slot": "band1",
+    "title": "Wesleyan University - Memorial Chapel organ 03.jpg",
+    "artist": "Joe Mabel",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Wesleyan_University_-_Memorial_Chapel_organ_03.jpg"
+  },
+  "public/schools/wesleyan-2.jpg": {
+    "for": "wesleyan",
+    "slot": "band2",
+    "title": "Wesleyan University - Memorial Chapel organ 02.jpg",
+    "artist": "Joe Mabel",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Wesleyan_University_-_Memorial_Chapel_organ_02.jpg"
+  },
+  "public/schools/tulane-1.jpg": {
+    "for": "tulane",
+    "slot": "band1",
+    "title": "TulaneU4Nov08JonesHall.jpg",
+    "artist": "Infrogmation of New Orleans",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:TulaneU4Nov08JonesHall.jpg"
+  },
+  "public/schools/tulane-2.jpg": {
+    "for": "tulane",
+    "slot": "band2",
+    "title": "Willow Street, Tulane University Campus, New Orleans, 3 Nov 2020 01.jpg",
+    "artist": "Infrogmation of New Orleans",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Willow_Street,_Tulane_University_Campus,_New_Orleans,_3_Nov_2020_01.jpg"
   }
 }

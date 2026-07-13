@@ -121,6 +121,14 @@ export function cityShort(school) {
    full official names, mascots, and towns. The header search also matches
    name/short/city automatically, so these only need the *other* names. */
 export const SCHOOL_ALIASES = {
+  cmu: ['Carnegie Mellon University', 'CMU', 'Carnegie Mellon Tartans', 'Tartans', 'CMU Pittsburgh'],
+  caltech: ['California Institute of Technology', 'Caltech', 'Caltech Beavers', 'CIT', 'Caltech Pasadena'],
+  tulane: ['Tulane University', 'Tulane', 'Tulane Green Wave', 'Green Wave', 'Tulane New Orleans'],
+  miami: ['University of Miami', 'Miami Hurricanes', 'UM', 'The U', 'Miami Coral Gables', 'U of Miami'],
+  ucdavis: ['University of California, Davis', 'UC Davis', 'UCD', 'UC Davis Aggies', 'Davis'],
+  umass: ['University of Massachusetts Amherst', 'UMass', 'UMass Amherst', 'Massachusetts Minutemen', 'Zoomass', 'UMass Minutemen'],
+  williammary: ['College of William & Mary', 'William and Mary', 'W&M', 'W&M Tribe', 'Williamsburg', 'The Tribe'],
+  wesleyan: ['Wesleyan University', 'Wesleyan', 'Wes', 'Wesleyan Cardinals', 'Middletown CT'],
   brown: ['Brown University', 'Bears', 'Bruno', 'Providence', 'College Hill', 'Ivy League'],
   princeton: ['Princeton University', 'Princeton', 'Tigers', 'Nassau Hall', 'New Jersey', 'Ivy League'],
   dartmouth: ['Dartmouth College', 'Dartmouth', 'Big Green', 'Hanover', 'New Hampshire', 'Ivy League'],

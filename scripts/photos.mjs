@@ -41,6 +41,14 @@ const PREVIEW_WIDTH = 1024;
 // Commons search needs the full institution name; schools.js uses display names.
 // New schools: either add them here or set `photoQuery` on the school object.
 const SEARCH_NAMES = {
+  cmu: 'Carnegie Mellon University',
+  caltech: 'California Institute of Technology',
+  tulane: 'Tulane University',
+  miami: 'University of Miami',
+  ucdavis: 'University of California, Davis',
+  umass: 'University of Massachusetts Amherst',
+  williammary: 'College of William & Mary',
+  wesleyan: 'Wesleyan University Connecticut',
   brown: 'Brown University',
   princeton: 'Princeton University',
   dartmouth: 'Dartmouth College',
