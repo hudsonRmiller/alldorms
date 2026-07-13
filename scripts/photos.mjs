@@ -414,6 +414,12 @@ function assignCustomPick(name, raw, width = 1600) {
 // picks straight through assignSlots/assignCustomPick and exits. Lets Hudson do
 // the visual judging in a browser so Claude never loads candidate images.
 
+// Cache-buster stamped once per process. Preview paths (/img/<dir>/NN.preview.jpg)
+// are stable, but a refetch replaces the bytes behind them — without this the
+// browser would show a previous run's cached thumbnail while the saved pick number
+// maps to the fresh candidate, silently installing the wrong image.
+const IMGV = Date.now();
+
 function judgeTargets(wanted) {
   const asTarget = dir => ({ dir, name: dir.replace(/^_/, ''), isCustom: dir.startsWith('_') });
   const hasManifest = dir => fs.existsSync(path.join(CANDIDATES, dir, 'manifest.json'));
@@ -435,7 +441,7 @@ function judgeTargets(wanted) {
       label: t.isCustom ? t.name : (getSchoolSafe(t.name)?.name || t.name),
       missing: t.isCustom ? ['custom'] : missingSlots(t.name),
       candidates: m.fetched.map(c => ({
-        n: c.n, img: `/img/${t.dir}/${path.basename(c.preview || c.file)}`,
+        n: c.n, img: `/img/${t.dir}/${path.basename(c.preview || c.file)}?v=${IMGV}`,
         title: c.title, artist: c.artist, license: c.license, source: c.source,
         dims: `${c.width}×${c.height}`, assessed: !!c.assessed,
       })),

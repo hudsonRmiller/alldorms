@@ -2346,26 +2346,26 @@
   "public/schools/wesleyan.jpg": {
     "for": "wesleyan",
     "slot": "hero",
-    "title": "Wesleyan University - Memorial Chapel 01.jpg",
+    "title": "Wesleyan University - Memorial Chapel 02.jpg",
     "artist": "Joe Mabel",
     "license": "CC BY-SA 3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Wesleyan_University_-_Memorial_Chapel_01.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Wesleyan_University_-_Memorial_Chapel_02.jpg"
   },
   "public/schools/wesleyan-1.jpg": {
     "for": "wesleyan",
     "slot": "band1",
-    "title": "Wesleyan University - Memorial Chapel organ 03.jpg",
+    "title": "Wesleyan University - College Row 04.jpg",
     "artist": "Joe Mabel",
     "license": "CC BY-SA 3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Wesleyan_University_-_Memorial_Chapel_organ_03.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Wesleyan_University_-_College_Row_04.jpg"
   },
   "public/schools/wesleyan-2.jpg": {
     "for": "wesleyan",
     "slot": "band2",
-    "title": "Wesleyan University - Memorial Chapel organ 02.jpg",
+    "title": "Wesleyan University - College Row 01.jpg",
     "artist": "Joe Mabel",
     "license": "CC BY-SA 3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Wesleyan_University_-_Memorial_Chapel_organ_02.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Wesleyan_University_-_College_Row_01.jpg"
   },
   "public/schools/tulane-1.jpg": {
     "for": "tulane",
