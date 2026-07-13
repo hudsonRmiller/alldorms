@@ -2382,5 +2382,125 @@
     "artist": "Infrogmation of New Orleans",
     "license": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Willow_Street,_Tulane_University_Campus,_New_Orleans,_3_Nov_2020_01.jpg"
+  },
+  "public/schools/uchicago.jpg": {
+    "for": "uchicago",
+    "slot": "hero",
+    "title": "Rockefeller Chapel Entire Structure.jpg",
+    "artist": "Flickr user puroticorico",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rockefeller_Chapel_Entire_Structure.jpg"
+  },
+  "public/schools/uchicago-1.jpg": {
+    "for": "uchicago",
+    "slot": "band1",
+    "title": "Snell Hitchcock1.JPG",
+    "artist": "The original uploader was Blanham at English Wikipedia.",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Snell_Hitchcock1.JPG"
+  },
+  "public/schools/uchicago-2.jpg": {
+    "for": "uchicago",
+    "slot": "band2",
+    "title": "University of Chicago, Harper Library.jpg",
+    "artist": "Rick Seidel",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Chicago,_Harper_Library.jpg"
+  },
+  "public/schools/holycross.jpg": {
+    "for": "holycross",
+    "slot": "hero",
+    "title": "Fenwick DSC 1272.jpg",
+    "artist": "GuardianH",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Fenwick_DSC_1272.jpg"
+  },
+  "public/schools/holycross-1.jpg": {
+    "for": "holycross",
+    "slot": "band1",
+    "title": "Fenwick Right Wing DSC 1264.jpg",
+    "artist": "GuardianH",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Fenwick_Right_Wing_DSC_1264.jpg"
+  },
+  "public/schools/holycross-2.jpg": {
+    "for": "holycross",
+    "slot": "band2",
+    "title": "Holy Cross College May 2022 01.jpg",
+    "artist": "Smirkybec",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Holy_Cross_College_May_2022_01.jpg"
+  },
+  "public/schools/amherst.jpg": {
+    "for": "amherst",
+    "slot": "hero",
+    "title": "Amherst College buildings - IMG 6423.JPG",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Amherst_College_buildings_-_IMG_6423.JPG"
+  },
+  "public/schools/amherst-1.jpg": {
+    "for": "amherst",
+    "slot": "band1",
+    "title": "Fayerweather Hall, Amherst College.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Fayerweather_Hall,_Amherst_College.jpg"
+  },
+  "public/schools/amherst-2.jpg": {
+    "for": "amherst",
+    "slot": "band2",
+    "title": "Amherst, MA.jpg",
+    "artist": "Quintin Soloviev",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Amherst,_MA.jpg"
+  },
+  "public/schools/byu.jpg": {
+    "for": "byu",
+    "slot": "hero",
+    "title": "BYU Campus North.jpg",
+    "artist": "Jaren Wilkey",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:BYU_Campus_North.jpg"
+  },
+  "public/schools/byu-1.jpg": {
+    "for": "byu",
+    "slot": "band1",
+    "title": "MaeserBuilding.JPG",
+    "artist": "Eustress",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:MaeserBuilding.JPG"
+  },
+  "public/schools/byu-2.jpg": {
+    "for": "byu",
+    "slot": "band2",
+    "title": "TNRB Tanner Building.jpg",
+    "artist": "Kenny Crookston (Brigham Young University)",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:TNRB_Tanner_Building.jpg"
+  },
+  "public/schools/baylor.jpg": {
+    "for": "baylor",
+    "slot": "hero",
+    "title": "Baylor University June 2016 37 (bridge and Baylor Sciences Building).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Baylor_University_June_2016_37_(bridge_and_Baylor_Sciences_Building).jpg"
+  },
+  "public/schools/baylor-1.jpg": {
+    "for": "baylor",
+    "slot": "band1",
+    "title": "Baylor University June 2016 03 (Waco Creek).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Baylor_University_June_2016_03_(Waco_Creek).jpg"
+  },
+  "public/schools/baylor-2.jpg": {
+    "for": "baylor",
+    "slot": "band2",
+    "title": "Baylor University June 2016 12 (Waco Hall).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Baylor_University_June_2016_12_(Waco_Hall).jpg"
   }
 }
