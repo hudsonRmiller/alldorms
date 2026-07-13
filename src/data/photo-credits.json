@@ -2022,5 +2022,77 @@
     "artist": "P. Hughes",
     "license": "CC BY 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Brown_University_-_Main_Campus_03.jpg"
+  },
+  "public/schools/princeton.jpg": {
+    "for": "princeton",
+    "slot": "hero",
+    "title": "Nassau Hall, 25 Nov 2025 01.jpg",
+    "artist": "Pbritti",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Nassau_Hall,_25_Nov_2025_01.jpg"
+  },
+  "public/schools/princeton-1.jpg": {
+    "for": "princeton",
+    "slot": "band1",
+    "title": "Architecture of Holder and Madison Halls, Princeton University, 2007.jpg",
+    "artist": "DimiTalen",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Architecture_of_Holder_and_Madison_Halls,_Princeton_University,_2007.jpg"
+  },
+  "public/schools/princeton-2.jpg": {
+    "for": "princeton",
+    "slot": "band2",
+    "title": "Brown Hall Princeton NJ1.jpg",
+    "artist": "Acroterion",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Brown_Hall_Princeton_NJ1.jpg"
+  },
+  "public/schools/dartmouth.jpg": {
+    "for": "dartmouth",
+    "slot": "hero",
+    "title": "Dartmouth College campus 2007-10-20 10.JPG",
+    "artist": "Kane5187",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Dartmouth_College_campus_2007-10-20_10.JPG"
+  },
+  "public/schools/dartmouth-1.jpg": {
+    "for": "dartmouth",
+    "slot": "band1",
+    "title": "Dartmouth College campus 2007-06-23 Lord Hall.JPG",
+    "artist": "Kane5187",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Dartmouth_College_campus_2007-06-23_Lord_Hall.JPG"
+  },
+  "public/schools/dartmouth-2.jpg": {
+    "for": "dartmouth",
+    "slot": "band2",
+    "title": "Dartmouth College campus 2007-06-23 McNutt Hall 01.JPG",
+    "artist": "Kane5187",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Dartmouth_College_campus_2007-06-23_McNutt_Hall_01.JPG"
+  },
+  "public/schools/columbia.jpg": {
+    "for": "columbia",
+    "slot": "hero",
+    "title": "Low Memorial Library Columbia University College Walk Court Yard 05.jpg",
+    "artist": "Ad Meskens",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Low_Memorial_Library_Columbia_University_College_Walk_Court_Yard_05.jpg"
+  },
+  "public/schools/columbia-1.jpg": {
+    "for": "columbia",
+    "slot": "band1",
+    "title": "Columbia College Walk.jpg",
+    "artist": "Unknown",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Columbia_College_Walk.jpg"
+  },
+  "public/schools/columbia-2.jpg": {
+    "for": "columbia",
+    "slot": "band2",
+    "title": "632 W125 Prentis Hall jeh.jpg",
+    "artist": "Jim.henderson",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:632_W125_Prentis_Hall_jeh.jpg"
   }
 }

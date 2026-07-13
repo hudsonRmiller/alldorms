@@ -122,6 +122,9 @@ export function cityShort(school) {
    name/short/city automatically, so these only need the *other* names. */
 export const SCHOOL_ALIASES = {
   brown: ['Brown University', 'Bears', 'Bruno', 'Providence', 'College Hill', 'Ivy League'],
+  princeton: ['Princeton University', 'Princeton', 'Tigers', 'Nassau Hall', 'New Jersey', 'Ivy League'],
+  dartmouth: ['Dartmouth College', 'Dartmouth', 'Big Green', 'Hanover', 'New Hampshire', 'Ivy League'],
+  columbia: ['Columbia University', 'Columbia', 'Lions', 'Morningside Heights', 'Manhattan', 'New York City', 'Ivy League'],
   stetson: ['Stetson University', 'Hatters', 'DeLand'],
   ucsd: ['University of California San Diego', 'UC San Diego', 'UCSD', 'Tritons', 'La Jolla', 'San Diego'],
   uvm: ['University of Vermont', 'UVM', 'Vermont', 'Catamounts', 'Burlington'],

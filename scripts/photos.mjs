@@ -42,6 +42,9 @@ const PREVIEW_WIDTH = 1024;
 // New schools: either add them here or set `photoQuery` on the school object.
 const SEARCH_NAMES = {
   brown: 'Brown University',
+  princeton: 'Princeton University',
+  dartmouth: 'Dartmouth College',
+  columbia: 'Columbia University',
   colgate: 'Colgate University',
   tamu: 'Texas A&M University',
   ucf: 'University of Central Florida',
