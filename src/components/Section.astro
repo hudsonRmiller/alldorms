@@ -1,9 +1,20 @@
 ---
 import {
-  ALLOWED_BASE, BANNED_BASE, resolveChecklist, contactHref, weatherSub, softTint, AFFILIATE_TAG,
+  ALLOWED_BASE, BANNED_BASE, resolveChecklist, contactHref, weatherSub, softTint, AFFILIATE_TAG, mapSearch,
 } from '../lib/site.js';
 const { school, id } = Astro.props;
 const accentSoft = softTint(school.accent);
+
+// Every town/hotel card should be navigable: when a card has no explicit URL,
+// fall back to a Google Maps search for that place near the school's town.
+const areaHref = (name, url) => url || mapSearch(`${name}, ${school.city}`);
+const stayHref = (name, url) => url || mapSearch(`${name}, ${school.city}`);
+
+// Per-school "map & directions" link for the Links panel — campus-level
+// navigation for move-in day, distinct from the town hotspots above.
+const officialLinks = (id === 'links' && school.links.official)
+  ? [...school.links.official, ['Campus map & directions (Google Maps)', mapSearch(`${school.name}, ${school.city}`)]]
+  : (school.links && school.links.official) || [];
 
 const allowed = id === 'allowed' ? school.allowedExtra.concat(ALLOWED_BASE) : [];
 const banned  = id === 'allowed' ? BANNED_BASE.concat(school.bannedExtra) : [];
@@ -247,7 +258,7 @@ u();
     {school.area.map(([type, name, url, desc]) => (
       <div class="gcard">
         <span class="gc-type">{type}</span>
-        <h3>{url ? <a href={url} target="_blank" rel="noopener">{name}</a> : name}</h3>
+        <h3><a href={areaHref(name, url)} target="_blank" rel="noopener">{name}</a></h3>
         <p>{desc}</p>
       </div>
     ))}
@@ -261,7 +272,7 @@ u();
       {school.stay.map(([tier, name, dist, desc, url]) => (
         <div class="gcard">
           <span class="gc-tier">{tier}</span>
-          <h3>{url ? <a href={url} target="_blank" rel="noopener">{name}</a> : name}</h3>
+          <h3><a href={stayHref(name, url)} target="_blank" rel="noopener">{name}</a></h3>
           <span class="gc-dist">{dist}</span>
           <p>{desc}</p>
         </div>
@@ -286,10 +297,10 @@ u();
 {/* 10 LINKS */}
 {id === 'links' && (
   <div class="two-col">
-    {school.links.official && school.links.official.length > 0 && (
+    {officialLinks.length > 0 && (
       <div class="panel">
         <div class="panel-head">Official pages</div>
-        <ul class="linklist">{school.links.official.map(([t, u]) => <li><a href={u} target="_blank" rel="noopener">{t}</a></li>)}</ul>
+        <ul class="linklist">{officialLinks.map(([t, u]) => <li><a href={u} target="_blank" rel="noopener">{t}</a></li>)}</ul>
       </div>
     )}
     {school.links.contact && school.links.contact.length > 0 && (

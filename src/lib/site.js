@@ -310,6 +310,12 @@ export function contactHref(v) {
   if (/[0-9]{3}.*[0-9]{4}/.test(v)) return 'tel:' + v.replace(/[^0-9]/g, '');
   return v;
 }
+/** Google Maps search deep-link — used as the fallback link for town/hotel
+    cards that have no explicit URL, and for the per-school "map & directions"
+    link. A search query never 404s, so this is safe to generate for anything. */
+export function mapSearch(query) {
+  return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query);
+}
 export function shopUrl(q, asin) {
   let url;
   if (asin) {
