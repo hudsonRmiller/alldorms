@@ -50,6 +50,8 @@ other school AND has real campus photos.** Both halves, every time.
    (`scripts/photos.mjs`), and `FOCUS` in **both** `src/pages/index.astro` and
    `src/pages/[school]/index.astro`.
 
+**Batches of ~3+ schools:** consider the API content pipeline (`scripts/generate.mjs` — see CLAUDE.md → "Batch content pipeline"). It runs research → brief → write → apply with the same contract and validators at Batch-API pricing, off Hudson's subscription caps. Hudson reviews the briefs; you review/apply the entries and wire touch points. Requires `ANTHROPIC_API_KEY` (metered — check `.gen/spend.json` and respect `--budget`). Photos below stay exactly as they are.
+
 ### Photos — Hudson judges in the browser (do NOT judge them yourself)
 7. `node scripts/photos.mjs fetch <slug>` (or `fetch-missing`). Deepen thin/contaminated
    pools with `--limit N --query "<landmark>"`; watch for wrong-campus hits (other

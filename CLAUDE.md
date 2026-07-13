@@ -38,6 +38,14 @@ Adding a school is a **content task first, photo task second**. A school is not 
 - **Complete each school fully before starting the next.** Don't run a "photos for everyone now, content later" pass — the content pass is the one that gets dropped.
 - **Every addition also touches:** `SCHOOL_ALIASES` in `src/lib/site.js` (for header search), `SEARCH_NAMES` in `scripts/photos.mjs` (or a `photoQuery` field), FOCUS entries in BOTH page files, and the full photo set via the pipeline below.
 
+## Batch content pipeline (API — optional)
+
+`scripts/generate.mjs` runs the *content* half of add-a-school through the Anthropic API instead of interactive sessions — same contract, same quality bar, enforced by prompt + strict JSON schema + validator. Photos stay interactive (Hudson judges). Use it for batches of ~3+ schools; single adds are usually better done interactively.
+
+- **Billing**: metered Anthropic Console account (separate from the Claude subscription; needs `ANTHROPIC_API_KEY`). Set a monthly spend limit in Console (Settings → Limits) as the hard backstop; the script enforces a per-run `--budget` (default $5) from a live ledger in `.gen/spend.json`.
+- **Models**: `claude-opus-4-8` default / `claude-fable-5` via `--model`; effort floor `high` (research defaults `xhigh`). Nothing weaker is accepted — that's a quality decision, not a cost one.
+- **Flow**: `research slug="Full Name" ...` (web-tool calls → auditable briefs in `.gen/briefs/`, **review the GAPS section before writing**) → `write <slug> ...` (Message Batch, 50% off, ~1h) → `poll --wait` → `apply <slug> [--wire]` (validates arity/enums/no-boilerplate vs existing schools, splices `schools.js` with backup, wires `SCHOOL_ALIASES`/`SEARCH_NAMES`). Then the usual: completeness check (apply runs it), `npm run build`, FOCUS entries after photo judging, photo pipeline.
+
 ## Campus photography
 
 Every school needs `public/schools/<slug>.jpg` (hero: school-page banner + homepage 5:4 card) plus `<slug>-1.jpg`/`<slug>-2.jpg` (full-width bands, center-cropped ~2.5–3:1). Pages fall back to Postcard art / Crest via build-time `fs.existsSync` when files are missing. Hard rule from Hudson: a school's photos must genuinely show THAT campus — never generic college imagery.
