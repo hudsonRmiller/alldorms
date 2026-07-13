@@ -15,3 +15,5 @@ dist/
 .vscode/
 .idea/
 photo-candidates/
+# generated content pipeline workspace (briefs, entries, spend ledger)
+.gen/
