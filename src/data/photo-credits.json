@@ -2502,5 +2502,197 @@
     "artist": "Michael Barera",
     "license": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Baylor_University_June_2016_12_(Waco_Hall).jpg"
+  },
+  "public/schools/swarthmore.jpg": {
+    "for": "swarthmore",
+    "slot": "hero",
+    "title": "Parrish Hall.jpg",
+    "artist": "Ugen64 at English Wikipedia",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Parrish_Hall.jpg"
+  },
+  "public/schools/swarthmore-1.jpg": {
+    "for": "swarthmore",
+    "slot": "band1",
+    "title": "Alice Paul dorm, Swarthmore College (2).jpg",
+    "artist": "Buidhe_wiki",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Alice_Paul_dorm,_Swarthmore_College_(2).jpg"
+  },
+  "public/schools/swarthmore-2.jpg": {
+    "for": "swarthmore",
+    "slot": "band2",
+    "title": "Swarthmore College Observatory.jpg",
+    "artist": "Smallbones",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Swarthmore_College_Observatory.jpg"
+  },
+  "public/schools/pomona.jpg": {
+    "for": "pomona",
+    "slot": "hero",
+    "title": "Pomona College - Claremont Colleges.jpg",
+    "artist": "Adam Jones",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Pomona_College_-_Claremont_Colleges.jpg"
+  },
+  "public/schools/pomona-1.jpg": {
+    "for": "pomona",
+    "slot": "band1",
+    "title": "Benton Museum of Art exterior from northeast.jpg",
+    "artist": "Sdkb",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Benton_Museum_of_Art_exterior_from_northeast.jpg"
+  },
+  "public/schools/pomona-2.jpg": {
+    "for": "pomona",
+    "slot": "band2",
+    "title": "Carnegie Hall at Pomona College in November 2021.jpg",
+    "artist": "Adam Jones",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Carnegie_Hall_at_Pomona_College_in_November_2021.jpg"
+  },
+  "public/schools/wellesley.jpg": {
+    "for": "wellesley",
+    "slot": "hero",
+    "title": "Reynolds Campus Center, Babson College - IMG 0420.JPG",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Reynolds_Campus_Center,_Babson_College_-_IMG_0420.JPG"
+  },
+  "public/schools/wellesley-1.jpg": {
+    "for": "wellesley",
+    "slot": "band1",
+    "title": "Campus view, Babson College - IMG 0426.JPG",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Campus_view,_Babson_College_-_IMG_0426.JPG"
+  },
+  "public/schools/wellesley-2.jpg": {
+    "for": "wellesley",
+    "slot": "band2",
+    "title": "Campus, Wellesley College - DSC09669.JPG",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Campus,_Wellesley_College_-_DSC09669.JPG"
+  },
+  "public/schools/smith.jpg": {
+    "for": "smith",
+    "slot": "hero",
+    "title": "Campus Center - Smith College - Northampton, MA - DSC01905.jpg",
+    "artist": "Daderot",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Campus_Center_-_Smith_College_-_Northampton,_MA_-_DSC01905.jpg"
+  },
+  "public/schools/smith-1.jpg": {
+    "for": "smith",
+    "slot": "band1",
+    "title": "Campus Center - Smith College - Northampton, MA - DSC01914.jpg",
+    "artist": "Daderot",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Campus_Center_-_Smith_College_-_Northampton,_MA_-_DSC01914.jpg"
+  },
+  "public/schools/smith-2.jpg": {
+    "for": "smith",
+    "slot": "band2",
+    "title": "07 Bedford Terrace Northampton MA.jpg",
+    "artist": "Unknown authorUnknown author",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:07_Bedford_Terrace_Northampton_MA.jpg"
+  },
+  "public/schools/mountholyoke.jpg": {
+    "for": "mountholyoke",
+    "slot": "hero",
+    "title": "Casper Ranger House, Holyoke Mass.jpg",
+    "artist": "Simtropolitan",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Casper_Ranger_House,_Holyoke_Mass.jpg"
+  },
+  "public/schools/mountholyoke-1.jpg": {
+    "for": "mountholyoke",
+    "slot": "band1",
+    "title": "Blanchard Campus Center in Winter.jpg",
+    "artist": "carolineelissa",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Blanchard_Campus_Center_in_Winter.jpg"
+  },
+  "public/schools/mountholyoke-2.jpg": {
+    "for": "mountholyoke",
+    "slot": "band2",
+    "title": "Mary Lyon Hall and Abbey Chapel.jpg",
+    "artist": "carolineelissa",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mary_Lyon_Hall_and_Abbey_Chapel.jpg"
+  },
+  "public/schools/vassar.jpg": {
+    "for": "vassar",
+    "slot": "hero",
+    "title": "Computer Center, Vassar College, September 2014.jpg",
+    "artist": "Collin Knopp-Schwyn",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Computer_Center,_Vassar_College,_September_2014.jpg"
+  },
+  "public/schools/vassar-1.jpg": {
+    "for": "vassar",
+    "slot": "band1",
+    "title": "Kenyon Hall, Vassar College, August 2014.jpg",
+    "artist": "Collin Knopp-Schwyn",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kenyon_Hall,_Vassar_College,_August_2014.jpg"
+  },
+  "public/schools/vassar-2.jpg": {
+    "for": "vassar",
+    "slot": "band2",
+    "title": "The Pond - Vassar College - Poughkeepsie - New York - USA (6932504832).jpg",
+    "artist": "Adam Jones from Kelowna, BC, Canada",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Pond_-_Vassar_College_-_Poughkeepsie_-_New_York_-_USA_(6932504832).jpg"
+  },
+  "public/schools/barnard.jpg": {
+    "for": "barnard",
+    "slot": "hero",
+    "title": "Barnard College of Columbia University (52008382627).jpg",
+    "artist": "ajay_suresh",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Barnard_College_of_Columbia_University_(52008382627).jpg"
+  },
+  "public/schools/barnard-1.jpg": {
+    "for": "barnard",
+    "slot": "band1",
+    "title": "Barnard College WDNY 2024 jeh.jpg",
+    "artist": "Jim.henderson",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Barnard_College_WDNY_2024_jeh.jpg"
+  },
+  "public/schools/barnard-2.jpg": {
+    "for": "barnard",
+    "slot": "band2",
+    "title": "Barnard College, NYC IMG 0961.JPG",
+    "artist": "Billy Hathorn (talk)",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Barnard_College,_NYC_IMG_0961.JPG"
+  },
+  "public/schools/hamilton.jpg": {
+    "for": "hamilton",
+    "slot": "hero",
+    "title": "Hamilton College theater.jpg",
+    "artist": "DanielPenfield",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hamilton_College_theater.jpg"
+  },
+  "public/schools/hamilton-1.jpg": {
+    "for": "hamilton",
+    "slot": "band1",
+    "title": "Hamilton College Chapel in the Sun (cropped).jpg",
+    "artist": "ProfessorGhostface",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hamilton_College_Chapel_in_the_Sun_(cropped).jpg"
+  },
+  "public/schools/hamilton-2.jpg": {
+    "for": "hamilton",
+    "slot": "band2",
+    "title": "HamiltonCollegeChapelSouthSide.JPG",
+    "artist": "Lvklock",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:HamiltonCollegeChapelSouthSide.JPG"
   }
 }

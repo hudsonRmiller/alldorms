@@ -41,6 +41,14 @@ const PREVIEW_WIDTH = 1024;
 // Commons search needs the full institution name; schools.js uses display names.
 // New schools: either add them here or set `photoQuery` on the school object.
 const SEARCH_NAMES = {
+  swarthmore: 'Swarthmore College',
+  pomona: 'Pomona College Claremont',
+  wellesley: 'Wellesley College Massachusetts',
+  smith: 'Smith College Northampton',
+  mountholyoke: 'Mount Holyoke College South Hadley',
+  vassar: 'Vassar College Poughkeepsie',
+  barnard: 'Barnard College New York',
+  hamilton: 'Hamilton College Clinton New York',
   cmu: 'Carnegie Mellon University',
   caltech: 'California Institute of Technology',
   tulane: 'Tulane University',

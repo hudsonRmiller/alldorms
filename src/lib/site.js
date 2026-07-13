@@ -121,6 +121,14 @@ export function cityShort(school) {
    full official names, mascots, and towns. The header search also matches
    name/short/city automatically, so these only need the *other* names. */
 export const SCHOOL_ALIASES = {
+  swarthmore: ['Swarthmore College', 'Swarthmore', 'Swat', 'Garnet', 'Phoenix', 'Quaker', 'Delaware County'],
+  pomona: ['Pomona College', 'Pomona', 'Sagehens', 'Claremont Colleges', '5C', 'Claremont', 'Cecil'],
+  wellesley: ['Wellesley College', 'Wellesley', 'Wellesley Blue', 'Seven Sisters', 'Lake Waban', 'Tower Court'],
+  smith: ['Smith College', 'Smith', 'Pioneers', 'Seven Sisters', 'Northampton', 'Noho', 'Paradise City', 'Grecourt'],
+  mountholyoke: ['Mount Holyoke College', 'Mount Holyoke', 'Mt. Holyoke', 'MHC', 'Lyons', 'Seven Sisters', 'South Hadley', 'Mary Lyon'],
+  vassar: ['Vassar College', 'Vassar', 'Brewers', 'Seven Sisters', 'Poughkeepsie', 'Hudson Valley', 'Main Building'],
+  barnard: ['Barnard College', 'Barnard', 'Bears', 'Seven Sisters', 'Morningside Heights', 'Columbia', 'The Quad', 'NYC'],
+  hamilton: ['Hamilton College', 'Hamilton', 'Continentals', 'Clinton', 'College Hill', 'Utica', 'Kirkland'],
   cmu: ['Carnegie Mellon University', 'CMU', 'Carnegie Mellon Tartans', 'Tartans', 'CMU Pittsburgh'],
   caltech: ['California Institute of Technology', 'Caltech', 'Caltech Beavers', 'CIT', 'Caltech Pasadena'],
   tulane: ['Tulane University', 'Tulane', 'Tulane Green Wave', 'Green Wave', 'Tulane New Orleans'],
