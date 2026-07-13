@@ -274,12 +274,12 @@ u();
 {/* 09 MERCH */}
 {id === 'merch' && (
   <div class="merch">
-    {school.merch.map(([title, desc, url]) => (
-      <a class="merch-row" href={url} target="_blank" rel="noopener">
-        <span class="merch-text"><span class="merch-title">{title}</span><span class="merch-desc">{desc}</span></span>
-        <span class="merch-arrow">↗</span>
-      </a>
-    ))}
+    {school.merch.map(([title, desc, url]) => {
+      const text = <span class="merch-text"><span class="merch-title">{title}</span><span class="merch-desc">{desc}</span></span>;
+      return url
+        ? <a class="merch-row" href={url} target="_blank" rel="noopener">{text}<span class="merch-arrow">↗</span></a>
+        : <div class="merch-row">{text}</div>;
+    })}
   </div>
 )}
 
