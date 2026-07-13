@@ -2094,5 +2094,101 @@
     "artist": "Jim.henderson",
     "license": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:632_W125_Prentis_Hall_jeh.jpg"
+  },
+  "public/schools/johnshopkins.jpg": {
+    "for": "johnshopkins",
+    "slot": "hero",
+    "title": "George-peabody-library.jpg",
+    "artist": "Matthew Petroff",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:George-peabody-library.jpg"
+  },
+  "public/schools/johnshopkins-1.jpg": {
+    "for": "johnshopkins",
+    "slot": "band1",
+    "title": "Johns-hopkins-hospital.jpg",
+    "artist": "Baltimore Heritage from Baltimore, MD, USA",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Johns-hopkins-hospital.jpg"
+  },
+  "public/schools/johnshopkins-2.jpg": {
+    "for": "johnshopkins",
+    "slot": "band2",
+    "title": "View from Levering Plaza.jpg",
+    "artist": "Iracaz",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:View_from_Levering_Plaza.jpg"
+  },
+  "public/schools/washu.jpg": {
+    "for": "washu",
+    "slot": "hero",
+    "title": "Washington University in St. Louis1.jpg",
+    "artist": "Unknown",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Washington_University_in_St._Louis1.jpg"
+  },
+  "public/schools/washu-1.jpg": {
+    "for": "washu",
+    "slot": "band1",
+    "title": "WashU Law.jpg",
+    "artist": "Doc2129",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:WashU_Law.jpg"
+  },
+  "public/schools/washu-2.jpg": {
+    "for": "washu",
+    "slot": "band2",
+    "title": "SeigleHall.jpg",
+    "artist": "Kitz000 - Matt Kitces",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:SeigleHall.jpg"
+  },
+  "public/schools/rice.jpg": {
+    "for": "rice",
+    "slot": "hero",
+    "title": "Rice University Mechanical Laboratory and Power House.jpg",
+    "artist": "Jim Evans",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rice_University_Mechanical_Laboratory_and_Power_House.jpg"
+  },
+  "public/schools/rice-1.jpg": {
+    "for": "rice",
+    "slot": "band1",
+    "title": "Rice University - Rice statue with Lovett Hall.JPG",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Rice_University_-_Rice_statue_with_Lovett_Hall.JPG"
+  },
+  "public/schools/rice-2.jpg": {
+    "for": "rice",
+    "slot": "band2",
+    "title": "Rice University Campus.jpg",
+    "artist": "AnnaLellis",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rice_University_Campus.jpg"
+  },
+  "public/schools/emory.jpg": {
+    "for": "emory",
+    "slot": "hero",
+    "title": "Emory Quad.jpg",
+    "artist": "Unknown",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Emory_Quad.jpg"
+  },
+  "public/schools/emory-1.jpg": {
+    "for": "emory",
+    "slot": "band1",
+    "title": "Emory ReadingRoom.jpg",
+    "artist": "Mpspqr at English Wikipedia",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Emory_ReadingRoom.jpg"
+  },
+  "public/schools/emory-2.jpg": {
+    "for": "emory",
+    "slot": "band2",
+    "title": "Emory University - Charles and Peggy Evans Anatomy Building.JPG",
+    "artist": "Daniel Mayer",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Emory_University_-_Charles_and_Peggy_Evans_Anatomy_Building.JPG"
   }
 }
