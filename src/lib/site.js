@@ -121,6 +121,7 @@ export function cityShort(school) {
    full official names, mascots, and towns. The header search also matches
    name/short/city automatically, so these only need the *other* names. */
 export const SCHOOL_ALIASES = {
+  brown: ['Brown University', 'Bears', 'Bruno', 'Providence', 'College Hill', 'Ivy League'],
   stetson: ['Stetson University', 'Hatters', 'DeLand'],
   ucsd: ['University of California San Diego', 'UC San Diego', 'UCSD', 'Tritons', 'La Jolla', 'San Diego'],
   uvm: ['University of Vermont', 'UVM', 'Vermont', 'Catamounts', 'Burlington'],

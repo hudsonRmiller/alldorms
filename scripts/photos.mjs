@@ -41,6 +41,7 @@ const PREVIEW_WIDTH = 1024;
 // Commons search needs the full institution name; schools.js uses display names.
 // New schools: either add them here or set `photoQuery` on the school object.
 const SEARCH_NAMES = {
+  brown: 'Brown University',
   colgate: 'Colgate University',
   tamu: 'Texas A&M University',
   ucf: 'University of Central Florida',

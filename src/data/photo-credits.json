@@ -1998,5 +1998,29 @@
     "artist": "Ebyabe",
     "license": "CC BY 2.5",
     "source": "https://commons.wikimedia.org/wiki/File:DeLand_Hall_on_Stetson_U_campus1.jpg"
+  },
+  "public/schools/brown.jpg": {
+    "for": "brown",
+    "slot": "hero",
+    "title": "Brown University Pembroke campus.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Brown_University_Pembroke_campus.jpg"
+  },
+  "public/schools/brown-1.jpg": {
+    "for": "brown",
+    "slot": "band1",
+    "title": "Das östliche Eingangstor der Brown University.jpg",
+    "artist": "Marco Almbauer",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Das_%C3%B6stliche_Eingangstor_der_Brown_University.jpg"
+  },
+  "public/schools/brown-2.jpg": {
+    "for": "brown",
+    "slot": "band2",
+    "title": "Brown University - Main Campus 03.jpg",
+    "artist": "P. Hughes",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Brown_University_-_Main_Campus_03.jpg"
   }
 }
