@@ -41,6 +41,11 @@ const PREVIEW_WIDTH = 1024;
 // Commons search needs the full institution name; schools.js uses display names.
 // New schools: either add them here or set `photoQuery` on the school object.
 const SEARCH_NAMES = {
+  utah: 'University of Utah Salt Lake City',
+  miamiohio: 'Miami University',
+  cincinnati: 'University of Cincinnati',
+  texastech: 'Texas Tech University',
+  vcu: 'Virginia Commonwealth University',
   swarthmore: 'Swarthmore College',
   pomona: 'Pomona College Claremont',
   wellesley: 'Wellesley College Massachusetts',
@@ -70,10 +75,10 @@ const SEARCH_NAMES = {
   amherst: 'Amherst College',
   byu: 'Brigham Young University Provo',
   baylor: 'Baylor University Waco',
-  richmond: 'University of Richmond Virginia',
-  brandeis: 'Brandeis University Waltham',
-  casewestern: 'Case Western Reserve University Cleveland',
-  rochester: 'University of Rochester River Campus',
+  richmond: 'University of Richmond',
+  brandeis: 'Brandeis University',
+  casewestern: 'Case Western Reserve University',
+  rochester: 'University of Rochester',
   colgate: 'Colgate University',
   tamu: 'Texas A&M University',
   ucf: 'University of Central Florida',

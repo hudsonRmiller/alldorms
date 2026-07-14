@@ -121,6 +121,11 @@ export function cityShort(school) {
    full official names, mascots, and towns. The header search also matches
    name/short/city automatically, so these only need the *other* names. */
 export const SCHOOL_ALIASES = {
+  utah: ['University of Utah', 'Utah', 'The U', 'Utes', 'Runnin Utes', 'Salt Lake City', 'SLC', 'Wasatch', 'Kahlert Village', 'Heritage Commons'],
+  miamiohio: ['Miami University', 'Miami Ohio', 'Miami of Ohio', 'Miami (OH)', 'MU', 'RedHawks', 'Red Hawks', 'Oxford', 'Oxford Ohio', 'Public Ivy', 'Love and Honor'],
+  cincinnati: ['University of Cincinnati', 'Cincinnati', 'UC', 'Bearcats', 'Uptown', 'Clifton', 'MainStreet', 'Cincy', 'Marian Spencer'],
+  texastech: ['Texas Tech University', 'Texas Tech', 'TTU', 'Tech', 'Red Raiders', 'Guns Up', 'Lubbock', 'Wreck em', 'Double T', 'Llano Estacado'],
+  vcu: ['Virginia Commonwealth University', 'VCU', 'Rams', 'Ram Nation', 'Richmond', 'RVA', 'Monroe Park', 'The Fan', 'VCUarts', 'Havoc'],
   swarthmore: ['Swarthmore College', 'Swarthmore', 'Swat', 'Garnet', 'Phoenix', 'Quaker', 'Delaware County'],
   pomona: ['Pomona College', 'Pomona', 'Sagehens', 'Claremont Colleges', '5C', 'Claremont', 'Cecil'],
   wellesley: ['Wellesley College', 'Wellesley', 'Wellesley Blue', 'Seven Sisters', 'Lake Waban', 'Tower Court'],

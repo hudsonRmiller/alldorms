@@ -2742,5 +2742,221 @@
     "artist": "Cristiano Tomás",
     "license": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Santa_Clara_University_campus_1491.jpg"
+  },
+  "public/schools/utah.jpg": {
+    "for": "utah",
+    "slot": "hero",
+    "title": "University of Utah Presidents Circle .jpg",
+    "artist": "MrSchmidt",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Utah_Presidents_Circle_.jpg"
+  },
+  "public/schools/utah-1.jpg": {
+    "for": "utah",
+    "slot": "band1",
+    "title": "University of Utah campus.jpg",
+    "artist": "SounderBruce from Seattle, United States",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Utah_campus.jpg"
+  },
+  "public/schools/utah-2.jpg": {
+    "for": "utah",
+    "slot": "band2",
+    "title": "Great Salt Lake from University of Utah (6856250606).jpg",
+    "artist": "InSapphoWeTrust from Los Angeles, California, USA",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Great_Salt_Lake_from_University_of_Utah_(6856250606).jpg"
+  },
+  "public/schools/miamiohio.jpg": {
+    "for": "miamiohio",
+    "slot": "hero",
+    "title": "Farmer School of Business.jpg",
+    "artist": "Chris Staley",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Farmer_School_of_Business.jpg"
+  },
+  "public/schools/miamiohio-1.jpg": {
+    "for": "miamiohio",
+    "slot": "band1",
+    "title": "King Library, Miami University.jpg",
+    "artist": "EEJCC",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:King_Library,_Miami_University.jpg"
+  },
+  "public/schools/miamiohio-2.jpg": {
+    "for": "miamiohio",
+    "slot": "band2",
+    "title": "Stoddard Hall, Miami University.jpg",
+    "artist": "EEJCC",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Stoddard_Hall,_Miami_University.jpg"
+  },
+  "public/schools/cincinnati.jpg": {
+    "for": "cincinnati",
+    "slot": "hero",
+    "title": "2008-10-05 05 Cincinnati architecture the University of Cincinnati's CARECrawley Building.jpg",
+    "artist": "Adam Sofen",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2008-10-05_05_Cincinnati_architecture_the_University_of_Cincinnati%27s_CARECrawley_Building.jpg"
+  },
+  "public/schools/cincinnati-1.jpg": {
+    "for": "cincinnati",
+    "slot": "band1",
+    "title": "University of Cincinnati - Chemistry Building, Cincinnati, Ohio - DPLA - cf6368c0a0fd73d88fdf3b75534d820d (page 1).jpg",
+    "artist": "Unknown",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Cincinnati_-_Chemistry_Building,_Cincinnati,_Ohio_-_DPLA_-_cf6368c0a0fd73d88fdf3b75534d820d_(page_1).jpg"
+  },
+  "public/schools/cincinnati-2.jpg": {
+    "for": "cincinnati",
+    "slot": "band2",
+    "title": "UC Rec Center 05.jpg",
+    "artist": "Greg Hume",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UC_Rec_Center_05.jpg"
+  },
+  "public/schools/texastech.jpg": {
+    "for": "texastech",
+    "slot": "hero",
+    "title": "Texas Tech University April 2022 15 (Student Union).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Texas_Tech_University_April_2022_15_(Student_Union).jpg"
+  },
+  "public/schools/texastech-1.jpg": {
+    "for": "texastech",
+    "slot": "band1",
+    "title": "Texas Tech University April 2022 24 (Holden Hall).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Texas_Tech_University_April_2022_24_(Holden_Hall).jpg"
+  },
+  "public/schools/texastech-2.jpg": {
+    "for": "texastech",
+    "slot": "band2",
+    "title": "TTU English Philosophy Building.jpg",
+    "artist": "Johan Hendrikse",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:TTU_English_Philosophy_Building.jpg"
+  },
+  "public/schools/vcu.jpg": {
+    "for": "vcu",
+    "slot": "hero",
+    "title": "VCU Cary St Gym by Jeff Auth.JPG",
+    "artist": "Jeff Auth (talk)",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:VCU_Cary_St_Gym_by_Jeff_Auth.JPG"
+  },
+  "public/schools/vcu-1.jpg": {
+    "for": "vcu",
+    "slot": "band1",
+    "title": "Scott House 20130824 141254 HDR.jpg",
+    "artist": "Fopseh",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Scott_House_20130824_141254_HDR.jpg"
+  },
+  "public/schools/vcu-2.jpg": {
+    "for": "vcu",
+    "slot": "band2",
+    "title": "Ginter-2019-12-15-5912c.jpg",
+    "artist": "Jan B. Wooten",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ginter-2019-12-15-5912c.jpg"
+  },
+  "public/schools/richmond.jpg": {
+    "for": "richmond",
+    "slot": "hero",
+    "title": "Jepson School of Leadership Studies.jpg",
+    "artist": "Epdma",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Jepson_School_of_Leadership_Studies.jpg"
+  },
+  "public/schools/richmond-1.jpg": {
+    "for": "richmond",
+    "slot": "band1",
+    "title": "CommonsLake.jpg",
+    "artist": "TrunkJunk (talk) (Uploads)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:CommonsLake.jpg"
+  },
+  "public/schools/richmond-2.jpg": {
+    "for": "richmond",
+    "slot": "band2",
+    "title": "Robins Center, University of Richmond.jpg",
+    "artist": "Rikster2",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Robins_Center,_University_of_Richmond.jpg"
+  },
+  "public/schools/brandeis.jpg": {
+    "for": "brandeis",
+    "slot": "hero",
+    "title": "Landsman Research Facility, Brandeis University.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Landsman_Research_Facility,_Brandeis_University.jpg"
+  },
+  "public/schools/brandeis-1.jpg": {
+    "for": "brandeis",
+    "slot": "band1",
+    "title": "Brandeis-womens-studies-research-center.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Brandeis-womens-studies-research-center.jpg"
+  },
+  "public/schools/brandeis-2.jpg": {
+    "for": "brandeis",
+    "slot": "band2",
+    "title": "Rose Art Museum, Brandeis University, Waltham MA.jpg",
+    "artist": "John Phelan",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rose_Art_Museum,_Brandeis_University,_Waltham_MA.jpg"
+  },
+  "public/schools/casewestern.jpg": {
+    "for": "casewestern",
+    "slot": "hero",
+    "title": "Case western reserve campus 2005.jpg",
+    "artist": "Rdikeman at English Wikipedia",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Case_western_reserve_campus_2005.jpg"
+  },
+  "public/schools/casewestern-1.jpg": {
+    "for": "casewestern",
+    "slot": "band1",
+    "title": "Kelvin Smith Library Case Western Reserve University.jpg",
+    "artist": "Usaf 1832",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kelvin_Smith_Library_Case_Western_Reserve_University.jpg"
+  },
+  "public/schools/casewestern-2.jpg": {
+    "for": "casewestern",
+    "slot": "band2",
+    "title": "Adelbert Hall - Case Western Reserve University.jpg",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Adelbert_Hall_-_Case_Western_Reserve_University.jpg"
+  },
+  "public/schools/rochester.jpg": {
+    "for": "rochester",
+    "slot": "hero",
+    "title": "RushRheesLibraryInWinterObliqueFromLeft.jpg",
+    "artist": "DanielPenfield",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:RushRheesLibraryInWinterObliqueFromLeft.jpg"
+  },
+  "public/schools/rochester-1.jpg": {
+    "for": "rochester",
+    "slot": "band1",
+    "title": "Eastman School of Music - general view.jpg",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Eastman_School_of_Music_-_general_view.jpg"
+  },
+  "public/schools/rochester-2.jpg": {
+    "for": "rochester",
+    "slot": "band2",
+    "title": "MemorialArtGallery2017.jpg",
+    "artist": "DanielPenfield",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:MemorialArtGallery2017.jpg"
   }
 }
