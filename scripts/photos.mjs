@@ -70,6 +70,10 @@ const SEARCH_NAMES = {
   amherst: 'Amherst College',
   byu: 'Brigham Young University Provo',
   baylor: 'Baylor University Waco',
+  richmond: 'University of Richmond Virginia',
+  brandeis: 'Brandeis University Waltham',
+  casewestern: 'Case Western Reserve University Cleveland',
+  rochester: 'University of Rochester River Campus',
   colgate: 'Colgate University',
   tamu: 'Texas A&M University',
   ucf: 'University of Central Florida',
@@ -165,6 +169,8 @@ const SEARCH_NAMES = {
   ursinus: 'Ursinus College',
   stetson: 'Stetson University',
   ucsd: 'University of California, San Diego',
+  usandiego: 'University of San Diego',
+  santaclara: 'Santa Clara University',
 };
 
 const SLOTS = { hero: { suffix: '.jpg', width: 2000 }, band1: { suffix: '-1.jpg', width: 1800 }, band2: { suffix: '-2.jpg', width: 1800 } };

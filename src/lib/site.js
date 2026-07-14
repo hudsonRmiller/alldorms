@@ -129,6 +129,10 @@ export const SCHOOL_ALIASES = {
   vassar: ['Vassar College', 'Vassar', 'Brewers', 'Seven Sisters', 'Poughkeepsie', 'Hudson Valley', 'Main Building'],
   barnard: ['Barnard College', 'Barnard', 'Bears', 'Seven Sisters', 'Morningside Heights', 'Columbia', 'The Quad', 'NYC'],
   hamilton: ['Hamilton College', 'Hamilton', 'Continentals', 'Clinton', 'College Hill', 'Utica', 'Kirkland'],
+  richmond: ['University of Richmond', 'Richmond', 'UR', 'Spiders', 'Westhampton', 'Richmond College', 'Westhampton Lake', 'West End Richmond'],
+  brandeis: ['Brandeis University', 'Brandeis', 'Judges', 'Waltham', 'Massell', 'Louis Brandeis', 'Rose Art Museum', 'Deis'],
+  casewestern: ['Case Western Reserve University', 'Case Western', 'CWRU', 'Case', 'Spartans', 'University Circle', 'Cleveland', 'North Residential Village'],
+  rochester: ['University of Rochester', 'Rochester', 'U of R', 'UR', 'Yellowjackets', 'River Campus', 'Genesee', 'Meliora', 'Eastman'],
   cmu: ['Carnegie Mellon University', 'CMU', 'Carnegie Mellon Tartans', 'Tartans', 'CMU Pittsburgh'],
   caltech: ['California Institute of Technology', 'Caltech', 'Caltech Beavers', 'CIT', 'Caltech Pasadena'],
   tulane: ['Tulane University', 'Tulane', 'Tulane Green Wave', 'Green Wave', 'Tulane New Orleans'],
@@ -245,6 +249,8 @@ export const SCHOOL_ALIASES = {
   temple: ['Temple University', 'Owls', 'Philadelphia', 'North Philly', 'Cherry and White'],
   delawarestate: ['Delaware State University', 'DSU', 'Del State', 'Hornets', 'Dover', 'HBCU'],
   ursinus: ['Ursinus College', 'Bears', 'Grizzlies', 'Collegeville'],
+  usandiego: ['University of San Diego', 'San Diego', 'USD', 'Toreros', 'USD Toreros', 'Alcalá Park', 'Alcala Park', 'Immaculata'],
+  santaclara: ['Santa Clara University', 'Santa Clara', 'SCU', 'Broncos', 'Santa Clara Broncos', 'Silicon Valley', 'Mission Santa Clara', 'the Mission'],
 };
 
 /* ---------- color helpers (for the per-school accent dot / crest) ---------- */

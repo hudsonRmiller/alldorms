@@ -2694,5 +2694,53 @@
     "artist": "Lvklock",
     "license": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:HamiltonCollegeChapelSouthSide.JPG"
+  },
+  "public/schools/usandiego.jpg": {
+    "for": "usandiego",
+    "slot": "hero",
+    "title": "University of San Diego (cropped).jpg",
+    "artist": "Transfeo",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_San_Diego_(cropped).jpg"
+  },
+  "public/schools/usandiego-1.jpg": {
+    "for": "usandiego",
+    "slot": "band1",
+    "title": "San Diego,California.USA. - panoramio (21).jpg",
+    "artist": "Roman Eugeniusz",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:San_Diego,California.USA._-_panoramio_(21).jpg"
+  },
+  "public/schools/usandiego-2.jpg": {
+    "for": "usandiego",
+    "slot": "band2",
+    "title": "Wiki TBI2.jpg",
+    "artist": "Unknown",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Wiki_TBI2.jpg"
+  },
+  "public/schools/santaclara.jpg": {
+    "for": "santaclara",
+    "slot": "hero",
+    "title": "Mission Santa Clara.jpg",
+    "artist": "JaGa",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mission_Santa_Clara.jpg"
+  },
+  "public/schools/santaclara-1.jpg": {
+    "for": "santaclara",
+    "slot": "band1",
+    "title": "Nobili Hall 1530.jpg",
+    "artist": "Cristiano Tomás",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Nobili_Hall_1530.jpg"
+  },
+  "public/schools/santaclara-2.jpg": {
+    "for": "santaclara",
+    "slot": "band2",
+    "title": "Santa Clara University campus 1491.jpg",
+    "artist": "Cristiano Tomás",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Santa_Clara_University_campus_1491.jpg"
   }
 }
