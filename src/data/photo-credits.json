@@ -2958,5 +2958,173 @@
     "artist": "DanielPenfield",
     "license": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:MemorialArtGallery2017.jpg"
+  },
+  "public/schools/fordham.jpg": {
+    "for": "fordham",
+    "slot": "hero",
+    "title": "Fordham University 02.JPG",
+    "artist": "Howchou",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Fordham_University_02.JPG"
+  },
+  "public/schools/fordham-1.jpg": {
+    "for": "fordham",
+    "slot": "band1",
+    "title": "Queen's Court and University Church at Fordham.jpg",
+    "artist": "Indefatigable2",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Queen%27s_Court_and_University_Church_at_Fordham.jpg"
+  },
+  "public/schools/fordham-2.jpg": {
+    "for": "fordham",
+    "slot": "band2",
+    "title": "Walsh Library, Fordham.jpg",
+    "artist": "Indefatigable2",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Walsh_Library,_Fordham.jpg"
+  },
+  "public/schools/gwu.jpg": {
+    "for": "gwu",
+    "slot": "hero",
+    "title": "Looking down the center of University Yard.jpg",
+    "artist": "Ser Amantio di Nicolao",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Looking_down_the_center_of_University_Yard.jpg"
+  },
+  "public/schools/gwu-1.jpg": {
+    "for": "gwu",
+    "slot": "band1",
+    "title": "Looking across University Yard to the back side of Western Market.jpg",
+    "artist": "Ser Amantio di Nicolao",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Looking_across_University_Yard_to_the_back_side_of_Western_Market.jpg"
+  },
+  "public/schools/gwu-2.jpg": {
+    "for": "gwu",
+    "slot": "band2",
+    "title": "University Yard, George Washington University, 2012.JPG",
+    "artist": "Another Believer",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_Yard,_George_Washington_University,_2012.JPG"
+  },
+  "public/schools/american.jpg": {
+    "for": "american",
+    "slot": "hero",
+    "title": "Eric Freidheim Quadrangle.jpg",
+    "artist": "Herrperry123",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Eric_Freidheim_Quadrangle.jpg"
+  },
+  "public/schools/american-1.jpg": {
+    "for": "american",
+    "slot": "band1",
+    "title": "American University Glover Gate.jpg",
+    "artist": "Samschoe",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:American_University_Glover_Gate.jpg"
+  },
+  "public/schools/american-2.jpg": {
+    "for": "american",
+    "slot": "band2",
+    "title": "Grounds of American University.jpg",
+    "artist": "Nepoboy22",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Grounds_of_American_University.jpg"
+  },
+  "public/schools/smu.jpg": {
+    "for": "smu",
+    "slot": "hero",
+    "title": "Dallas Hall on the campus of Southern Methodist University, Dallas, Texas LCCN2015630915.jpg",
+    "artist": "Carol M. Highsmith",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Dallas_Hall_on_the_campus_of_Southern_Methodist_University,_Dallas,_Texas_LCCN2015630915.jpg"
+  },
+  "public/schools/smu-1.jpg": {
+    "for": "smu",
+    "slot": "band1",
+    "title": "Southern Methodist University July 2016 064 (Gail O. and R. Gerald Turner Pavilion and Blanton Student Services Building).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Southern_Methodist_University_July_2016_064_(Gail_O._and_R._Gerald_Turner_Pavilion_and_Blanton_Student_Services_Building).jpg"
+  },
+  "public/schools/smu-2.jpg": {
+    "for": "smu",
+    "slot": "band2",
+    "title": "Southern Methodist University July 2016 122 (Meadows Museum).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Southern_Methodist_University_July_2016_122_(Meadows_Museum).jpg"
+  },
+  "public/schools/tcu.jpg": {
+    "for": "tcu",
+    "slot": "hero",
+    "title": "Texas Christian University June 2017 25 (Kellye Wright Samuelson Residence Hall).jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Texas_Christian_University_June_2017_25_(Kellye_Wright_Samuelson_Residence_Hall).jpg"
+  },
+  "public/schools/tcu-1.jpg": {
+    "for": "tcu",
+    "slot": "band1",
+    "title": "TCURecCenter.jpg",
+    "artist": "General125",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:TCURecCenter.jpg"
+  },
+  "public/schools/tcu-2.jpg": {
+    "for": "tcu",
+    "slot": "band2",
+    "title": "Texas Christian University June 2017 21.jpg",
+    "artist": "Michael Barera",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Texas_Christian_University_June_2017_21.jpg"
+  },
+  "public/schools/pepperdine.jpg": {
+    "for": "pepperdine",
+    "slot": "hero",
+    "title": "Pepperdine University Graziadio School of Business front entrance by Cecily Breeding.jpg",
+    "artist": "Cecilybreeding",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Pepperdine_University_Graziadio_School_of_Business_front_entrance_by_Cecily_Breeding.jpg"
+  },
+  "public/schools/pepperdine-1.jpg": {
+    "for": "pepperdine",
+    "slot": "band1",
+    "title": "Smothers Theater.jpg",
+    "artist": "Swper",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Smothers_Theater.jpg"
+  },
+  "public/schools/pepperdine-2.jpg": {
+    "for": "pepperdine",
+    "slot": "band2",
+    "title": "Pepperdine University Caruso School of Law front entrance by Cecily Breeding.jpg",
+    "artist": "Cecilybreeding",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Pepperdine_University_Caruso_School_of_Law_front_entrance_by_Cecily_Breeding.jpg"
+  },
+  "public/schools/denver.jpg": {
+    "for": "denver",
+    "slot": "hero",
+    "title": "CIBER Field at the University of Denver Soccer Stadium and Daniel L. Ritchie Center.jpg",
+    "artist": "DenverLawGuy",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:CIBER_Field_at_the_University_of_Denver_Soccer_Stadium_and_Daniel_L._Ritchie_Center.jpg"
+  },
+  "public/schools/denver-1.jpg": {
+    "for": "denver",
+    "slot": "band1",
+    "title": "University of Denver campus pics 015.jpg",
+    "artist": "User:CW221",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:University_of_Denver_campus_pics_015.jpg"
+  },
+  "public/schools/denver-2.jpg": {
+    "for": "denver",
+    "slot": "band2",
+    "title": "North side of Evans Memorial Chapel.jpg",
+    "artist": "Pbritti",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:North_side_of_Evans_Memorial_Chapel.jpg"
   }
 }
