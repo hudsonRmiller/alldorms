@@ -31,7 +31,7 @@ export const GEO_REGION_ORDER = [...GEO_REGIONS.map(([name]) => name), 'More sch
 
 // Amazon Associates tag — appended to every "Shop" link. Requires the Amazon
 // affiliate disclosure to be live on the site (it's in the footer).
-export const AFFILIATE_TAG = 'alldorms-20';
+export const AFFILIATE_TAG = 'alldorms0e-20';
 
 /* ---------- section model ----------
    Each section becomes its own route: /[school]/[section]/
