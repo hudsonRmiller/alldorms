@@ -1,6 +1,6 @@
 ---
 import {
-  ALLOWED_BASE, BANNED_BASE, resolveChecklist, contactHref, weatherSub, softTint, AFFILIATE_TAG, mapSearch,
+  ALLOWED_BASE, BANNED_BASE, resolveChecklist, contactHref, weatherSub, softTint, mapSearch,
 } from '../lib/site.js';
 const { school, id } = Astro.props;
 const accentSoft = softTint(school.accent);
@@ -33,7 +33,6 @@ var root=document.querySelector('.sec-checklist');if(!root)return;
 var slug=root.getAttribute('data-school')||'x';
 var KEY='alldorms:checklist:'+slug;
 var CKEY='alldorms:checklist-custom:'+slug;
-var TAG='${AFFILIATE_TAG}';
 var staticTotal=parseInt(root.getAttribute('data-total'),10)||0;
 var c=document.getElementById('progCount');
 var f=document.getElementById('progFill');
@@ -50,7 +49,6 @@ if(!Array.isArray(custom))custom=[];
 custom=custom.filter(function(n){return typeof n==='string'&&n.trim();});
 function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');}
 function keyFor(name){return 'custom-'+slugify(name);}
-function shopHref(name){var u='https://www.amazon.com/s?k='+encodeURIComponent(name);return TAG?u+'&tag='+encodeURIComponent(TAG):u;}
 function renderCustom(){
 if(!list||!tpl)return;
 var saved=read(KEY,{});
@@ -61,7 +59,6 @@ var box=node.querySelector('.chk');
 box.setAttribute('data-key',keyFor(name));
 if(saved[keyFor(name)])box.checked=true;
 node.querySelector('.item-lbl').textContent=name;
-node.querySelector('.shop').href=shopHref(name);
 var rm=node.querySelector('.item-rm');
 rm.setAttribute('data-rm',name);
 rm.setAttribute('aria-label','Remove '+name);
@@ -222,14 +219,13 @@ u();
           <input id="customInput" type="text" maxlength="80" autocomplete="off" placeholder="Add your own item…" aria-label="Add an item to the checklist" />
           <button type="submit">Add</button>
         </form>
-        <p class="add-hint">Anything you add gets its own Shop link, and saves on this device.</p>
+        <p class="add-hint">Anything you add saves on this device.</p>
       </section>
     </div>
     <template id="customTpl">
       <label class="item">
         <input type="checkbox" class="chk" />
         <span class="item-lbl"></span>
-        <a class="shop" target="_blank" rel="noopener nofollow sponsored">Shop ↗</a>
         <button type="button" class="item-rm" aria-label="Remove item">✕</button>
       </label>
     </template>
