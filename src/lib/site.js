@@ -121,6 +121,14 @@ export function cityShort(school) {
    full official names, mascots, and towns. The header search also matches
    name/short/city automatically, so these only need the *other* names. */
 export const SCHOOL_ALIASES = {
+  colby: ['Colby College', 'Colby', 'White Mules', 'Mules', 'Mayflower Hill', 'Waterville', 'COOT', 'Jan Plan', 'Maine'],
+  bates: ['Bates College', 'Bates', 'Bobcats', 'Lewiston', 'Auburn', 'The Puddle', 'Lake Andrews', 'Mount David', 'Short Term', 'Maine'],
+  haverford: ['Haverford College', 'Haverford', 'Fords', 'Black Squirrels', 'Main Line', 'Bi-Co', 'Bryn Mawr', 'Customs', 'Founders Hall', 'Quaker'],
+  davidson: ['Davidson College', 'Davidson', 'Wildcats', 'Cats', 'Lake Norman', 'Patterson Court', 'Dorm Row', 'Charlotte', 'Honor Code'],
+  bucknell: ['Bucknell University', 'Bucknell', 'Bison', 'Ray Bucknell', 'Lewisburg', 'Susquehanna', 'Residential Colleges', 'Malesardi Quad', 'the ELC'],
+  carleton: ['Carleton College', 'Carleton', 'Carls', 'Knights', 'Northfield', 'The Arb', 'Cowling Arboretum', 'Bald Spot', 'Lyman Lakes', 'Minnesota'],
+  grinnell: ['Grinnell College', 'Grinnell', 'Pioneers', 'Grinnellians', 'Mac Field', 'loggia', 'LaKeRoJe', 'self-governance', 'Iowa'],
+  uci: ['University of California Irvine', 'UC Irvine', 'UCI', 'Anteaters', 'Zot', 'Peter the Anteater', 'Irvine', 'Mesa Court', 'Middle Earth', 'Aldrich Park', 'Ring Road', 'Orange County'],
   utah: ['University of Utah', 'Utah', 'The U', 'Utes', 'Runnin Utes', 'Salt Lake City', 'SLC', 'Wasatch', 'Kahlert Village', 'Heritage Commons'],
   miamiohio: ['Miami University', 'Miami Ohio', 'Miami of Ohio', 'Miami (OH)', 'MU', 'RedHawks', 'Red Hawks', 'Oxford', 'Oxford Ohio', 'Public Ivy', 'Love and Honor'],
   cincinnati: ['University of Cincinnati', 'Cincinnati', 'UC', 'Bearcats', 'Uptown', 'Clifton', 'MainStreet', 'Cincy', 'Marian Spencer'],

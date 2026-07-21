@@ -41,6 +41,14 @@ const PREVIEW_WIDTH = 1024;
 // Commons search needs the full institution name; schools.js uses display names.
 // New schools: either add them here or set `photoQuery` on the school object.
 const SEARCH_NAMES = {
+  colby: 'Colby College',
+  bates: 'Bates College',
+  haverford: 'Haverford College',
+  davidson: 'Davidson College',
+  bucknell: 'Bucknell University',
+  carleton: 'Carleton College',
+  grinnell: 'Grinnell College',
+  uci: 'University of California, Irvine',
   utah: 'University of Utah Salt Lake City',
   miamiohio: 'Miami University',
   cincinnati: 'University of Cincinnati',

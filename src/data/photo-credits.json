@@ -3126,5 +3126,197 @@
     "artist": "Pbritti",
     "license": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:North_side_of_Evans_Memorial_Chapel.jpg"
+  },
+  "public/schools/colby.jpg": {
+    "for": "colby",
+    "slot": "hero",
+    "title": "Sunrise at Colby College.jpg",
+    "artist": "Communications and Engagement",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sunrise_at_Colby_College.jpg"
+  },
+  "public/schools/colby-1.jpg": {
+    "for": "colby",
+    "slot": "band1",
+    "title": "Gordon Center building.jpg",
+    "artist": "Communications and Engagement",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Gordon_Center_building.jpg"
+  },
+  "public/schools/colby-2.jpg": {
+    "for": "colby",
+    "slot": "band2",
+    "title": "Colby aerial - 55166529029.jpg",
+    "artist": "Communications and Engagement",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Colby_aerial_-_55166529029.jpg"
+  },
+  "public/schools/bates.jpg": {
+    "for": "bates",
+    "slot": "hero",
+    "title": "Roger Williams Hall.jpg",
+    "artist": "Rockytalinto",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Roger_Williams_Hall.jpg"
+  },
+  "public/schools/bates-1.jpg": {
+    "for": "bates",
+    "slot": "band1",
+    "title": "Hedge Hall Bates College.jpg",
+    "artist": "Rockytalinto",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hedge_Hall_Bates_College.jpg"
+  },
+  "public/schools/bates-2.jpg": {
+    "for": "bates",
+    "slot": "band2",
+    "title": "Dana Chemistry Hall Bates college.jpg",
+    "artist": "Rockytalinto",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dana_Chemistry_Hall_Bates_college.jpg"
+  },
+  "public/schools/haverford.jpg": {
+    "for": "haverford",
+    "slot": "hero",
+    "title": "Haverfordfounders.jpg",
+    "artist": "Jackbauerinvc (talk)",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Haverfordfounders.jpg"
+  },
+  "public/schools/haverford-1.jpg": {
+    "for": "haverford",
+    "slot": "band1",
+    "title": "Cherry Trees around Haverford College Founders Hall.jpg",
+    "artist": "Astr98",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cherry_Trees_around_Haverford_College_Founders_Hall.jpg"
+  },
+  "public/schools/haverford-2.jpg": {
+    "for": "haverford",
+    "slot": "band2",
+    "title": "Ryan Gymnasium ^ Locker Building - panoramio.jpg",
+    "artist": "anonypanor",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ryan_Gymnasium_%5E_Locker_Building_-_panoramio.jpg"
+  },
+  "public/schools/davidson.jpg": {
+    "for": "davidson",
+    "slot": "hero",
+    "title": "Alvarez College Union, Davidson College, NC.jpg",
+    "artist": "Dacoslett",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Alvarez_College_Union,_Davidson_College,_NC.jpg"
+  },
+  "public/schools/davidson-1.jpg": {
+    "for": "davidson",
+    "slot": "band1",
+    "title": "Davidson College - President's House 02.jpg",
+    "artist": "P. Hughes",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Davidson_College_-_President%27s_House_02.jpg"
+  },
+  "public/schools/davidson-2.jpg": {
+    "for": "davidson",
+    "slot": "band2",
+    "title": "Chambers Building, Davidson College (Davidson, North Carolina).jpg",
+    "artist": "Dacoslett at English Wikipedia",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Chambers_Building,_Davidson_College_(Davidson,_North_Carolina).jpg"
+  },
+  "public/schools/bucknell.jpg": {
+    "for": "bucknell",
+    "slot": "hero",
+    "title": "Rooke-Chapel.JPG",
+    "artist": "Jllm06",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rooke-Chapel.JPG"
+  },
+  "public/schools/bucknell-1.jpg": {
+    "for": "bucknell",
+    "slot": "band1",
+    "title": "Bertrand Winter.jpg",
+    "artist": "Dbl228",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bertrand_Winter.jpg"
+  },
+  "public/schools/bucknell-2.jpg": {
+    "for": "bucknell",
+    "slot": "band2",
+    "title": "Rooke Chapel chaplain's office building.jpg",
+    "artist": "Seasider53",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rooke_Chapel_chaplain%27s_office_building.jpg"
+  },
+  "public/schools/carleton.jpg": {
+    "for": "carleton",
+    "slot": "hero",
+    "title": "Goodsell Observatory.jpg",
+    "artist": "McGhiever",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Goodsell_Observatory.jpg"
+  },
+  "public/schools/carleton-1.jpg": {
+    "for": "carleton",
+    "slot": "band1",
+    "title": "Gould-Library.JPG",
+    "artist": "Williamborg 21:28, 18 June 2007 (UTC)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Gould-Library.JPG"
+  },
+  "public/schools/carleton-2.jpg": {
+    "for": "carleton",
+    "slot": "band2",
+    "title": "Neo-Classical - Northfield, MN - Carleton College (Sayles-Hill Gymnasium) (1).jpg",
+    "artist": "Bmzuckerman",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Neo-Classical_-_Northfield,_MN_-_Carleton_College_(Sayles-Hill_Gymnasium)_(1).jpg"
+  },
+  "public/schools/grinnell.jpg": {
+    "for": "grinnell",
+    "slot": "hero",
+    "title": "GrinnellCollegeGatesTower.jpg",
+    "artist": "Aureliusxv",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:GrinnellCollegeGatesTower.jpg"
+  },
+  "public/schools/grinnell-1.jpg": {
+    "for": "grinnell",
+    "slot": "band1",
+    "title": "Grinnell 002.JPG",
+    "artist": "Aureliusxv",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Grinnell_002.JPG"
+  },
+  "public/schools/grinnell-2.jpg": {
+    "for": "grinnell",
+    "slot": "band2",
+    "title": "Grinnell College Carnegie Hall.JPG",
+    "artist": "Aureliusxv",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Grinnell_College_Carnegie_Hall.JPG"
+  },
+  "public/schools/uci.jpg": {
+    "for": "uci",
+    "slot": "hero",
+    "title": "UCI Natural Sciences II.jpg",
+    "artist": "Alexliwiththe3",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UCI_Natural_Sciences_II.jpg"
+  },
+  "public/schools/uci-1.jpg": {
+    "for": "uci",
+    "slot": "band1",
+    "title": "UC Irvine, Science Library.JPG",
+    "artist": "Mikejuinwind123",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UC_Irvine,_Science_Library.JPG"
+  },
+  "public/schools/uci-2.jpg": {
+    "for": "uci",
+    "slot": "band2",
+    "title": "UCI Student Center.jpg",
+    "artist": "SinisterLizard",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UCI_Student_Center.jpg"
   }
 }
