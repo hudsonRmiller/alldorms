@@ -121,6 +121,16 @@ export function cityShort(school) {
    full official names, mascots, and towns. The header search also matches
    name/short/city automatically, so these only need the *other* names. */
 export const SCHOOL_ALIASES = {
+  oberlin: ['Oberlin College', 'Oberlin', 'Oberlin Conservatory', 'Obies', 'Yeomen', 'Yeowomen', 'Tappan Square', 'OSCA', 'Allen Memorial', 'Ohio'],
+  kenyon: ['Kenyon College', 'Kenyon', 'Lords', 'Ladies', 'Owls', 'Gambier', 'Middle Path', 'Peirce', 'Kokosing', 'Kenyon Review', 'Ohio'],
+  macalester: ['Macalester College', 'Macalester', 'Mac', 'Scots', 'Fighting Scots', 'Saint Paul', 'St. Paul', 'Grand Avenue', 'Twin Cities', 'Minnesota'],
+  coloradocollege: ['Colorado College', 'CC', 'Tigers', 'Block Plan', 'Colorado Springs', 'Pikes Peak', 'Cutler Hall', 'Bemis', 'Tutt'],
+  washingtonlee: ['Washington and Lee University', 'Washington & Lee', 'W&L', 'WLU', 'Generals', 'Lexington', 'Shenandoah', 'the Colonnade', 'Honor System', 'Virginia'],
+  elon: ['Elon University', 'Elon', 'Phoenix', 'Elon Phoenix', 'Alamance', 'Burlington', 'Colonnades', 'Danieley', 'Lake Mary Nell', 'North Carolina'],
+  gonzaga: ['Gonzaga University', 'Gonzaga', 'Zags', 'Bulldogs', 'GU', 'Spokane', 'the Kennel', 'Kennel Club', 'Jesuit', 'Washington'],
+  rpi: ['Rensselaer Polytechnic Institute', 'Rensselaer', 'RPI', 'Engineers', 'Troy', 'Capital Region', 'Albany', 'the Approach', 'Big Red Freakout'],
+  wpi: ['Worcester Polytechnic Institute', 'WPI', 'Worcester Tech', 'Goats', 'Gompei', 'Worcester', 'the Quad', 'IQP', 'MQP', 'WPI Plan'],
+  stevens: ['Stevens Institute of Technology', 'Stevens', 'Ducks', 'Stevens Ducks', 'Castle Point', 'Hoboken', 'PATH train', 'Hudson River', 'New Jersey'],
   colby: ['Colby College', 'Colby', 'White Mules', 'Mules', 'Mayflower Hill', 'Waterville', 'COOT', 'Jan Plan', 'Maine'],
   bates: ['Bates College', 'Bates', 'Bobcats', 'Lewiston', 'Auburn', 'The Puddle', 'Lake Andrews', 'Mount David', 'Short Term', 'Maine'],
   haverford: ['Haverford College', 'Haverford', 'Fords', 'Black Squirrels', 'Main Line', 'Bi-Co', 'Bryn Mawr', 'Customs', 'Founders Hall', 'Quaker'],

@@ -3318,5 +3318,245 @@
     "artist": "SinisterLizard",
     "license": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:UCI_Student_Center.jpg"
+  },
+  "public/schools/oberlin.jpg": {
+    "for": "oberlin",
+    "slot": "hero",
+    "title": "Oberlin Conservatory of Music - entry.jpg",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Oberlin_Conservatory_of_Music_-_entry.jpg"
+  },
+  "public/schools/oberlin-1.jpg": {
+    "for": "oberlin",
+    "slot": "band1",
+    "title": "Oberlin College - Severance Hall.jpg",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Oberlin_College_-_Severance_Hall.jpg"
+  },
+  "public/schools/oberlin-2.jpg": {
+    "for": "oberlin",
+    "slot": "band2",
+    "title": "Oberlin College - Bosworth Hall.jpg",
+    "artist": "Daderot",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Oberlin_College_-_Bosworth_Hall.jpg"
+  },
+  "public/schools/kenyon.jpg": {
+    "for": "kenyon",
+    "slot": "hero",
+    "title": "Finn House, home of the Kenyon Review, Kenyon College, Gambier, Ohio.jpg",
+    "artist": "Chamberednautilus",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Finn_House,_home_of_the_Kenyon_Review,_Kenyon_College,_Gambier,_Ohio.jpg"
+  },
+  "public/schools/kenyon-1.jpg": {
+    "for": "kenyon",
+    "slot": "band1",
+    "title": "KAC 2.jpg",
+    "artist": "Mx. Granger",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:KAC_2.jpg"
+  },
+  "public/schools/kenyon-2.jpg": {
+    "for": "kenyon",
+    "slot": "band2",
+    "title": "Ransom Hall, Kenyon College.jpg",
+    "artist": "Cbc717",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ransom_Hall,_Kenyon_College.jpg"
+  },
+  "public/schools/macalester.jpg": {
+    "for": "macalester",
+    "slot": "hero",
+    "title": "Macalester Old Main.jpg",
+    "artist": "McGhiever",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Macalester_Old_Main.jpg"
+  },
+  "public/schools/macalester-1.jpg": {
+    "for": "macalester",
+    "slot": "band1",
+    "title": "Macalester-LC.jpg",
+    "artist": "Evenjk",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Macalester-LC.jpg"
+  },
+  "public/schools/macalester-2.jpg": {
+    "for": "macalester",
+    "slot": "band2",
+    "title": "Joan Adams Mondale Hall of Studio Art, Macalester College, St Paul, MN.jpg",
+    "artist": "Myotus",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Joan_Adams_Mondale_Hall_of_Studio_Art,_Macalester_College,_St_Paul,_MN.jpg"
+  },
+  "public/schools/coloradocollege.jpg": {
+    "for": "coloradocollege",
+    "slot": "hero",
+    "title": "Cutler Hall.JPG",
+    "artist": "Jeffrey Beall",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cutler_Hall.JPG"
+  },
+  "public/schools/coloradocollege-1.jpg": {
+    "for": "coloradocollege",
+    "slot": "band1",
+    "title": "Cutler Hall, Colorado College Campus, Colorado Springs (54557267860).jpg",
+    "artist": "Lumen Wilde",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cutler_Hall,_Colorado_College_Campus,_Colorado_Springs_(54557267860).jpg"
+  },
+  "public/schools/coloradocollege-2.jpg": {
+    "for": "coloradocollege",
+    "slot": "band2",
+    "title": "Montgomery Hall Colorado College.JPG",
+    "artist": "Jeffrey Beall",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Montgomery_Hall_Colorado_College.JPG"
+  },
+  "public/schools/washingtonlee.jpg": {
+    "for": "washingtonlee",
+    "slot": "hero",
+    "title": "2008-0831-WashingtonandLeeUniversity.jpg",
+    "artist": "Bobak Ha'Eri",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2008-0831-WashingtonandLeeUniversity.jpg"
+  },
+  "public/schools/washingtonlee-1.jpg": {
+    "for": "washingtonlee",
+    "slot": "band1",
+    "title": "Washington and Lee University brick sign Lexington Virginia.JPG",
+    "artist": "MarmadukePercy",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Washington_and_Lee_University_brick_sign_Lexington_Virginia.JPG"
+  },
+  "public/schools/washingtonlee-2.jpg": {
+    "for": "washingtonlee",
+    "slot": "band2",
+    "title": "Washington and Lee Leyburn Library Side.jpg",
+    "artist": "LibrarianKT",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Washington_and_Lee_Leyburn_Library_Side.jpg"
+  },
+  "public/schools/elon.jpg": {
+    "for": "elon",
+    "slot": "hero",
+    "title": "Elon Front of Alamance Building (3309997823).jpg",
+    "artist": "MPD01605 from Sterling, Virginia, United States, United States",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Elon_Front_of_Alamance_Building_(3309997823).jpg"
+  },
+  "public/schools/elon-1.jpg": {
+    "for": "elon",
+    "slot": "band1",
+    "title": "Elon IMG 43211 (3309999897).jpg",
+    "artist": "MPD01605 from Sterling, Virginia, United States, United States",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Elon_IMG_43211_(3309999897).jpg"
+  },
+  "public/schools/elon-2.jpg": {
+    "for": "elon",
+    "slot": "band2",
+    "title": "Elon IMG 1166 (4622766810).jpg",
+    "artist": "MPD01605 from Sterling, Virginia, United States, United States",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Elon_IMG_1166_(4622766810).jpg"
+  },
+  "public/schools/gonzaga.jpg": {
+    "for": "gonzaga",
+    "slot": "hero",
+    "title": "Gonzaga Fine Art Center and Museum.JPG",
+    "artist": "SCUMATT",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Gonzaga_Fine_Art_Center_and_Museum.JPG"
+  },
+  "public/schools/gonzaga-1.jpg": {
+    "for": "gonzaga",
+    "slot": "band1",
+    "title": "MyrtleWoldsonPerformingArtsCenter.jpg",
+    "artist": "T85cr1ft19m1n",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MyrtleWoldsonPerformingArtsCenter.jpg"
+  },
+  "public/schools/gonzaga-2.jpg": {
+    "for": "gonzaga",
+    "slot": "band2",
+    "title": "Front of Foley Center Library.jpg",
+    "artist": "Carlito8846",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Front_of_Foley_Center_Library.jpg"
+  },
+  "public/schools/rpi.jpg": {
+    "for": "rpi",
+    "slot": "hero",
+    "title": "West hall twilight.jpg",
+    "artist": "Danski14",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:West_hall_twilight.jpg"
+  },
+  "public/schools/rpi-1.jpg": {
+    "for": "rpi",
+    "slot": "band1",
+    "title": "VorheesComputingCenter.JPG",
+    "artist": "UpstateNYer",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:VorheesComputingCenter.JPG"
+  },
+  "public/schools/rpi-2.jpg": {
+    "for": "rpi",
+    "slot": "band2",
+    "title": "BiotechCenterRPI.jpg",
+    "artist": "UpstateNYer",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:BiotechCenterRPI.jpg"
+  },
+  "public/schools/wpi.jpg": {
+    "for": "wpi",
+    "slot": "hero",
+    "title": "Higgins Laboratories, Worcester Polytechnic Institute.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Higgins_Laboratories,_Worcester_Polytechnic_Institute.jpg"
+  },
+  "public/schools/wpi-1.jpg": {
+    "for": "wpi",
+    "slot": "band1",
+    "title": "Sanford Riley Hall, Worcester Polytechnic Institute.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sanford_Riley_Hall,_Worcester_Polytechnic_Institute.jpg"
+  },
+  "public/schools/wpi-2.jpg": {
+    "for": "wpi",
+    "slot": "band2",
+    "title": "WPI Sports and Recreation Center.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:WPI_Sports_and_Recreation_Center.jpg"
+  },
+  "public/schools/stevens.jpg": {
+    "for": "stevens",
+    "slot": "hero",
+    "title": "Stevens Institute of Technology 004.jpg",
+    "artist": "Kidfly182",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Stevens_Institute_of_Technology_004.jpg"
+  },
+  "public/schools/stevens-1.jpg": {
+    "for": "stevens",
+    "slot": "band1",
+    "title": "EAS Hall SIT.jpg",
+    "artist": "Jeffrey Vock Photography. QueenCity11 at en.wikipedia",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:EAS_Hall_SIT.jpg"
+  },
+  "public/schools/stevens-2.jpg": {
+    "for": "stevens",
+    "slot": "band2",
+    "title": "Walker Gymnasium Stevens Tech 2017.jpg",
+    "artist": "Antony-22",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Walker_Gymnasium_Stevens_Tech_2017.jpg"
   }
 }

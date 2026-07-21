@@ -41,6 +41,16 @@ const PREVIEW_WIDTH = 1024;
 // Commons search needs the full institution name; schools.js uses display names.
 // New schools: either add them here or set `photoQuery` on the school object.
 const SEARCH_NAMES = {
+  oberlin: 'Oberlin College',
+  kenyon: 'Kenyon College',
+  macalester: 'Macalester College',
+  coloradocollege: 'Colorado College',
+  washingtonlee: 'Washington and Lee University',
+  elon: 'Elon University',
+  gonzaga: 'Gonzaga University',
+  rpi: 'Rensselaer Polytechnic Institute',
+  wpi: 'Worcester Polytechnic Institute',
+  stevens: 'Stevens Institute of Technology',
   colby: 'Colby College',
   bates: 'Bates College',
   haverford: 'Haverford College',

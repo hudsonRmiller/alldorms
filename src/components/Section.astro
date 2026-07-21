@@ -418,6 +418,9 @@ u();
   .note-addr .notebody { color: #b8c0d6; }
   .note-addr :global(.block) { font-family: var(--mono); font-size: .85rem; line-height: 1.6; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 6px; padding: .8rem 1rem; margin-bottom: 0; color: #fff; }
   .note-addr :global(.var) { color: var(--gold-soft); }
+  /* global.css sets `b, strong { color: var(--navy) }`, and this note's background IS
+     --navy — so bolded text renders invisible without this. */
+  .note-addr :global(b), .note-addr :global(strong) { color: #fff; }
 
   /* generic card grid (area + stay) */
   .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 18px; }
