@@ -41,6 +41,13 @@ const PREVIEW_WIDTH = 1024;
 // Commons search needs the full institution name; schools.js uses display names.
 // New schools: either add them here or set `photoQuery` on the school object.
 const SEARCH_NAMES = {
+  mines: 'Colorado School of Mines',
+  buffalo: 'University at Buffalo',
+  binghamton: 'Binghamton University',
+  stonybrook: 'Stony Brook University',
+  calpolyslo: 'California Polytechnic State University San Luis Obispo',
+  howard: 'Howard University',
+  spelman: 'Spelman College',
   oberlin: 'Oberlin College',
   kenyon: 'Kenyon College',
   macalester: 'Macalester College',

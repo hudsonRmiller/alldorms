@@ -121,6 +121,13 @@ export function cityShort(school) {
    full official names, mascots, and towns. The header search also matches
    name/short/city automatically, so these only need the *other* names. */
 export const SCHOOL_ALIASES = {
+  mines: ['Colorado School of Mines', 'Mines', 'CSM', 'Orediggers', 'Oredigger', 'Diggers', 'Blaster', 'Golden', 'Golden Colorado', 'M Climb', 'Mount Zion', 'the M', 'Guggenheim Hall', 'Kafadar Commons', 'Clear Creek', 'Colorado'],
+  buffalo: ['University at Buffalo', 'UB', 'SUNY Buffalo', 'Buffalo', 'UB Bulls', 'Bulls', 'North Campus', 'South Campus', 'Amherst', 'Ellicott', 'Governors', 'Greiner', 'Victor E. Bull', 'New York'],
+  binghamton: ['Binghamton University', 'Binghamton', 'SUNY Binghamton', 'BU', 'Bearcats', 'Vestal', 'the Brain', 'Nature Preserve', 'Newing', 'Dickinson', 'College-in-the-Woods', 'CIW', 'Hinman', 'Mountainview', 'Public Ivy', 'New York'],
+  stonybrook: ['Stony Brook University', 'Stony Brook', 'SUNY Stony Brook', 'SBU', 'Seawolves', 'Long Island', 'North Shore', 'Undergraduate Colleges', 'Roosevelt Quad', 'Mendelsohn', 'Tabler', 'Roth Quad', 'Kelly Quad', 'H Quad', 'Wolfie', 'New York'],
+  calpolyslo: ['Cal Poly San Luis Obispo', 'Cal Poly SLO', 'Cal Poly', 'California Polytechnic State University', 'Mustangs', 'SLO', 'San Luis Obispo', 'Learn by Doing', 'yakitutu', 'Poly Canyon', 'Central Coast', 'Bishop Peak', 'El Corral', 'California'],
+  howard: ['Howard University', 'Howard', 'HU', 'the Mecca', 'Bison', 'HBCU', 'Washington DC', 'DC', 'Shaw', 'the Yard', 'Founders Library', 'Harriet Tubman Quadrangle', 'the Quad', 'Drew Hall', 'LeDroit Park'],
+  spelman: ['Spelman College', 'Spelman', 'Jaguars', 'HBCU', 'women’s college', 'Atlanta University Center', 'AUC', 'Morehouse', 'West End', 'Sisters Chapel', 'the Oval', 'Rockefeller Hall', 'SpelHouse', 'Atlanta', 'Georgia'],
   oberlin: ['Oberlin College', 'Oberlin', 'Oberlin Conservatory', 'Obies', 'Yeomen', 'Yeowomen', 'Tappan Square', 'OSCA', 'Allen Memorial', 'Ohio'],
   kenyon: ['Kenyon College', 'Kenyon', 'Lords', 'Ladies', 'Owls', 'Gambier', 'Middle Path', 'Peirce', 'Kokosing', 'Kenyon Review', 'Ohio'],
   macalester: ['Macalester College', 'Macalester', 'Mac', 'Scots', 'Fighting Scots', 'Saint Paul', 'St. Paul', 'Grand Avenue', 'Twin Cities', 'Minnesota'],

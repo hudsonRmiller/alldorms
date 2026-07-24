@@ -3558,5 +3558,173 @@
     "artist": "Antony-22",
     "license": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Walker_Gymnasium_Stevens_Tech_2017.jpg"
+  },
+  "public/schools/mines.jpg": {
+    "for": "mines",
+    "slot": "hero",
+    "title": "Colorado School of Mines Engineering hall.jpg",
+    "artist": "ChrisEngelsma",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Colorado_School_of_Mines_Engineering_hall.jpg"
+  },
+  "public/schools/mines-1.jpg": {
+    "for": "mines",
+    "slot": "band1",
+    "title": "CoorsTek Center for Applied Science and Engineering.jpg",
+    "artist": "Bebotron",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:CoorsTek_Center_for_Applied_Science_and_Engineering.jpg"
+  },
+  "public/schools/mines-2.jpg": {
+    "for": "mines",
+    "slot": "band2",
+    "title": "Colorado School of Mines.jpg",
+    "artist": "Elisa.rolle",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Colorado_School_of_Mines.jpg"
+  },
+  "public/schools/buffalo.jpg": {
+    "for": "buffalo",
+    "slot": "hero",
+    "title": "Parker 2.jpg",
+    "artist": "Davidhar",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Parker_2.jpg"
+  },
+  "public/schools/buffalo-1.jpg": {
+    "for": "buffalo",
+    "slot": "band1",
+    "title": "South campus, Hayes Hall, State University of New York at Buffalo..jpg",
+    "artist": "Y. G. Lulat",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:South_campus,_Hayes_Hall,_State_University_of_New_York_at_Buffalo..jpg"
+  },
+  "public/schools/buffalo-2.jpg": {
+    "for": "buffalo",
+    "slot": "band2",
+    "title": "Medical Campus.jpg",
+    "artist": "Buffaboy",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Medical_Campus.jpg"
+  },
+  "public/schools/binghamton.jpg": {
+    "for": "binghamton",
+    "slot": "hero",
+    "title": "BinghamtonUniversity Campus25.JPG",
+    "artist": "yohey1028",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:BinghamtonUniversity_Campus25.JPG"
+  },
+  "public/schools/binghamton-1.jpg": {
+    "for": "binghamton",
+    "slot": "band1",
+    "title": "BinghamtonUniversity Campus.JPG",
+    "artist": "yohey1028",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:BinghamtonUniversity_Campus.JPG"
+  },
+  "public/schools/binghamton-2.jpg": {
+    "for": "binghamton",
+    "slot": "band2",
+    "title": "Binghamton University SOM.JPG",
+    "artist": "yohey1028",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Binghamton_University_SOM.JPG"
+  },
+  "public/schools/stonybrook.jpg": {
+    "for": "stonybrook",
+    "slot": "hero",
+    "title": "Stony Brook University Union.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Stony_Brook_University_Union.jpg"
+  },
+  "public/schools/stonybrook-1.jpg": {
+    "for": "stonybrook",
+    "slot": "band1",
+    "title": "Stony Brook University Student Activities Center.jpg",
+    "artist": "Kenneth C. Zirkel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Stony_Brook_University_Student_Activities_Center.jpg"
+  },
+  "public/schools/stonybrook-2.jpg": {
+    "for": "stonybrook",
+    "slot": "band2",
+    "title": "Stony brook west campus.jpg",
+    "artist": "Mohamedaali2",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Stony_brook_west_campus.jpg"
+  },
+  "public/schools/calpolyslo.jpg": {
+    "for": "calpolyslo",
+    "slot": "hero",
+    "title": "Route 1 - San Luis Obispo North Coast Byway - Christopher Cohan Center for Performing Arts - NARA - 7721448.jpg",
+    "artist": "Unknown authorUnknown author or not provided",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Route_1_-_San_Luis_Obispo_North_Coast_Byway_-_Christopher_Cohan_Center_for_Performing_Arts_-_NARA_-_7721448.jpg"
+  },
+  "public/schools/calpolyslo-1.jpg": {
+    "for": "calpolyslo",
+    "slot": "band1",
+    "title": "Performing Arts Center Cal Poly San Luis Obispo.jpg",
+    "artist": "Barrydfloyd",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Performing_Arts_Center_Cal_Poly_San_Luis_Obispo.jpg"
+  },
+  "public/schools/calpolyslo-2.jpg": {
+    "for": "calpolyslo",
+    "slot": "band2",
+    "title": "Cal Poly's New Poly Canyon Village.jpg",
+    "artist": "Rob Bulmahn",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cal_Poly%27s_New_Poly_Canyon_Village.jpg"
+  },
+  "public/schools/howard.jpg": {
+    "for": "howard",
+    "slot": "hero",
+    "title": "Howard University Washington DC - Founders Library.jpg",
+    "artist": "Derek E. Morton",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Howard_University_Washington_DC_-_Founders_Library.jpg"
+  },
+  "public/schools/howard-1.jpg": {
+    "for": "howard",
+    "slot": "band1",
+    "title": "Miner Hall.jpg",
+    "artist": "Kurt Kaiser",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Miner_Hall.jpg"
+  },
+  "public/schools/howard-2.jpg": {
+    "for": "howard",
+    "slot": "band2",
+    "title": "Howard University School of Law.jpg",
+    "artist": "AgnosticPreachersKid",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Howard_University_School_of_Law.jpg"
+  },
+  "public/schools/spelman.jpg": {
+    "for": "spelman",
+    "slot": "hero",
+    "title": "Spelman College gates.jpg",
+    "artist": "Thomson200",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spelman_College_gates.jpg"
+  },
+  "public/schools/spelman-1.jpg": {
+    "for": "spelman",
+    "slot": "band1",
+    "title": "SCNew2.jpg",
+    "artist": "OneofaKind25",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:SCNew2.jpg"
+  },
+  "public/schools/spelman-2.jpg": {
+    "for": "spelman",
+    "slot": "band2",
+    "title": "Spelman College Archives.jpg",
+    "artist": "Clifflandis",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spelman_College_Archives.jpg"
   }
 }
