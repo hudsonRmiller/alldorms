@@ -9,8 +9,7 @@ dist/
 # logs / env / os
 *.log
 .DS_Store
-.env
-.env.production
+.env*
 # editor
 .vscode/
 .idea/

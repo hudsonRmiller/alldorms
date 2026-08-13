@@ -3,12 +3,16 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/vercel": "^7.8.2",
     "@vercel/analytics": "^2.0.1",
     "astro": "^4.16.18"
   },
