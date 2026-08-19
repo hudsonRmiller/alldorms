@@ -33,6 +33,13 @@ export const GEO_REGION_ORDER = [...GEO_REGIONS.map(([name]) => name), 'More sch
 // affiliate disclosure to be live on the site (it's in the footer).
 export const AFFILIATE_TAG = 'alldorms0e-20';
 
+// Prime Student 6-month free trial — the Associates bounty landing page.
+// /joinstudent redirects to /amazonprime and carries the `tag` through, so the
+// standard affiliate tag credits the bounty. If Associates Central issues a
+// campaign-specific link for the promotion, replace this whole URL with it.
+export const PRIME_STUDENT_URL =
+  'https://www.amazon.com/joinstudent?tag=' + encodeURIComponent(AFFILIATE_TAG);
+
 /* ---------- section model ----------
    Each section becomes its own route: /[school]/[section]/
    `has` decides whether a school gets that page + nav entry. */

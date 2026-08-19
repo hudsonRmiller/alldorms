@@ -716,6 +716,14 @@ export const CHECKLIST_COMMON = [
     {n:"Command hooks & strips", q:"command hooks strips variety", asin:"B07712H557", note:"No nails allowed."},
     {n:"Over-the-door hooks", q:"over the door hooks", asin:"B0G18S3C5L"},
   ]],
+  ["Making it livable", [
+    {n:"Area rug", q:"5x7 area rug", note:"Dorm floors are tile or thin institutional carpet. You only need one, so settle it with your roommate first."},
+    {n:"Full-length mirror", q:"full length over the door mirror", asin:"B0B8C5XBRT", note:"Over-the-door or leaning. Rooms almost never come with one."},
+    {n:"Storage trunk", q:"college dorm storage trunk footlocker", asin:"B0CW17NTZM", note:"Holds everything you can't unpack, and doubles as a side table."},
+    {n:"Air purifier", q:"small room hepa air purifier", asin:"B0GSX69MTH", note:"Shared air, close quarters, and windows that may not open."},
+    {n:"White noise machine", q:"white noise sound machine", asin:"B002SMJQT4", note:"For roommates on opposite schedules."},
+    {n:"Small lockbox", q:"small combination lock box safe", asin:"B07FD7VQWH", note:"Passport, prescriptions, cash, anything you'd rather not leave loose in a shared room."},
+  ]],
   ["Desk & study", [
     {n:"LED desk lamp", q:"led desk lamp", asin:"B0CM5Q5PS8", note:"No halogen."},
     {n:"Surge-protected power strip", q:"power strip surge protector circuit breaker", asin:"B0BLTYNJCK", note:"Must be UL-listed with a breaker."},

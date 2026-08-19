@@ -1,6 +1,7 @@
 ---
 import {
   ALLOWED_BASE, BANNED_BASE, resolveChecklist, contactHref, weatherSub, softTint, mapSearch,
+  PRIME_STUDENT_URL,
 } from '../lib/site.js';
 const { school, id } = Astro.props;
 const accentSoft = softTint(school.accent);
@@ -193,7 +194,12 @@ u();
       </div>
       <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
     </div>
-    <p class="affil-note">The “Shop” links are Amazon affiliate links — a purchase may earn AllDorms a small commission, at no extra cost to you.</p>
+    <div class="prime">
+      <p class="prime-head">Before you order any of this</p>
+      <p class="prime-body">Students get six months of Prime free, then half price after that. Free fast shipping on everything below, so it’s worth sorting out before the boxes start going in the cart.</p>
+      <a class="btn btn-gold prime-cta" href={PRIME_STUDENT_URL} target="_blank" rel="noopener nofollow sponsored">See if you’re eligible ↗</a>
+    </div>
+    <p class="affil-note">The “Shop” links and the Prime Student link above are Amazon affiliate links — signing up or buying may earn AllDorms a small commission, at no extra cost to you.</p>
     <div class="cat-grid">
       {checklist.map(cat => (
         <section class="cat">
@@ -380,6 +386,18 @@ u();
   .prog-reset { font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--navy); background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; visibility: hidden; }
   .prog-reset:hover { color: var(--gold-deep); }
   .affil-note { font-size: .82rem; color: var(--ink-faint); margin: 0 0 1.6rem; max-width: 90ch; }
+  /* Prime Student bounty card — deliberately the loudest block on the page.
+     Ground is --navy-deep (the accent mixed 45% toward black), which stays
+     dark enough for white text and a gold pill on every school's accent. */
+  .prime { background: var(--navy-deep); color: #fff; padding: 1.75rem 1.9rem; margin: 0 0 1.2rem; max-width: 90ch; box-shadow: 0 18px 34px -22px rgba(11, 11, 20, .9); }
+  .prime-head { font-family: var(--display); font-weight: 640; font-size: 1.68rem; line-height: 1.15; color: var(--gold); margin: 0 0 .5rem; }
+  .prime-body { font-size: 1.04rem; line-height: 1.55; color: rgba(255, 255, 255, .9); margin: 0 0 1.2rem; max-width: 62ch; }
+  .prime-cta { box-shadow: 0 10px 22px -12px rgba(0, 0, 0, .85); }
+  @media (max-width: 560px) {
+    .prime { padding: 1.4rem 1.3rem; }
+    .prime-head { font-size: 1.4rem; }
+    .prime-cta { display: flex; justify-content: center; }
+  }
   .prog-track { height: 8px; background: var(--line-2); border-radius: 999px; overflow: hidden; }
   .prog-fill { height: 100%; width: 0; background: var(--navy); border-radius: 999px; transition: width .25s ease; }
   .cat-grid { columns: 3; column-gap: 38px; }
