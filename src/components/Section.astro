@@ -1,7 +1,7 @@
 ---
 import {
   ALLOWED_BASE, BANNED_BASE, resolveChecklist, contactHref, weatherSub, softTint, mapSearch,
-  PRIME_STUDENT_URL,
+  PRIME_STUDENT_URL, winterRows, resolveWinterGear, winterSub,
 } from '../lib/site.js';
 const { school, id } = Astro.props;
 const accentSoft = softTint(school.accent);
@@ -120,6 +120,38 @@ u();
       </tbody>
     </table>
     <div class="callout" set:html={school.tip}></div>
+  </div>
+)}
+
+{/* WINTER BREAK */}
+{id === 'winter' && (
+  <div class="sec">
+    <p class="lede">{winterSub(school)}</p>
+    <table class="climate">
+      <tbody>
+        {winterRows(school).map(([m, t, w, c]) => (
+          <tr>
+            <td class="cl-month"><span class="cl-swatch" style={`background:${c}`}></span>{m}</td>
+            <td class="cl-temp">{t}</td>
+            <td class="cl-wear">{w}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <h3 class="wgear-h">Worth bringing back after break</h3>
+    <ul class="wgear">
+      {resolveWinterGear(school).map(it => (
+        <li class="wg" data-item={it.n}>
+          <span class="wg-text">
+            <span class="wg-name">{it.n}</span>
+            {it.note && <span class="wg-note">{it.note}</span>}
+          </span>
+          <a class="shop" href={it.href} target="_blank" rel="noopener nofollow sponsored">Shop ↗</a>
+        </li>
+      ))}
+    </ul>
+    <p class="wgear-more">Shopping for a student this month? <a href="/gifts/">Our gift guide</a> has the things they'll actually use in a dorm.</p>
+    <p class="affil-note">“Shop” links go to Amazon and may earn AllDorms a small commission, at no extra cost to you.</p>
   </div>
 )}
 
@@ -342,6 +374,16 @@ u();
   .cl-temp { font-family: var(--mono); font-size: .85rem; color: var(--gold-deep); white-space: nowrap; width: 14%; }
   .cl-wear { font-size: 1rem; color: var(--ink-soft); line-height: 1.5; }
 
+  /* winter break gear */
+  .wgear-h { font-size: 1.25rem; margin: 2.2rem 0 .3rem; }
+  .wgear { list-style: none; padding: 0; margin: 0 0 1.2rem; columns: 2; column-gap: 38px; }
+  .wg { display: flex; align-items: center; gap: 1rem; padding: .75rem .2rem; border-bottom: 1px solid var(--line); break-inside: avoid; }
+  .wg-text { flex: 1; }
+  .wg-name { display: block; font-family: var(--display); font-weight: 560; font-size: 1.06rem; color: var(--navy); }
+  .wg-note { display: block; font-size: .9rem; color: var(--ink-soft); line-height: 1.45; margin-top: .15rem; }
+  .wgear-more { font-size: 1rem; color: var(--ink-soft); margin: 0 0 .6rem; }
+  .wgear-more a { color: var(--navy); font-weight: 700; }
+
   /* two-col panels (allowed/banned, links) */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
   .panel { background: var(--cream); border: 1px solid var(--line); border-radius: 0; padding: 1.4rem 1.6rem; }
@@ -467,7 +509,7 @@ u();
   }
   @media (max-width: 760px) {
     .two-col, .steps, .commons, .merch { grid-template-columns: 1fr; }
-    .rules { columns: 1; }
+    .rules, .wgear { columns: 1; }
     .cat-grid { columns: 1; }
     .note-addr { grid-template-columns: 1fr; }
     .climate td { display: block; padding: .15rem .5rem; }

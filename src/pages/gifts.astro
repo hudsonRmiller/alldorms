@@ -1,0 +1,188 @@
+---
+import Base from '../layouts/Base.astro';
+import { shopUrl, PRIME_STUDENT_URL } from '../lib/site.js';
+
+// Gift guide for college students in dorms. Every item has to survive a
+// typical residence-hall policy (no heating elements, no open flame) — the
+// "skip" list at the bottom is the angle generic gift guides don't have.
+const TIERS = [
+  {
+    id: 'small',
+    tag: 'Small',
+    title: 'Stocking stuffers',
+    sub: 'Small, cheap, and used every single day.',
+    items: [
+      { n: 'Merino wool socks', q: 'merino wool socks multipack', note: 'The gift nobody asks for and everybody wears. Warm even when wet from slush or rain.' },
+      { n: 'A big power bank', q: 'portable power bank 20000mah', note: 'Lecture halls never have enough outlets near the seats.' },
+      { n: 'Insulated tumbler', q: 'insulated tumbler with straw lid', note: 'Coffee from the dining hall that\'s still hot in a 10am class.' },
+      { n: 'Long charging cables', q: '10 ft usb c charging cable 2 pack', note: 'Dorm outlets are never by the bed. Ten feet fixes it.' },
+      { n: 'Touchscreen gloves', q: 'touchscreen winter gloves', note: 'For texting on the walk across campus without freezing.' },
+      { n: 'Good earplugs and a sleep mask', q: 'sleep mask earplugs set', note: 'Roommates keep different hours.' },
+    ],
+  },
+  {
+    id: 'upgrades',
+    tag: 'Medium',
+    title: 'Upgrades they won\'t buy themselves',
+    sub: 'Things that make a dorm room genuinely better, at a price a student won\'t pay on their own.',
+    items: [
+      { n: 'Memory foam mattress topper (Twin XL)', q: 'twin xl memory foam mattress topper 3 inch', note: 'Dorm mattresses are thin vinyl slabs. This is the single biggest comfort upgrade.' },
+      { n: 'Sunrise alarm clock', q: 'sunrise alarm clock light therapy', note: 'Winter 8ams start in the dark. A wake-up light makes it much easier.' },
+      { n: 'Cool-mist humidifier', q: 'small cool mist humidifier', note: 'Radiator heat dries out dorm air. Cool-mist only, never a warm-mist or steam unit.' },
+      { n: 'Oversized sherpa throw', q: 'oversized sherpa throw blanket', note: 'The legal answer to an electric blanket, which most halls ban.' },
+      { n: 'A real backpack', q: 'laptop backpack water resistant college', note: 'Water-resistant, padded laptop sleeve. The freshman-year one usually doesn\'t survive sophomore year.' },
+      { n: 'Noise-cancelling earbuds', q: 'noise cancelling earbuds', note: 'For the library, the bus home, and a roommate\'s alarm.' },
+    ],
+  },
+  {
+    id: 'splurge',
+    tag: 'Big',
+    title: 'The splurge',
+    sub: 'For the one big gift.',
+    items: [
+      { n: 'Over-ear noise-cancelling headphones', q: 'over ear noise cancelling headphones', note: 'The thing that makes a loud floor livable during finals.' },
+      { n: 'Kindle', q: 'kindle paperwhite', note: 'Cheaper than buying every assigned novel new, and light enough to carry everywhere.' },
+      { n: 'A properly warm winter coat', q: 'long down parka winter coat', note: 'For a school up north. Long enough to cover the hips, rated well below freezing.' },
+      { n: 'Insulated waterproof boots', q: 'insulated waterproof winter boots', note: 'Worth buying good ones. Cheap boots leak by February.' },
+      { n: 'HEPA air purifier', q: 'small room hepa air purifier', note: 'Shared air, sealed windows, and flu season in one building.' },
+    ],
+  },
+];
+
+const SKIP = [
+  ['Space heaters', 'Banned in almost every residence hall. Fire risk, and they trip the old wiring.'],
+  ['Electric blankets', 'Banned in most halls for the same reason. A thick throw does the job.'],
+  ['Candles and wax warmers', 'Open flame and heating elements are out nearly everywhere, even the "decorative" kind.'],
+  ['Hot plates, toaster ovens, air fryers', 'Exposed heating elements. Most schools allow these only in hall kitchens.'],
+  ['Halogen lamps and big string-light setups', 'Halogen is banned outright. Check the hall rules before you buy any decorative lights.'],
+];
+
+const total = TIERS.reduce((n, t) => n + t.items.length, 0);
+---
+<Base
+  title="Gifts for college students that actually work in a dorm · AllDorms"
+  description={`${total} gift ideas for a college student, checked against dorm rules — plus the popular gifts most residence halls ban. Built by students, for the parents doing the shopping.`}
+>
+  <section class="ghero">
+    <img class="ghero-img" src="/schools/mountholyoke-1.jpg" alt="Blanchard Campus Center at Mount Holyoke College in falling snow" fetchpriority="high" />
+    <div class="ghero-scrim"></div>
+    <div class="snow" aria-hidden="true"></div>
+    <div class="wrap ghero-in">
+      <span class="kick light">The holiday gift guide</span>
+      <h1>Gifts for college students that actually work in a dorm.</h1>
+      <p class="ghero-lede">
+        We wrote move-in guides for colleges across the country, which means we've read a lot of residence-hall rules.
+        Everything here is allowed in a typical dorm, and it's what students actually wish they'd packed by January.
+      </p>
+      <nav class="gifts-jump" aria-label="Jump to a section">
+        {TIERS.map(t => <a class="btn btn-ghost-light" href={`#${t.id}`}>{t.title}</a>)}
+        <a class="btn btn-ghost-light" href="#skip">What not to buy</a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="gifts">
+    <div class="wrap">
+
+      {TIERS.map(t => (
+        <section id={t.id} class="tier">
+          <span class="tier-tag" aria-hidden="true">{t.tag}</span>
+          <h2>{t.title}</h2>
+          <p class="tier-sub">{t.sub}</p>
+          <ul class="glist">
+            {t.items.map(it => (
+              <li class="gi" data-item={it.n}>
+                <span class="gi-text">
+                  <span class="gi-name">{it.n}</span>
+                  <span class="gi-note">{it.note}</span>
+                </span>
+                <a class="shop" href={shopUrl(it.q, it.asin)} target="_blank" rel="noopener nofollow sponsored">Shop ↗</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+
+      <section class="prime">
+        <p class="prime-head">The gift that costs nothing</p>
+        <p class="prime-body">College students get six months of Amazon Prime free, then half price after that. That covers free shipping on everything above and anything they forget next semester.</p>
+        <a class="btn btn-gold" href={PRIME_STUDENT_URL} target="_blank" rel="noopener nofollow sponsored">See if they're eligible ↗</a>
+      </section>
+
+      <section id="skip" class="tier skip">
+        <h2>Skip these: most dorms ban them</h2>
+        <p class="tier-sub">Popular gifts that tend to get confiscated at the first room inspection.</p>
+        <ul class="skiplist">
+          {SKIP.map(([n, why]) => (
+            <li><span class="gi-name">{n}</span><span class="gi-note">{why}</span></li>
+          ))}
+        </ul>
+        <p class="tier-sub">
+          Rules vary by school. Every <a href="/#schools">AllDorms school guide</a> lists what that housing office allows,
+          plus a winter section built from that campus's own weather.
+        </p>
+      </section>
+
+      <p class="affil-note">“Shop” links go to Amazon. As an Amazon Associate, AllDorms earns from qualifying purchases, at no extra cost to you.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .ghero { position: relative; overflow: hidden; background: var(--navy-deep); color: #fff; }
+  .ghero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+  .ghero-scrim {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(12,30,26,.35) 0%, rgba(12,30,26,.5) 55%, rgba(10,26,22,.9) 100%),
+      linear-gradient(90deg, rgba(10,26,22,.72) 0%, rgba(10,26,22,.15) 70%);
+  }
+  .ghero-in { position: relative; z-index: 2; padding: clamp(4.5rem, 10vh, 7rem) 28px 3.2rem; }
+  .ghero .kick.light { color: var(--gold-soft); }
+  .ghero h1 { color: #fff; font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.05; margin: .5rem 0 .9rem; max-width: 18ch; text-shadow: 0 2px 26px rgba(0,0,0,.35); }
+  .ghero-lede { font-size: 1.16rem; line-height: 1.6; color: #e7ece8; max-width: 58ch; margin-bottom: 1.8rem; text-shadow: 0 1px 14px rgba(0,0,0,.4); }
+  .gifts-jump { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+  .gifts { padding: 1rem 0 5rem; }
+  .tier-tag {
+    display: inline-block; position: relative; margin-bottom: .7rem;
+    font-family: var(--sans); font-size: .78rem; font-weight: 600; color: var(--navy-deep);
+    background: var(--gold-pale); padding: .3em .95em .3em 1.75em;
+    clip-path: polygon(11px 0, 100% 0, 100% 100%, 11px 100%, 0 50%);
+  }
+  .tier-tag::before {
+    content: ''; position: absolute; left: 10px; top: 50%; width: 7px; height: 7px; margin-top: -3.5px;
+    border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--berry);
+  }
+  #upgrades .tier-tag { background: #f3e1dc; }
+  #splurge .tier-tag { background: #dfe8dc; }
+
+  .tier { padding-top: 3rem; max-width: 980px; }
+  .tier h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 0 0 .35rem; }
+  .tier-sub { font-size: 1.02rem; color: var(--ink-soft); line-height: 1.55; margin: 0 0 1rem; max-width: 64ch; }
+  .tier-sub a { color: var(--navy); font-weight: 700; }
+
+  .glist { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 38px; }
+  .gi { display: flex; align-items: center; gap: 1rem; padding: .85rem .2rem; border-bottom: 1px solid var(--line); break-inside: avoid; }
+  .gi-text { flex: 1; }
+  .gi-name { display: block; font-family: var(--display); font-weight: 560; font-size: 1.08rem; color: var(--navy); }
+  .gi-note { display: block; font-size: .92rem; color: var(--ink-soft); line-height: 1.45; margin-top: .15rem; }
+  .shop { font-family: var(--sans); font-size: .68rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--navy); border: 1px solid var(--line-2); border-radius: 999px; padding: .32em .8em; text-decoration: none; flex: none; }
+  .shop:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+  .prime { background: var(--navy-deep); color: #fff; padding: 1.75rem 1.9rem; margin: 3.4rem 0 0; max-width: 980px; box-shadow: 0 18px 34px -22px rgba(11, 11, 20, .9); }
+  .prime-head { font-family: var(--display); font-weight: 640; font-size: 1.68rem; line-height: 1.15; color: var(--gold); margin: 0 0 .5rem; }
+  .prime-body { font-size: 1.04rem; line-height: 1.55; color: rgba(255, 255, 255, .9); margin: 0 0 1.2rem; max-width: 62ch; }
+
+  .skiplist { list-style: none; padding: 0; margin: 0 0 1.4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0 38px; }
+  .skiplist li { padding: .85rem .2rem .85rem 1.6rem; border-bottom: 1px solid var(--line); position: relative; }
+  .skiplist li::before { content: '✕'; position: absolute; left: .2rem; top: .95rem; font-size: .8rem; color: var(--gold-deep); }
+
+  .affil-note { font-size: .82rem; color: var(--ink-faint); margin: 2.4rem 0 0; max-width: 90ch; }
+
+  @media (max-width: 760px) {
+    .glist { columns: 1; }
+    .skiplist { grid-template-columns: 1fr; }
+    .prime { padding: 1.4rem 1.3rem; }
+  }
+</style>

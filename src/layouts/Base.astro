@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
-import { SCHOOLS, SCHOOL_ALIASES, cityShort } from '../lib/site.js';
+import { SCHOOLS, SCHOOL_ALIASES, cityShort, GSC_VERIFICATION, SEASON } from '../lib/site.js';
 const {
   title = 'AllDorms — the college move-in guide for the people doing the packing',
   description = 'Move-in, sorted. Real packing lists, housing answers, and where-to-stay guides for universities nationwide — built for the parents getting their child to campus.',
@@ -54,6 +54,7 @@ const SEARCH_INDEX = SCHOOLS.map(s => ({
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
+  {GSC_VERIFICATION && <meta name="google-site-verification" content={GSC_VERIFICATION} />}
   <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(siteLd)} />
   <link rel="icon" type="image/png" href="/logo.png" />
@@ -68,9 +69,28 @@ const SEARCH_INDEX = SCHOOLS.map(s => ({
     gtag('js', new Date());
 
     gtag('config', 'G-GH5RY614BD');
+
+    // Every outbound Amazon click becomes an `amazon_click` GA event, tagged
+    // with the page's school, the section it sat in, and the item name — so
+    // GA can say which links actually earn. Delegated on document, so links
+    // rendered anywhere (checklist, winter list, gift guide) are covered.
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href*="amazon.com"]') : null;
+      if (!a) return;
+      var row = a.closest('[data-item]') || a.closest('.item');
+      var lbl = row && (row.getAttribute('data-item') || (row.querySelector('.item-lbl') || row).firstChild.textContent);
+      var sec = a.closest('[id]');
+      gtag('event', 'amazon_click', {
+        school: location.pathname.split('/').filter(Boolean)[0] || 'home',
+        section: sec ? sec.id : '',
+        item: (a.getAttribute('data-item') || lbl || a.textContent || '').trim().slice(0, 100),
+        link_url: a.href,
+        transport_type: 'beacon'
+      });
+    }, true);
   </script>
 </head>
-<body class={bodyClass} style={theme}>
+<body class={[bodyClass, SEASON].filter(Boolean).join(' ')} style={theme}>
   <header class="sitehead">
     <div class="wrap sitehead-in">
       <a href="/" class="brand">
@@ -90,6 +110,7 @@ const SEARCH_INDEX = SCHOOLS.map(s => ({
           />
           <ul class="headsearch-list" id="headsearch-list" role="listbox" aria-label="Schools" hidden></ul>
         </div>
+        {SEASON === 'holiday' && <a href="/gifts/" class="headnav-gift">Gifts</a>}
       </nav>
     </div>
   </header>
@@ -110,6 +131,7 @@ const SEARCH_INDEX = SCHOOLS.map(s => ({
           <ul>
             <li><a href="/#schools">All schools</a></li>
             <li><a href="/#how">What's inside</a></li>
+            <li><a href="/gifts/">Gifts for college students</a></li>
             <li><a href="/credits/">Photo credits</a></li>
           </ul>
         </div>
@@ -132,6 +154,15 @@ const SEARCH_INDEX = SCHOOLS.map(s => ({
       window.addEventListener('scroll', onScroll, { passive: true });
     })();
   </script>
+  {SEASON === 'holiday' && (
+    <script is:inline>
+      // phones: the Gifts pill shares the header with search, so shorten the placeholder
+      (function () {
+        var i = document.getElementById('headsearch-in');
+        if (i && window.matchMedia('(max-width: 430px)').matches) i.placeholder = 'Your school';
+      })();
+    </script>
+  )}
   <script type="application/json" id="school-search-data" set:html={JSON.stringify(SEARCH_INDEX)} />
   <script is:inline>
     // "Find your school" header search: autocomplete over every name a family

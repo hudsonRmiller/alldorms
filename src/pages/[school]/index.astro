@@ -5,7 +5,7 @@ import Base from '../../layouts/Base.astro';
 import Crest from '../../components/Crest.astro';
 import SubNav from '../../components/SubNav.astro';
 import Section from '../../components/Section.astro';
-import { SCHOOLS, schoolSections, AC_LABEL, schoolTheme } from '../../lib/site.js';
+import { SCHOOLS, schoolSections, AC_LABEL, schoolTheme, SEASON } from '../../lib/site.js';
 
 export function getStaticPaths() {
   return SCHOOLS.map(school => ({ params: { school: school.slug }, props: { school } }));
@@ -14,6 +14,8 @@ export function getStaticPaths() {
 const { school } = Astro.props;
 const sections = schoolSections(school);
 const checklist = sections.find(s => s.id === 'checklist');
+const HOLIDAY = SEASON === 'holiday';
+const winter = HOLIDAY && sections.find(s => s.id === 'winter');
 const facts = [['Move-in', school.movein], ['Beds', school.beds], ['A/C', AC_LABEL[school.ac]]];
 
 // campus photography in public/schools/: <slug>.jpg = hero, <slug>-1/-2 = page bands
@@ -120,10 +122,11 @@ const focus = FOCUS[school.slug] || null;
     <div class="shero-stripe"></div>
     {photo && <img class="shero-bg" src={photo} alt={`${school.name} campus`} fetchpriority="high" />}
     {photo && <div class="shero-scrim"></div>}
+    {HOLIDAY && <div class="snow" aria-hidden="true"></div>}
     <div class="wrap shero-in">
       <div class="shero-text">
         <a href="/#schools" class="shero-back">← All schools</a>
-        <span class="kick">{school.city} · Move-in guide</span>
+        <span class="kick">{school.city} · {HOLIDAY ? 'Winter break & move-in guide' : 'Move-in guide'}</span>
         <h1>{school.name}</h1>
         <p class="shero-lede">{school.lede}</p>
         <div class="shero-foot">
@@ -132,7 +135,11 @@ const focus = FOCUS[school.slug] || null;
               <div class="shf"><span class="shf-k">{k}</span><span class="shf-v">{v}</span></div>
             ))}
           </div>
-          {checklist && <a href={`#${checklist.id}`} class="btn btn-gold">Jump to the checklist ↓</a>}
+          <div class="shero-cta">
+            {winter && <a href={`#${winter.id}`} class="btn btn-gold">The winter list ↓</a>}
+            {checklist && <a href={`#${checklist.id}`} class={winter ? "btn btn-ghost-light" : "btn btn-gold"}>{winter ? 'Packing checklist' : 'Jump to the checklist ↓'}</a>}
+            {HOLIDAY && <a href="/gifts/" class="btn btn-ghost-light">Gift ideas</a>}
+          </div>
         </div>
       </div>
       {!photo && (
@@ -217,6 +224,8 @@ const focus = FOCUS[school.slug] || null;
   .shero.has-photo .shero-in { grid-template-columns: 1fr; min-height: 38vh; }
   .shero.has-photo .shero-text { max-width: 62ch; }
   .shero-crest { display: flex; justify-content: center; }
+  .shero .snow { z-index: 1; }
+  .shero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
 
   .shero-back { font-family: var(--sans); font-size: .9rem; font-weight: 500; color: #cdd4e6; text-decoration: none; display: inline-block; margin-bottom: 1rem; }
   .shero-back:hover { color: #fff; }

@@ -196,3 +196,67 @@ body.home .sitehead.solid { background: rgba(58, 74, 107, .92); backdrop-filter:
   .headsearch-in:focus { width: min(62vw, 240px); }
   body { font-size: 17px; }
 }
+
+
+/* =====================================================================
+   Holiday season skin — body.holiday (set by Base when SEASON='holiday').
+   Unthemed pages (home, gifts, credits) go evergreen + gold + cranberry.
+   School pages keep their own accent: their inline theme vars win.
+   ===================================================================== */
+body.holiday {
+  --paper:     #f5f4ee;   /* snow, warmed a touch so it isn't flat white */
+  --paper-2:   #ebede4;
+  --cream:     #e1e7dc;
+  --navy:      #22443a;   /* evergreen */
+  --navy-2:    #2e5a4c;
+  --navy-deep: #15302a;
+  --ink:       #14201b;
+  --ink-soft:  #3d4a43;
+  --ink-faint: #76827a;
+  --line:      #dbe2d6;
+  --line-2:    #c6d2c3;
+  --rule-navy: #b2c5b6;
+}
+body { --berry: #a3303d; }
+body.holiday.home .sitehead.solid { background: rgba(28, 58, 49, .93); }
+
+/* light snowfall — drop <div class="snow" aria-hidden="true"> into a hero.
+   Three tiled dot layers drifting at different speeds; static when the
+   visitor prefers reduced motion. */
+.snow {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.95) 1.3px, transparent 2px),
+    radial-gradient(circle at 63% 47%, rgba(255,255,255,.8) 1px, transparent 1.7px),
+    radial-gradient(circle at 38% 76%, rgba(255,255,255,.7) 1.8px, transparent 2.6px),
+    radial-gradient(circle at 84% 9%, rgba(255,255,255,.55) 1.1px, transparent 1.8px);
+  background-size: 190px 190px, 260px 260px, 340px 340px, 150px 150px;
+  animation: snowfall 26s linear infinite;
+  opacity: .85;
+}
+@keyframes snowfall {
+  to { background-position: 40px 190px, -50px 260px, 30px 340px, -20px 150px; }
+}
+@media (prefers-reduced-motion: reduce) { .snow { animation: none; } }
+
+/* header "Gifts" pill — stays visible on phones, where the other nav links hide */
+.headnav a.headnav-gift {
+  display: inline-flex; align-items: center; gap: .4em;
+  font-weight: 600; font-size: .88rem; color: #fff;
+  background: var(--berry); border-radius: 999px; padding: .42em 1em;
+  box-shadow: 0 6px 16px -10px rgba(0,0,0,.7);
+}
+.headnav a.headnav-gift:hover { background: #8a2632; color: #fff; }
+/* school pages paint the header in the school's accent (inline theme vars),
+   where a cranberry pill can vanish against crimson — go outlined there */
+body[style] .headnav a.headnav-gift { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.7); }
+body[style] .headnav a.headnav-gift:hover { background: rgba(255,255,255,.24); }
+body.home .sitehead:not(.solid) .headnav a.headnav-gift { color: #fff; text-shadow: none; }
+@media (max-width: 760px) {
+  .headnav { gap: .6em; }
+  .headnav > a.headnav-gift { display: inline-flex; padding: .42em .85em; }
+  body.holiday .headsearch-in { width: 140px; }
+}
+@media (max-width: 430px) {
+  body.holiday .sitehead-in { padding: 0 16px; }
+}

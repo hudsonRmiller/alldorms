@@ -787,6 +787,39 @@ export const CLOTHING = {
     {n:"Sunrise / light-therapy lamp", q:"sunrise alarm light therapy lamp", asin:"B0DN1H47TJ", note:"Optional, but the gray winters are dark."},
     {n:"One dressier outfit", q:"business casual outfit", asin:"B0FH4XQJJ6"}]],
 };
+/* ===== winter break: what comes back to campus in January =====
+   Keyed by school.region. Rendered by the "winter" section alongside that
+   school's own Dec–Feb climate rows. Nothing that dorms commonly ban:
+   no electric blankets, no space heaters. */
+export const WINTER_GEAR = {
+  cold: [
+    {n:"Insulated waterproof boots", q:"womens mens insulated waterproof winter boots", note:"The August sneakers won't survive slush. Look for a rating well below freezing and a real tread."},
+    {n:"A long parka", q:"long down parka winter coat", note:"Hip-to-knee length. The walk to an 8am is the coldest part of the day, and a short jacket leaves the worst of it exposed."},
+    {n:"Merino base layers", q:"merino wool base layer set", note:"Worn under jeans on the coldest days. Thin enough to forget about once you're inside."},
+    {n:"Wool socks, a few pairs", q:"merino wool hiking socks multipack", note:"Cotton socks plus wet boots is how January goes wrong."},
+    {n:"Touchscreen gloves and a warm hat", q:"touchscreen winter gloves hat set"},
+    {n:"Cool-mist humidifier", q:"small cool mist humidifier", note:"Radiator heat dries dorm air out fast — cracked lips and nosebleeds are the January classic. Cool-mist only, and check the hall rules."},
+    {n:"Sunrise alarm / light lamp", q:"sunrise alarm clock light therapy", note:"In December it's dark before dinner and still dark for an 8am. A wake-up light makes those mornings easier."},
+    {n:"A thick sherpa throw", q:"oversized sherpa throw blanket", note:"Most halls ban electric blankets, and old radiators run either blasting or off. Go thick instead."},
+  ],
+  mild: [
+    {n:"A properly waterproof shell", q:"waterproof breathable rain jacket", note:"A light fall jacket isn't enough for a cold, rainy winter day."},
+    {n:"Waterproof shoes or boots", q:"waterproof sneakers boots", note:"Canvas sneakers soak through the first rainy week."},
+    {n:"Packable puffer", q:"lightweight packable puffer jacket", note:"Warm enough for cold mornings, packs into a bag by the afternoon."},
+    {n:"Sunrise alarm / light lamp", q:"sunrise alarm clock light therapy", note:"Short days and gray weeks. A wake-up light helps more than people expect."},
+    {n:"Boot tray for the door", q:"boot tray mat", note:"Keeps the wet off a shared floor."},
+    {n:"A thick sherpa throw", q:"oversized sherpa throw blanket", note:"For chilly rooms. Most halls ban electric blankets."},
+  ],
+  warm: [
+    {n:"One real coat", q:"womens mens warm winter jacket", note:"Winter nights here get colder than anyone expects in August, and a cold snap or two is normal."},
+    {n:"Rain jacket", q:"packable rain jacket", note:"Winter is when the storm fronts come through."},
+    {n:"Closed shoes that handle a wet day", q:"waterproof sneakers", note:"The August sandals stop working on chilly, damp mornings."},
+    {n:"A good hoodie or fleece", q:"heavyweight fleece hoodie", note:"For cool mornings and lecture halls where the heat runs inconsistently."},
+    {n:"Heavier comforter", q:"twin xl down alternative comforter warm", note:"The summer-weight bedding from August gets thin in January."},
+    {n:"A thick sherpa throw", q:"oversized sherpa throw blanket", note:"Most halls ban electric blankets, so warm up without one."},
+  ],
+};
+
 export const FAN_NOTE = {ac:"AC is provided — a fan is optional.", varies:"AC varies by hall — bring a fan for the warm early weeks.",
   none:"No AC — a fan is essential for the warm early weeks.", mild:"AC is rarely needed here."};
 

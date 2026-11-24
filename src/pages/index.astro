@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Base from '../layouts/Base.astro';
 import Postcard from '../components/Postcard.astro';
-import { SCHOOLS, schoolSections, cityShort, geoRegion, GEO_REGION_ORDER } from '../lib/site.js';
+import { SCHOOLS, schoolSections, cityShort, geoRegion, GEO_REGION_ORDER, SEASON } from '../lib/site.js';
 
 // per-school crop focal point (object-position) — only needed where the
 // default center crop would cut the subject (e.g. UT's tall tower)
@@ -109,17 +109,42 @@ const regions = GEO_REGION_ORDER
   .map(name => [name, schools.filter(s => geoRegion(s) === name).sort((a, b) => a.name.localeCompare(b.name))])
   .filter(([, group]) => group.length);
 
-const guideSections = ['Weather & clothing','What’s allowed','Housing & roommates','Where you’ll live','Packing checklist','Move-in logistics','Town & hotspots','Where to stay','School gear','Links & contacts'];
+const guideSections = ['Weather & clothing','Winter break','What’s allowed','Housing & roommates','Where you’ll live','Packing checklist','Move-in logistics','Town & hotspots','Where to stay','School gear','Links & contacts'];
 
-const HERO = '/hero.jpg';
+const HOLIDAY = SEASON === 'holiday';
+// Holiday hero: Rush Rhees Library, University of Rochester, after a snowfall
+// (already credited on /credits/ as Rochester's hero).
+const HERO = HOLIDAY ? '/schools/rochester.jpg' : '/hero.jpg';
+const HERO_ALT = HOLIDAY ? 'Rush Rhees Library at the University of Rochester across a snow-covered quad' : 'A university quad in the warm light of late summer';
+const GIFT_TAGS = [
+  ['small', 'Stocking stuffers', 'Wool socks, a big power bank, the ten-foot charging cable their outlet needs.'],
+  ['upgrades', 'Upgrades they won’t buy themselves', 'A real mattress topper, a sunrise alarm for dark 8ams, a humidifier for radiator air.'],
+  ['splurge', 'The one big gift', 'Noise-cancelling headphones for finals week, or a coat that actually handles January.'],
+];
 const READING = '/reading.jpg'; // Suzzallo Reading Room, UW — see src/data/photo-credits.json
 ---
-<Base bodyClass="home" image="/hero.jpg">
+<Base bodyClass="home" image={HERO}>
   {/* hero */}
-  <section class="lhero">
-    <img class="lhero-img" src={HERO} alt="A university quad in the warm light of late summer" fetchpriority="high" />
+  <section class={"lhero" + (HOLIDAY ? " lhero-winter" : "")}>
+    <img class="lhero-img" src={HERO} alt={HERO_ALT} fetchpriority="high" />
     <div class="lhero-scrim"></div>
+    {HOLIDAY && <div class="snow" aria-hidden="true"></div>}
     <div class="wrap lhero-in">
+      {HOLIDAY ? (
+      <div class="lhero-text">
+        <span class="kick light">The holiday edition</span>
+        <h1>Gifts that pass<br />the dorm inspection.</h1>
+        <p class="lhero-sub">
+          Most gift guides were written for nowhere in particular. Ours is checked against real
+          residence-hall rules, and every school's guide now has a winter list built from
+          <em>that</em> campus's own January.
+        </p>
+        <div class="lhero-cta">
+          <a href="/gifts/" class="btn btn-gold">Open the gift guide</a>
+          <a href="#schools" class="btn btn-ghost-light">Find your school</a>
+        </div>
+      </div>
+      ) : (
       <div class="lhero-text">
         <span class="kick light">The college move-in almanac</span>
         <h1>Pack like you already<br />know the place.</h1>
@@ -133,11 +158,35 @@ const READING = '/reading.jpg'; // Suzzallo Reading Room, UW — see src/data/ph
           <a href="#how" class="btn btn-ghost-light">See what's inside</a>
         </div>
       </div>
+      )}
     </div>
     <a href="#how" class="lhero-scroll" aria-label="Scroll down">
       <span class="lhero-scroll-line"></span>
     </a>
   </section>
+
+  {/* holiday gift tags — three doors into /gifts/ */}
+  {HOLIDAY && (
+    <section class="gifts-band">
+      <div class="wrap">
+        <div class="gifts-band-head">
+          <span class="kick">Shopping for a college student?</span>
+          <h2>Three kinds of gift, all allowed in a dorm.</h2>
+        </div>
+        <div class="gift-tags">
+          {GIFT_TAGS.map(([id, title, blurb]) => (
+            <a class="gift-card" href={`/gifts/#${id}`}>
+              <span class="gift-card-hole" aria-hidden="true"></span>
+              <span class="gift-card-title">{title}</span>
+              <span class="gift-card-blurb">{blurb}</span>
+              <span class="gift-card-go">See the list →</span>
+            </a>
+          ))}
+        </div>
+        <p class="gifts-band-skip">And the ones to skip: space heaters, electric blankets, candles. <a href="/gifts/#skip">Why most dorms ban them →</a></p>
+      </div>
+    </section>
+  )}
 
   {/* your schools — filled client-side from localStorage, hidden until it has cards */}
   <section id="mine" class="mine" hidden>
@@ -322,6 +371,48 @@ const READING = '/reading.jpg'; // Suzzallo Reading Room, UW — see src/data/ph
   }
   .lhero-scroll-line { width: 3px; height: 9px; border-radius: 2px; background: rgba(255,255,255,.85); animation: scrolldot 1.7s ease-in-out infinite; }
   @keyframes scrolldot { 0%,100% { transform: translateY(0); opacity: .4; } 50% { transform: translateY(9px); opacity: 1; } }
+
+  .lhero-winter .lhero-img { object-position: 50% 30%; }
+  .lhero-winter .lhero-scrim {
+    background:
+      linear-gradient(180deg, rgba(12,30,26,.55) 0%, rgba(12,30,26,.06) 30%, rgba(12,30,26,.26) 62%, rgba(10,26,22,.88) 100%),
+      linear-gradient(90deg, rgba(10,26,22,.6) 0%, rgba(10,26,22,0) 62%);
+  }
+  .lhero-winter .lhero-in { z-index: 2; }
+  .lhero-winter .lhero-text { max-width: 60ch; }
+  .lhero-winter .lhero-sub { max-width: 50ch; }
+  @media (max-width: 760px) {
+    .lhero-winter .lhero-scrim { background: linear-gradient(180deg, rgba(12,30,26,.45) 0%, rgba(12,30,26,.42) 30%, rgba(10,26,22,.8) 62%, rgba(10,26,22,.92) 100%); }
+  }
+
+  /* ---------- holiday gift tags ---------- */
+  .gifts-band { padding: 84px 0 76px; background: var(--paper); }
+  .gifts-band-head { max-width: 52ch; margin-bottom: 2.2rem; }
+  .gifts-band-head .kick { margin-bottom: .7rem; }
+  .gifts-band-head h2 { font-size: clamp(1.8rem, 3.4vw, 2.7rem); line-height: 1.1; margin: 0; }
+  .gift-tags { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .gift-card {
+    position: relative; display: flex; flex-direction: column; gap: .5rem;
+    padding: 1.6rem 1.6rem 1.4rem 2.6rem; text-decoration: none; color: var(--ink);
+    background: var(--gold-pale);
+    clip-path: polygon(22px 0, 100% 0, 100% 100%, 22px 100%, 0 calc(100% - 22px), 0 22px);
+    transition: transform .18s ease, background .18s ease;
+  }
+  .gift-card:nth-child(2) { background: #f3e1dc; }
+  .gift-card:nth-child(3) { background: #dfe8dc; }
+  .gift-card:hover { transform: translateY(-3px); }
+  .gift-card-hole {
+    position: absolute; left: 13px; top: 50%; width: 11px; height: 11px; margin-top: -5.5px;
+    border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 2px var(--berry);
+  }
+  .gift-card-title { font-family: var(--display); font-weight: 600; font-size: 1.4rem; line-height: 1.15; color: var(--navy); }
+  .gift-card-blurb { font-size: .98rem; line-height: 1.5; color: var(--ink-soft); }
+  .gift-card-go { margin-top: auto; padding-top: .6rem; font-family: var(--sans); font-size: .86rem; font-weight: 600; color: var(--berry); }
+  .gifts-band-skip { margin: 1.8rem 0 0; font-size: 1rem; color: var(--ink-soft); }
+  .gifts-band-skip a { color: var(--berry); font-weight: 700; }
+  @media (max-width: 860px) {
+    .gift-tags { grid-template-columns: 1fr; }
+  }
 
   /* ---------- what's inside ---------- */
   .how { padding: 92px 0 84px; background: var(--paper-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }

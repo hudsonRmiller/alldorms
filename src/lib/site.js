@@ -1,4 +1,4 @@
-import { SCHOOLS as RAW_SCHOOLS, CHECKLIST_COMMON, CLOTHING, FAN_NOTE, ALLOWED_BASE, BANNED_BASE } from '../data/schools.js';
+import { SCHOOLS as RAW_SCHOOLS, CHECKLIST_COMMON, CLOTHING, FAN_NOTE, WINTER_GEAR, ALLOWED_BASE, BANNED_BASE } from '../data/schools.js';
 
 // Display order: Colgate is shown last.
 const SCHOOLS = [
@@ -33,6 +33,17 @@ export const GEO_REGION_ORDER = [...GEO_REGIONS.map(([name]) => name), 'More sch
 // affiliate disclosure to be live on the site (it's in the footer).
 export const AFFILIATE_TAG = 'alldorms0e-20';
 
+// Seasonal skin. 'holiday' turns on the winter/gift look sitewide: evergreen
+// palette on the unthemed pages, light snowfall in the heroes, the Gifts pill
+// in the header, and gift-first homepage copy. Set to '' after January to
+// return to the move-in look; everything seasonal keys off this one value.
+export const SEASON = 'holiday';
+
+// Google Search Console HTML-tag verification. Paste only the `content`
+// value from Search Console's "HTML tag" method; Base.astro renders the
+// <meta name="google-site-verification"> tag on every page when it's set.
+export const GSC_VERIFICATION = '';
+
 // Prime Student 6-month free trial — the Associates bounty landing page.
 // /joinstudent redirects to /amazonprime and carries the `tag` through, so the
 // standard affiliate tag credits the bounty. If Associates Central issues a
@@ -49,6 +60,12 @@ export const SECTIONS = [
     has: s => !!(s.climate && s.climate.length),
     heading: s => `What to wear in ${cityShort(s)}, month by month`,
     kicker: 'The one thing generic lists get wrong',
+  },
+  {
+    id: 'winter', nav: 'Winter break',
+    has: s => winterRows(s).length > 0,
+    heading: s => `Back to ${cityShort(s)} after winter break`,
+    kicker: 'What the August boxes missed',
   },
   {
     id: 'allowed', nav: "What's allowed",
@@ -390,6 +407,21 @@ export function resolveChecklist(school) {
       return { name, note, href: shopUrl(it.q, it.asin) };
     }),
   }));
+}
+
+/* ---------- winter break section ---------- */
+/** This school's own Dec–Feb climate rows (skipping any move-in row). */
+export function winterRows(school) {
+  return (school.climate || []).filter(([m]) => !/move-in/i.test(m) && /dec|jan|feb/i.test(m));
+}
+export function resolveWinterGear(school) {
+  return (WINTER_GEAR[school.region] || WINTER_GEAR.cold).map(it => ({ ...it, href: shopUrl(it.q, it.asin) }));
+}
+export function winterSub(school) {
+  const c = cityShort(school);
+  if (school.region === 'warm') return `Winter in ${c} is mostly mild, which is exactly why nobody packs for it. When students come home in December, ask how the cold mornings went — a real coat and a warm layer are usually what's missing.`;
+  if (school.region === 'mild') return `${c} doesn't get a hard winter, but December through February is colder and wetter than anything packed in August. Winter break is the moment to swap in the layers and rain gear that actually get used.`;
+  return `August packing doesn't cover ${c} in January. Winter break is when students come home and find out what they're missing, so it's the natural time to fill the gaps — and the easiest holiday list you'll write.`;
 }
 
 export const AC_LABEL = { ac: 'Provided', varies: 'Varies by hall', none: 'None — bring a fan', mild: 'Rarely needed' };
