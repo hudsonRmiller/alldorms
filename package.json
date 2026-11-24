@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": "26.x"
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/fix-function-runtime.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
