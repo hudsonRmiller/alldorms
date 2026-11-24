@@ -102,6 +102,25 @@ if(input){input.value='';input.focus();}
 if(reset)reset.addEventListener('click',function(){root.querySelectorAll('.chk').forEach(function(b){b.checked=false;});try{localStorage.removeItem(KEY);}catch(e){}u();});
 u();
 })();`;
+
+// Move-in list signup: posts to /api/subscribe/ with fetch (JSON reply) and
+// falls back to a plain form post + redirect (?signup=ok) without JS.
+const SIGNUP_JS = `(function(){
+var box=document.getElementById('signup');if(!box)return;
+var form=box.querySelector('[data-signup]');var msg=box.querySelector('.signup-msg');var btn=box.querySelector('.signup-btn');
+function done(){box.classList.add('is-done');msg.textContent="You're on the list. Watch for it in early summer.";}
+if(/[?&]signup=ok/.test(location.search))done();
+if(/[?&]signup=error/.test(location.search))msg.textContent='That didn\\'t go through. Mind trying again?';
+form.addEventListener('submit',function(e){
+e.preventDefault();btn.disabled=true;msg.textContent='Adding you…';
+fetch(form.action,{method:'POST',body:new FormData(form),headers:{accept:'application/json'}})
+.then(function(r){return r.json().catch(function(){return {ok:false};});})
+.then(function(j){
+if(j.ok){done();if(window.gtag)gtag('event','list_signup',{school:form.school.value});}
+else{msg.textContent=j.error==='invalid_email'?'That email doesn\\'t look right.':'That didn\\'t go through. Mind trying again?';btn.disabled=false;}
+}).catch(function(){msg.textContent='That didn\\'t go through. Mind trying again?';btn.disabled=false;});
+});
+})();`;
 ---
 
 {/* 01 WEATHER */}
@@ -260,6 +279,20 @@ u();
         <p class="add-hint">Anything you add saves on this device.</p>
       </section>
     </div>
+    <div class="signup" id="signup">
+      <div class="signup-text">
+        <p class="signup-head">Get the {school.short} move-in list before July</p>
+        <p class="signup-body">One email in early summer with this checklist, the move-in dates, and anything that changed in {school.short}'s housing rules. That's it.</p>
+      </div>
+      <form class="signup-form" method="post" action="/api/subscribe/" data-signup>
+        <input type="hidden" name="school" value={school.slug} />
+        <label class="signup-hp" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        <input class="signup-in" type="email" name="email" required maxlength="320" autocomplete="email" inputmode="email" placeholder="Your email" aria-label="Your email" />
+        <button class="signup-btn" type="submit">Send it to me</button>
+      </form>
+      <p class="signup-msg" role="status" aria-live="polite"></p>
+      <p class="signup-fine">We'll only use it for move-in emails, never share it, and every email has an unsubscribe link.</p>
+    </div>
     <template id="customTpl">
       <label class="item">
         <input type="checkbox" class="chk" />
@@ -353,6 +386,9 @@ u();
 
 {id === 'checklist' && (
   <script is:inline set:html={CHECKLIST_JS}></script>
+)}
+{id === 'checklist' && (
+  <script is:inline set:html={SIGNUP_JS}></script>
 )}
 
 <style>
@@ -456,6 +492,27 @@ u();
   .item.done .item-lbl { text-decoration: line-through; color: var(--ink-faint); text-decoration-color: var(--line-2); }
   .shop { font-family: var(--sans); font-size: .68rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--navy); border: 1px solid var(--line-2); border-radius: 999px; padding: .32em .8em; text-decoration: none; flex: none; align-self: center; }
   .shop:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+  /* move-in list signup */
+  .signup { background: var(--cream); border-left: 3px solid var(--navy); padding: 1.5rem 1.7rem; margin: .6rem 0 0; max-width: 90ch; display: grid; grid-template-columns: 1fr minmax(280px, 400px); gap: .4rem 2rem; align-items: center; }
+  .signup-head { font-family: var(--display); font-weight: 640; font-size: 1.4rem; line-height: 1.2; color: var(--navy); margin: 0 0 .35rem; }
+  .signup-body { font-size: .98rem; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+  .signup-form { display: flex; gap: .5rem; }
+  .signup-in { flex: 1; min-width: 0; font-family: var(--serif); font-size: 1rem; color: var(--ink); background: var(--white); border: 1px solid var(--line-2); border-radius: 999px; padding: .6em 1.1em; }
+  .signup-in:focus { outline: none; border-color: var(--navy); }
+  .signup-btn { font-family: var(--sans); font-size: .9rem; font-weight: 600; color: #fff; background: var(--navy); border: none; border-radius: 999px; padding: .6em 1.2em; cursor: pointer; flex: none; }
+  .signup-btn:hover { background: var(--navy-deep); }
+  .signup-btn:disabled { opacity: .6; cursor: default; }
+  .signup-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .signup-msg { grid-column: 2; margin: 0; font-size: .9rem; color: var(--navy); font-weight: 600; min-height: 0; }
+  .signup-msg:empty { display: none; }
+  .signup-fine { grid-column: 1 / -1; margin: .5rem 0 0; font-size: .8rem; color: var(--ink-faint); }
+  .signup.is-done .signup-form { display: none; }
+  @media (max-width: 760px) {
+    .signup { grid-template-columns: 1fr; padding: 1.3rem 1.2rem; }
+    .signup-msg { grid-column: 1; }
+    .signup-form { flex-direction: column; }
+  }
 
   /* user-added items */
   .item-rm { flex: none; align-self: center; background: none; border: none; padding: .25em .35em; font-size: .72rem; line-height: 1; color: var(--ink-faint); cursor: pointer; }

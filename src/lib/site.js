@@ -39,6 +39,10 @@ export const AFFILIATE_TAG = 'alldorms0e-20';
 // return to the move-in look; everything seasonal keys off this one value.
 export const SEASON = 'holiday';
 
+// Resend segment that every move-in list signup joins (created once by
+// scripts/resend-setup.mjs). Not a secret — the API key lives in env.
+export const RESEND_SEGMENT_ID = '3a667189-f865-434f-9f9a-f6647dbbad3b';
+
 // Google Search Console HTML-tag verification. Paste only the `content`
 // value from Search Console's "HTML tag" method; Base.astro renders the
 // <meta name="google-site-verification"> tag on every page when it's set.

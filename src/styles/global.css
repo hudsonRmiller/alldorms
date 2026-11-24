@@ -255,8 +255,8 @@ body.home .sitehead:not(.solid) .headnav a.headnav-gift { color: #fff; text-shad
 @media (max-width: 760px) {
   .headnav { gap: .6em; }
   .headnav > a.headnav-gift { display: inline-flex; padding: .42em .85em; }
-  body.holiday .headsearch-in { width: 140px; }
 }
 @media (max-width: 430px) {
   body.holiday .sitehead-in { padding: 0 16px; }
+  body.holiday .headsearch-in { width: 140px; }
 }
